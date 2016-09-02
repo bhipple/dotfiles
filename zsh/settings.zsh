@@ -14,6 +14,12 @@ if [ $? -eq 0 ]; then
     export EDITOR=vim
 fi
 
+if hash nvim 2>/dev/null; then
+    export EDITOR=nvim
+    alias vi=nvim
+    alias vim=nvim
+fi
+
 # Reduce delay to 0.1 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=1
 

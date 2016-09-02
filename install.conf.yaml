@@ -31,7 +31,9 @@
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux/
     ~/.vim: vim/
+    ~/.config/nvim: vim/
     ~/.vimrc: vimrc
+    ~/.config/nvim/init.vim: vimrc
     ~/.vimrc_minimal: vimrc_minimal
     ~/.xmobarrc: xmobarrc
     ~/.xmonad: xmonad/

@@ -44,6 +44,12 @@ if g:platform == "Linux" || g:platform == "Darwin"
     Plug 'Valloric/YouCompleteMe'
 endif
 
+if has('nvim')
+    Plug 'neovimhaskell/haskell-vim'                       " Better highlighting and indentation
+    Plug 'zenbro/mirror.vim'                               " Mirroring filesystems
+    Plug 'haifengkao/nfasd'                                " Recent file autocompletion
+endif
+
 
 call plug#end()
 
@@ -147,6 +153,7 @@ let g:ycm_server_keep_logfiles = 0
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_always_populate_location_list = 1
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 if g:bbenv != ""
     let g:ycm_seed_identifiers_with_syntax = 1
