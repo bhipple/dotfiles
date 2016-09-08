@@ -39,3 +39,7 @@ DPKG
 buildall
 valgrind
 GTest
+src
+yaml
+xsd
+svc
