@@ -34,7 +34,9 @@ Plug 'tpope/vim-commentary'                                " Comment/uncomment o
 Plug 'tpope/vim-dispatch'                                  " Asynchronous Makes
 Plug 'tpope/vim-fugitive'                                  " Git Wrapper
 Plug 'tpope/vim-repeat'                                    " Dot operator for plugins
+Plug 'tpope/vim-rhubarb'                                   " Vim + Git + Hub
 Plug 'tpope/vim-surround'                                  " Surrounding text
+Plug 'tpope/vim-tbone'                                     " vim and tmux mappings
 Plug 'tpope/vim-unimpaired'                                " Pairs of keyboard mappings for common tasks
 Plug 'tpope/vim-vinegar'                                   " netrw improvement
 Plug 'vim-scripts/Tabmerge'                                " Merge tabs into splits
