@@ -6,6 +6,8 @@ GEM
     coderay (1.1.0)
     ffi (1.9.8)
     formatador (0.2.5)
+    git-bump (1.1.0)
+      thor
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -52,6 +54,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  git-bump
   guard
   guard-process
   guard-shell
+
+BUNDLED WITH
+   1.10.6
