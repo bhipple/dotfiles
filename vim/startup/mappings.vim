@@ -43,8 +43,8 @@ nnoremap <F2> :call Cdroot()<CR>:Make clean<CR>
 if(g:bbenv == "")
     nnoremap <F4> :call Cdroot()<CR>:Make all<CR>:Make run<CR>:Copen<CR>/FAILED<CR>
 else
-    nnoremap <F3> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; gmake gtest -j")<CR>
-    nnoremap <F4> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; gmake -j")<CR>
+    nnoremap <F3> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make gtest -j")<CR>
+    nnoremap <F4> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make -j")<CR>
 endif
 
 noremap <F5> :cex[]<CR>:cclose<CR>
@@ -80,8 +80,9 @@ nnoremap <Leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <Leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>ji :YcmCompleter GoToImprecise<CR>
 nnoremap <Leader>jj :YcmCompleter GoTo<CR>
-nnoremap <Leader>rr :w<CR>:call VimuxRunCommand('./' . bufname("%"))<CR>
+nnoremap <Leader>mk :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make -j")<CR>
 nnoremap <Leader>rd :redraw!<CR>
+nnoremap <Leader>rr :w<CR>:call VimuxRunCommand('./' . bufname("%"))<CR>
 nnoremap <Leader>se :sp<CR>:e %:h<CR>
 nnoremap <Leader>sp :setlocal spell! spelllang=en_us<CR>
 nnoremap <Leader>ss :call SortSection()<CR>
