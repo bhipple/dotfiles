@@ -30,8 +30,13 @@
     ~/.sbclrc: sbclrc
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux/
-    ~/.vim: vim/
-    ~/.config/nvim: vim/
+    ~/.vim:
+        force: true
+        path: vim
+    ~/.config/nvim:
+        force: true
+        create: true
+        path: vim
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
     ~/.vimrc_minimal: vimrc_minimal
