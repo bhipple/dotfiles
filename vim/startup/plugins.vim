@@ -39,6 +39,7 @@ Plug 'tpope/vim-surround'                                  " Surrounding text
 Plug 'tpope/vim-tbone'                                     " vim and tmux mappings
 Plug 'tpope/vim-unimpaired'                                " Pairs of keyboard mappings for common tasks
 Plug 'tpope/vim-vinegar'                                   " netrw improvement
+Plug 'vim-scripts/DrawIt'                                  " Create ASCII drawings in Vim
 Plug 'vim-scripts/Tabmerge'                                " Merge tabs into splits
 
 if g:platform == "Linux" || g:platform == "Darwin"
