@@ -32,7 +32,6 @@ alias sbe='stack bench --file-watch'
 alias sc='stack clean'
 alias scheme='rlwrap scheme'
 alias se='stack exec'
-alias see="stack build && stack exec -- $(grep executable *.cabal | head -1 | awk '{print $2}')"
 alias sho='stack haddock --open --file-watch'
 alias si='stack install'
 alias sqlite3='rlwrap sqlite3'
@@ -42,3 +41,6 @@ alias uu='sudo apt-get update && sudo apt-get upgrade'
 alias wfc='weather -f NYC'
 
 [ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
+
+# TODO: Make this lazier so it doesn't execute at zsh startup?
+#alias see="seeprogram() { stack build; exec=$(grep -q executable *.cabal | head -1 | awk '{print $2}'); stack build -- $exec}; seeprogram;"
