@@ -1,9 +1,9 @@
 echo "Loading zshrc"
-fpath+=(~/.zsh/completions $fpath)
-
 if [ -f ~/.zsh_local/zshrc_local_before.zsh ]; then
     source ~/.zsh_local/zshrc_local_before.zsh
 fi
+
+fpath+=(~/.zsh/completions $fpath)
 
 source ~/.zsh/functions.zsh
 source ~/.zsh/plugins.zsh
