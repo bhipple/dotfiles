@@ -32,7 +32,7 @@
     rmt = remote -v
     rom = rebase origin/master -i
     s = show
-    sed = "!git ls-files | xargs sed -i ''"
+    sed = "!git ls-files | xargs sed -i"
     shows = show --stat
     ss = show --stat
     st = status
