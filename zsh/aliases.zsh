@@ -42,6 +42,7 @@ alias sqlite3='rlwrap sqlite3'
 alias st='stack test --file-watch'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias uu='sudo apt-get update && sudo apt-get upgrade'
+alias vagrant-purge='killall -9 VBoxHeadless && vagrant destroy'
 alias wfc='weather -f NYC'
 
 [ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
