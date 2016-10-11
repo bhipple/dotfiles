@@ -1,46 +1,48 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/vimproc', { 'do': 'make' }                    " Asynchronous command execution library
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }           " Haskell function information
-Plug 'Valloric/ListToggle'                                 " Toggling quickfix and location list
-Plug 'bhipple/bde_plugins'                                 " Tools for formatting code according to BDE Standards
-Plug 'bhipple/vim-hindent'                                 " Haskell code formatter
-Plug 'bhipple/vim-snippets'                                " My snippets fork
-Plug 'bhipple/vimux'                                       " Vim and Tmux Integration
-Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }            " Haskell
-Plug 'bling/vim-airline'                                   " Status line
-Plug 'chazmcgarvey/vimcoder'                               " Topcoder Vim Plugin
-Plug 'christoomey/vim-tmux-navigator'                      " Window/Pane switching with Vim and Tmux
-Plug 'ctrlpvim/ctrlp.vim'                                  " File searching and opening
-Plug 'derekwyatt/vim-fswitch', { 'for': 'cpp' }            " Fastswitch (cpp/h toggle)
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }           " Displays types and warings/errors
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }             " Haskell completion engine
-Plug 'elaforge/fast-tags', { 'for': 'haskell' }            " Ctags generation for Haskell
-Plug 'ivanov/vim-ipython', { 'for': 'python' }             " Vim + IPython Notebook integration
-Plug 'jceb/vim-orgmode'                                    " Emacs orgmode port
-Plug 'justinmk/vim-syntax-extra'                           " Flex and Bison syntax highlighting
-Plug 'kovisoft/slimv'                                      " Lisp in Vim
-Plug 'lukerandall/haskellmode-vim', { 'for': 'haskell' }   " Tons of useful things
-Plug 'luochen1990/rainbow'                                 " Rainbow parenthesis coloring
-Plug 'majutsushi/tagbar'                                   " Using for JavaScript
-Plug 'mhinz/vim-grepper'                                   " Asynchronous Grep -> QuickFix List
-Plug 'rhysd/vim-clang-format'                              " Vim wrapper plugin for clang-format
-Plug 'scrooloose/syntastic'                                " Syntax checking
-Plug 'slurps-mad-rips/cmake.vim'                           " Better syntax highlighting for cmake
-Plug 'spf13/vim-autoclose'                                 " Matching [({'
-Plug 'tommcdo/vim-exchange'                                " cx operator for exchanging text regions
-Plug 'tpope/vim-abolish'                                   " Coercion and Subvert
-Plug 'tpope/vim-commentary'                                " Comment/uncomment operator
-Plug 'tpope/vim-dispatch'                                  " Asynchronous Makes
-Plug 'tpope/vim-fugitive'                                  " Git Wrapper
-Plug 'tpope/vim-repeat'                                    " Dot operator for plugins
-Plug 'tpope/vim-rhubarb'                                   " Vim + Git + Hub
-Plug 'tpope/vim-surround'                                  " Surrounding text
-Plug 'tpope/vim-tbone'                                     " vim and tmux mappings
-Plug 'tpope/vim-unimpaired'                                " Pairs of keyboard mappings for common tasks
-Plug 'tpope/vim-vinegar'                                   " netrw improvement
-Plug 'vim-scripts/DrawIt'                                  " Create ASCII drawings in Vim
-Plug 'vim-scripts/Tabmerge'                                " Merge tabs into splits
+Plug 'Shougo/unite.vim'                                  " Helm for Vim
+Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
+Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
+Plug 'bhipple/bde_plugins'                               " Tools for formatting code according to BDE Standards
+Plug 'bhipple/vim-hindent'                               " Haskell code formatter
+Plug 'bhipple/vim-snippets'                              " My snippets fork
+Plug 'bhipple/vimux'                                     " Vim and Tmux Integration
+Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }          " Haskell
+Plug 'bling/vim-airline'                                 " Status line
+Plug 'chazmcgarvey/vimcoder'                             " Topcoder Vim Plugin
+Plug 'christoomey/vim-tmux-navigator'                    " Window/Pane switching with Vim and Tmux
+Plug 'ctrlpvim/ctrlp.vim'                                " File searching and opening
+Plug 'derekwyatt/vim-fswitch', { 'for': 'cpp' }          " Fastswitch (cpp/h toggle)
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }         " Displays types and warings/errors
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }           " Haskell completion engine
+Plug 'elaforge/fast-tags', { 'for': 'haskell' }          " Ctags generation for Haskell
+Plug 'godlygeek/tabular'                                 " Align blocks of text
+Plug 'ivanov/vim-ipython', { 'for': 'python' }           " Vim + IPython Notebook integration
+Plug 'jceb/vim-orgmode'                                  " Emacs orgmode port
+Plug 'justinmk/vim-syntax-extra'                         " Flex and Bison syntax highlighting
+Plug 'kovisoft/slimv'                                    " Lisp in Vim
+Plug 'lukerandall/haskellmode-vim', { 'for': 'haskell' } " Tons of useful things
+Plug 'luochen1990/rainbow'                               " Rainbow parenthesis coloring
+Plug 'majutsushi/tagbar'                                 " Using for JavaScript
+Plug 'mhinz/vim-grepper'                                 " Asynchronous Grep -> QuickFix List
+Plug 'rhysd/vim-clang-format'                            " Vim wrapper plugin for clang-format
+Plug 'scrooloose/syntastic'                              " Syntax checking
+Plug 'slurps-mad-rips/cmake.vim'                         " Better syntax highlighting for cmake
+Plug 'spf13/vim-autoclose'                               " Matching [({'
+Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
+Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
+Plug 'tpope/vim-commentary'                              " Comment/uncomment operator
+Plug 'tpope/vim-dispatch'                                " Asynchronous Makes
+Plug 'tpope/vim-fugitive'                                " Git Wrapper
+Plug 'tpope/vim-repeat'                                  " Dot operator for plugins
+Plug 'tpope/vim-rhubarb'                                 " Vim + Git + Hub
+Plug 'tpope/vim-surround'                                " Surrounding text
+Plug 'tpope/vim-tbone'                                   " vim and tmux mappings
+Plug 'tpope/vim-unimpaired'                              " Pairs of keyboard mappings for common tasks
+Plug 'tpope/vim-vinegar'                                 " netrw improvement
+Plug 'vim-scripts/DrawIt'                                " Create ASCII drawings in Vim
+Plug 'vim-scripts/Tabmerge'                              " Merge tabs into splits
 
 if g:platform == "Linux" || g:platform == "Darwin"
     Plug 'SirVer/ultisnips'               " Text snippets
