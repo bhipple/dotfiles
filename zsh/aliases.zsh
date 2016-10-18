@@ -40,12 +40,14 @@ alias sho='stack haddock --open --file-watch'
 alias si='stack install'
 alias sqlite3='rlwrap sqlite3'
 alias st='stack test --file-watch'
+alias tn='tmux rename-window $(git rev-parse --show-toplevel | xargs basename)'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias uu='sudo apt-get update && sudo apt-get upgrade'
 alias v='vagrant'
 alias vagrant-purge='killall -9 VBoxHeadless && vagrant destroy'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
+alias vus='vagrant up && vagrant ssh'
 alias wfc='weather -f NYC'
 
 [ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
