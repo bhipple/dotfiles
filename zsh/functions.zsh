@@ -1,3 +1,8 @@
+function cd() {
+    builtin cd "$@" || return
+    rename-tmux.sh >/dev/null 2>&1
+}
+
 function noproxy() {
     env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY "$@"
 }
