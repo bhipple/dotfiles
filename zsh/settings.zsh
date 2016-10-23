@@ -23,7 +23,6 @@ fi
 # Reduce delay to 0.1 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=1
 
-PATH=~/bin
 if [ -d /opt/bb/bin ]; then
     PATH=$PATH:/opt/bb/bin
 fi
@@ -87,7 +86,7 @@ bindkey -v
 ## ============================================================================
 ##                                  Prompt
 ## ============================================================================
-PROMPT='%{$fg[yellow]%}λ %m %{$fg[green]%}%c%{$fg[yellow]%} →  %{$reset_color%}'
+PROMPT='%{$fg[yellow]%}λ %m %{$fg[green]%}%c%{$fg[yellow]%}$(check_last_exit_code) →  %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
