@@ -3,11 +3,6 @@
 - link:
     ~/.dotfiles: ''
     ~/.Xdefaults: Xdefaults
-    ~/.chef/cookbooks:
-      create: true
-      force: true
-      relink: true
-      path: chef/cookbooks/
     ~/.clang-format: clang-format
     ~/.dir_colors: dir_colors
     ~/.ghc/ghci.conf:
@@ -52,10 +47,6 @@
 
 - shell:
   - [git submodule update --init --recursive, Updating submodules]
-  - command: scripts/dependency_install.sh
-    stdin: true
-    stdout: true
-    stderr: true
   - command: vim +PlugUpdate +PlugUpgrade +qall
     stdin: true
     stdout: true
@@ -65,26 +56,6 @@
     stdout: true
     stderr: true
   - command: make -C lib/ all
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: scripts/fix_permissions.sh
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: scripts/set_timezone.sh
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: scripts/hub_install.sh
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: scripts/stack.sh
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: scripts/run_chef.sh
     stdin: true
     stdout: true
     stderr: true
