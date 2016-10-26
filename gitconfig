@@ -48,6 +48,8 @@
 [core]
     pager = less -F -X -R
     preloadindex = true
+[diff]
+    renameLimit = 2500
 [mergetool "fugitive"]
     cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [mergetool]
