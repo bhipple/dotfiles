@@ -1,3 +1,4 @@
+# Note: these are only active with bash; zsh uses the `bindkey` settings in zshrc
 # Use Vi, not Emacs, style editing
 set editing-mode vi
 

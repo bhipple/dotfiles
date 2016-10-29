@@ -92,7 +92,7 @@ nnoremap <Leader>tm :Tabmerge right<CR>
 nnoremap <Leader>ve :vsp<CR>:e %:h<CR>
 nnoremap <Leader>vl :w<CR>:call VimuxRunCommand('(load "' . bufname("%") . '")')<CR>
 nnoremap <Leader>vr :w<CR>:VimuxRunLastCommand<CR>
-nnoremap <Leader>vt :w<CR>:call VimuxRunCommand("clear; gmake test -j")<CR>
+nnoremap <Leader>vt :w<CR>:call VimuxRunCommand("clear; make test -j")<CR>
 nnoremap <Leader>vv :w<CR>:VimuxPromptCommand<CR>
 nnoremap <Leader>vx :VimuxInterruptRunner<CR>
 nnoremap <Leader>w :call StripTabsAndTrailingWhitespaces()<CR>:w<CR>
