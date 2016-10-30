@@ -73,14 +73,23 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Hitting ctrl+r for nice history searching
 bindkey "^r" history-incremental-search-backward
 
-for m in "vicmd" "afu-vicmd"; do
+targets=("vicmd" "afu-vicmd")
+if [ "$AUTO_FU" = "skip" ]; then
+    targets=("vicmd")
+fi
+for m in $targets; do
     bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
 done
 
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of commands active in mode foo
 # Move to vim escape mode
-for m in "viins" "afu"; do
+targets=("viins" "afu")
+if [ "$AUTO_FU" = "skip" ]; then
+    targets=("viins")
+fi
+
+for m in $targets; do
     bindkey -M "$m" jj vi-cmd-mode
     bindkey -M "$m" kk vi-cmd-mode
     bindkey -M "$m" jk vi-cmd-mode
