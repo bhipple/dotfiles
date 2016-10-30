@@ -26,8 +26,9 @@ export KEYTIMEOUT=20
 if [ -d /opt/bb/bin ]; then
     PATH=/opt/bb/bin:$PATH
 fi
-PATH=$PATH:~/bin
-PATH=$PATH:~/bin_local
+
+PATH=~/bin_local:$PATH
+PATH=~/bin:$PATH
 PATH=$PATH:~/.local/bin
 
 if [ -n "$MACOS" ]; then
