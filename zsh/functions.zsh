@@ -19,6 +19,7 @@ check_last_exit_code() {
 cd() {
     builtin cd "$@" || return
     rename-tmux.sh >/dev/null 2>&1
+    return 0
 }
 
 noproxy() {
