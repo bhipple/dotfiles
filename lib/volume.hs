@@ -1,4 +1,3 @@
-#!/usr/bin/env runhaskell
 import Control.Monad
 import Data.List
 import Data.Maybe

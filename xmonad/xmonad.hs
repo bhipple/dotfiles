@@ -20,7 +20,7 @@ main = do
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
-myTerminal = "gnome-terminal"
+myTerminal = "xterm"
 
 -- Program names that should not be managed and tiled
 composeHook = composeAll [
