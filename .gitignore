@@ -13,5 +13,6 @@ xmonad-x86*
 xmonad.errors
 xmonad/lib
 xmonad/xmonad
+emacs~
 
 !tmux/plugins/tpm
