@@ -10,6 +10,7 @@
       path: chef/cookbooks/
     ~/.clang-format: clang-format
     ~/.dir_colors: dir_colors
+    ~/.emacs: emacs
     ~/.ghc/ghci.conf:
       create: true
       path: ghc/ghci.conf
