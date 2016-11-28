@@ -45,21 +45,25 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Install packages
 (ensure-package-installed
-			  'evil
-			  'iedit
-			  'magit
-			  'org
-			  'projectile
+              'evil
+              'iedit
+              'magit
+              'org
+              'projectile
 )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; My configuration ;;
 ;;;;;;;;;;;;;;;;;;;;;;
+(setq inhibit-splash-screen t)
+
 (require 'evil)
 (evil-mode t)
 
 ;; Org mode hotkey bindings
+(require 'org)
+
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
