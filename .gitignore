@@ -4,16 +4,17 @@
 *.pyc
 *~
 bin/hub
+emacs~
 nodes
 tags
 tmux/plugins
 vim/autoload/plug.vim.old
 vim/haskellmode.config
 vim/init.vim
+vim/spell/*.spl
 xmonad-x86*
 xmonad.errors
 xmonad/lib
 xmonad/xmonad
-emacs~
 
 !tmux/plugins/tpm

@@ -52,15 +52,15 @@
     stdin: true
     stdout: true
     stderr: true
+  - command: rm -f vim/spell/extra-words.add.spl && vim +"mkspell vim/spell/extra-words.add" +qall
+    stdin: true
+    stdout: true
+    stderr: true
   - command: scripts/ycm_regular_install.sh &
     stdin: true
     stdout: true
     stderr: true
   - command: make -C lib/ all
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: scripts/set_timezone.sh
     stdin: true
     stdout: true
     stderr: true
