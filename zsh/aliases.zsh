@@ -50,7 +50,7 @@ alias vagrant-purge='killall -9 VBoxHeadless && vagrant destroy'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
-alias wfc='weather -f NYC'
+alias wfc='curl wttr.in/new_york'
 
 [ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
 

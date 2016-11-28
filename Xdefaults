@@ -13,7 +13,7 @@
 *lookAndFeel: motif
 
 
-! The following sets the customization resource to get 
+! The following sets the customization resource to get
 ! special app-defaults, if they exist:
 #ifdef COLOR
 *Customization: -color
@@ -35,7 +35,12 @@ XTerm*background: black
 XTerm*foreground: green
 xterm*termName: xterm-256color
 
+# Make the backspace key behave properly
+*backarrowKey: false
 *ttyModes: erase ^?
+*VT100.Translations: \
+        #override <Key>BackSpace: string(0x7f) \n\
+                  <Key>Delete:    string(0x1b) string("[3~")
 
 ! rxvtop settings
 rxvtop1*background:lightgray

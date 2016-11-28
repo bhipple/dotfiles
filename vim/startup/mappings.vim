@@ -89,6 +89,7 @@ nnoremap <Leader>ss :call SortSection()<CR>
 nnoremap <Leader>te :tabe %:h<CR>
 nnoremap <Leader>tf :call Cdroot()<CR>:call MkGtest()<CR>
 nnoremap <Leader>tm :Tabmerge right<CR>
+nnoremap <Leader>vc :w<CR>:call VimuxRunCommand('chmod +x *.hs; ./*.hs < input')<CR>
 nnoremap <Leader>ve :vsp<CR>:e %:h<CR>
 nnoremap <Leader>vl :w<CR>:call VimuxRunCommand('(load "' . bufname("%") . '")')<CR>
 nnoremap <Leader>vr :w<CR>:VimuxRunLastCommand<CR>

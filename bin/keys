@@ -1,0 +1,14 @@
+#!/bin/sh
+# Quick script to load up the keyring
+
+add() {
+    key="$HOME/.ssh/$1"
+    if [ -f "$key" ]; then
+        ssh-add "$key"
+        echo "Added $key"
+    else
+        echo "$key not found"
+    fi
+}
+
+add gitlab
