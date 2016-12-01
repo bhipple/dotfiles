@@ -61,8 +61,11 @@ nnoremap <Leader>cdf :call Cdfile()<CR>
 nnoremap <Leader>cdr :call Cdroot()<CR>
 nnoremap <Leader>cmt :call CmtSection("")<Left><Left>
 nnoremap <Leader>cx :!chmod a+x %<CR>
+nnoremap <Leader>db :windo diffthis<CR>
 nnoremap <Leader>df :Gdiff<CR>
+nnoremap <Leader>do :windo diffoff<CR>
 nnoremap <Leader>dom :Gdiff origin/master<CR>
+nnoremap <Leader>du :diffupdate<CR>
 nnoremap <Leader>ev :e $MYVIMRC<CR>G$F/
 nnoremap <Leader>ff :FSHere<CR>
 nnoremap <Leader>fh :FSSplitLeft<CR>
