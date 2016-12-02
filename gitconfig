@@ -1,4 +1,5 @@
 [alias]
+    ama = am --abort
     br = branch
     bra = branch --all
     ca = commit --amend --no-edit
