@@ -58,6 +58,8 @@ Return a list of installed packages or nil for every skipped package."
 ;;;;;;;;;;;;;;;;;;;;;;
 (setq inhibit-splash-screen t)
 
+(global-linum-mode t)
+
 (require 'evil)
 (evil-mode t)
 
