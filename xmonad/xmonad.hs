@@ -10,6 +10,10 @@ import XMonad.Util.Run (spawnPipe)
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
+-- Might need this at some point
+-- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Hooks-EwmhDesktops.html
+--import XMonad.Hooks.EwmhDesktops
+
 -- Put any local configuration here
 import XMonadLocal
 
