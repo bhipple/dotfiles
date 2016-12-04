@@ -1,3 +1,10 @@
+em() {
+    if [ "$#" -eq 0 ]; then
+        emacs ~/org/todo.org
+    else
+        emacs "$@"
+    fi
+}
 pathDeduplicate() {
     export PATH="$(echo "$PATH" |
         awk 'BEGIN{RS=":";} \
