@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/unite.vim'                                  " Helm for Vim
+Plug 'Shougo/denite.nvim'                                " Helm for Vim
 Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
@@ -26,11 +26,12 @@ Plug 'lukerandall/haskellmode-vim', { 'for': 'haskell' } " Tons of useful things
 Plug 'luochen1990/rainbow'                               " Rainbow parenthesis coloring
 Plug 'majutsushi/tagbar'                                 " Using for JavaScript
 Plug 'mhinz/vim-grepper'                                 " Asynchronous Grep -> QuickFix List
-Plug 'rhysd/vim-clang-format'                            " Vim wrapper plugin for clang-format
+Plug 'rhysd/vim-clang-format', { 'on': 'ClangFormat' }   " Vim wrapper plugin for clang-format
 Plug 'scrooloose/syntastic'                              " Syntax checking
 Plug 'slurps-mad-rips/cmake.vim'                         " Better syntax highlighting for cmake
 Plug 'spf13/vim-autoclose'                               " Matching [({'
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
+Plug 'tomtom/startup_profile_vim'                        " Profile vim startup time
 Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
 Plug 'tpope/vim-commentary'                              " Comment/uncomment operator
 Plug 'tpope/vim-dispatch'                                " Asynchronous Makes

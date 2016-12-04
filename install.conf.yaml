@@ -48,7 +48,7 @@
 
 - shell:
   - [git submodule update --init --recursive, Updating submodules]
-  - command: vim +PlugUpdate +PlugUpgrade +qall
+  - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qall
     stdin: true
     stdout: true
     stderr: true
