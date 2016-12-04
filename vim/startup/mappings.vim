@@ -56,7 +56,8 @@ noremap <F5> :cex[]<CR>:cclose<CR>
 " Also use spacebar as a leader
 nmap <Space> \
 
-nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>b :Denite buffer<CR>
+nnoremap <Leader>p :call Cdroot()<CR>:Denite file_rec<CR>
 nnoremap <Leader>cdf :call Cdfile()<CR>
 nnoremap <Leader>cdr :call Cdroot()<CR>
 nnoremap <Leader>cmt :call CmtSection("")<Left><Left>
@@ -115,4 +116,6 @@ autocmd FileType haskell nmap <buffer> <Leader>vt :w<CR>:call VimuxRunCommand("c
 autocmd FileType haskell nmap <buffer> <F4> :w<CR>:call VimuxRunCommand("clear; stack test")<CR>
 
 " Note - l and q are used for the location list and quickfix toggle by ListToggle
-nnoremap <Leader>p :pclose<CR>
+
+
+nnoremap <C-p>:call Cdroot()<CR>:Denite file_rec<CR>

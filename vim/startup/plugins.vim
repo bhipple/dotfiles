@@ -12,7 +12,6 @@ Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }          " Haskell
 Plug 'bling/vim-airline'                                 " Status line
 Plug 'chazmcgarvey/vimcoder'                             " Topcoder Vim Plugin
 Plug 'christoomey/vim-tmux-navigator'                    " Window/Pane switching with Vim and Tmux
-Plug 'ctrlpvim/ctrlp.vim'                                " File searching and opening
 Plug 'derekwyatt/vim-fswitch', { 'for': 'cpp' }          " Fastswitch (cpp/h toggle)
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }         " Displays types and warings/errors
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }           " Haskell completion engine
@@ -69,8 +68,12 @@ map <C-T> :ClangFormat<CR>
 imap <C-T> <C-o>:ClangFormat<CR>
 autocmd FileType c,cpp setlocal textwidth=0
 
-" CtrlP
-let g:ctrlp_working_path_mode = 'ra'
+" Denite
+" Enter normal mode with jj or jk
+call denite#custom#map('insert', 'j', 'enter_mode:j')
+call denite#custom#map('j', 'j', 'enter_mode:normal')
+call denite#custom#map('j', 'k', 'enter_mode:normal')
+call denite#custom#map('j', '<Space>', 'insert_word:j')
 
 " Grepper
 nmap gs :call Cdroot()<CR><plug>(GrepperOperator)
