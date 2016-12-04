@@ -55,21 +55,35 @@ Return a list of installed packages or nil for every skipped package."
               'spacemacs-theme
 )
 
-
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; My configuration ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 (setq inhibit-splash-screen t)
 
+;; Show line numbers
 (global-linum-mode t)
 
+;; Cosmetics (color, toolbars)
 (require 'spacemacs-dark-theme)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
+;; When I'm ready ...
+;; (menu-bar-mode -1)
+
+;; Disable auto-saves
+(setq auto-save-default -1)
 
 (require 'evil)
 (evil-mode t)
 
 ;; Org mode hotkey bindings
 (require 'org)
+
+(setq org-todo-keywords '((sequence "TODO" "WIP" "DONE")))
+
+;; Log completion time of DONE items
+(setq org-log-done 'time)
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
