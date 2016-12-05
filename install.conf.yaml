@@ -4,6 +4,11 @@
     ~/.dotfiles: ''
     ~/.Xdefaults: Xdefaults
     ~/.clang-format: clang-format
+    ~/.config/nvim/init.vim: vimrc
+    ~/.config/nvim:
+        force: true
+        create: true
+        path: vim
     ~/.dir_colors: dir_colors
     ~/.emacs: emacs
     ~/.ghc/ghci.conf:
@@ -22,6 +27,7 @@
         force: true
         path: ipython/startup/00-pyspark-setup.py
     ~/.irssi: irssi/
+    ~/.nixpkgs: nixpkgs/
     ~/.quicklisp: quicklisp/
     ~/.sbclrc: sbclrc
     ~/.tmux.conf: tmux.conf
@@ -29,12 +35,7 @@
     ~/.vim:
         force: true
         path: vim
-    ~/.config/nvim:
-        force: true
-        create: true
-        path: vim
     ~/.vimrc: vimrc
-    ~/.config/nvim/init.vim: vimrc
     ~/.vimrc_minimal: vimrc_minimal
     ~/.xmobarrc: xmobarrc
     ~/.xmonad: xmonad/
