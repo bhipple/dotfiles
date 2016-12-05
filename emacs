@@ -21,6 +21,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+(when (not package-archive-contents)
+    (package-refresh-contents))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package management ;;
@@ -47,6 +49,7 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Install packages
 (ensure-package-installed
+              'goto-chg
               'evil
               'iedit
               'magit
