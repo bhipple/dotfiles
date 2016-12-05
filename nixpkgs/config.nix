@@ -1,10 +1,10 @@
 {
   packageOverrides = pkgs_: with pkgs_; {
-    all = with pkgs; lib.hiPrio (buildEnv {
+    all = with pkgs; hiPrio (buildEnv {
       name = "all";
-      ignoreCollisions = true;
       paths = [
         emacs
+        clang
         neovim
         pandoc
         par
