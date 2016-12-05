@@ -1,13 +1,17 @@
 {
   packageOverrides = pkgs_: with pkgs_; {
-    all = with pkgs; buildEnv {
+    all = with pkgs; lib.hiPrio (buildEnv {
       name = "all";
+      ignoreCollisions = true;
       paths = [
-        neovim
         emacs
-        par
+        neovim
         pandoc
+        par
+        tmux
+        file
+        git
       ];
-    };
+    });
   };
 }
