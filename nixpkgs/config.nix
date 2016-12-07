@@ -1,22 +1,7 @@
 {
   allowUnfree = true;
 
-  packageOverrides = pkgs: with pkgs; {
-    # Temporary fix for MacOS Sierra. Remove this block once the issues
-    # with Jemalloc are resolved.
-    neovim = pkgs.lib.overrideDerivation (pkgs.neovim.override {
-      withJemalloc = false;
-    }) (attrs: rec {
-      name = "neovim-${version}";
-      version = "0.1.7";
-      src = pkgs.fetchFromGitHub {
-        owner = "neovim";
-        repo = "neovim";
-        rev = "0542baac28681050483c685c79efcb4d3c1e32ea";
-        sha256 = "0bk0raxlb1xsqyw9pmqmxvcq5szqhimidrasnvzrci84gld8cwz4";
-      };
-    });
-
+  packageOverrides = pkgs: {
     # Minimal set of packages to install everywhere
     minEnv = with pkgs; hiPrio (buildEnv {
       name = "minEnv";
@@ -47,10 +32,11 @@
         minEnv
         cmake
         gnumake
+        gnupg
+        gnutls
         graphviz
         imagemagick
         irssi
-        nixops
         pandoc
         shellcheck
         stack
@@ -60,7 +46,7 @@
       ];
     });
 
-    # For "permanent" systems; compatible on both Mac and Linux
+    # For "permanent" systems; these packages don't seem to play well with MacOS
     bigEnvLinux = with pkgs; hiPrio (buildEnv {
       name = "bigEnvLinux";
       paths = [
@@ -70,6 +56,7 @@
         lftp
         mupdf
         neovim
+        nixops
         texlive-combined-full-2016
         vlc
       ];
