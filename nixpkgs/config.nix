@@ -27,6 +27,7 @@
         emacs
         file
         git
+        gnused
         gnutar
         htop
         nix-repl
@@ -66,10 +67,11 @@
         bigEnv
         calibre
         dropbox
-        mupdf
-        vlc
         lftp
+        mupdf
+        neovim
         texlive-combined-full-2016
+        vlc
       ];
     });
   };
