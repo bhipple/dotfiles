@@ -21,13 +21,13 @@ Plug 'ivanov/vim-ipython', { 'for': 'python' }           " Vim + IPython Noteboo
 Plug 'jceb/vim-orgmode'                                  " Emacs orgmode port
 Plug 'justinmk/vim-syntax-extra'                         " Flex and Bison syntax highlighting
 Plug 'kovisoft/slimv'                                    " Lisp in Vim
+Plug 'lambdalisue/vim-gita'                              " Magit for Vim
 Plug 'lukerandall/haskellmode-vim', { 'for': 'haskell' } " Tons of useful things
 Plug 'luochen1990/rainbow'                               " Rainbow parenthesis coloring
 Plug 'majutsushi/tagbar'                                 " Using for JavaScript
 Plug 'mhinz/vim-grepper'                                 " Asynchronous Grep -> QuickFix List
 Plug 'rhysd/vim-clang-format', { 'on': 'ClangFormat' }   " Vim wrapper plugin for clang-format
 Plug 'scrooloose/syntastic'                              " Syntax checking
-Plug 'slurps-mad-rips/cmake.vim'                         " Better syntax highlighting for cmake
 Plug 'spf13/vim-autoclose'                               " Matching [({'
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
 Plug 'tomtom/startup_profile_vim'                        " Profile vim startup time
