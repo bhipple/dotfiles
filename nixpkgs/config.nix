@@ -17,6 +17,7 @@
         htop
         nix-repl
         par
+        python
         tmux
         tree
         unzip
@@ -29,7 +30,6 @@
     bigEnv = with pkgs; hiPrio (buildEnv {
       name = "bigEnv";
       paths = [
-        minEnv
         cmake
         gnumake
         gnupg
@@ -37,6 +37,7 @@
         graphviz
         imagemagick
         irssi
+        neovim
         pandoc
         shellcheck
         stack
@@ -50,14 +51,11 @@
     bigEnvLinux = with pkgs; hiPrio (buildEnv {
       name = "bigEnvLinux";
       paths = [
-        bigEnv
         calibre
         dropbox
+        firefox
         lftp
         mupdf
-        neovim
-        nixops
-        texlive-combined-full-2016
         vlc
       ];
     });
