@@ -24,10 +24,10 @@ chatnets = {
 };
 
 channels = (
+  { name = "#nixos"; chatnet = "Freenode"; autojoin = "yes"; }
   { name = "#haskell"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#haskell-beginners"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#xmonad"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#lisp"; chatnet = "Freenode"; autojoin = "yes"; }
 );
 
 aliases = {
