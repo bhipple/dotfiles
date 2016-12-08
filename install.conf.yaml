@@ -49,11 +49,11 @@
 
 - shell:
   - [git submodule update --init --recursive, Updating submodules]
-  - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qall
+  - command: nvim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qall
     stdin: true
     stdout: true
     stderr: true
-  - command: rm -f vim/spell/extra-words.add.spl && vim +"mkspell vim/spell/extra-words.add" +qall
+  - command: rm -f vim/spell/extra-words.add.spl && nvim +"mkspell vim/spell/extra-words.add" +qall
     stdin: true
     stdout: true
     stderr: true
