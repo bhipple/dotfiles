@@ -11,9 +11,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ido-enable-flex-matching t)
+ '(ido-mode (quote both) nil (ido))
+ '(org-agenda-files (quote ("~/org/habits.org" "~/org/todo.org")))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (spacemacs-theme projectile magit iedit evil-visual-mark-mode))))
+    (spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+ '(server-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -50,8 +57,11 @@ Return a list of installed packages or nil for every skipped package."
 ;; Install packages
 (ensure-package-installed
               'goto-chg
+	      'async
+	      'helm
               'evil
               'iedit
+              'flycheck
               'magit
               'org
               'projectile
@@ -60,8 +70,9 @@ Return a list of installed packages or nil for every skipped package."
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; My configuration ;;
-;;;;;;;;;;;;;;;;;;;;;;
+;;
 (setq inhibit-splash-screen t)
+(setq vc-follow-symlinks t)
 
 ;; Show line numbers
 (global-linum-mode t)
@@ -77,10 +88,23 @@ Return a list of installed packages or nil for every skipped package."
 ;; Disable auto-saves
 (setq auto-save-default -1)
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Plugin Configuration
+;;
+(require 'helm-config)
+(dired-async-mode 1)
+
+;; Allow asynchronous compilation of packages
+(async-bytecomp-package-mode 1)
+
+;; Toggle evil mode with C-`
+(setq evil-toggle-key "C-`")
 (require 'evil)
 (evil-mode t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
+;;
 (require 'org)
 
 (setq org-todo-keywords '((sequence "TODO" "WIP" "DONE")))
