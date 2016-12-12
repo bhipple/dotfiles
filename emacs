@@ -86,7 +86,10 @@ Return a list of installed packages or nil for every skipped package."
 ;; (menu-bar-mode -1)
 
 ;; Disable auto-saves
-(setq auto-save-default -1)
+(setq auto-save-default nil)
+
+;; Disable backups
+(setq make-backup-files nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugin Configuration
