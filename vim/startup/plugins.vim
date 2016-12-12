@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/denite.nvim'                                " Helm for Vim
+Plug 'LnL7/vim-nix'                                      " Nix Expression support in Vim
 Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
@@ -50,9 +50,10 @@ if g:platform == "Linux" || g:platform == "Darwin"
 endif
 
 if has('nvim')
+    Plug 'Shougo/denite.nvim'                              " Helm for Vim
+    Plug 'haifengkao/nfasd'                                " Recent file autocompletion
     Plug 'neovimhaskell/haskell-vim'                       " Better highlighting and indentation
     Plug 'zenbro/mirror.vim'                               " Mirroring filesystems
-    Plug 'haifengkao/nfasd'                                " Recent file autocompletion
 endif
 
 
