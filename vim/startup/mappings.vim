@@ -118,4 +118,4 @@ autocmd FileType haskell nmap <buffer> <F4> :w<CR>:call VimuxRunCommand("clear; 
 " Note - l and q are used for the location list and quickfix toggle by ListToggle
 
 
-nnoremap <C-p>:call Cdroot()<CR>:Denite file_rec<CR>
+nnoremap <C-P>:call Cdroot()<CR>:Denite file_rec<CR>

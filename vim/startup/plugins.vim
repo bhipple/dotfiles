@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'LnL7/vim-nix'                                      " Nix Expression support in Vim
+Plug 'Shougo/denite.nvim'                                " Helm for Vim
 Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
@@ -21,6 +22,7 @@ Plug 'ivanov/vim-ipython', { 'for': 'python' }           " Vim + IPython Noteboo
 Plug 'jceb/vim-orgmode'                                  " Emacs orgmode port
 Plug 'justinmk/vim-syntax-extra'                         " Flex and Bison syntax highlighting
 Plug 'kovisoft/slimv'                                    " Lisp in Vim
+Plug 'lambdalisue/neovim-prompt'                         " Prompt library for vim plugins
 Plug 'lambdalisue/vim-gita'                              " Magit for Vim
 Plug 'lukerandall/haskellmode-vim', { 'for': 'haskell' } " Tons of useful things
 Plug 'luochen1990/rainbow'                               " Rainbow parenthesis coloring
@@ -71,10 +73,8 @@ autocmd FileType c,cpp setlocal textwidth=0
 
 " Denite
 " Enter normal mode with jj or jk
-call denite#custom#map('insert', 'j', 'enter_mode:j')
-call denite#custom#map('j', 'j', 'enter_mode:normal')
-call denite#custom#map('j', 'k', 'enter_mode:normal')
-call denite#custom#map('j', '<Space>', 'insert_word:j')
+call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>', 'noremap')
+call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>', 'noremap')
 
 " Grepper
 nmap gs :call Cdroot()<CR><plug>(GrepperOperator)
