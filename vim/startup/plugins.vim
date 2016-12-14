@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'LnL7/vim-nix'                                      " Nix Expression support in Vim
+Plug 'Raimondi/delimitMate'                              " Matching quotes, parens, and brackets
 Plug 'Shougo/denite.nvim'                                " Helm for Vim
 Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
@@ -30,7 +31,6 @@ Plug 'majutsushi/tagbar'                                 " Using for JavaScript
 Plug 'mhinz/vim-grepper'                                 " Asynchronous Grep -> QuickFix List
 Plug 'rhysd/vim-clang-format', { 'on': 'ClangFormat' }   " Vim wrapper plugin for clang-format
 Plug 'scrooloose/syntastic'                              " Syntax checking
-Plug 'spf13/vim-autoclose'                               " Matching [({'
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
 Plug 'tomtom/startup_profile_vim'                        " Profile vim startup time
 Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
