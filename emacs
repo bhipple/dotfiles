@@ -112,6 +112,10 @@ Return a list of installed packages or nil for every skipped package."
 ;;
 (require 'org)
 
+; Use ido-mode for auto-completion in org-mode. When I'm ready, consider Helm instead.
+(setq org-completion-use-ido t)
+
+; Default TODO progression sequence.
 (setq org-todo-keywords '((sequence "TODO" "WIP" "DONE")))
 
 ; Log completion time of DONE items
@@ -121,10 +125,15 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-default-notes-file "~/org/todo.org")
 (global-set-key "\C-cc" 'org-capture)
 
-(global-set-key "\C-cl" 'org-store-link)
+; Open up the agenda with C-c a
 (global-set-key "\C-ca" 'org-agenda)
+
 (global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-cl" 'org-store-link)
 
 ; Jump to the todo.org file
 (global-set-key (kbd "C-c o")
 		(lambda () (interactive) (find-file "~/org/todo.org")))
+
+; Set org-refile to autocomplete three levels deep and check all agenda files
+(setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
