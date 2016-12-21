@@ -47,6 +47,7 @@ alias upper="tr '[:lower:]' '[:upper:]'"
 alias uu='sudo apt-get update && sudo apt-get upgrade'
 alias v='vagrant'
 alias vagrant-purge='killall -9 VBoxHeadless && vagrant destroy'
+alias vimdf="vim -p $(git diff --name-only --diff-filter=M | tr '\n' ' ')"
 alias vs='vagrant ssh'
 alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
