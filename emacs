@@ -1,3 +1,5 @@
+; -*-Lisp-*-
+
 (require 'package)
 
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
@@ -47,14 +49,14 @@ Return a list of installed packages or nil for every skipped package."
          package)))
    packages))
 
-;; Make sure to have downloaded archive description.
+; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-;; Activate installed packages
+; Activate installed packages
 (package-initialize)
 
-;; Install packages
+; Install packages
 (ensure-package-installed
               'goto-chg
 	      'async
@@ -74,21 +76,21 @@ Return a list of installed packages or nil for every skipped package."
 (setq inhibit-splash-screen t)
 (setq vc-follow-symlinks t)
 
-;; Show line numbers
+; Show line numbers
 (global-linum-mode t)
 
-;; Cosmetics (color, toolbars)
+; Cosmetics (color, toolbars)
 (require 'spacemacs-dark-theme)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
-;; When I'm ready ...
-;; (menu-bar-mode -1)
+; When I'm ready ...
+; (menu-bar-mode -1)
 
-;; Disable auto-saves
+; Disable auto-saves
 (setq auto-save-default nil)
 
-;; Disable backups
+; Disable backups
 (setq make-backup-files nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
@@ -97,10 +99,10 @@ Return a list of installed packages or nil for every skipped package."
 (require 'helm-config)
 (dired-async-mode 1)
 
-;; Allow asynchronous compilation of packages
+; Allow asynchronous compilation of packages
 (async-bytecomp-package-mode 1)
 
-;; Toggle evil mode with C-`
+; Toggle evil mode with C-`
 (setq evil-toggle-key "C-`")
 (require 'evil)
 (evil-mode t)
@@ -112,10 +114,17 @@ Return a list of installed packages or nil for every skipped package."
 
 (setq org-todo-keywords '((sequence "TODO" "WIP" "DONE")))
 
-;; Log completion time of DONE items
+; Log completion time of DONE items
 (setq org-log-done 'time)
+
+; Default notes file for capture
+(setq org-default-notes-file "~/org/todo.org")
+(global-set-key "\C-cc" 'org-capture)
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+; Jump to the todo.org file
+(global-set-key (kbd "C-c o")
+		(lambda () (interactive) (find-file "~/org/todo.org")))
