@@ -17,7 +17,7 @@
  '(ido-mode (quote both) nil (ido))
  '(org-agenda-files
    (quote
-    ("~/org/work.org" "~/org/habits.org" "~/org/todo.org")))
+    ("~/org/lists.org" "~/org/work.org" "~/org/habits.org" "~/org/todo.org")))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
@@ -118,7 +118,8 @@ Return a list of installed packages or nil for every skipped package."
 (setq org-completion-use-ido t)
 
 ; Default TODO progression sequence.
-(setq org-todo-keywords '((sequence "TODO" "WIP" "DONE")))
+(setq org-use-fast-todo-selection t)
+(setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
 
 ; Log completion time of DONE items
 (setq org-log-done 'time)

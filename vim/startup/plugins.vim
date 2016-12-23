@@ -20,7 +20,6 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }           " Haskell completion en
 Plug 'elaforge/fast-tags', { 'for': 'haskell' }          " Ctags generation for Haskell
 Plug 'godlygeek/tabular'                                 " Align blocks of text
 Plug 'ivanov/vim-ipython', { 'for': 'python' }           " Vim + IPython Notebook integration
-Plug 'jceb/vim-orgmode'                                  " Emacs orgmode port
 Plug 'justinmk/vim-syntax-extra'                         " Flex and Bison syntax highlighting
 Plug 'kovisoft/slimv'                                    " Lisp in Vim
 Plug 'lambdalisue/neovim-prompt'                         " Prompt library for vim plugins
