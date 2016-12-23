@@ -15,7 +15,9 @@
  ;; If there is more than one, they won't work right.
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
- '(org-agenda-files (quote ("~/org/habits.org" "~/org/todo.org")))
+ '(org-agenda-files
+   (quote
+    ("~/org/work.org" "~/org/habits.org" "~/org/todo.org")))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
@@ -137,3 +139,9 @@ Return a list of installed packages or nil for every skipped package."
 
 ; Set org-refile to autocomplete three levels deep and check all agenda files
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
+
+; Org Agenda custom searches
+(setq org-agenda-custom-commands
+      '(("x" agenda)
+        ("h" tags-todo "home")
+        ("w" tags-todo "work")))
