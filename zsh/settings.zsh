@@ -73,23 +73,25 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Hitting ctrl+r for nice history searching
 bindkey "^r" history-incremental-search-backward
 
-targets=("vicmd" "afu-vicmd")
+# Auto-fu adds additional modes to zsh zle. To get keybindings in one of these
+# modes with or without auto-fu, bind the key in all modes of that type.
+normalModes=("vicmd" "afu-vicmd")
+insertModes=("viins" "afu")
+visualModes=("visual")
 if [ "$AUTO_FU" = "skip" ]; then
-    targets=("vicmd")
+    normalModes=("vicmd")
+    insertModes=("viins")
 fi
-for m in $targets; do
+
+for m in $normalModes; do
     bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
 done
 
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of commands active in mode foo
 # Move to vim escape mode
-targets=("viins" "afu")
-if [ "$AUTO_FU" = "skip" ]; then
-    targets=("viins")
-fi
 
-for m in $targets; do
+for m in $insertModes; do
     bindkey -M "$m" jj vi-cmd-mode
     bindkey -M "$m" kk vi-cmd-mode
     bindkey -M "$m" jk vi-cmd-mode
@@ -111,6 +113,24 @@ ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
 export SPARK_HOME="/home/brh/spark-1.6.0-bin-hadoop2.6"
+
+#  ============================================================================
+#                          Text Object Surround
+#  ============================================================================
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+
+for m in $normalModes; do
+    bindkey -M "$m" cs change-surround
+    bindkey -M "$m" ds delete-surround
+    bindkey -M "$m" ys add-surround
+done
+
+for m in $visualModes; do
+    bindkey -M "$m" S add-surround
+done
 
 ## ============================================================================
 ##                              Auto-Fu Config
@@ -145,16 +165,3 @@ zle-keymap-select () {
   my-reset-prompt-maybe
 }
 zle -N zle-keymap-select
-
-#  ============================================================================
-#                          Text Object Surround
-#  ============================================================================
-autoload -Uz surround
-
-zle -N delete-surround surround
-zle -N add-surround surround
-zle -N change-surround surround
-bindkey -a cs change-surround
-bindkey -a ds delete-surround
-bindkey -a ys add-surround
-bindkey -M visual S add-surround
