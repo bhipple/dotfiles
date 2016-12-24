@@ -41,6 +41,7 @@
         gnupg
         gnutls
         graphviz
+        icu
         imagemagick
         irssi
         neovim
@@ -50,6 +51,7 @@
         vagrant
         xclip
         xsel
+        zlib
       ];
     });
 
