@@ -17,7 +17,7 @@
  '(ido-mode (quote both) nil (ido))
  '(org-agenda-files
    (quote
-    ("~/org/lists.org" "~/org/work.org" "~/org/habits.org" "~/org/todo.org")))
+    ("~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/habits.org" "~/org/todo.org")))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
