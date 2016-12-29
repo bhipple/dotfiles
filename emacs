@@ -1,4 +1,4 @@
-; -*-Lisp-*-
+;; -*-Lisp-*-
 
 (require 'package)
 
@@ -51,14 +51,14 @@ Return a list of installed packages or nil for every skipped package."
          package)))
    packages))
 
-; Make sure to have downloaded archive description.
+;; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-; Activate installed packages
+;; Activate installed packages
 (package-initialize)
 
-; Install packages
+;; Install packages
 (ensure-package-installed
               'goto-chg
 	      'async
@@ -78,21 +78,21 @@ Return a list of installed packages or nil for every skipped package."
 (setq inhibit-splash-screen t)
 (setq vc-follow-symlinks t)
 
-; Show line numbers
+;; Show line numbers
 (global-linum-mode t)
 
-; Cosmetics (color, toolbars)
+;; Cosmetics (color, toolbars)
 (require 'spacemacs-dark-theme)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
-; When I'm ready ...
-; (menu-bar-mode -1)
+;; When I'm ready ...
+;; (menu-bar-mode -1)
 
-; Disable auto-saves
+;; Disable auto-saves
 (setq auto-save-default nil)
 
-; Disable backups
+;; Disable backups
 (setq make-backup-files nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
@@ -101,10 +101,10 @@ Return a list of installed packages or nil for every skipped package."
 (require 'helm-config)
 (dired-async-mode 1)
 
-; Allow asynchronous compilation of packages
+;; Allow asynchronous compilation of packages
 (async-bytecomp-package-mode 1)
 
-; Toggle evil mode with C-`
+;; Toggle evil mode with C-`
 (setq evil-toggle-key "C-`")
 (require 'evil)
 (evil-mode t)
@@ -114,35 +114,49 @@ Return a list of installed packages or nil for every skipped package."
 ;;
 (require 'org)
 
-; Use ido-mode for auto-completion in org-mode. When I'm ready, consider Helm instead.
+;; Use ido-mode for auto-completion in org-mode. When I'm ready, consider Helm instead.
 (setq org-completion-use-ido t)
 
-; Default TODO progression sequence.
+;; Default TODO progression sequence.
 (setq org-use-fast-todo-selection t)
 (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
 
-; Log completion time of DONE items
+;; Log completion time of DONE items
 (setq org-log-done 'time)
 
-; Default notes file for capture
+;; Tags
+(setq org-tag-alist '(("ALGOS" . ?a)
+		      ("CODING" . ?c)
+		      ("DEEP" . ?d)
+		      ("EMACS" . ?e)
+		      ("HOME" . ?h)
+		      ("GYM" . ?g)
+		      ("LISTS" . ?l)
+		      ("NIX" . ?n)
+		      ("READING" . ?r)
+		      ("VIM" ? .v)
+		      ("WORK" ? .w)
+		      ("ZSH" ? .z)))
+
+;; Default notes file for capture
 (setq org-default-notes-file "~/org/todo.org")
 (global-set-key "\C-cc" 'org-capture)
 
-; Open up the agenda with C-c a
+;; Open up the agenda with C-c a
 (global-set-key "\C-ca" 'org-agenda)
 
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cl" 'org-store-link)
 
-; Jump to the todo.org file
+;; Jump to the todo.org file
 (global-set-key (kbd "C-c o")
 		(lambda () (interactive) (find-file "~/org/todo.org")))
 
-; Set org-refile to autocomplete three levels deep and check all agenda files
+;; Set org-refile to autocomplete three levels deep and check all agenda files
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
 
-; Org Agenda custom searches
+;; Org Agenda custom searches
 (setq org-agenda-custom-commands
       '(("x" agenda)
-        ("h" tags-todo "home")
-        ("w" tags-todo "work")))
+        ("h" tags-todo "HOME")
+        ("w" tags-todo "WORK")))
