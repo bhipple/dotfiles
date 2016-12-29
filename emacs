@@ -61,11 +61,12 @@ Return a list of installed packages or nil for every skipped package."
 ;; Install packages
 (ensure-package-installed
               'goto-chg
-	      'async
-	      'helm
+              'async
+              'helm
+              'highlight-chars
               'evil
-              'iedit
               'flycheck
+              'iedit
               'magit
               'org
               'projectile
@@ -94,6 +95,17 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Disable backups
 (setq make-backup-files nil)
+
+;; Fix tabs
+(setq-default indent-tabs-mode nil)
+(setq c-basic-indent 4)
+(setq tab-width 4)
+
+;; Highlighting whitespace
+(require 'highlight-chars)
+(hc-highlight-tabs)
+;; TODO: Flashes while typing in insert mode. See how to get it to only show in normal mode.
+;;(hc-highlight-trailing-whitespace)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugin Configuration
@@ -126,17 +138,17 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Tags
 (setq org-tag-alist '(("ALGOS" . ?a)
-		      ("CODING" . ?c)
-		      ("DEEP" . ?d)
-		      ("EMACS" . ?e)
-		      ("HOME" . ?h)
-		      ("GYM" . ?g)
-		      ("LISTS" . ?l)
-		      ("NIX" . ?n)
-		      ("READING" . ?r)
-		      ("VIM" ? .v)
-		      ("WORK" ? .w)
-		      ("ZSH" ? .z)))
+                      ("CODING" . ?c)
+                      ("DEEP" . ?d)
+                      ("EMACS" . ?e)
+                      ("HOME" . ?h)
+                      ("GYM" . ?g)
+                      ("LISTS" . ?l)
+                      ("NIX" . ?n)
+                      ("READING" . ?r)
+                      ("VIM" ? .v)
+                      ("WORK" ? .w)
+                      ("ZSH" ? .z)))
 
 ;; Default notes file for capture
 (setq org-default-notes-file "~/org/todo.org")
@@ -150,7 +162,7 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Jump to the todo.org file
 (global-set-key (kbd "C-c o")
-		(lambda () (interactive) (find-file "~/org/todo.org")))
+        (lambda () (interactive) (find-file "~/org/todo.org")))
 
 ;; Set org-refile to autocomplete three levels deep and check all agenda files
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
