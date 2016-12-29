@@ -60,12 +60,16 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Install packages
 (ensure-package-installed
-              'goto-chg
               'async
+              'evil
+              'evil-exchange
+              'evil-leader
+              'evil-magit
+              'evil-surround
+              'flycheck
+              'goto-chg
               'helm
               'highlight-chars
-              'evil
-              'flycheck
               'iedit
               'magit
               'org
@@ -116,10 +120,31 @@ Return a list of installed packages or nil for every skipped package."
 ;; Allow asynchronous compilation of packages
 (async-bytecomp-package-mode 1)
 
+;; Evil Configuration
+;; This has to come first:
+(require 'evil-leader)
+(global-evil-leader-mode)
+
 ;; Toggle evil mode with C-`
 (setq evil-toggle-key "C-`")
 (require 'evil)
 (evil-mode t)
+
+;; Leader keys
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+              "f" 'find-file
+              "ms" 'magit-status)
+
+(require 'evil-magit)
+
+(require 'evil-exchange)
+;; Defaults to gx. cx might run into compatibility issues;
+;; consider (evil-exchange-cx-install) if I'm feeling up for it.
+(evil-exchange-install)
+
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
