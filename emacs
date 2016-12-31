@@ -65,6 +65,7 @@ Return a list of installed packages or nil for every skipped package."
               'evil-exchange
               'evil-leader
               'evil-magit
+              'evil-numbers
               'evil-surround
               'flycheck
               'goto-chg
@@ -146,6 +147,9 @@ Return a list of installed packages or nil for every skipped package."
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+(require 'evil-numbers)
+(global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
 ;;
