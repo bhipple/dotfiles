@@ -150,6 +150,7 @@ Return a list of installed packages or nil for every skipped package."
 (require 'evil-numbers)
 (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
 (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
 ;;
@@ -195,6 +196,9 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Set org-refile to autocomplete three levels deep and check all agenda files
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
+
+;; Archive to subdirectory
+(setq org-archive-location "~/org/archive/%s_archive::")
 
 ;; Org Agenda custom searches
 (setq org-agenda-custom-commands
