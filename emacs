@@ -156,6 +156,9 @@ Return a list of installed packages or nil for every skipped package."
 ;;
 (require 'org)
 
+;; Set indentation
+(setq org-startup-indented t)
+
 ;; Use ido-mode for auto-completion in org-mode. When I'm ready, consider Helm instead.
 (setq org-completion-use-ido t)
 
