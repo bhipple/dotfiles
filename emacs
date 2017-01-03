@@ -17,7 +17,7 @@
  '(ido-mode (quote both) nil (ido))
  '(org-agenda-files
    (quote
-    ("~/org/accomplishments.org" "~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/habits.org" "~/org/todo.org")))
+    ("~/org/habits.org" "~/org/accomplishments.org" "~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/todo.org")))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
@@ -175,6 +175,7 @@ Return a list of installed packages or nil for every skipped package."
                       ("LISTS" . ?l)
                       ("NIX" . ?n)
                       ("READING" . ?r)
+                      ("SOMEDAY" . ?s)
                       ("VIM" ? .v)
                       ("WORK" ? .w)
                       ("ZSH" ? .z)))
