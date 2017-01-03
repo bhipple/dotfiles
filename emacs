@@ -150,10 +150,14 @@ Return a list of installed packages or nil for every skipped package."
 (require 'evil-numbers)
 (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
 (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
 ;;
 (require 'org)
+
+;; Set indentation
+(setq org-startup-indented t)
 
 ;; Use ido-mode for auto-completion in org-mode. When I'm ready, consider Helm instead.
 (setq org-completion-use-ido t)
@@ -174,6 +178,7 @@ Return a list of installed packages or nil for every skipped package."
                       ("GYM" . ?g)
                       ("LISTS" . ?l)
                       ("NIX" . ?n)
+                      ("PROJECT" . ?p)
                       ("READING" . ?r)
                       ("SOMEDAY" . ?s)
                       ("VIM" ? .v)
@@ -196,6 +201,9 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Set org-refile to autocomplete three levels deep and check all agenda files
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
+
+;; Archive to subdirectory
+(setq org-archive-location "~/org/archive/%s_archive::")
 
 ;; Org Agenda custom searches
 (setq org-agenda-custom-commands
