@@ -11,4 +11,5 @@ add() {
     fi
 }
 
+add brh-key
 add gitlab

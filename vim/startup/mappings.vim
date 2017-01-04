@@ -105,7 +105,7 @@ nnoremap <Leader>w :call StripTabsAndTrailingWhitespaces()<CR>:w<CR>
 " Local Leaders
 autocmd FileType haskell nmap <buffer> <Leader>ga :w<CR>:GhcModTypeInsert<CR>
 autocmd FileType haskell nmap <buffer> <Leader>gc :w<CR>:HdevtoolsClear<CR>
-autocmd FileType haskell nmap <buffer> <Leader>gi :w<CR>:GhcModInfoPreview<CR>
+autocmd FileType haskell nmap <buffer> <Leader>gi :w<CR>:HdevtoolsInfo<CR>
 autocmd FileType haskell nmap <buffer> <Leader>gt :w<CR>:HdevtoolsType<CR>
 autocmd FileType haskell nmap <buffer> <Leader>sc :HoogleClose<CR>
 autocmd FileType haskell nmap <buffer> <Leader>sh :Hoogle
