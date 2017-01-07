@@ -13,6 +13,7 @@
       name = "minEnv";
       paths = [
         bash
+        bash-interactive
         coreutils
         curl
         emacs
