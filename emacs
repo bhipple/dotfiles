@@ -1,5 +1,13 @@
 ;; -*-Lisp-*-
 
+;; Setup http proxies, if necessary
+(defun enable-bb-proxies (setq url-proxy-services '(("no_proxy" . "&\\(localhosti\\|127.0.0.1\\)")
+                             ("http" . "http://proxy.inet.bloomberg.com:81")
+                             ("https" . "http://proxy.inet.bloomberg.com:81")
+                             )))
+
+(defun disable-bb-proxies (makeunbound 'url-proxy-services))
+
 (require 'package)
 
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
@@ -74,6 +82,7 @@ Return a list of installed packages or nil for every skipped package."
               'iedit
               'magit
               'org
+              'org-jira
               'projectile
               'spacemacs-theme
 )
@@ -185,6 +194,15 @@ Return a list of installed packages or nil for every skipped package."
                       ("WORK" ? .w)
                       ("ZSH" ? .z)))
 
+;; Org capture templates
+(setq org-capture-templates
+      '(("t" "Standard Todo" entry (file+headline "~/org/todo.org" "Tasks")
+             "* TODO [#C] %?\nEntered %t\n")
+        ("s" "Shopping Item" entry (file+headline "~/org/lists.org" "Shopping List")
+             "* %?\nEntered %t\n")
+        ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
+             "* %?\nEntered %T\n")))
+
 ;; Default notes file for capture
 (setq org-default-notes-file "~/org/todo.org")
 (global-set-key "\C-cc" 'org-capture)
@@ -210,3 +228,10 @@ Return a list of installed packages or nil for every skipped package."
       '(("x" agenda)
         ("h" tags-todo "HOME")
         ("w" tags-todo "WORK")))
+
+;; Org mode and Jira Integration
+(setq jiralib-url "https://jira6.prod.bloomberg.com")
+
+
+(setq request-log-level 'debug)
+(setq request-message-level 'debug)
