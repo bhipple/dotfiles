@@ -144,7 +144,8 @@ Return a list of installed packages or nil for every skipped package."
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
               "f" 'find-file
-              "ms" 'magit-status)
+              "ms" 'magit-status
+              "ss" 'org-sort-entries)
 
 (require 'evil-magit)
 
@@ -196,12 +197,16 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Org capture templates
 (setq org-capture-templates
-      '(("t" "Standard Todo" entry (file+headline "~/org/todo.org" "Tasks")
-             "* TODO [#C] %?\nEntered %t\n")
-        ("s" "Shopping Item" entry (file+headline "~/org/lists.org" "Shopping List")
-             "* %?\nEntered %t\n")
+      '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
+             "* %?\nEntered %u\n")
+        ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
+             "* TODO [#C] %?\nDEADLINE: %^t")
+        ("s" "Scheduled item" entry (file+headline "~/org/todo.org" "Tasks")
+             "* TODO [#C] %?\nSCHEDULED: %^t")
+        ("t" "Standard Todo" entry (file+headline "~/org/todo.org" "Tasks")
+             "* TODO [#C] %?\nEntered %u\n")
         ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
-             "* %?\nEntered %T\n")))
+             "* %?\nEntered %u\n")))
 
 ;; Default notes file for capture
 (setq org-default-notes-file "~/org/todo.org")
