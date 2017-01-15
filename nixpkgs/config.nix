@@ -13,10 +13,8 @@
       name = "minEnv";
       paths = [
         bash
-        bash-interactive
         coreutils
         curl
-        emacs
         file
         git
         gnused
@@ -42,6 +40,7 @@
         gnupg
         gnutls
         graphviz
+        haskellPackages.threadscope
         icu
         imagemagick
         irssi
