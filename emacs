@@ -31,7 +31,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -80,6 +80,7 @@ Return a list of installed packages or nil for every skipped package."
               'helm
               'highlight-chars
               'iedit
+              'intero
               'magit
               'org
               'org-jira
@@ -131,12 +132,14 @@ Return a list of installed packages or nil for every skipped package."
 (async-bytecomp-package-mode 1)
 
 ;; Evil Configuration
-;; This has to come first:
+;; These lines must come before (require 'evil)
+(setq evil-want-C-u-scroll t)
 (require 'evil-leader)
 (global-evil-leader-mode)
 
 ;; Toggle evil mode with C-`
 (setq evil-toggle-key "C-`")
+
 (require 'evil)
 (evil-mode t)
 
@@ -234,9 +237,16 @@ Return a list of installed packages or nil for every skipped package."
         ("h" tags-todo "HOME")
         ("w" tags-todo "WORK")))
 
+;; Org Babel language integration
+(require 'ob-haskell)
+(require 'ob-python)
+(require 'ob-sh)
+
 ;; Org mode and Jira Integration
 (setq jiralib-url "https://jira6.prod.bloomberg.com")
 
-
 (setq request-log-level 'debug)
 (setq request-message-level 'debug)
+
+;; Haskell Configuration
+(add-hook 'haskell-mode-hook 'intero-mode)
