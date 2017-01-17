@@ -29,7 +29,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -67,16 +67,25 @@ Return a list of installed packages or nil for every skipped package."
 ;; Install packages
 (ensure-package-installed
               'async
+              'company
+              'company-quickhelp
               'evil
               'evil-exchange
               'evil-leader
               'evil-magit
               'evil-numbers
               'evil-surround
+              'f
               'flycheck
+              'ycmd
+              'company-ycmd
+              'flycheck-ycmd
               'goto-chg
               'helm
               'helm-dash
+              'helm-descbinds
+              'helm-org-rifle
+              'helm-projectile
               'highlight-chars
               'iedit
               'intero
@@ -84,7 +93,10 @@ Return a list of installed packages or nil for every skipped package."
               'org
               'org-jira
               'projectile
+              's
               'spacemacs-theme
+              'time
+              'yasnippet
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -121,18 +133,22 @@ Return a list of installed packages or nil for every skipped package."
 ;; TODO: Flashes while typing in insert mode. See how to get it to only show in normal mode.
 ;;(hc-highlight-trailing-whitespace)
 
-;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugin Configuration
 ;;
-(require 'helm-config)
-(helm-mode 1)
-(global-set-key (kbd "M-x") 'helm-M-x)
-
 (dired-async-mode 1)
 
 ;; Allow asynchronous compilation of packages
 (async-bytecomp-package-mode 1)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Company Configuration
+;; Enable company mode everywhere
+(add-hook 'after-init-hook 'global-company-mode)
+
+(setq company-idle-delay 0.01)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil Configuration
 ;; These lines must come before (require 'evil)
 (setq evil-want-C-u-scroll t)
@@ -148,7 +164,9 @@ Return a list of installed packages or nil for every skipped package."
 ;; Leader keys
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
+              "b" 'helm-projectile-switch-to-buffer
               "f" 'helm-find-files
+              "gg" 'helm-projectile-grep
               "ms" 'magit-status
               "ss" 'org-sort-entries)
 
@@ -173,9 +191,6 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Set indentation
 (setq org-startup-indented t)
-
-;; Use ido-mode for auto-completion in org-mode. When I'm ready, consider Helm instead.
-(setq org-completion-use-ido t)
 
 ;; Default TODO progression sequence.
 (setq org-use-fast-todo-selection t)
@@ -252,6 +267,21 @@ Return a list of installed packages or nil for every skipped package."
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Helm Configuration
+(require 'helm-config)
+(helm-mode 1)
+
+;; Use helm for M-x
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+(require 'helm-org-rifle)
+
+;; Provide the describe-bindings function, which shows all keyboard
+;; shortcuts currently active in your major + minor modes
+(require 'helm-descbinds)
+(helm-descbinds-mode)
+
+;; Dash Documentation packages
+;; TODO: Setup local buffer documentation switching.
 (setq helm-dash-common-docsets
       '("C++"
         "Chef"
@@ -259,6 +289,27 @@ Return a list of installed packages or nil for every skipped package."
         "Haskell"
         "Python 2"))
 
+;; Use Projectile with Helm
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
+
+;; Enable caching. Invalidate the current project cache with C-c p i
+(setq projectile-enable-caching t)
+
+(helm-projectile-on)
+
+;; List of times to show in helm-world-time
+;; TODO: Not working due to issues with time.el?
+(setq display-time-world-list '(("America/New_York" "New_York")
+                                ("UTC" "UTC")
+                                ("Europe/London" "London")
+                                ("Europe/Amsterdam" "Amsterdam")
+                                ("Asia/Shanghai" "Shanghai")
+                                ("Asia/Tokyo" "Tokyo")
+                                ("Australia/Sydney" "Sydney")))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Configuration
 (add-hook 'haskell-mode-hook 'intero-mode)
+
