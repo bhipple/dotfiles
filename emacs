@@ -10,9 +10,9 @@
 
 (require 'package)
 
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -21,8 +21,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ido-enable-flex-matching t)
- '(ido-mode (quote both) nil (ido))
  '(org-agenda-files
    (quote
     ("~/org/habits.org" "~/org/accomplishments.org" "~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/todo.org")))
@@ -31,7 +29,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -78,6 +76,7 @@ Return a list of installed packages or nil for every skipped package."
               'flycheck
               'goto-chg
               'helm
+              'helm-dash
               'highlight-chars
               'iedit
               'intero
@@ -126,6 +125,9 @@ Return a list of installed packages or nil for every skipped package."
 ;; Plugin Configuration
 ;;
 (require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "M-x") 'helm-M-x)
+
 (dired-async-mode 1)
 
 ;; Allow asynchronous compilation of packages
@@ -146,7 +148,7 @@ Return a list of installed packages or nil for every skipped package."
 ;; Leader keys
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
-              "f" 'find-file
+              "f" 'helm-find-files
               "ms" 'magit-status
               "ss" 'org-sort-entries)
 
@@ -248,5 +250,15 @@ Return a list of installed packages or nil for every skipped package."
 (setq request-log-level 'debug)
 (setq request-message-level 'debug)
 
+;;;;;;;;;;;;;;;;;;;;;
+;; Helm Configuration
+(setq helm-dash-common-docsets
+      '("C++"
+        "Chef"
+        "Emacs Lisp"
+        "Haskell"
+        "Python 2"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Configuration
 (add-hook 'haskell-mode-hook 'intero-mode)
