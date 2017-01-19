@@ -29,7 +29,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -96,6 +96,7 @@ Return a list of installed packages or nil for every skipped package."
               's
               'spacemacs-theme
               'time
+              'yaml-mode
               'yasnippet
 )
 
@@ -168,7 +169,8 @@ Return a list of installed packages or nil for every skipped package."
               "f" 'helm-find-files
               "gg" 'helm-projectile-grep
               "ms" 'magit-status
-              "ss" 'org-sort-entries)
+              "ss" 'org-sort-entries
+              "si" 'helm-dash-at-point)
 
 (require 'evil-magit)
 
@@ -313,3 +315,12 @@ Return a list of installed packages or nil for every skipped package."
 ;; Haskell Configuration
 (add-hook 'haskell-mode-hook 'intero-mode)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; YAML Configuration
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+(add-hook 'yaml-mode-hook
+    '(lambda ()
+    (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
