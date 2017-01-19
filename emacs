@@ -69,16 +69,16 @@ Return a list of installed packages or nil for every skipped package."
               'async
               'company
               'company-quickhelp
+              'company-ycmd
               'evil
               'evil-exchange
               'evil-leader
               'evil-magit
               'evil-numbers
               'evil-surround
+              'eww
               'f
               'flycheck
-              'ycmd
-              'company-ycmd
               'flycheck-ycmd
               'goto-chg
               'helm
@@ -98,9 +98,10 @@ Return a list of installed packages or nil for every skipped package."
               'time
               'yaml-mode
               'yasnippet
+              'ycmd
 )
 
-;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My configuration ;;
 ;;
 (setq inhibit-splash-screen t)
@@ -186,7 +187,7 @@ Return a list of installed packages or nil for every skipped package."
 (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
 (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
 ;;
 (require 'org)
@@ -282,15 +283,6 @@ Return a list of installed packages or nil for every skipped package."
 (require 'helm-descbinds)
 (helm-descbinds-mode)
 
-;; Dash Documentation packages
-;; TODO: Setup local buffer documentation switching.
-(setq helm-dash-common-docsets
-      '("C++"
-        "Chef"
-        "Emacs Lisp"
-        "Haskell"
-        "Python 2"))
-
 ;; Use Projectile with Helm
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
@@ -311,16 +303,61 @@ Return a list of installed packages or nil for every skipped package."
                                 ("Asia/Tokyo" "Tokyo")
                                 ("Australia/Sydney" "Sydney")))
 
-;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dash Documentation Config
+(setq helm-dash-docsets-path (format "%s/.docsets" (getenv "HOME")))
+
+;; TODO: Setup local buffer documentation switching.
+
+;; Some docsets save themselves in different files than their docset name
+(defun brh/dash-docset-path (docset)
+  (concat helm-dash-docsets-path "/"
+          (cond
+             ((string= docset "Ruby_2") "Ruby")
+             (t docset))
+          ".docset"))
+
+(defun brh/dash-install (docset)
+  (unless (file-exists-p (brh/dash-docset-path docset))
+    (helm-dash-install-docset docset)))
+
+(brh/dash-install "Bash")
+(brh/dash-install "C")
+(brh/dash-install "C++")
+(brh/dash-install "Chef")
+(brh/dash-install "Emacs Lisp")
+(brh/dash-install "Haskell")
+(brh/dash-install "JavaScript")
+(brh/dash-install "Markdown")
+(brh/dash-install "Python 2")
+(brh/dash-install "Ruby_2")
+(brh/dash-install "CMake")
+(brh/dash-install "Docker")
+(brh/dash-install "Groovy")
+
+(setq helm-dash-common-docsets
+      '("C++"
+        "Emacs Lisp"
+        "Haskell"
+        "Python 2"))
+
+(mapcar (lambda (d) (brh/dash-install d)) helm-dash-common-docsets)
+
+;;(require 'eww)
+;;(setq helm-dash-browser-func 'eww)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Configuration
+(defun haskell-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("Haskell")))
+
 (add-hook 'haskell-mode-hook 'intero-mode)
+(add-hook 'haskell-mode-hook 'haskell-doc)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; YAML Configuration
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; YAML CONFIGURATION
 (add-hook 'yaml-mode-hook
     '(lambda ()
     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
