@@ -3,6 +3,9 @@
 - link:
     ~/.dotfiles: ''
     ~/.Xdefaults: Xdefaults
+    ~/.bashrc:
+      force: true
+      path: bashrc
     ~/.clang-format: clang-format
     ~/.config/nvim/init.vim: vimrc
     ~/.config/nvim:
