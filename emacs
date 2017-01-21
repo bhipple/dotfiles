@@ -30,7 +30,34 @@
  '(package-selected-packages
    (quote
     (multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
- '(server-mode t))
+ '(server-mode t)
+ '(term-bind-key-alist
+   (quote
+    (("C-c C-c" . term-interrupt-subjob)
+     ("C-c C-e" . term-send-esc)
+     ("C-p" . previous-line)
+     ("C-n" . next-line)
+     ("C-s" . isearch-forward)
+     ("C-r" . isearch-backward)
+     ("C-m" . term-send-return)
+     ("C-y" . term-paste)
+     ("M-f" . term-send-forward-word)
+     ("M-b" . term-send-backward-word)
+     ("M-o" . term-send-backspace)
+     ("M-p" . term-send-up)
+     ("M-n" . term-send-down)
+     ("M-M" . term-send-forward-kill-word)
+     ("M-N" . term-send-backward-kill-word)
+     ("<C-backspace>" . term-send-backward-kill-word)
+     ("M-r" . term-send-reverse-search-history)
+     ("M-d" . term-send-delete-word)
+     ("M-," . term-send-raw)
+     ("M-." . comint-dynamic-complete)
+     ("C-w" . evil-window-next)
+     ("C-h" . evil-window-left)
+     ("C-j" . evil-window-down)
+     ("C-k" . evil-window-up)
+     ("C-l" . evil-window-right)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -179,10 +206,12 @@ Return a list of installed packages or nil for every skipped package."
               "b" 'helm-projectile-switch-to-buffer
               "f" 'helm-find-files
               "gg" 'helm-projectile-grep
+              "mf" 'magit-pull-from-upstream
+              "mp" 'magit-push-current-to-upstream
               "ms" 'magit-status
-              "t" 'multi-term
               "ss" 'org-sort-entries
-              "si" 'helm-dash-at-point)
+              "si" 'helm-dash-at-point
+              "t" 'multi-term)
 
 (require 'evil-magit)
 
@@ -197,6 +226,11 @@ Return a list of installed packages or nil for every skipped package."
 (require 'evil-numbers)
 (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
 (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+
+(global-set-key (kbd "C-h") 'evil-window-left)
+(global-set-key (kbd "C-j") 'evil-window-down)
+(global-set-key (kbd "C-k") 'evil-window-up)
+(global-set-key (kbd "C-l") 'evil-window-right)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
