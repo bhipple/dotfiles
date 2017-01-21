@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# shellcheck disable=SC1090
+
 ## don't read bashrc if session is not interactive
 [ -z "$PS1" ] && return
 echo "Loading bashrc"
@@ -6,17 +8,20 @@ echo "Loading bashrc"
 ## ============================================================================
 ##                                  General
 ## ============================================================================
-export TERM=xterm-256color
+export TERM=screen-256color
 export EDITOR=vi
 
+# Set history
+set -o history
+histexpand on
+history on 10000
+ignoreeof on
+
 # update winsize after each command for better line-wrapping
-shopt -s  checkwinsize
+shopt -s checkwinsize
 
 # Source my generic aliases
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
-# Ruby Version Manager
-[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
 # Prompt
 PS1='\[\e[1;31m\][\u@\h: \w]\$\[\e[0m\] '

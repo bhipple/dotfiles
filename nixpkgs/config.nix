@@ -12,7 +12,7 @@
     minEnv = with pkgs; hiPrio (buildEnv {
       name = "minEnv";
       paths = [
-        bash
+        bashInteractive
         coreutils
         curl
         file
