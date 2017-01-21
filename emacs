@@ -29,7 +29,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -90,6 +90,7 @@ Return a list of installed packages or nil for every skipped package."
               'iedit
               'intero
               'magit
+              'multi-term
               'org
               'org-jira
               'projectile
@@ -107,8 +108,13 @@ Return a list of installed packages or nil for every skipped package."
 (setq inhibit-splash-screen t)
 (setq vc-follow-symlinks t)
 
+(setq system-uses-terminfo nil)
+
 ;; Show line numbers
 (global-linum-mode t)
+
+;; Globally enable () matching as a minor mode
+(electric-pair-mode)
 
 ;; Cosmetics (color, toolbars)
 (require 'spacemacs-dark-theme)
@@ -143,6 +149,10 @@ Return a list of installed packages or nil for every skipped package."
 ;; Allow asynchronous compilation of packages
 (async-bytecomp-package-mode 1)
 
+;; Terminal Configuration
+(require 'multi-term)
+(setq multi-term-program "/home/bhipple/.nix-profile/bin/bash")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Company Configuration
 ;; Enable company mode everywhere
@@ -170,6 +180,7 @@ Return a list of installed packages or nil for every skipped package."
               "f" 'helm-find-files
               "gg" 'helm-projectile-grep
               "ms" 'magit-status
+              "t" 'multi-term
               "ss" 'org-sort-entries
               "si" 'helm-dash-at-point)
 

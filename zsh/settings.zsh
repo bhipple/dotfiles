@@ -20,6 +20,11 @@ if hash nvim 2>/dev/null; then
     alias vim=nvim
 fi
 
+# Running in emacs ansi-term
+if [ -n "$EMACS" ]; then
+    export AUTO_FU="skip"
+fi
+
 # Reduce delay to 0.2 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=20
 
