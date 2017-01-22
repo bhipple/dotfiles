@@ -24,6 +24,7 @@ import XMonadLocal
 main = do
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
+    _ <- spawn myTerminal
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
