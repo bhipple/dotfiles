@@ -23,7 +23,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/org/habits.org" "~/org/accomplishments.org" "~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/todo.org")))
+    ("~/org/habits.org" "~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/me.org")))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
@@ -272,7 +272,7 @@ Return a list of installed packages or nil for every skipped package."
                       ("CODING" . ?c)
                       ("DEEP" . ?d)
                       ("EMACS" . ?e)
-                      ("HOME" . ?h)
+                      ("HASKELL" . ?h)
                       ("GYM" . ?g)
                       ("LISTS" . ?l)
                       ("NIX" . ?n)
@@ -289,15 +289,15 @@ Return a list of installed packages or nil for every skipped package."
              "* %?\nEntered %u\n")
         ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
              "* TODO [#C] %?\nDEADLINE: %^t")
-        ("s" "Scheduled item" entry (file+headline "~/org/todo.org" "Tasks")
+        ("s" "Scheduled item" entry (file+headline "~/org/me.org" "Tasks")
              "* TODO [#C] %?\nSCHEDULED: %^t")
-        ("t" "Standard Todo" entry (file+headline "~/org/todo.org" "Tasks")
+        ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
              "* TODO [#C] %?\nEntered %u\n")
         ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
              "* %?\nEntered %u\n")))
 
 ;; Default notes file for capture
-(setq org-default-notes-file "~/org/todo.org")
+(setq org-default-notes-file "~/org/me.org")
 (global-set-key "\C-cc" 'org-capture)
 
 ;; Open up the agenda with C-c a
@@ -306,9 +306,9 @@ Return a list of installed packages or nil for every skipped package."
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cl" 'org-store-link)
 
-;; Jump to the todo.org file
+;; Jump to the me.org file
 (global-set-key (kbd "C-c o")
-        (lambda () (interactive) (find-file "~/org/todo.org")))
+        (lambda () (interactive) (find-file "~/org/me.org")))
 
 ;; Set org-refile to autocomplete three levels deep and check all agenda files
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))

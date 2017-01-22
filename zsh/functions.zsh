@@ -5,7 +5,9 @@ vimdf() {
 
 em() {
     if [ "$#" -eq 0 ]; then
-        emacs ~/org/todo.org
+        emacs ~/org/me.org
+    elif [ "$1" = "e" ]; then
+        emacs ~/.emacs
     else
         emacs "$@"
     fi
