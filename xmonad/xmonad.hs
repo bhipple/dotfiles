@@ -41,8 +41,8 @@ composeHook = composeAll [
         className =? "Laundhpad - Ben View" --> doFloat
     ]
 
-myManageHook = manageDocks <+> composeHook <+> manageHook defaultConfig
-myLayoutHook = avoidStruts $ layoutHook defaultConfig
+myManageHook = manageDocks <+> composeHook <+> manageHook def
+myLayoutHook = avoidStruts $ layoutHook def
 myLogHook xmproc = dynamicLogWithPP xmobarPP {
                             ppOutput = hPutStrLn xmproc,
                             ppTitle = xmobarColor "green" "" . shorten 50
@@ -54,7 +54,7 @@ restartCmd = "if type xmonad; then xmonad --recompile && \
 
 conf screenCt xmproc =
         let myWorkspaces = withScreens screenCt $ map show [1..9] in
-        defaultConfig
+        def
         { terminal = myTerminal
         , modMask = mod4Mask
         , borderWidth = 3
@@ -63,7 +63,7 @@ conf screenCt xmproc =
         , manageHook = myManageHook
         , layoutHook = myLayoutHook
         -- docksEventhook must come last in ordering!
-        , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
+        , handleEventHook = handleEventHook def <+> docksEventHook
         , logHook = myLogHook xmproc
         , keys = myKeys
         }
