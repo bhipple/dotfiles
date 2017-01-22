@@ -10,6 +10,10 @@ import XMonad.Util.Run (spawnPipe)
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
+-- TODO
+-- * Investigate and setup xmonad-screenshot
+-- * Investigate xmonad-windownames
+
 -- Might need this at some point
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Hooks-EwmhDesktops.html
 --import XMonad.Hooks.EwmhDesktops
@@ -20,7 +24,6 @@ import XMonadLocal
 main = do
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
-    _ <- spawn myTerminal
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
@@ -59,6 +62,8 @@ conf screenCt xmproc =
         , XMonad.workspaces = myWorkspaces
         , manageHook = myManageHook
         , layoutHook = myLayoutHook
+        -- docksEventhook must come last in ordering!
+        , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
         , logHook = myLogHook xmproc
         , keys = myKeys
         }
