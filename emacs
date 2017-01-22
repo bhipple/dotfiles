@@ -29,7 +29,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t)
  '(term-bind-key-alist
    (quote
@@ -99,6 +99,7 @@ Return a list of installed packages or nil for every skipped package."
               'company-ycmd
               'evil
               'evil-exchange
+              'exec-path-from-shell
               'evil-leader
               'evil-magit
               'evil-numbers
@@ -107,6 +108,9 @@ Return a list of installed packages or nil for every skipped package."
               'f
               'flycheck
               'flycheck-ycmd
+              'flycheck-haskell
+              'flycheck-pos-tip
+              'pos-tip
               'goto-chg
               'helm
               'helm-dash
@@ -132,6 +136,10 @@ Return a list of installed packages or nil for every skipped package."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My configuration ;;
 ;;
+;; Fix for MacOS environment variables
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 (setq inhibit-splash-screen t)
 (setq vc-follow-symlinks t)
 
@@ -180,12 +188,24 @@ Return a list of installed packages or nil for every skipped package."
 (require 'multi-term)
 (setq multi-term-program "/home/bhipple/.nix-profile/bin/bash")
 
+;; Flycheck
+(require 'flycheck)
+(global-flycheck-mode)
+
+(require 'flycheck-pos-tip)
+(flycheck-pos-tip-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Company Configuration
 ;; Enable company mode everywhere
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq company-idle-delay 0.01)
+(setq company-selection-wrap-around t)
+
+(eval-after-load 'company '(progn
+    (define-key company-active-map [tab] 'company-complete-common-or-cycle)
+    (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil Configuration
@@ -307,6 +327,9 @@ Return a list of installed packages or nil for every skipped package."
 (require 'ob-python)
 (require 'ob-sh)
 
+;; Highlight source code blocks
+(setq org-src-fontify-natively t)
+
 ;; Org mode and Jira Integration
 (setq jiralib-url "https://jira6.prod.bloomberg.com")
 
@@ -392,11 +415,20 @@ Return a list of installed packages or nil for every skipped package."
 ;;(require 'eww)
 ;;(setq helm-dash-browser-func 'eww)
 
+;; Ya-Snippets
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(setq yas-snippet-dirs '("~/dotfiles/yasnippet-snippets"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Configuration
 (defun haskell-doc ()
   (interactive)
   (setq-local helm-dash-docsets '("Haskell")))
+
+(require 'intero)
+(flycheck-add-next-checker 'intero '(warning . haskell-hlint))
 
 (add-hook 'haskell-mode-hook 'intero-mode)
 (add-hook 'haskell-mode-hook 'haskell-doc)
