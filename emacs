@@ -79,8 +79,9 @@ Return a list of installed packages or nil for every skipped package."
    (lambda (package)
      (if (package-installed-p package)
          nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
+       (progn
+         (format "Package %s is missing. Install it? " package)
+         (package-install package)
          package)))
    packages))
 
@@ -99,33 +100,33 @@ Return a list of installed packages or nil for every skipped package."
               'company-ycmd
               'evil
               'evil-exchange
-              'exec-path-from-shell
               'evil-leader
               'evil-magit
               'evil-numbers
               'evil-surround
               'eww
+              'exec-path-from-shell
               'f
               'flycheck
-              'flycheck-ycmd
               'flycheck-haskell
               'flycheck-pos-tip
-              'pos-tip
+              'flycheck-ycmd
               'goto-chg
               'helm
               'helm-dash
               'helm-descbinds
               'helm-org-rifle
               'helm-projectile
-              'nix-mode
               'highlight-chars
               'iedit
               'intero
               'magit
               'magithub
               'multi-term
+              'nix-mode
               'org
               'org-jira
+              'pos-tip
               'projectile
               's
               'spacemacs-theme
@@ -142,8 +143,8 @@ Return a list of installed packages or nil for every skipped package."
 ;; My configuration ;;
 ;;
 ;; Fix for MacOS environment variables
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+;;(when (memq window-system '(mac ns))
+  ;;(exec-path-from-shell-initialize))
 
 (setq inhibit-splash-screen t)
 (setq vc-follow-symlinks t)
@@ -406,19 +407,20 @@ Return a list of installed packages or nil for every skipped package."
   (unless (file-exists-p (brh/dash-docset-path docset))
     (helm-dash-install-docset docset)))
 
-(brh/dash-install "Bash")
-(brh/dash-install "C")
-(brh/dash-install "C++")
-(brh/dash-install "Chef")
-(brh/dash-install "Emacs Lisp")
-(brh/dash-install "Haskell")
-(brh/dash-install "JavaScript")
-(brh/dash-install "Markdown")
-(brh/dash-install "Python 2")
-(brh/dash-install "Ruby_2")
-(brh/dash-install "CMake")
-(brh/dash-install "Docker")
-(brh/dash-install "Groovy")
+(defun brh/dash-install-all ()
+    (brh/dash-install "Bash")
+    (brh/dash-install "C")
+    (brh/dash-install "C++")
+    (brh/dash-install "Chef")
+    (brh/dash-install "Emacs Lisp")
+    (brh/dash-install "Haskell")
+    (brh/dash-install "JavaScript")
+    (brh/dash-install "Markdown")
+    (brh/dash-install "Python 2")
+    (brh/dash-install "Ruby_2")
+    (brh/dash-install "CMake")
+    (brh/dash-install "Docker")
+    (brh/dash-install "Groovy"))
 
 (setq helm-dash-common-docsets
       '("C++"
