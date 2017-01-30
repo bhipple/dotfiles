@@ -29,7 +29,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-magit evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t)
  '(term-bind-key-alist
    (quote
@@ -101,7 +101,6 @@ Return a list of installed packages or nil for every skipped package."
               'evil
               'evil-exchange
               'evil-leader
-              'evil-magit
               'evil-numbers
               'evil-surround
               'eww
@@ -134,7 +133,7 @@ Return a list of installed packages or nil for every skipped package."
               'yaml-mode
               'yasnippet
               'ycmd
-              'use-package 
+              'use-package
 )
 
 (setq use-package-always-ensure t)
@@ -206,15 +205,106 @@ Return a list of installed packages or nil for every skipped package."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Company Configuration
+
 ;; Enable company mode everywhere
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq company-idle-delay 0.01)
 (setq company-selection-wrap-around t)
 
-(eval-after-load 'company '(progn
-    (define-key company-active-map [tab] 'company-complete-common-or-cycle)
-    (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)))
+(require 'yasnippet)
+(require 'company)
+
+;; Add yasnippet support for all company backends
+(defvar company-mode/enable-yas t
+  "Enable yasnippet for all backends.")
+
+(defun company-mode/backend-with-yas (backend)
+  (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+      backend
+    (append (if (consp backend) backend (list backend))
+            '(:with company-yasnippet))))
+
+(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+
+;; Functions for handling company expansion with ya-snippets
+(defun check-expansion ()
+  (save-excursion
+    (if (looking-at "\\_>") t
+      (backward-char 1)
+      (if (looking-at "\\.") t
+    (backward-char 1)
+    (if (looking-at "->") t nil)))))
+
+(defun do-yas-expand ()
+  (let ((yas-fallback-behavior 'return-nil))
+    (yas-expand)))
+
+
+(defun tab-indent-or-complete ()
+  (interactive)
+  (cond
+   ((minibufferp)
+    (minibuffer-complete))
+   (t
+    (indent-for-tab-command)
+    (if (or (not yas-minor-mode)
+        (null (do-yas-expand)))
+    (if (check-expansion)
+        (progn
+          (company-manual-begin)
+          (if (null company-candidates)
+          (progn
+            (company-abort)
+            (indent-for-tab-command)))))))))
+
+(defun tab-complete-or-next-field ()
+  (interactive)
+  (if (or (not yas-minor-mode)
+      (null (do-yas-expand)))
+      (if company-candidates
+      (company-complete-selection)
+    (if (check-expansion)
+      (progn
+        (company-manual-begin)
+        (if (null company-candidates)
+        (progn
+          (company-abort)
+          (yas-next-field))))
+      (yas-next-field)))))
+
+(defun expand-snippet-or-complete-selection ()
+  (interactive)
+  (if (or (not yas-minor-mode)
+          (null (do-yas-expand))
+          (company-abort))
+      (company-complete-selection)))
+
+(defun abort-company-or-yas ()
+  (interactive)
+  (if (null company-candidates)
+      (yas-abort-snippet)
+    (company-abort)))
+
+
+(global-set-key [tab] 'tab-indent-or-complete)
+(global-set-key (kbd "TAB") 'tab-indent-or-complete)
+(global-set-key [(control return)] 'company-complete-common)
+
+(define-key company-active-map [tab] 'expand-snippet-or-complete-selection)
+(define-key company-active-map (kbd "TAB") 'expand-snippet-or-complete-selection)
+
+(define-key yas-minor-mode-map [tab] nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+
+(define-key yas-keymap [tab] 'tab-complete-or-next-field)
+(define-key yas-keymap (kbd "TAB") 'tab-complete-or-next-field)
+(define-key yas-keymap [(control tab)] 'yas-next-field)
+(define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
+
+;(eval-after-load 'company '(progn
+    ;(define-key company-active-map [tab] 'company-complete-common-or-cycle)
+    ;(define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil Configuration
@@ -261,13 +351,15 @@ Return a list of installed packages or nil for every skipped package."
 (global-set-key (kbd "C-k") 'evil-window-up)
 (global-set-key (kbd "C-l") 'evil-window-right)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Magit Configuration
+(use-package magit
+  :bind (([tab] . magit-section-toggle)
+         ("TAB" . magit-section-toggle)))
+
 (use-package magithub
   :after magit
   :config (magithub-feature-autoinject t))
-
-(require 'evil-magit)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org mode hotkey bindings
@@ -389,7 +481,6 @@ Return a list of installed packages or nil for every skipped package."
                                 ("Australia/Sydney" "Sydney")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Documentation Config
 (setq helm-dash-docsets-path (format "%s/.docsets" (getenv "HOME")))
 
