@@ -1,6 +1,8 @@
 {
   allowUnfree = true;
 
+  hardware.pulseaudio.enable = true;
+
   firefox = {
     enableAdobeFlash = true;
     enableGoogleTalkPlugin = true;
