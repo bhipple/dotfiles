@@ -13,9 +13,8 @@ export EDITOR=vi
 
 # Set history
 set -o history
-histexpand on
-history on 10000
-ignoreeof on
+export histexpand=on
+set history on 10000
 
 # update winsize after each command for better line-wrapping
 shopt -s checkwinsize
