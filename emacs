@@ -1,12 +1,16 @@
 ;; -*-Lisp-*-
 
 ;; Setup http proxies, if necessary
-(defun enable-bb-proxies (setq url-proxy-services '(("no_proxy" . "&\\(localhosti\\|127.0.0.1\\)")
+(defun brh/enable-bb-proxies ()
+    (interactive)
+    (setq url-proxy-services '(("no_proxy" . "&\\(localhosti\\|127.0.0.1\\)")
                              ("http" . "http://proxy.inet.bloomberg.com:81")
                              ("https" . "http://proxy.inet.bloomberg.com:81")
                              )))
 
-(defun disable-bb-proxies (makeunbound 'url-proxy-services))
+(defun brh/disable-bb-proxies ()
+  (interactive)
+  (makeunbound 'url-proxy-services))
 
 (require 'package)
 
