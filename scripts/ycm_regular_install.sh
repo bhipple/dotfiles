@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Requires the following packages:
 # build-essential cmake python-dev
 # When initializing in the cloud, this may happen before Chef has finished.
