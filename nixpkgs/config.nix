@@ -48,6 +48,7 @@
         irssi
         neovim
         pandoc
+        pass
         shellcheck
         stack
         vagrant
