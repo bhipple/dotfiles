@@ -42,7 +42,6 @@
         gnupg
         gnutls
         graphviz
-        haskellPackages.threadscope
         icu
         imagemagick
         irssi
@@ -64,6 +63,7 @@
       paths = [
         calibre
         dropbox
+        haskellPackages.threadscope
         lftp
         mupdf
         vlc
