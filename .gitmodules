@@ -7,3 +7,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "yasnippet-snippets"]
+	path = yasnippet-snippets
+	url = https://github.com/bhipple/yasnippet-snippets
