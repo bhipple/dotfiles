@@ -82,10 +82,15 @@ bindkey "^r" history-incremental-search-backward
 # modes with or without auto-fu, bind the key in all modes of that type.
 normalModes=("vicmd" "afu-vicmd")
 insertModes=("viins" "afu")
-visualModes=("visual")
 if [ "$AUTO_FU" = "skip" ]; then
     normalModes=("vicmd")
     insertModes=("viins")
+fi
+
+# Visual modes added in zsh 5.0.8
+visualModes=()
+if test $(is-at-least 5.0.8); then
+    visualModes=("visual")
 fi
 
 for m in $normalModes; do
@@ -95,7 +100,6 @@ done
 
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of commands active in mode foo
 # Move to vim escape mode
-
 for m in $insertModes; do
     bindkey -M "$m" jj vi-cmd-mode
     bindkey -M "$m" kk vi-cmd-mode
