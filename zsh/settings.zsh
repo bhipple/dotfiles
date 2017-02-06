@@ -89,8 +89,11 @@ fi
 
 # Visual modes added in zsh 5.0.8
 visualModes=()
-if test $(is-at-least 5.0.8); then
+if [ test $(is-at-least 5.0.8) ]; then
     visualModes=("visual")
+    echo "Enabled zsh visual mode"
+else
+    echo "Disabled zsh visual mode"
 fi
 
 for m in $normalModes; do
