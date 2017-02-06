@@ -204,3 +204,6 @@ cmakemodules
 gtest
 VM
 linklines
+tarballs
+lts
+thirdparty
