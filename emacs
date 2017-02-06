@@ -503,19 +503,20 @@ Return a list of installed packages or nil for every skipped package."
     (helm-dash-install-docset docset)))
 
 (defun brh/dash-install-all ()
+    (interactive)
     (brh/dash-install "Bash")
     (brh/dash-install "C")
     (brh/dash-install "C++")
+    (brh/dash-install "CMake")
     (brh/dash-install "Chef")
+    (brh/dash-install "Docker")
     (brh/dash-install "Emacs Lisp")
+    (brh/dash-install "Groovy")
     (brh/dash-install "Haskell")
     (brh/dash-install "JavaScript")
     (brh/dash-install "Markdown")
     (brh/dash-install "Python 2")
-    (brh/dash-install "Ruby_2")
-    (brh/dash-install "CMake")
-    (brh/dash-install "Docker")
-    (brh/dash-install "Groovy"))
+    (brh/dash-install "Ruby_2"))
 
 (setq helm-dash-common-docsets
       '("C++"
