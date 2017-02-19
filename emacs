@@ -547,8 +547,6 @@ Return a list of installed packages or nil for every skipped package."
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(setq yas-snippet-dirs '("~/dotfiles/yasnippet-snippets"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Configuration
 (defun haskell-doc ()
