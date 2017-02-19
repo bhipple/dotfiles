@@ -33,7 +33,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (evil-commentary hindent use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (flycheck-pos-tip flycheck-haskell evil-commentary hindent use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t)
  '(term-bind-key-alist
    (quote
