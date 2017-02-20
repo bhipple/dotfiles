@@ -33,7 +33,7 @@
     (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (flycheck-pos-tip flycheck-haskell evil-commentary hindent use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
+    (evil-tabs flycheck-pos-tip flycheck-haskell evil-commentary hindent use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
  '(server-mode t)
  '(term-bind-key-alist
    (quote
@@ -108,6 +108,7 @@ Return a list of installed packages or nil for every skipped package."
               'evil-leader
               'evil-numbers
               'evil-surround
+              'evil-tabs
               'eww
               'exec-path-from-shell
               'f
@@ -188,6 +189,10 @@ Return a list of installed packages or nil for every skipped package."
 (hc-highlight-tabs)
 ;; TODO: Flashes while typing in insert mode. See how to get it to only show in normal mode.
 ;;(hc-highlight-trailing-whitespace)
+
+(defadvice split-window (after move-point-to-new-window activate)
+  "Moves the point to the newly created window after splitting."
+  (other-window 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugin Configuration
@@ -335,9 +340,12 @@ Return a list of installed packages or nil for every skipped package."
               "mp" 'magit-push-current-to-upstream
               "ms" 'magit-status
               "p" 'helm-projectile
-              "ss" 'org-sort-entries
+              "se" 'brh/tabsplit
               "si" 'helm-dash-at-point
-              "t" 'multi-term)
+              "ss" 'org-sort-entries
+              "te" 'brh/tabedit
+              "ve" 'brh/tabvsplit
+              "tm" 'multi-term)
 
 (require 'evil-exchange)
 ;; Defaults to gx. cx might run into compatibility issues;
@@ -368,6 +376,28 @@ Return a list of installed packages or nil for every skipped package."
   "Expand current window to use half of the other window's lines."
   (interactive)
   (enlarge-window (/ (window-height (next-window)) 2)))
+
+(require 'evil-tabs)
+(global-evil-tabs-mode t)
+
+(defun brh/tabhandler (f)
+  (funcall f)
+  (helm-projectile))
+
+(defun brh/tabedit ()
+  "Create a new tab and run helm-projectile"
+  (interactive)
+  (brh/tabhandler 'elscreen-clone))
+
+(defun brh/tabvsplit ()
+  "Create a vertical split and run helm-projectile in it"
+  (interactive)
+  (brh/tabhandler 'split-window-right))
+
+(defun brh/tabsplit ()
+  "Create a horizontal split and run helm-projectile in it"
+  (interactive)
+  (brh/tabhandler 'split-window-below))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Magit Configuration
