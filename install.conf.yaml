@@ -50,8 +50,6 @@
     ~/.zsh: zsh/
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
-    ~/Gemfile.lock: Gemfile.lock
-    ~/Gemfile: Gemfile
     ~/bin: bin/
 
 - shell:
