@@ -10,3 +10,6 @@
 [submodule "yasnippet-snippets"]
 	path = yasnippet-snippets
 	url = https://github.com/bhipple/yasnippet-snippets
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf

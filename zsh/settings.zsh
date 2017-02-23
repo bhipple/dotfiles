@@ -175,3 +175,15 @@ zle-keymap-select () {
   my-reset-prompt-maybe
 }
 zle -N zle-keymap-select
+
+#  ============================================================================
+#                               FZF Config
+#  ============================================================================
+if ! [ -f ~/.fzf.zsh ]; then
+    echo "FZF not installed."
+    return
+fi
+
+source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'

@@ -1,3 +1,17 @@
+# Ask user to confirm command execution
+confirm() {
+    cmd="$1"
+    msg="$2"
+    echo "Evaluating: $cmd"
+    if [ -n "$msg" ]; then
+        echo "$msg"
+    fi
+    read -n "resp?Are you sure? [y/N] "
+    if [[ $resp =~ ^[Yy]$ ]]; then
+        eval "$cmd"
+    fi
+}
+
 vimdf() {
     nvim -p \
         $(git diff --name-only --diff-filter=M | tr '\n' ' ')

@@ -18,6 +18,7 @@
       create: true
       force: true
       path: yasnippet-snippets/
+    ~/.fzf: fzf/
     ~/.ghc/ghci.conf:
       create: true
       path: ghc/ghci.conf
