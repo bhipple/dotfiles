@@ -142,6 +142,18 @@ for m in $visualModes; do
     bindkey -M "$m" S add-surround
 done
 
+#  ============================================================================
+#                               FZF Config
+#  ============================================================================
+if ! [ -f ~/.fzf.zsh ]; then
+    echo "FZF not installed."
+    return
+fi
+
+source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
 ## ============================================================================
 ##                              Auto-Fu Config
 ## ============================================================================
@@ -176,14 +188,3 @@ zle-keymap-select () {
 }
 zle -N zle-keymap-select
 
-#  ============================================================================
-#                               FZF Config
-#  ============================================================================
-if ! [ -f ~/.fzf.zsh ]; then
-    echo "FZF not installed."
-    return
-fi
-
-source ~/.fzf.zsh
-
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
