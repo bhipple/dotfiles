@@ -3,8 +3,8 @@
 # from the cmdline.
 
 jenkins_plugins=/var/lib/jenkins/plugins
-for plugin in $("$jenkins_plugins/*.jpi"); do
+for plugin in $jenkins_plugins/*.jpi; do
     plugin=$(basename "$plugin" .jpi)
     manifest="$jenkins_plugins/$plugin/META-INF/MANIFEST.MF"
-    echo "$plugin" $(grep 'Plugin-Version' "$manifest" | awk '{print $2}')
+    echo "$plugin" "$(grep 'Plugin-Version' "$manifest" | awk '{print $2}')"
 done
