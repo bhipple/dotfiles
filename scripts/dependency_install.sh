@@ -25,6 +25,7 @@ nix_install() {
     else
         echo "NixPkg not installed on this machine. Installing."
         curl https://nixos.org/nix/install | sh
+        . "$HOME"/.nix-profile/etc/profile.d/nix.sh
     fi
 }
 
