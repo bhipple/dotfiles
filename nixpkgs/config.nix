@@ -19,7 +19,7 @@
         coreutils
         curl
         file
-        git
+        gitAndTools.hub
         gnused
         gnutar
         htop
