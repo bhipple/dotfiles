@@ -2,4 +2,4 @@
 all: vol
 
 vol: volume.hs
-	stack ghc -- volume.hs -o ../bin/vol
+	stack --nix ghc -- volume.hs -o ../bin/vol
