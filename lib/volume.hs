@@ -1,3 +1,5 @@
+#!/usr/bin/env stack
+-- stack --nix --install-ghc runghc --package regex-posix
 import Control.Monad
 import Data.List
 import Data.Maybe
