@@ -111,15 +111,15 @@ set foldminlines=10
 " Automatically open the QuickFix Window after a make
 autocmd QuickFixCmdPost *make* cwindow
 
+" Haskell
+au FileType haskell setlocal tags=.hs-tags
+au BufEnter *.hs compiler ghc
+
 " Make
 autocmd FileType make setlocal noexpandtab shiftwidth=8
-
-" XML
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 " Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" Haskell
-au FileType haskell setlocal tags=.hs-tags
-au BufEnter *.hs compiler ghc
+" XML
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
