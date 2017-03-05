@@ -20,13 +20,13 @@ create_ssh() {
 }
 
 nix_install() {
-    if [ -d /nix ]; then
-        nix-env -j 4 -i minEnv bigEnv
-    else
+    if ! [ -d /nix ]; then
         echo "NixPkg not installed on this machine. Installing."
         curl https://nixos.org/nix/install | sh
-        . "$HOME"/.nix-profile/etc/profile.d/nix.sh
     fi
+
+    . "$HOME"/.nix-profile/etc/profile.d/nix.sh
+    nix-env -j 4 -i minEnv
 }
 
 fzf_install() {
