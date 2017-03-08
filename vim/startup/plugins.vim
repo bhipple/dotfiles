@@ -53,7 +53,6 @@ if g:platform == "Linux" || g:platform == "Darwin"
 endif
 
 if has('nvim')
-    Plug 'Shougo/denite.nvim'                              " Helm for Vim
     Plug 'haifengkao/nfasd'                                " Recent file autocompletion
     Plug 'neovimhaskell/haskell-vim'                       " Better highlighting and indentation
     Plug 'zenbro/mirror.vim'                               " Mirroring filesystems
