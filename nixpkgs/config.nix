@@ -40,7 +40,7 @@
       paths = [
         cmake
         gnumake
-        gnupg
+        gnupg21
         gnutls
         graphviz
         icu
@@ -48,7 +48,6 @@
         irssi
         neovim
         pandoc
-        pass
         shellcheck
         stack
         vagrant
