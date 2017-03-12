@@ -5,9 +5,10 @@ Plug 'LnL7/vim-nix'                                      " Nix Expression suppor
 Plug 'Raimondi/delimitMate'                              " Matching quotes, parens, and brackets
 Plug 'Shougo/denite.nvim'                                " Helm for Vim
 Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
+Plug 'SirVer/ultisnips'                                  " Text snippets
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
-Plug 'bhipple/bde_plugins'                               " Tools for formatting code according to BDE Standards
+Plug 'Valloric/YouCompleteMe'                            " Autocompletion
 Plug 'bhipple/vim-hindent'                               " Haskell code formatter
 Plug 'bhipple/vim-snippets'                              " My snippets fork
 Plug 'bhipple/vimux'                                     " Vim and Tmux Integration
@@ -46,11 +47,6 @@ Plug 'tpope/vim-unimpaired'                              " Pairs of keyboard map
 Plug 'tpope/vim-vinegar'                                 " netrw improvement
 Plug 'vim-scripts/DrawIt'                                " Create ASCII drawings in Vim
 Plug 'vim-scripts/Tabmerge'                              " Merge tabs into splits
-
-if g:platform == "Linux" || g:platform == "Darwin"
-    Plug 'SirVer/ultisnips'               " Text snippets
-    Plug 'Valloric/YouCompleteMe'
-endif
 
 if has('nvim')
     Plug 'haifengkao/nfasd'                                " Recent file autocompletion
@@ -164,9 +160,4 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
-
-if g:bbenv != ""
-    let g:ycm_seed_identifiers_with_syntax = 1
-else
-    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/.ycm_extra_conf.py'
-endif
+let g:ycm_seed_identifiers_with_syntax = 1

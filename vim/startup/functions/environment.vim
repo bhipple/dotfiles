@@ -10,13 +10,3 @@ function! GetPlatform()
         return "Unknown"
     endif
 endfunction
-
-function! GetBBENV()
-    if has("unix")
-        return substitute(system("echo $BBENV"), "\n", "", "g")
-    else
-        return ""
-    endif
-endfunction
-
-

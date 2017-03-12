@@ -32,14 +32,8 @@ myTerminal = "xterm"
 
 -- Program names that should not be managed and tiled
 composeHook = composeAll [
-        className =? "1-BLOOMBERG" --> doFloat,
-        className =? "2-BLOOMBERG" --> doFloat,
-        className =? "3-BLOOMBERG" --> doFloat,
-        className =? "4-BLOOMBERG" --> doFloat,
-        className =? "Bloomberg" --> doFloat,
         className =? "Gimp" --> doFloat,
-        className =? "IB" --> doFloat,
-        className =? "Laundhpad - Ben View" --> doFloat
+        className =? "feh" --> doFloat
     ]
 
 myManageHook = manageDocks <+> composeHook <+> manageHook def

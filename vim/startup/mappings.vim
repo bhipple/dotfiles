@@ -1,21 +1,12 @@
 "" ============================================================================
 ""                             All Mode Mappings
 "" ============================================================================
-" Bael log category at the start of function
-map <F6> <ESC>[[oBAEL_LOG_SET_CATEGORY(LOG_CATEGORY);<ESC><C-o>
-
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+cmap w!! w !sudo tee % > /dev/null
 
 "" ============================================================================
 ""                           Insert Mode Mappings
 "" ============================================================================
-" Bael Log Shortcuts
-inoremap <F2> BAEL_LOG_TRACE << 
-inoremap <F3> BAEL_LOG_DEBUG << 
-inoremap <F4> BAEL_LOG_ERROR << 
-inoremap <F5> << BAEL_LOG_END;<ESC>
-
 " Leaving insert mode with jj or jk
 inoremap jj <Esc><Right>
 inoremap jk <Esc><Right>
@@ -40,12 +31,8 @@ nnoremap <silent> <F8> :b#<CR>
 
 " Compilation and testing with Dispatch
 nnoremap <F2> :call Cdroot()<CR>:Make clean<CR>
-if(g:bbenv == "")
-    nnoremap <F4> :call Cdroot()<CR>:Make all<CR>:Make run<CR>:Copen<CR>/FAILED<CR>
-else
-    nnoremap <F3> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make gtest -j")<CR>
-    nnoremap <F4> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make -j")<CR>
-endif
+nnoremap <F3> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make gtest -j")<CR>
+nnoremap <F4> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make -j")<CR>
 
 noremap <F5> :cex[]<CR>:cclose<CR>
 
