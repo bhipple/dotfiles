@@ -39,6 +39,7 @@
       name = "bigEnv";
       paths = [
         cmake
+        emacs25
         gnumake
         gnupg21
         gnutls
