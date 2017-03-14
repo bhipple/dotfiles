@@ -474,12 +474,6 @@ Return a list of installed packages or nil for every skipped package."
 ;; Highlight source code blocks
 (setq org-src-fontify-natively t)
 
-;; Org mode and Jira Integration
-(setq jiralib-url "https://jira6.prod.bloomberg.com")
-
-(setq request-log-level 'debug)
-(setq request-message-level 'debug)
-
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Helm Configuration
 (require 'helm-config)

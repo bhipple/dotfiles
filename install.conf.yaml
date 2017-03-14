@@ -13,11 +13,12 @@
         create: true
         path: vim
     ~/.dir_colors: dir_colors
-    ~/.emacs.d: spacemacs/
+    ~/.emacs.d: spacemacs-repo/
     # ~/.emacs.d/snippets:
     #   create: true
     #   force: true
     #   path: yasnippet-snippets/
+    ~/.spacemacs: spacemacs
     ~/.fzf: fzf/
     ~/.ghc/ghci.conf:
       create: true
