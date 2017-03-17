@@ -56,7 +56,7 @@ alias wfc='curl wttr.in/new_york'
 alias L='less -n'
 alias G='grep'
 
-[ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
+[[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
 # TODO: Make this lazier so it doesn't execute at zsh startup?
 #alias see="seeprogram() { stack build; exec=$(grep -q executable *.cabal | head -1 | awk '{print $2}'); stack build -- $exec}; seeprogram;"

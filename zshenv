@@ -23,7 +23,7 @@ if hash nvim 2>/dev/null; then
 fi
 
 # Running in emacs ansi-term
-if [ -n "$EMACS" || -n "$INSIDE_EMACS" ]; then
+if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export AUTO_FU="skip"
 fi
 
@@ -64,4 +64,6 @@ export LANG=en_US.UTF-8
 
 . ~/bin/resty
 
-[ -f ~/.config/hub ] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
+[[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
+
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
