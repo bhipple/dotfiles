@@ -1,12 +1,10 @@
-if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+[[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]] && \
     source $HOME/.nix-profile/etc/profile.d/nix.sh
-fi
 
 source ~/.zsh/functions.zsh
 
-if [ -f ~/.zsh_local/zshrc_local_before.zsh ]; then
+[[ -f ~/.zsh_local/zshrc_local_before.zsh ]] && \
     source ~/.zsh_local/zshrc_local_before.zsh
-fi
 
 fpath+=(~/.zsh/completions $fpath)
 
@@ -14,8 +12,7 @@ source ~/.zsh/plugins.zsh
 source ~/.zsh/settings.zsh
 source ~/.zsh/aliases.zsh
 
-if [ -f ~/.zsh_local/zshrc_local_after.zsh ]; then
+[[ -f ~/.zsh_local/zshrc_local_after.zsh ]] && \
     source ~/.zsh_local/zshrc_local_after.zsh
-fi
 
 pathDeduplicate
