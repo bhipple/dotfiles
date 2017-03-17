@@ -52,6 +52,10 @@ alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
 alias wfc='curl wttr.in/new_york'
 
+# Global Aliases
+alias L='less -n'
+alias G='grep'
+
 [ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
 
 # TODO: Make this lazier so it doesn't execute at zsh startup?
