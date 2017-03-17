@@ -1,191 +1,33 @@
-;; -*-Lisp-*-
-(require 'package)
-
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-
-(setq package-enable-at-startup nil)
-(package-initialize)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/org/habits.org" "~/org/logs.org" "~/org/lists.org" "~/org/work.org" "~/org/me.org")))
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-ctags org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
- '(package-selected-packages
-   (quote
-    (evil-tabs flycheck-pos-tip flycheck-haskell evil-commentary hindent use-package magithub nix-mode exec-path-from-shell multi-term yaml-mode f flycheck-ycmd company-ycmd ycmd yasnippet company-quickhelp company helm-org-rifle helm-projectile helm-descbinds helm-dash intero org-jira highlight-chars helm flycheck evil-surround evil-numbers evil-leader evil-exchange evil async spacemacs-theme projectile magit iedit evil-visual-mark-mode)))
- '(server-mode t)
- '(term-bind-key-alist
-   (quote
-    (("C-c C-c" . term-interrupt-subjob)
-     ("C-c C-e" . term-send-esc)
-     ("C-p" . previous-line)
-     ("C-n" . next-line)
-     ("C-s" . isearch-forward)
-     ("C-r" . isearch-backward)
-     ("C-m" . term-send-return)
-     ("C-y" . term-paste)
-     ("M-f" . term-send-forward-word)
-     ("M-b" . term-send-backward-word)
-     ("M-o" . term-send-backspace)
-     ("M-p" . term-send-up)
-     ("M-n" . term-send-down)
-     ("M-M" . term-send-forward-kill-word)
-     ("M-N" . term-send-backward-kill-word)
-     ("<C-backspace>" . term-send-backward-kill-word)
-     ("M-r" . term-send-reverse-search-history)
-     ("M-d" . term-send-delete-word)
-     ("M-," . term-send-raw)
-     ("M-." . comint-dynamic-complete)
-     ("C-w" . evil-window-next)
-     ("C-h" . evil-window-left)
-     ("C-j" . evil-window-down)
-     ("C-k" . evil-window-up)
-     ("C-l" . evil-window-right)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-(when (not package-archive-contents)
-    (package-refresh-contents))
+;; This file contains the remnants that I haven't ported over to spacemacs.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package management ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
-(defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
-
-Return a list of installed packages or nil for every skipped package."
-  (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         nil
-       (progn
-         (format "Package %s is missing. Install it? " package)
-         (package-install package)
-         package)))
-   packages))
-
-;; Make sure to have downloaded archive description.
-(or (file-exists-p package-user-dir)
-    (package-refresh-contents))
-
-;; Activate installed packages
-(package-initialize)
-
 ;; Install packages
 (ensure-package-installed
-              'async
-              'company
-              'company-quickhelp
               'company-ycmd
-              'evil
-              'evil-commentary
-              'evil-exchange
-              'evil-leader
-              'evil-numbers
-              'evil-surround
-              'evil-tabs
-              'eww
-              'exec-path-from-shell
               'f
               'flycheck
               'flycheck-haskell
               'flycheck-pos-tip
               'flycheck-ycmd
               'goto-chg
-              'helm
-              'helm-dash
-              'helm-descbinds
-              'helm-org-rifle
-              'helm-projectile
               'highlight-chars
               'iedit
               'intero
-              'magit
-              'magithub
-              'multi-term
-              'nix-mode
-              'org
               'org-jira
               'pos-tip
               'projectile
               's
-              'spacemacs-theme
               'time
               'yaml-mode
               'yasnippet
               'ycmd
-              'use-package
 )
-
-(setq use-package-always-ensure t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My configuration ;;
-;;
-;; Fix for MacOS environment variables
-;;(when (memq window-system '(mac ns))
-  ;;(exec-path-from-shell-initialize))
-
-(setq inhibit-splash-screen t)
-(setq vc-follow-symlinks t)
-
-(setq system-uses-terminfo nil)
-
-;; Show line numbers
-(global-linum-mode t)
-
-;; Show column number in status bar
-(setq column-number-mode t)
-
-;; Globally enable () matching as a minor mode
-(electric-pair-mode)
-
-;; Cosmetics (color, toolbars)
-(require 'spacemacs-dark-theme)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
-
-;; When I'm ready ...
-;; (menu-bar-mode -1)
-
-;; Disable auto-saves
-(setq auto-save-default nil)
-
-;; Disable backups
-(setq make-backup-files nil)
-
-;; Fix tabs
-(setq-default indent-tabs-mode nil)
-(setq c-basic-indent 4)
-(setq tab-width 4)
-
-;; Highlighting whitespace
-(require 'highlight-chars)
-(hc-highlight-tabs)
-;; TODO: Flashes while typing in insert mode. See how to get it to only show in normal mode.
-;;(hc-highlight-trailing-whitespace)
-
-(defadvice split-window (after move-point-to-new-window activate)
-  "Moves the point to the newly created window after splitting."
-  (other-window 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugin Configuration
 ;;
-(dired-async-mode 1)
-
 ;; Allow asynchronous compilation of packages
 (async-bytecomp-package-mode 1)
 
@@ -206,7 +48,6 @@ Return a list of installed packages or nil for every skipped package."
 ;; Enable company mode everywhere
 (add-hook 'after-init-hook 'global-company-mode)
 
-(setq company-idle-delay 0.01)
 (setq company-selection-wrap-around t)
 
 (require 'yasnippet)
@@ -299,73 +140,24 @@ Return a list of installed packages or nil for every skipped package."
 (define-key yas-keymap [(control tab)] 'yas-next-field)
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
 
-;(eval-after-load 'company '(progn
-    ;(define-key company-active-map [tab] 'company-complete-common-or-cycle)
-    ;(define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil Configuration
-;; These lines must come before (require 'evil)
-(setq evil-want-C-u-scroll t)
-(require 'evil-leader)
-(global-evil-leader-mode)
-
-;; Toggle evil mode with C-`
-(setq evil-toggle-key "C-`")
-
-(require 'evil)
-(evil-mode t)
-
-;; Leader keys
-(evil-leader/set-leader "<SPC>")
-(evil-leader/set-key
-              "b" 'helm-buffers-list
-              "df" 'magit-diff
-              "f" 'helm-find-files
-              "gg" 'helm-projectile-grep
-              "mf" 'magit-pull-from-upstream
-              "mp" 'magit-push-current-to-upstream
-              "ms" 'magit-status
-              "p" 'helm-projectile
-              "se" 'brh/tabsplit
-              "si" 'helm-dash-at-point
-              "ss" 'org-sort-entries
-              "te" 'brh/tabedit
-              "ve" 'brh/tabvsplit
-              "tm" 'multi-term)
-
 (require 'evil-exchange)
 ;; Defaults to gx. cx might run into compatibility issues;
 ;; consider (evil-exchange-cx-install) if I'm feeling up for it.
 (evil-exchange-install)
 
-(require 'evil-commentary)
-(evil-commentary-mode)
-
-(require 'evil-surround)
-(global-evil-surround-mode 1)
-
 (require 'evil-numbers)
 (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
 (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
-
-(global-set-key (kbd "C-h") 'evil-window-left)
-(global-set-key (kbd "C-j") 'evil-window-down)
-(global-set-key (kbd "C-k") 'evil-window-up)
-(global-set-key (kbd "C-l") 'evil-window-right)
-
-(global-set-key (kbd "<C-up>") 'shrink-window)
-(global-set-key (kbd "<C-down>") 'enlarge-window)
-(global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
-(global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
 (defun halve-other-window-height ()
   "Expand current window to use half of the other window's lines."
   (interactive)
   (enlarge-window (/ (window-height (next-window)) 2)))
 
-(require 'evil-tabs)
-(global-evil-tabs-mode t)
+;; (require 'evil-tabs)
+;; (global-evil-tabs-mode t)
 
 (defun brh/tabhandler (f)
   (funcall f)
@@ -387,127 +179,15 @@ Return a list of installed packages or nil for every skipped package."
   (brh/tabhandler 'split-window-below))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Magit Configuration
-(use-package magit
-  :bind (([tab] . magit-section-toggle)
-         ("TAB" . magit-section-toggle)))
-
-(use-package magithub
-  :after magit
-  :config (magithub-feature-autoinject t))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Org mode hotkey bindings
-;;
-(require 'org)
-
-;; Set indentation
-(setq org-startup-indented t)
-
-;; Default TODO progression sequence.
-(setq org-use-fast-todo-selection t)
-(setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
-
-;; Log completion time of DONE items
-(setq org-log-done 'time)
-
-;; Tags
-(setq org-tag-alist '(("ALGOS" . ?a)
-                      ("CODING" . ?c)
-                      ("DEEP" . ?d)
-                      ("EMACS" . ?e)
-                      ("HASKELL" . ?h)
-                      ("GYM" . ?g)
-                      ("LISTS" . ?l)
-                      ("NIX" . ?n)
-                      ("PROJECT" . ?p)
-                      ("READING" . ?r)
-                      ("SOMEDAY" . ?s)
-                      ("VIM" ? .v)
-                      ("WORK" ? .w)
-                      ("ZSH" ? .z)))
-
-;; Org capture templates
-(setq org-capture-templates
-      '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
-             "* %?\nEntered %u\n")
-        ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
-             "* TODO [#C] %?\nDEADLINE: %^t")
-        ("s" "Scheduled item" entry (file+headline "~/org/me.org" "Tasks")
-             "* TODO [#C] %?\nSCHEDULED: %^t")
-        ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-             "* TODO [#C] %?\nEntered %u\n")
-        ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
-             "* %?\nEntered %u\n")))
-
-;; Default notes file for capture
-(setq org-default-notes-file "~/org/me.org")
-(global-set-key "\C-cc" 'org-capture)
-
-;; Open up the agenda with C-c a
-(global-set-key "\C-ca" 'org-agenda)
-
-(global-set-key "\C-cb" 'org-iswitchb)
-(global-set-key "\C-cl" 'org-store-link)
-
-;; Jump to the me.org file
-(global-set-key (kbd "C-c o")
-        (lambda () (interactive) (find-file "~/org/me.org")))
-
-;; Set org-refile to autocomplete three levels deep and check all agenda files
-(setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
-
-;; Archive to subdirectory
-(setq org-archive-location "~/org/archive/%s_archive::")
-
-;; Org Agenda custom searches
-(setq org-agenda-custom-commands
-      '(("x" agenda)
-        ("h" tags-todo "HOME")
-        ("w" tags-todo "WORK")))
-
-;; Org Babel language integration
-(require 'ob-haskell)
-(require 'ob-python)
-(require 'ob-sh)
-
-;; Highlight source code blocks
-(setq org-src-fontify-natively t)
-
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Helm Configuration
 (require 'helm-config)
 (helm-mode 1)
 
-;; Use helm for M-x
-(global-set-key (kbd "M-x") 'helm-M-x)
-
 (require 'helm-org-rifle)
-
-;; Provide the describe-bindings function, which shows all keyboard
-;; shortcuts currently active in your major + minor modes
-(require 'helm-descbinds)
-(helm-descbinds-mode)
-
-;; Use Projectile with Helm
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(setq projectile-switch-project-action 'helm-projectile)
 
 ;; Enable caching. Invalidate the current project cache with C-c p i
 (setq projectile-enable-caching t)
-
-(helm-projectile-on)
-
-;; List of times to show in helm-world-time
-;; TODO: Not working due to issues with time.el?
-(setq display-time-world-list '(("America/New_York" "New_York")
-                                ("UTC" "UTC")
-                                ("Europe/London" "London")
-                                ("Europe/Amsterdam" "Amsterdam")
-                                ("Asia/Shanghai" "Shanghai")
-                                ("Asia/Tokyo" "Tokyo")
-                                ("Australia/Sydney" "Sydney")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Documentation Config

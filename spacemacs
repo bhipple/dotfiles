@@ -32,23 +32,29 @@ values."
    dotspacemacs-configuration-layers
    '(
      ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
+     ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
-     helm
      auto-completion
      better-defaults
+     c-c++
+     dash
      emacs-lisp
      git
+     github
+     haskell
+     helm
      markdown
+     nixos
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     python
+     salt
+     shell-scripts
      spell-checking
      syntax-checking
+     tmux
      version-control
+     vinegar
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -300,15 +306,134 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; Don't ask about following symlinks
+  (setq vc-follow-symlinks t)
+
+  ;; Don't depend on $TERM
+  (setq system-uses-terminfo nil)
+
   ;; Show line numbers
   (global-linum-mode t)
 
   ;; Show column number in status bar
   (setq column-number-mode t)
 
+  ;; Perform dired actions asynchronously
+  (dired-async-mode 1)
+
   ;; Globally enable () matching as a minor mode
   (electric-pair-mode)
 
+  ;; Fix tabs
+  (setq-default indent-tabs-mode nil)
+  (setq c-basic-indent 4)
+  (setq tab-width 4)
+
+  (global-set-key (kbd "C-h") 'evil-window-left)
+  (global-set-key (kbd "C-j") 'evil-window-down)
+  (global-set-key (kbd "C-k") 'evil-window-up)
+  (global-set-key (kbd "C-l") 'evil-window-right)
+
+  (global-set-key (kbd "<C-up>") 'shrink-window)
+  (global-set-key (kbd "<C-down>") 'enlarge-window)
+  (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+  (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+
+  (require 'evil-tabs)
+  (global-evil-tabs-mode t)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Leader Keys
+  ;;;;;;;;;;;;;;
+  (spacemacs/set-leader-keys
+    "ob" 'helm-buffers-list
+    "of" 'magit-pull-from-upstream
+    "op" 'magit-push-current-to-upstream
+    "se" 'brh/tabsplit
+    "si" 'helm-dash-at-point
+    "ss" 'org-sort-entries
+    "te" 'brh/tabedit
+    "ve" 'brh/tabvsplit
+    "ot" 'multi-term)
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Org Mode Settings
+  ;;;;;;;;;;;;;;;;;;;;
+  (require 'org)
+
+  ;; Set indentation
+  (setq org-startup-indented t)
+
+  ;; Default TODO progression sequence.
+  (setq org-use-fast-todo-selection t)
+  (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
+
+  ;; Log completion time of DONE items
+  (setq org-log-done 'time)
+
+  ;; Tags
+  (setq org-tag-alist '(("ALGOS" . ?a)
+                        ("CODING" . ?c)
+                        ("DEEP" . ?d)
+                        ("EMACS" . ?e)
+                        ("HASKELL" . ?h)
+                        ("GYM" . ?g)
+                        ("LISTS" . ?l)
+                        ("NIX" . ?n)
+                        ("PROJECT" . ?p)
+                        ("READING" . ?r)
+                        ("SOMEDAY" . ?s)
+                        ("VIM" ? .v)
+                        ("WORK" ? .w)
+                        ("ZSH" ? .z)))
+
+  ;; Org capture templates
+  (setq org-capture-templates
+        '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
+              "* %?\nEntered %u\n")
+          ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
+              "* TODO [#C] %?\nDEADLINE: %^t")
+          ("s" "Scheduled item" entry (file+headline "~/org/me.org" "Tasks")
+              "* TODO [#C] %?\nSCHEDULED: %^t")
+          ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
+              "* TODO [#C] %?\nEntered %u\n")
+          ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
+              "* %?\nEntered %u\n")))
+
+  ;; Default notes file for capture
+  (setq org-default-notes-file "~/org/me.org")
+  (global-set-key "\C-cc" 'org-capture)
+
+  ;; Open up the agenda with C-c a
+  (global-set-key "\C-ca" 'org-agenda)
+
+  (global-set-key "\C-cb" 'org-iswitchb)
+  (global-set-key "\C-cl" 'org-store-link)
+
+  ;; Jump to the me.org file
+  (global-set-key (kbd "C-c o")
+          (lambda () (interactive) (find-file "~/org/me.org")))
+
+  ;; Set org-refile to autocomplete three levels deep and check all agenda files
+  (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
+
+  ;; Archive to subdirectory
+  (setq org-archive-location "~/org/archive/%s_archive::")
+
+  ;; Org Agenda custom searches
+  (setq org-agenda-custom-commands
+        '(("x" agenda)
+          ("h" tags-todo "HOME")
+          ("w" tags-todo "WORK")))
+
+  ;; Org Babel language integration
+  (require 'ob-haskell)
+  (require 'ob-python)
+  (require 'ob-sh)
+
+  ;; Highlight source code blocks
+  (setq org-src-fontify-natively t)
   )
 
 
@@ -322,7 +447,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
+    (zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
