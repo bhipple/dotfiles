@@ -55,7 +55,7 @@ values."
      version-control
      vinegar
      yaml
-     )
+    )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -324,6 +324,9 @@ you should place your code here."
   ;; Globally enable () matching as a minor mode
   (electric-pair-mode)
 
+  ;; Enable caching. Invalidate the current project cache with C-c p i
+  (setq projectile-enable-caching t)
+
   ;; Fix tabs
   (setq-default indent-tabs-mode nil)
   (setq c-basic-indent 4)
@@ -339,7 +342,6 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-  (require 'evil-tabs)
   (global-evil-tabs-mode t)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -348,20 +350,16 @@ you should place your code here."
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
     "of" 'magit-pull-from-upstream
+    "oo" '(lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
-    "se" 'brh/tabsplit
-    "si" 'helm-dash-at-point
-    "ss" 'org-sort-entries
-    "te" 'brh/tabedit
-    "ve" 'brh/tabvsplit
-    "ot" 'multi-term)
+    "ot" 'multi-term
+    "os" 'org-sort-entries
+  )
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Mode Settings
   ;;;;;;;;;;;;;;;;;;;;
-  (require 'org)
-
   ;; Set indentation
   (setq org-startup-indented t)
 
@@ -427,11 +425,6 @@ you should place your code here."
           ("h" tags-todo "HOME")
           ("w" tags-todo "WORK")))
 
-  ;; Org Babel language integration
-  (require 'ob-haskell)
-  (require 'ob-python)
-  (require 'ob-sh)
-
   ;; Highlight source code blocks
   (setq org-src-fontify-natively t)
   )
@@ -445,6 +438,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/org/work.org" "~/org/logs.org" "~/org/lists.org" "~/org/habits.org" "~/org/cheat-sheet.org" "~/org/me.org")))
  '(package-selected-packages
    (quote
     (zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))

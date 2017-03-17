@@ -186,9 +186,6 @@
 
 (require 'helm-org-rifle)
 
-;; Enable caching. Invalidate the current project cache with C-c p i
-(setq projectile-enable-caching t)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Documentation Config
 (setq helm-dash-docsets-path (format "%s/.docsets" (getenv "HOME")))
