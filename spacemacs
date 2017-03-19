@@ -352,20 +352,17 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-  (global-evil-tabs-mode t)
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Leader Keys
   ;;;;;;;;;;;;;;
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
     "of" 'magit-pull-from-upstream
-    "oo" '(lambda () (interactive) (find-file "~/org/me.org"))
+    ;;"oo" '(lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
   )
-
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Mode Settings
