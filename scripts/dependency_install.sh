@@ -25,7 +25,7 @@ nix_install() {
         curl https://nixos.org/nix/install | sh
     fi
 
-    . "$HOME"/.nix-profile/etc/profile.d/nix.sh
+    [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
     nix-env -j 4 -i minEnv
 }
 

@@ -8,12 +8,8 @@ echo "Loading bashrc"
 ## ============================================================================
 ##                                  General
 ## ============================================================================
-export TERM=screen-256color
-export EDITOR=vi
-
 # Set history
 set -o history
-export histexpand=on
 set history on 10000
 
 # update winsize after each command for better line-wrapping

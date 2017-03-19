@@ -6,6 +6,9 @@
     ~/.bashrc:
       force: true
       path: bashrc
+    ~/.bash_profile:
+      force: true
+      path: bash_profile
     ~/.clang-format: clang-format
     ~/.config/nvim/init.vim: vimrc
     ~/.config/nvim:
