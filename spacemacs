@@ -368,70 +368,72 @@ you should place your code here."
   ;; Org Mode Settings
   ;;;;;;;;;;;;;;;;;;;;
   ;; Default TODO progression sequence.
-  (setq org-use-fast-todo-selection t)
-  (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
+  (with-eval-after-load 'org
+    (setq org-use-fast-todo-selection t)
+    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
 
-  ;; Log completion time of DONE items
-  (setq org-log-done 'time)
+    ;; Log completion time of DONE items
+    (setq org-log-done 'time)
 
-  ;; Tags
-  (setq org-tag-alist '(("ALGOS" . ?a)
-                        ("CODING" . ?c)
-                        ("DEEP" . ?d)
-                        ("EMACS" . ?e)
-                        ("HASKELL" . ?h)
-                        ("GYM" . ?g)
-                        ("LISTS" . ?l)
-                        ("NIX" . ?n)
-                        ("PROJECT" . ?p)
-                        ("READING" . ?r)
-                        ("SOMEDAY" . ?s)
-                        ("VIM" ? .v)
-                        ("WORK" ? .w)
-                        ("ZSH" ? .z)))
+    ;; Tags
+    (setq org-tag-alist '(("ALGOS" . ?a)
+                          ("CODING" . ?c)
+                          ("DEEP" . ?d)
+                          ("EMACS" . ?e)
+                          ("HASKELL" . ?h)
+                          ("GYM" . ?g)
+                          ("LISTS" . ?l)
+                          ("NIX" . ?n)
+                          ("PROJECT" . ?p)
+                          ("READING" . ?r)
+                          ("SOMEDAY" . ?s)
+                          ("VIM" ? .v)
+                          ("WORK" ? .w)
+                          ("ZSH" ? .z)))
 
-  ;; Org capture templates
-  (setq org-capture-templates
-        '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
-              "* %?\nEntered %u\n")
-          ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
-              "* TODO [#C] %?\nDEADLINE: %^t")
-          ("s" "Scheduled item" entry (file+headline "~/org/me.org" "Tasks")
-              "* TODO [#C] %?\nSCHEDULED: %^t")
-          ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-              "* TODO [#C] %?\nEntered %u\n")
-          ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
-              "* %?\nEntered %u\n")))
+    ;; Org capture templates
+    (setq org-capture-templates
+          '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
+                "* %?\nEntered %u\n")
+            ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
+                "* TODO [#C] %?\nDEADLINE: %^t")
+            ("s" "Scheduled item" entry (file+headline "~/org/me.org" "Tasks")
+                "* TODO [#C] %?\nSCHEDULED: %^t")
+            ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
+                "* TODO [#C] %?\nEntered %u\n")
+            ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
+                "* %?\nEntered %u\n")))
 
-  ;; Default notes file for capture
-  (setq org-default-notes-file "~/org/me.org")
-  (global-set-key "\C-cc" 'org-capture)
+    ;; Default notes file for capture
+    (setq org-default-notes-file "~/org/me.org")
+    (global-set-key "\C-cc" 'org-capture)
 
-  ;; Open up the agenda with C-c a
-  (global-set-key "\C-ca" 'org-agenda)
+    ;; Open up the agenda with C-c a
+    (global-set-key "\C-ca" 'org-agenda)
 
-  (global-set-key "\C-cb" 'org-iswitchb)
-  (global-set-key "\C-cl" 'org-store-link)
+    (global-set-key "\C-cb" 'org-iswitchb)
+    (global-set-key "\C-cl" 'org-store-link)
 
-  ;; Jump to the me.org file
-  (global-set-key (kbd "C-c o")
-          (lambda () (interactive) (find-file "~/org/me.org")))
+    ;; Jump to the me.org file
+    (global-set-key (kbd "C-c o")
+            (lambda () (interactive) (find-file "~/org/me.org")))
 
-  ;; Set org-refile to autocomplete three levels deep and check all agenda files
-  (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
+    ;; Set org-refile to autocomplete three levels deep and check all agenda files
+    (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
 
-  ;; Archive to subdirectory
-  (setq org-archive-location "~/org/archive/%s_archive::")
+    ;; Archive to subdirectory
+    (setq org-archive-location "~/org/archive/%s_archive::")
 
-  ;; Org Agenda custom searches
-  (setq org-agenda-custom-commands
-        '(("x" agenda)
-          ("h" tags-todo "HOME")
-          ("w" tags-todo "WORK")))
+    ;; Org Agenda custom searches
+    (setq org-agenda-custom-commands
+          '(("x" agenda)
+            ("h" tags-todo "HOME")
+            ("w" tags-todo "WORK")))
 
-  ;; Highlight source code blocks
-  (setq org-src-fontify-natively t)
-  )
+    ;; Highlight source code blocks
+    (setq org-src-fontify-natively t)
+
+    ))
 
 
 
