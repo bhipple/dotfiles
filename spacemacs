@@ -360,8 +360,8 @@ you should place your code here."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Mode Settings
   ;;;;;;;;;;;;;;;;;;;;
-  ;; Set indentation
-  (setq org-startup-indented t)
+  (setq-default dotspacemacs-configuration-layers
+    '((org :variables org-startup-indented t)))
 
   ;; Default TODO progression sequence.
   (setq org-use-fast-todo-selection t)
