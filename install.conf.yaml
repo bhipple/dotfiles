@@ -17,10 +17,10 @@
         path: vim
     ~/.dir_colors: dir_colors
     ~/.emacs.d: spacemacs-repo/
-    # ~/.emacs.d/snippets:
-    #   create: true
-    #   force: true
-    #   path: yasnippet-snippets/
+    ~/.emacs.d/private/snippets:
+      create: true
+      force: true
+      path: yasnippet-snippets/
     ~/.spacemacs: spacemacs
     ~/.fzf: fzf/
     ~/.ghc/ghci.conf:

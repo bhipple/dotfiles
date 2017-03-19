@@ -11,6 +11,7 @@ values."
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
+
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
@@ -21,20 +22,26 @@ values."
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
    dotspacemacs-enable-lazy-installation 'unused
+
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
+
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
+
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
      ;; ----------------------------------------------------------------
      ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t)
      better-defaults
      c-c++
      dash
@@ -46,7 +53,9 @@ values."
      helm
      markdown
      nixos
-     org
+     (org :variables
+          org-startup-indented t
+          org-enable-github-support t)
      python
      salt
      shell-scripts
@@ -361,10 +370,6 @@ you should place your code here."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Mode Settings
   ;;;;;;;;;;;;;;;;;;;;
-  ;; TODO: Figure out how to define multiple values in this format.
-  ;; (setq-default dotspacemacs-configuration-layers
-  ;;   '((org :variables (org-startup-indented t) (org-enable-github-support t))))
-
   ;; Default TODO progression sequence.
   (setq org-use-fast-todo-selection t)
   (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
@@ -445,7 +450,7 @@ you should place your code here."
     ("~/org/work.org" "~/org/logs.org" "~/org/lists.org" "~/org/habits.org" "~/org/cheat-sheet.org" "~/org/me.org")))
  '(package-selected-packages
    (quote
-    (go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (company-quickhelp ox-gfm go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(tramp-default-method "ssh"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
