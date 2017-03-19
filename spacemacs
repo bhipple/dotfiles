@@ -325,9 +325,6 @@ you should place your code here."
   ;; Show line numbers
   (global-linum-mode t)
 
-  ;; Show column number in status bar
-  (setq column-number-mode t)
-
   ;; Perform dired actions asynchronously
   (dired-async-mode 1)
 
@@ -352,24 +349,17 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Leader Keys
-  ;;;;;;;;;;;;;;
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
     "of" 'magit-pull-from-upstream
-    ;;"oo" '(lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
   )
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Org Mode Settings
-  ;;;;;;;;;;;;;;;;;;;;
-  ;; Default TODO progression sequence.
   (with-eval-after-load 'org
     (setq org-use-fast-todo-selection t)
+    ;; Default TODO progression sequence.
     (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
 
     ;; Log completion time of DONE items
