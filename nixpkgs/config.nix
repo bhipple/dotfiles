@@ -52,6 +52,7 @@
         neovim
         pandoc
         shellcheck
+        source-code-pro
         stack
         vagrant
         xclip
