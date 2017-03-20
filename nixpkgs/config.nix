@@ -58,6 +58,7 @@
         vagrant
         xclip
         xsel
+        zeal
         zlib
       ];
     });
