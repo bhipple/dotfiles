@@ -20,6 +20,7 @@
         curl
         file
         gitAndTools.hub
+        global
         gnused
         gnutar
         htop
@@ -38,6 +39,7 @@
     bigEnv = with pkgs; hiPrio (buildEnv {
       name = "bigEnv";
       paths = [
+        aspell
         cmake
         emacs25
         gnumake
