@@ -55,6 +55,7 @@ alias wfc='curl wttr.in/new_york'
 # Global Aliases
 alias L='less -n'
 alias G='grep'
+alias R='!! | less -n'
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
