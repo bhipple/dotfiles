@@ -54,6 +54,7 @@
         shellcheck
         source-code-pro
         stack
+        upower
         vagrant
         xclip
         xsel
