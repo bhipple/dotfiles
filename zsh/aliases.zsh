@@ -53,8 +53,9 @@ alias vus='vagrant up && vagrant ssh'
 alias wfc='curl wttr.in/new_york'
 
 # Global Aliases
-alias L='less -n'
+alias C='xsel -b'
 alias G='grep'
+alias L='less -n'
 alias R='!! | less -n'
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
