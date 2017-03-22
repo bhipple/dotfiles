@@ -28,10 +28,6 @@ fi
 # Reduce delay to 0.2 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=20
 
-if [ -d /opt/bb/bin ]; then
-    PATH=/opt/bb/bin:$PATH
-fi
-
 PATH=~/bin_local:$PATH
 PATH=~/bin:$PATH
 PATH=$PATH:~/.local/bin
@@ -67,3 +63,12 @@ export LANG=en_US.UTF-8
 export GPG=gpg2
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
+pathDeduplicate() {
+    export PATH="$(echo "$PATH" |
+        awk 'BEGIN{RS=":";} \
+            {sub(sprintf("%c$",10),"");if(A[$0]){}else{A[$0]=1;printf(((NR==1)?"":":")$0)}}' \
+        )";
+}
+
+pathDeduplicate
