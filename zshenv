@@ -66,4 +66,6 @@ export LANG=en_US.UTF-8
 
 [[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
 
+export GPG=gpg2
+
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
