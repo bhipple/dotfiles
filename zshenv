@@ -3,7 +3,7 @@ skip_global_compinit=1
 ## ============================================================================
 ##                           Environment Variables
 ## ============================================================================
-if [ "$TERM" != "screen-256color" ]; then
+if ! [[ "$TERM" == "screen-256color" || "$TERM" == "dumb" ]]; then
     export TERM=xterm-256color
 fi
 
