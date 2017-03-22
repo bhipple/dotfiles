@@ -8,16 +8,14 @@ if [ "$TERM" != "screen-256color" ]; then
 fi
 
 export GTEST_COLOR=yes
-export EDITOR=vi
+export EDITOR=emacsclient
 
 cmd=$(uname -a | grep -q "Darwin")
 if [ $? -eq 0 ]; then
     export MACOS="true"
-    export EDITOR=vim
 fi
 
 if hash nvim 2>/dev/null; then
-    export EDITOR=nvim
     alias vi=nvim
     alias vim=nvim
 fi
