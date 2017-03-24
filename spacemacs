@@ -394,13 +394,17 @@ you should place your code here."
     (setq org-capture-templates
           '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
                 "* %?\nEntered %u\n")
-            ("d" "Deadline item" entry (file+headline "~/org/work.org" "General Notes")
+            ("d" "Deadline Item" entry (file+headline "~/org/work.org" "General Notes")
                 "* TODO [#C] %?\nDEADLINE: %^t")
-            ("s" "Scheduled item" entry (file+headline "~/org/me.org" "Tasks")
+            ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
+                "* TODO [#C] %?\nEntered %u\n")
+            ("p" "Programming Item" entry (file+headline "~/org/me.org" "Programming")
+                "* TODO [#C] %?\nEntered %u\n")
+            ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
                 "* TODO [#C] %?\nSCHEDULED: %^t")
             ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
                 "* TODO [#C] %?\nEntered %u\n")
-            ("n" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
+            ("w" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
                 "* %?\nEntered %u\n")))
 
     ;; Default notes file for capture
@@ -425,16 +429,23 @@ you should place your code here."
 
     ;; Org Agenda custom searches
     (setq org-agenda-custom-commands
-          '(("x" agenda)
-            ("h" tags-todo "HOME")
-            ("w" tags-todo "WORK")))
+          '(("h" . "HOME searches") ;; Home prefix
+            ("ha" "All HOME items" tags-todo "HOME")
+            ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
+            ("hs" "Search HOME items" ((tags "+HOME") (search "")))
+            ("p" . "Priority searches")
+            ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
+            ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
+            ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
+            ("w" . "WORK searches")
+            ("wa" "All WORK items" tags-todo "WORK")
+            ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
+            ("ws" "Search WORK items" ((tags "+WORK") (search "")))
+            ("n" "Agenda and all TODOs" ((agenda "") (alltodo "")))))
 
     ;; Highlight source code blocks
     (setq org-src-fontify-natively t)
-
     ))
-
-
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
