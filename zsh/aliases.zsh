@@ -56,6 +56,8 @@ alias wfc='curl wttr.in/new_york'
 # Global Aliases
 alias C='xsel -b'
 alias G='grep'
+alias Gi='grep -i'
+alias GI='grep -i'
 alias L='less -n'
 alias R='!! | less -n'
 
