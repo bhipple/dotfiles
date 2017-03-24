@@ -358,9 +358,14 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
+  (defun brh/open-org ()
+    (interactive)
+    (find-file "~/org/me.org"))
+
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
     "of" 'magit-pull-from-upstream
+    "oo" 'brh/open-org
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
@@ -418,8 +423,7 @@ you should place your code here."
     (global-set-key "\C-cl" 'org-store-link)
 
     ;; Jump to the me.org file
-    (global-set-key (kbd "C-c o")
-            (lambda () (interactive) (find-file "~/org/me.org")))
+    (global-set-key (kbd "C-c o") 'brh/open-org)
 
     ;; Set org-refile to autocomplete three levels deep and check all agenda files
     (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
@@ -431,17 +435,23 @@ you should place your code here."
     (setq org-agenda-custom-commands
           '(("h" . "HOME searches") ;; Home prefix
             ("ha" "All HOME items" tags-todo "HOME")
+            ("hA" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
             ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
             ("hs" "Search HOME items" ((tags "+HOME") (search "")))
+            ("n" "Agenda and all TODOs" ((agenda "") (alltodo "")))
             ("p" . "Priority searches")
             ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
             ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
             ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
+            ("R" "Weekly Review" agenda "" ((org-agenda-span 'week)
+                                            (org-agenda-log-mode t)
+                                            (org-agenda-archives-mode t)))
             ("w" . "WORK searches")
             ("wa" "All WORK items" tags-todo "WORK")
+            ("wA" "High Priority WORK items and agenda" ((agenda "") (tags-todo "+WORK+PRIORITY=\"A\"")))
             ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
             ("ws" "Search WORK items" ((tags "+WORK") (search "")))
-            ("n" "Agenda and all TODOs" ((agenda "") (alltodo "")))))
+            ))
 
     ;; Highlight source code blocks
     (setq org-src-fontify-natively t)
