@@ -2,6 +2,7 @@
 *.log
 *.o
 *.pyc
+*.stack-work*
 *~
 bin/hub
 emacs~
