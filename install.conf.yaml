@@ -16,7 +16,9 @@
         create: true
         path: vim
     ~/.dir_colors: dir_colors
-    ~/.emacs.d: spacemacs-repo/
+    ~/.emacs.d:
+        force: true
+        path: spacemacs-repo/
     ~/.emacs.d/private/snippets:
       create: true
       force: true
