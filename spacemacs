@@ -1,7 +1,4 @@
 ;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
-
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -397,6 +394,7 @@ you should place your code here."
 
     ;; Org capture templates
     (setq org-capture-templates
+          ;; Personal templates
           '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
                 "* %?\nEntered %u\n")
             ("d" "Deadline Item" entry (file+headline "~/org/work.org" "General Notes")
@@ -404,13 +402,17 @@ you should place your code here."
             ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
                 "* TODO [#C] %?\nEntered %u\n")
             ("p" "Programming Item" entry (file+headline "~/org/me.org" "Programming")
-                "* TODO [#C] %?\nEntered %u\n")
+                "* TODO [#C] %?\n")
             ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
                 "* TODO [#C] %?\nSCHEDULED: %^t")
             ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-                "* TODO [#C] %?\nEntered %u\n")
-            ("w" "Work Note" entry (file+headline "~/org/work.org" "General Notes")
-                "* %?\nEntered %u\n")))
+                "* TODO [#C] %?\n")
+
+            ;; Work.org templates
+            ("n" "Work Note" entry (file+headline "~/org/work.org" "Work Notes")
+                "* %?\n")
+            ("w" "Work Todo" entry (file+headline "~/org/work.org" "Work Tasks")
+                 "* TODO [#C] %?\n")))
 
     ;; Default notes file for capture
     (setq org-default-notes-file "~/org/me.org")
@@ -433,9 +435,9 @@ you should place your code here."
 
     ;; Org Agenda custom searches
     (setq org-agenda-custom-commands
-          '(("h" . "HOME searches") ;; Home prefix
-            ("ha" "All HOME items" tags-todo "HOME")
-            ("hA" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
+          '(("h" . "HOME searches")
+            ("hh" "All HOME items" tags-todo "HOME")
+            ("ha" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
             ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
             ("hs" "Search HOME items" ((tags "+HOME") (search "")))
             ("n" "Agenda and all TODOs" ((agenda "") (alltodo "")))
@@ -443,14 +445,14 @@ you should place your code here."
             ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
             ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
             ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
-            ("R" "Weekly Review" agenda "" ((org-agenda-span 'week)
+            ("r" "Weekly Review" agenda "" ((org-agenda-span 'week)
                                             (org-agenda-log-mode t)
                                             (org-agenda-archives-mode t)))
             ("w" . "WORK searches")
-            ("wa" "All WORK items" tags-todo "WORK")
-            ("wA" "High Priority WORK items and agenda" ((agenda "") (tags-todo "+WORK+PRIORITY=\"A\"")))
+            ("wa" "High Priority WORK items and agenda" ((agenda "") (tags-todo "+WORK+PRIORITY=\"A\"")))
             ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
             ("ws" "Search WORK items" ((tags "+WORK") (search "")))
+            ("ww" "All WORK items" tags-todo "WORK")
             ))
 
     ;; Highlight source code blocks
