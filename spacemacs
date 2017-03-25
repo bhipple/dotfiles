@@ -51,7 +51,7 @@ values."
      go
      graphviz
      (haskell :variables
-              haskell-completion-backend 'intero)
+              haskell-completion-backend 'ghc-mod)
      helm
      markdown
      nginx
