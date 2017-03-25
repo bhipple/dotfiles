@@ -51,6 +51,7 @@ alias vagrant-purge='killall -9 VBoxHeadless && vagrant destroy'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
+alias wifi='nmcli d wifi'
 alias wfc='curl wttr.in/new_york'
 
 # Global Aliases
