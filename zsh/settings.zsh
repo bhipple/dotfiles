@@ -56,6 +56,10 @@ PROMPT='%{$fg[yellow]%}λ %m %{$fg[green]%}%c%{$fg[yellow]%}$(check_last_exit_co
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
+# Similar to the rename command
+# http://www.gsp.com/cgi-bin/man.cgi?section=1&topic=zshcontrib
+autoload -U zmv
+
 #  ============================================================================
 #                          Text Object Surround
 #  ============================================================================
