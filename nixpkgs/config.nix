@@ -63,6 +63,29 @@
       ];
     });
 
+    haskellEnv = with pkgs; hiPrio (buildEnv {
+      name = "haskellEnv";
+      paths = [
+        (haskellPackages.ghcWithPackages (ps: with ps;
+          [ Cabal
+            async
+            filepath
+            ghc-mod
+            hindent
+            hlint
+            hoogle
+            optparse-generic
+            text
+            text-show
+            trifecta
+            turtle
+            xmobar
+            xmonad
+            xmonad-contrib
+            xmonad-extras ]))
+      ];
+    });
+
     # For "permanent" systems; these packages don't seem to play well with MacOS
     bigEnvLinux = with pkgs; hiPrio (buildEnv {
       name = "bigEnvLinux";
