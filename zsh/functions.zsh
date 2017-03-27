@@ -194,7 +194,8 @@ gh_https_to_ssh() {
 # Swap between HTTPS and SSH, optionally specifying which remote.
 gh_swap_remote_protocol() {
     REMOTE=${1-origin}
-    if [[ $(git remote get-url "$REMOTE" | grep "https") ]]; then
+    $(git remote get-url "$REMOTE" | grep "https") > /dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
         gh_https_to_ssh "$REMOTE"
     else
         gh_ssh_to_https "$REMOTE"

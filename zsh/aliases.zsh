@@ -6,10 +6,9 @@ alias cdr='cd $(git rev-parse --show-toplevel)'
 alias e='$EDITOR'
 alias ff='firefox'
 alias fn='find . -name'
-alias g='hub'
+alias g='git'
 alias gg='git grep'
 alias ggi='git grep -i'
-alias git='hub'
 alias gm='gmake -j'
 alias gmc='gmake -j clean'
 alias gmr='gmake clean -j && gmake -j'
@@ -55,6 +54,12 @@ alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
 alias wifi='nmcli d wifi'
 alias wfc='curl wttr.in/new_york'
+
+hash hub > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
+    alias git='hub'
+    alias g='hub'
+fi
 
 # Global Aliases
 alias C='xsel -b'

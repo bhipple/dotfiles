@@ -435,7 +435,8 @@ you should place your code here."
 
     ;; Org Agenda custom searches
     (setq org-agenda-custom-commands
-          '(("h" . "HOME searches")
+          '(("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
+            ("h" . "HOME searches")
             ("hh" "All HOME items" tags-todo "HOME")
             ("ha" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
             ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")

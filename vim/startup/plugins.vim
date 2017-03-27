@@ -35,6 +35,7 @@ Plug 'saltstack/salt-vim', { 'for': 'sls' }              " YAML + Jinja SLS
 Plug 'scrooloose/syntastic'                              " Syntax checking
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
 Plug 'tomtom/startup_profile_vim'                        " Profile vim startup time
+Plug 'tpope/vim-speeddating'                             " Increment and decrement timestamps
 Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
 Plug 'tpope/vim-commentary'                              " Comment/uncomment operator
 Plug 'tpope/vim-dispatch'                                " Asynchronous Makes
