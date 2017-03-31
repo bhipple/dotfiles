@@ -371,7 +371,7 @@ you should place your code here."
   (with-eval-after-load 'org
     (setq org-use-fast-todo-selection t)
     ;; Default TODO progression sequence.
-    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
+    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
 
     ;; Log completion time of DONE items
     (setq org-log-done 'time)
