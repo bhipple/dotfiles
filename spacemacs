@@ -58,7 +58,9 @@ values."
           org-reveal-js-support t
           org-enable-github-support t)
      pandoc
-     python
+     (python :variables
+             python-sort-imports-on-save t
+             python-enable-yapf-format-on-save t)
      salt
      search-engine
      shell-scripts
@@ -422,7 +424,7 @@ you should place your code here."
           ;; Personal templates
           '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
                 "* %?\nEntered %u\n")
-            ("d" "Deadline Item" entry (file+headline "~/org/work.org" "General Notes")
+            ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
                 "* TODO [#C] %?\nDEADLINE: %^t")
             ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
                 "* TODO [#C] %?\nEntered %u\n")
