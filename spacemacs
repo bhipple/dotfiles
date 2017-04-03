@@ -361,6 +361,10 @@ you should place your code here."
     (interactive)
     (find-file "~/org/me.org"))
 
+  (defun brh/open-work-org ()
+    (interactive)
+    (find-file "~/org/work/work.org"))
+
   ;; recursively find .org files in provided directory
   ;; modified from an Emacs Lisp Intro example
   (defun brh/find-org-file-recursively (&optional directory filext)
@@ -391,6 +395,7 @@ you should place your code here."
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
+    "ow" 'brh/open-work-org
   )
 
   (with-eval-after-load 'org
@@ -436,9 +441,9 @@ you should place your code here."
                 "* TODO [#C] %?\n")
 
             ;; Work.org templates
-            ("n" "Work Note" entry (file+headline "~/org/work.org" "Work Notes")
+            ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
                 "* %?\n")
-            ("w" "Work Todo" entry (file+headline "~/org/work.org" "Work Tasks")
+            ("w" "Work Todo" entry (file+headline "~/org/work/work.org" "Work Tasks")
                  "* TODO [#C] %?\n")))
 
     ;; Default notes file for capture
