@@ -359,6 +359,29 @@ you should place your code here."
     (interactive)
     (find-file "~/org/me.org"))
 
+  ;; recursively find .org files in provided directory
+  ;; modified from an Emacs Lisp Intro example
+  (defun brh/find-org-file-recursively (&optional directory filext)
+    "Return .org and .org_archive files recursively from DIRECTORY.
+     If FILEXT is provided, return files with extension FILEXT instead."
+    (interactive "Org Directory: ")
+    (let* (org-file-list
+     (case-fold-search t)       ; filesystems are case sensitive
+     (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
+     (filext (or filext "org$\\\|org_archive"))
+     (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
+     (cur-dir-list (directory-files directory t file-name-regex)))
+      ;; loop over directory listing
+      (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+        (cond
+         ((file-regular-p file-or-dir) ; regular files
+    (if (string-match fileregex file-or-dir) ; org files
+        (add-to-list 'org-file-list file-or-dir)))
+         ((file-directory-p file-or-dir)
+    (dolist (org-file (brh/find-org-file-recursively file-or-dir filext)
+          org-file-list) ; add files found to result
+      (add-to-list 'org-file-list org-file)))))))
+
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
     "of" 'magit-pull-from-upstream
@@ -369,6 +392,8 @@ you should place your code here."
   )
 
   (with-eval-after-load 'org
+    (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
+
     (setq org-use-fast-todo-selection t)
     ;; Default TODO progression sequence.
     (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
@@ -467,9 +492,6 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/org/work.org" "~/org/logs.org" "~/org/lists.org" "~/org/habits.org" "~/org/cheat-sheet.org" "~/org/me.org")))
  '(package-selected-packages
    (quote
     (engine-mode sql-indent stickyfunc-enhance srefactor pandoc-mode ox-pandoc nginx-mode graphviz-dot-mode systemd company-quickhelp ox-gfm go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
