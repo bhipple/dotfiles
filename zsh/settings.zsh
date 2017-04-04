@@ -49,8 +49,11 @@ stty stop undef
 bindkey -v
 
 # zsh-autosuggestions cfg
-# Bind enter to accept and execute
-bindkey '^M' autosuggest-execute
+# Bind <CTRL><SPC> to accept and execute
+bindkey '^ ' autosuggest-execute
+
+# Shift-tab to cycle backwards in autocompletions
+bindkey '^[[Z' reverse-menu-complete
 
 ## ============================================================================
 ##                                  Prompt
