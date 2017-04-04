@@ -64,6 +64,8 @@ export LIBRARY_PATH="/opt/X11/lib:$LIBRARY_PATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+export GTAGSLABEL=pygments
+
 . ~/bin/resty
 
 [[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')

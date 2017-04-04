@@ -52,6 +52,7 @@
 [core]
     pager = less -F -X -R
     preloadindex = true
+    excludesfile = ~/.gitignore_global
 [diff]
     renameLimit = 2500
 [mergetool "fugitive"]
