@@ -48,6 +48,10 @@ stty stop undef
 # Vim mode
 bindkey -v
 
+# zsh-autosuggestions cfg
+# Bind enter to accept and execute
+bindkey '^M' autosuggest-execute
+
 ## ============================================================================
 ##                                  Prompt
 ## ============================================================================
@@ -87,37 +91,3 @@ if ! [ -f ~/.fzf.zsh ]; then
 fi
 
 source ~/.fzf.zsh
-
-## ============================================================================
-##                              Auto-Fu Config
-## ============================================================================
-# https://github.com/hchbaw/auto-fu.zsh/issues/29
-if [ "$AUTO_FU" = "skip" ]; then
-    echo "Skipping auto-fu"
-    return
-fi
-
-zle-line-init () { auto-fu-init; }; zle -N zle-line-init
-zle -N zle-keymap-select auto-fu-zle-keymap-select
-zstyle ':completion:*' completer _oldlist _complete
-zstyle ':auto-fu:var' postdisplay $'
-'
-
-my-reset-prompt-maybe () {
-  # XXX: While auto-stuff is in effect,
-  # when hitting <Return>, $KEYMAP becomes to `main`:
-  # <Return> → `reset-prompt`(*) → `accept-line` → `zle-line-init`
-  # → `zle-keymap-select` → `reset-promt` (again!)
-  # Skip unwanted `reset-prompt`(*).
-  ((auto_fu_init_p==1)) && [[ ${KEYMAP-} == main ]] && return
-
-  # XXX: Please notice that `afu` is treated as Insert-mode-ish.
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins|afu)/}"
-  zle reset-prompt
-}
-
-zle-keymap-select () {
-  auto-fu-zle-keymap-select "$@"
-  my-reset-prompt-maybe
-}
-zle -N zle-keymap-select
