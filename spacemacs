@@ -359,6 +359,11 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
+  (defun brh/shell-region (start end)
+    "Execute region in an inferior shell"
+    (interactive "r")
+    (shell-command (buffer-substring-no-properties start end)))
+
   ;; recursively find .org files in provided directory
   ;; modified from an Emacs Lisp Intro example
   (defun brh/find-org-file-recursively (&optional directory filext)
