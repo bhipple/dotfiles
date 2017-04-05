@@ -354,14 +354,6 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-  (defun brh/open-org ()
-    (interactive)
-    (find-file "~/org/me.org"))
-
-  (defun brh/open-work-org ()
-    (interactive)
-    (find-file "~/org/work/work.org"))
-
   ;; recursively find .org files in provided directory
   ;; modified from an Emacs Lisp Intro example
   (defun brh/find-org-file-recursively (&optional directory filext)
@@ -387,12 +379,13 @@ you should place your code here."
 
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
+    "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
     "of" 'magit-pull-from-upstream
-    "oo" 'brh/open-org
+    "oo" (lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
-    "ow" 'brh/open-work-org
+    "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
   )
 
   (with-eval-after-load 'org
@@ -452,9 +445,6 @@ you should place your code here."
 
     (global-set-key "\C-cb" 'org-iswitchb)
     (global-set-key "\C-cl" 'org-store-link)
-
-    ;; Jump to the me.org file
-    (global-set-key (kbd "C-c o") 'brh/open-org)
 
     ;; Set org-refile to autocomplete three levels deep and check all agenda files
     (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
