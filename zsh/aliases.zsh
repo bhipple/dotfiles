@@ -64,8 +64,9 @@ fi
 # Global Aliases
 alias C='xsel -b'
 alias G='grep'
-alias Gi='grep -i'
 alias GI='grep -i'
+alias Gi='grep -i'
+alias H='--help'
 alias L='less -n'
 alias R='!! | less -n'
 
