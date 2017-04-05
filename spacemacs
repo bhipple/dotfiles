@@ -81,7 +81,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(evil-ediff)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -276,7 +276,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -333,9 +333,6 @@ you should place your code here."
   ;; Don't depend on $TERM
   (setq system-uses-terminfo nil)
 
-  ;; Show line numbers
-  (global-linum-mode t)
-
   ;; Perform dired actions asynchronously
   (dired-async-mode 1)
 
@@ -344,6 +341,11 @@ you should place your code here."
 
   ;; Enable caching. Invalidate the current project cache with C-c p i
   (setq projectile-enable-caching t)
+
+  ;; Regex for buffers to automatically update when the file changes on disk
+  ;; Matches temp files created by ediff like foofile.~[git ref]~, where
+  ;; git ref could be a sha, remote_branch, or ref~N
+  (setq revert-without-query '(".*\.~[a-z0-9_]+~$"))
 
   ;; Fix tabs
   (setq-default indent-tabs-mode nil)
@@ -360,13 +362,10 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-  (defun brh/open-org ()
-    (interactive)
-    (find-file "~/org/me.org"))
-
-  (defun brh/open-work-org ()
-    (interactive)
-    (find-file "~/org/work/work.org"))
+  (defun brh/shell-region (start end)
+    "Execute region in an inferior shell"
+    (interactive "r")
+    (shell-command (buffer-substring-no-properties start end)))
 
   ;; recursively find .org files in provided directory
   ;; modified from an Emacs Lisp Intro example
@@ -393,12 +392,13 @@ you should place your code here."
 
   (spacemacs/set-leader-keys
     "ob" 'helm-buffers-list
+    "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
     "of" 'magit-pull-from-upstream
-    "oo" 'brh/open-org
+    "oo" (lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
-    "ow" 'brh/open-work-org
+    "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
   )
 
   (with-eval-after-load 'org
@@ -458,9 +458,6 @@ you should place your code here."
 
     (global-set-key "\C-cb" 'org-iswitchb)
     (global-set-key "\C-cl" 'org-store-link)
-
-    ;; Jump to the me.org file
-    (global-set-key (kbd "C-c o") 'brh/open-org)
 
     ;; Set org-refile to autocomplete three levels deep and check all agenda files
     (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
