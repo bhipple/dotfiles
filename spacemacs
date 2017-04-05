@@ -467,7 +467,9 @@ you should place your code here."
 
     ;; Org Agenda custom searches
     (setq org-agenda-custom-commands
-          '(("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
+          ;; TODO: Figure out how to alternate tags. Tried "BLOCKED|WAITING", "/BLOCKED|WAITING"
+          '(("b" "Blocked and Waiting items" (tags "{BLOCKED\\|WAITING}"))
+            ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
             ("h" . "HOME searches")
             ("hh" "All HOME items" tags-todo "HOME")
             ("ha" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
@@ -482,7 +484,7 @@ you should place your code here."
                                             (org-agenda-log-mode t)
                                             (org-agenda-archives-mode t)))
             ("w" . "WORK searches")
-            ("wa" "High Priority WORK items and agenda" ((agenda "") (tags-todo "+WORK+PRIORITY=\"A\"")))
+            ("wa" "WORK items and agenda" ((agenda "") (tags-todo "WORK")))
             ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
             ("ws" "Search WORK items" ((tags "+WORK") (search "")))
             ("ww" "All WORK items" tags-todo "WORK")
