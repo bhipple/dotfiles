@@ -339,6 +339,10 @@ you should place your code here."
   ;; Enable caching. Invalidate the current project cache with C-c p i
   (setq projectile-enable-caching t)
 
+  ;; Regex for buffers to automatically update when the file changes on disk
+  ;; Matches temp files created by ediff like foofile.~[git sha]~
+  (setq revert-without-query '(".*\~[a-z0-9]{40}\~$"))
+
   ;; Fix tabs
   (setq-default indent-tabs-mode nil)
   (setq c-basic-indent 4)
