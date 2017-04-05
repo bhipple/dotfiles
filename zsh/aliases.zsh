@@ -62,13 +62,13 @@ if [[ $? -eq 0 ]]; then
 fi
 
 # Global Aliases
-alias C='xsel -b'
-alias G='grep'
-alias GI='grep -i'
-alias Gi='grep -i'
-alias H='--help'
-alias L='less -n'
-alias R='!! | less -n'
+alias -g C='xsel -b'
+alias -g G='grep'
+alias -g GI='grep -i'
+alias -g Gi='grep -i'
+alias -g H='--help'
+alias -g L='less -n'
+alias -g R='!! | less -n'
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
