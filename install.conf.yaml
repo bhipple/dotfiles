@@ -31,7 +31,7 @@
     ~/.git_template: git_template/
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
-    ~/.gtags.conf: gtags.conf
+    ~/.globalrc: gtags.conf
     ~/.haskeline: haskeline
     ~/.inputrc: inputrc
     ~/.irssi: irssi/
