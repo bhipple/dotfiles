@@ -12,14 +12,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Hitting ctrl+r for nice history searching
 bindkey "^r" history-incremental-search-backward
 
-# Auto-fu adds additional modes to zsh zle. To get keybindings in one of these
-# modes with or without auto-fu, bind the key in all modes of that type.
-normalModes=("vicmd" "afu-vicmd")
-insertModes=("viins" "afu")
-if [ "$AUTO_FU" = "skip" ]; then
-    normalModes=("vicmd")
-    insertModes=("viins")
-fi
+normalModes=("vicmd")
+insertModes=("viins")
 
 # Visual modes added in zsh 5.0.8
 visualModes=()
@@ -29,8 +23,8 @@ if [ $? -eq 0 ]; then
 fi
 
 for m in $normalModes; do
-    bindkey -M vicmd 'k' history-substring-search-up
-    bindkey -M vicmd 'j' history-substring-search-down
+    bindkey -M "$m" 'k' history-substring-search-up
+    bindkey -M "$m" 'j' history-substring-search-down
 done
 
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of commands active in mode foo
