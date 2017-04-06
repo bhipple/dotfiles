@@ -59,7 +59,6 @@ values."
           org-startup-indented t
           org-reveal-js-support t
           org-enable-github-support t)
-     org-jira
      pandoc
      (python :variables
              python-sort-imports-on-save nil
@@ -391,6 +390,7 @@ you should place your code here."
       (add-to-list 'org-file-list org-file)))))))
 
   (spacemacs/set-leader-keys
+    "oa" 'org-agenda
     "ob" 'helm-buffers-list
     "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
     "of" 'magit-pull-from-upstream
@@ -465,17 +465,25 @@ you should place your code here."
     ;; Archive to subdirectory
     (setq org-archive-location "~/org/archive/%s_archive::")
 
+    ;; How far in advance to show deadlines on agenda views
+    (setq org-deadline-warning-days 10)
+
+    ;; By default, don't show DONE and archived items.
+    (setq org-agenda-log-mode nil)
+    (setq org-agenda-archives-mode nil)
+
     ;; Org Agenda custom searches
     (setq org-agenda-custom-commands
-          ;; TODO: Figure out how to alternate tags. Tried "BLOCKED|WAITING", "/BLOCKED|WAITING"
-          '(("b" "Blocked and Waiting items" (tags "{BLOCKED\\|WAITING}"))
+          '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"")))
             ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
             ("h" . "HOME searches")
             ("hh" "All HOME items" tags-todo "HOME")
             ("ha" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
             ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
             ("hs" "Search HOME items" ((tags "+HOME") (search "")))
-            ("n" "Agenda and all TODOs" ((agenda "") (alltodo "")))
+            ("n" "Today's agenda and all TODOs" ((agenda "" ((org-agenda-span 'day)
+                                                             (org-agenda-log-mode t)))
+                                                 (todo "TODO")))
             ("p" . "Priority searches")
             ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
             ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
@@ -484,11 +492,13 @@ you should place your code here."
                                             (org-agenda-log-mode t)
                                             (org-agenda-archives-mode t)))
             ("w" . "WORK searches")
-            ("wa" "WORK items and agenda" ((agenda "") (tags-todo "WORK")))
+            ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
+                                                               (org-agenda-archives-mode nil)
+                                                               (org-agenda-log-mode nil)))
+                                                   (tags-todo "+WORK-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
             ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
-            ("ws" "Search WORK items" ((tags "+WORK") (search "")))
-            ("ww" "All WORK items" tags-todo "WORK")
-            ))
+            ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
+            ("ww" "All WORK items" tags-todo "WORK")))
 
     ;; Highlight source code blocks
     (setq org-src-fontify-natively t)
@@ -503,7 +513,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-gtags ggtags web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode org-jira engine-mode sql-indent stickyfunc-enhance srefactor pandoc-mode ox-pandoc nginx-mode graphviz-dot-mode systemd company-quickhelp ox-gfm go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (helm-gtags ggtags web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode engine-mode sql-indent stickyfunc-enhance srefactor pandoc-mode ox-pandoc nginx-mode graphviz-dot-mode systemd company-quickhelp ox-gfm go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(tramp-default-method "ssh"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
