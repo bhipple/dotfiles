@@ -401,6 +401,7 @@ you should place your code here."
     "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
   )
 
+  (require 'org-habit)
   (with-eval-after-load 'org
     (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
 
