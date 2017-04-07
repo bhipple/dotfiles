@@ -502,7 +502,13 @@ you should place your code here."
 
     ;; Highlight source code blocks
     (setq org-src-fontify-natively t)
-    ))
+    )
+
+  ;; Load local settings
+  (if file-accessible-dirctory-p "~/.emacs_local" (
+    (add-to-list 'load-path "~/.emacs_local/")
+    (require 'brh-local)))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
