@@ -12,14 +12,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Hitting ctrl+r for nice history searching
 bindkey "^r" history-incremental-search-backward
 
-# Auto-fu adds additional modes to zsh zle. To get keybindings in one of these
-# modes with or without auto-fu, bind the key in all modes of that type.
-normalModes=("vicmd" "afu-vicmd")
-insertModes=("viins" "afu")
-if [ "$AUTO_FU" = "skip" ]; then
-    normalModes=("vicmd")
-    insertModes=("viins")
-fi
+normalModes=("vicmd")
+insertModes=("viins")
 
 # Visual modes added in zsh 5.0.8
 visualModes=()
@@ -29,8 +23,8 @@ if [ $? -eq 0 ]; then
 fi
 
 for m in $normalModes; do
-    bindkey -M vicmd 'k' history-substring-search-up
-    bindkey -M vicmd 'j' history-substring-search-down
+    bindkey -M "$m" 'k' history-substring-search-up
+    bindkey -M "$m" 'j' history-substring-search-down
 done
 
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of commands active in mode foo
@@ -48,6 +42,13 @@ stty stop undef
 # Vim mode
 bindkey -v
 
+# zsh-autosuggestions cfg
+# Bind <CTRL><SPC> to accept and execute
+bindkey '^ ' autosuggest-execute
+
+# Shift-tab to cycle backwards in autocompletions
+bindkey '^[[Z' reverse-menu-complete
+
 ## ============================================================================
 ##                                  Prompt
 ## ============================================================================
@@ -55,6 +56,10 @@ PROMPT='%{$fg[yellow]%}λ %m %{$fg[green]%}%c%{$fg[yellow]%}$(check_last_exit_co
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
+
+# Similar to the rename command
+# http://www.gsp.com/cgi-bin/man.cgi?section=1&topic=zshcontrib
+autoload -U zmv
 
 #  ============================================================================
 #                          Text Object Surround
@@ -83,37 +88,3 @@ if ! [ -f ~/.fzf.zsh ]; then
 fi
 
 source ~/.fzf.zsh
-
-## ============================================================================
-##                              Auto-Fu Config
-## ============================================================================
-# https://github.com/hchbaw/auto-fu.zsh/issues/29
-if [ "$AUTO_FU" = "skip" ]; then
-    echo "Skipping auto-fu"
-    return
-fi
-
-zle-line-init () { auto-fu-init; }; zle -N zle-line-init
-zle -N zle-keymap-select auto-fu-zle-keymap-select
-zstyle ':completion:*' completer _oldlist _complete
-zstyle ':auto-fu:var' postdisplay $'
-'
-
-my-reset-prompt-maybe () {
-  # XXX: While auto-stuff is in effect,
-  # when hitting <Return>, $KEYMAP becomes to `main`:
-  # <Return> → `reset-prompt`(*) → `accept-line` → `zle-line-init`
-  # → `zle-keymap-select` → `reset-promt` (again!)
-  # Skip unwanted `reset-prompt`(*).
-  ((auto_fu_init_p==1)) && [[ ${KEYMAP-} == main ]] && return
-
-  # XXX: Please notice that `afu` is treated as Insert-mode-ish.
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins|afu)/}"
-  zle reset-prompt
-}
-
-zle-keymap-select () {
-  auto-fu-zle-keymap-select "$@"
-  my-reset-prompt-maybe
-}
-zle -N zle-keymap-select

@@ -1,3 +1,5 @@
+[[ -f ~/.zshenv_local.zsh ]] && . ~/.zshenv_local.zsh
+
 skip_global_compinit=1
 
 ## ============================================================================
@@ -8,7 +10,13 @@ if ! [[ "$TERM" == "screen-256color" || "$TERM" == "dumb" ]]; then
 fi
 
 export GTEST_COLOR=yes
-export EDITOR=emacsclient
+
+# Use emacsclient on my desktop/laptop; vim on cloud nodes, etc.
+if [[ "$(hostname)" = brh* ]]; then
+    export EDITOR=emacsclient
+else
+    export EDITOR=vim
+fi
 
 cmd=$(uname -a | grep -q "Darwin")
 if [ $? -eq 0 ]; then
@@ -56,6 +64,8 @@ export LIBRARY_PATH="/opt/X11/lib:$LIBRARY_PATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+export GTAGSLABEL=pygments
+
 . ~/bin/resty
 
 [[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
@@ -63,6 +73,7 @@ export LANG=en_US.UTF-8
 export GPG=gpg2
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_COMPLETION_TRIGGER='~~'
 
 pathDeduplicate() {
     export PATH="$(echo "$PATH" |

@@ -161,6 +161,47 @@ fstash() {
   done
 }
 
+# Get the foo/bar part of https://github.com/foo/bar.git or git@github.com:foo/bar.git
+gh_remote() {
+    REMOTE=${1-origin}
+    rmt=$(git remote get-url "$REMOTE" \
+              | grep -Eo "([_A-Za-z0-9-]+\/[_A-Za-z0-9-]+(.git)?$)" \
+              | sed 's/\.git$//')
+    if [[ $? -ne 0 ]]; then
+        echo "Failed to get owner/repo from $REMOTE"
+        exit 1
+    else
+        echo "$rmt"
+    fi
+}
+
+_gh_swapper() {
+    repo=$(gh_remote "$1")
+    git remote remove "$1"
+    git remote add -mt "$1" "${2}${repo}.git"
+    echo "Set remote $REMOTE to $(git remote get-url $REMOTE)"
+
+}
+
+gh_ssh_to_https() {
+    _gh_swapper "$1" "https://github.com/"
+}
+
+gh_https_to_ssh() {
+    _gh_swapper "$1" "git@github.com:"
+}
+
+# Swap between HTTPS and SSH, optionally specifying which remote.
+gh_swap_remote_protocol() {
+    REMOTE=${1-origin}
+    $(git remote get-url "$REMOTE" | grep "https") > /dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        gh_https_to_ssh "$REMOTE"
+    else
+        gh_ssh_to_https "$REMOTE"
+    fi
+}
+
 #  ============================================================================
 #                                Stacksort
 #  ============================================================================

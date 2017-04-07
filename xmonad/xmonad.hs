@@ -33,8 +33,7 @@ myTerminal = "xterm"
 
 -- Program names that should not be managed and tiled
 composeHook = composeAll [
-        className =? "Gimp" --> doFloat,
-        className =? "feh" --> doFloat
+        className =? "Gimp" --> doFloat
     ]
 
 myManageHook = manageDocks <+> composeHook <+> manageHook def

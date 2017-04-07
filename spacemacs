@@ -47,9 +47,11 @@ values."
      github
      go
      graphviz
+     gtags
      (haskell :variables
               haskell-completion-backend 'ghc-mod)
      helm
+     javascript
      markdown
      nginx
      nixos
@@ -58,7 +60,9 @@ values."
           org-reveal-js-support t
           org-enable-github-support t)
      pandoc
-     python
+     (python :variables
+             python-sort-imports-on-save nil
+             python-enable-yapf-format-on-save t)
      salt
      search-engine
      shell-scripts
@@ -76,7 +80,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(evil-ediff)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -154,11 +158,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Fira Mono"
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -263,7 +267,7 @@ values."
    ;; If non nil show the color guide hint for transient state keys. (default t)
    dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -271,7 +275,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -328,9 +332,6 @@ you should place your code here."
   ;; Don't depend on $TERM
   (setq system-uses-terminfo nil)
 
-  ;; Show line numbers
-  (global-linum-mode t)
-
   ;; Perform dired actions asynchronously
   (dired-async-mode 1)
 
@@ -339,6 +340,11 @@ you should place your code here."
 
   ;; Enable caching. Invalidate the current project cache with C-c p i
   (setq projectile-enable-caching t)
+
+  ;; Regex for buffers to automatically update when the file changes on disk
+  ;; Matches temp files created by ediff like foofile.~[git ref]~, where
+  ;; git ref could be a sha, remote_branch, or ref~N
+  (setq revert-without-query '(".*\.~[a-z0-9_]+~$"))
 
   ;; Fix tabs
   (setq-default indent-tabs-mode nil)
@@ -355,23 +361,53 @@ you should place your code here."
   (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
   (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-  (defun brh/open-org ()
-    (interactive)
-    (find-file "~/org/me.org"))
+  (defun brh/shell-region (start end)
+    "Execute region in an inferior shell"
+    (interactive "r")
+    (shell-command (buffer-substring-no-properties start end)))
+
+  ;; recursively find .org files in provided directory
+  ;; modified from an Emacs Lisp Intro example
+  (defun brh/find-org-file-recursively (&optional directory filext)
+    "Return .org and .org_archive files recursively from DIRECTORY.
+     If FILEXT is provided, return files with extension FILEXT instead."
+    (interactive "Org Directory: ")
+    (let* (org-file-list
+     (case-fold-search t)       ; filesystems are case sensitive
+     (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
+     (filext (or filext "org$\\\|org_archive"))
+     (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
+     (cur-dir-list (directory-files directory t file-name-regex)))
+      ;; loop over directory listing
+      (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+        (cond
+         ((file-regular-p file-or-dir) ; regular files
+    (if (string-match fileregex file-or-dir) ; org files
+        (add-to-list 'org-file-list file-or-dir)))
+         ((file-directory-p file-or-dir)
+    (dolist (org-file (brh/find-org-file-recursively file-or-dir filext)
+          org-file-list) ; add files found to result
+      (add-to-list 'org-file-list org-file)))))))
 
   (spacemacs/set-leader-keys
+    "oa" 'org-agenda
     "ob" 'helm-buffers-list
+    "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
     "of" 'magit-pull-from-upstream
-    "oo" 'brh/open-org
+    "oo" (lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
     "ot" 'multi-term
     "os" 'org-sort-entries
+    "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
   )
 
+  (require 'org-habit)
   (with-eval-after-load 'org
+    (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
+
     (setq org-use-fast-todo-selection t)
     ;; Default TODO progression sequence.
-    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)")))
+    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
 
     ;; Log completion time of DONE items
     (setq org-log-done 'time)
@@ -397,7 +433,7 @@ you should place your code here."
           ;; Personal templates
           '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
                 "* %?\nEntered %u\n")
-            ("d" "Deadline Item" entry (file+headline "~/org/work.org" "General Notes")
+            ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
                 "* TODO [#C] %?\nDEADLINE: %^t")
             ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
                 "* TODO [#C] %?\nEntered %u\n")
@@ -409,9 +445,9 @@ you should place your code here."
                 "* TODO [#C] %?\n")
 
             ;; Work.org templates
-            ("n" "Work Note" entry (file+headline "~/org/work.org" "Work Notes")
+            ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
                 "* %?\n")
-            ("w" "Work Todo" entry (file+headline "~/org/work.org" "Work Tasks")
+            ("w" "Work Todo" entry (file+headline "~/org/work/work.org" "Work Tasks")
                  "* TODO [#C] %?\n")))
 
     ;; Default notes file for capture
@@ -424,23 +460,31 @@ you should place your code here."
     (global-set-key "\C-cb" 'org-iswitchb)
     (global-set-key "\C-cl" 'org-store-link)
 
-    ;; Jump to the me.org file
-    (global-set-key (kbd "C-c o") 'brh/open-org)
-
     ;; Set org-refile to autocomplete three levels deep and check all agenda files
     (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
 
     ;; Archive to subdirectory
     (setq org-archive-location "~/org/archive/%s_archive::")
 
+    ;; How far in advance to show deadlines on agenda views
+    (setq org-deadline-warning-days 10)
+
+    ;; By default, don't show DONE and archived items.
+    (setq org-agenda-log-mode nil)
+    (setq org-agenda-archives-mode nil)
+
     ;; Org Agenda custom searches
     (setq org-agenda-custom-commands
-          '(("h" . "HOME searches")
+          '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"")))
+            ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
+            ("h" . "HOME searches")
             ("hh" "All HOME items" tags-todo "HOME")
             ("ha" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
             ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
             ("hs" "Search HOME items" ((tags "+HOME") (search "")))
-            ("n" "Agenda and all TODOs" ((agenda "") (alltodo "")))
+            ("n" "Today's agenda and all TODOs" ((agenda "" ((org-agenda-span 'day)
+                                                             (org-agenda-log-mode t)))
+                                                 (todo "TODO")))
             ("p" . "Priority searches")
             ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
             ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
@@ -449,15 +493,22 @@ you should place your code here."
                                             (org-agenda-log-mode t)
                                             (org-agenda-archives-mode t)))
             ("w" . "WORK searches")
-            ("wa" "High Priority WORK items and agenda" ((agenda "") (tags-todo "+WORK+PRIORITY=\"A\"")))
+            ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
+                                                               (org-agenda-archives-mode nil)
+                                                               (org-agenda-log-mode nil)))
+                                                   (tags-todo "+WORK-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
             ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
-            ("ws" "Search WORK items" ((tags "+WORK") (search "")))
-            ("ww" "All WORK items" tags-todo "WORK")
-            ))
+            ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
+            ("ww" "All WORK items" tags-todo "WORK")))
 
     ;; Highlight source code blocks
-    (setq org-src-fontify-natively t)
-    ))
+    (setq org-src-fontify-natively t))
+
+  ;; Load local settings
+  (add-to-list 'load-path "~/.emacs_local/")
+  (require 'brh-local)
+
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -466,12 +517,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/org/work.org" "~/org/logs.org" "~/org/lists.org" "~/org/habits.org" "~/org/cheat-sheet.org" "~/org/me.org")))
  '(package-selected-packages
    (quote
-    (engine-mode sql-indent stickyfunc-enhance srefactor pandoc-mode ox-pandoc nginx-mode graphviz-dot-mode systemd company-quickhelp ox-gfm go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (confluence org-jira helm-gtags ggtags web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode engine-mode sql-indent stickyfunc-enhance srefactor pandoc-mode ox-pandoc nginx-mode graphviz-dot-mode systemd company-quickhelp ox-gfm go-guru go-eldoc company-go go-mode zeal-at-point yapfify salt-mode mmm-jinja2 yaml-mode pyvenv pytest pyenv-mode py-isort pip-requirements nix-mode magit-gh-pulls live-py-mode intero insert-shebang hy-mode hlint-refactor hindent helm-pydoc helm-nixos-options helm-hoogle helm-dash haskell-snippets github-search github-clone github-browse-file gist gh marshal logito pcache ht flycheck-haskell fish-mode disaster cython-mode company-shell company-nixos-options nixos-options company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-anaconda cmm-mode cmake-mode clang-format anaconda-mode pythonic orgit org-present org-pomodoro alert log4e markdown-toc magit-gitflow helm-gitignore helm-company helm-c-yasnippet git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ flyspell-correct-helm flycheck-pos-tip pos-tip evil-magit magit magit-popup git-commit company-statistics auto-yasnippet ac-ispell smeargle mwim mmm-mode markdown-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter gh-md flyspell-correct flycheck with-editor diff-hl company yasnippet auto-dictionary auto-complete org-projectile org gntp org-download htmlize gnuplot ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(tramp-default-method "ssh"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
