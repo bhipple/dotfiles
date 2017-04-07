@@ -501,13 +501,12 @@ you should place your code here."
             ("ww" "All WORK items" tags-todo "WORK")))
 
     ;; Highlight source code blocks
-    (setq org-src-fontify-natively t)
-    )
+    (setq org-src-fontify-natively t))
 
   ;; Load local settings
-  (if file-accessible-dirctory-p "~/.emacs_local" (
-    (add-to-list 'load-path "~/.emacs_local/")
-    (require 'brh-local)))
+  (add-to-list 'load-path "~/.emacs_local/")
+  (require 'brh-local)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
