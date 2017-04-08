@@ -34,6 +34,7 @@
     rba = rebase --abort
     rbc = rebase --continue
     rmt = remote -v
+    rod = rebase origin/dev -i
     rom = rebase origin/master -i
     s = show
     sed = "!git ls-files | xargs sed -i"
