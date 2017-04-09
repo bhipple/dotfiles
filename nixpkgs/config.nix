@@ -40,7 +40,7 @@
       name = "bigEnv";
       paths = [
         aspell
-        commons-compress
+        #commons-compress
         cmake
         emacs25
         gnumake
@@ -51,6 +51,7 @@
         imagemagick
         irssi
         neovim
+        nodePackages.tern  # Needed by spacemacs JS layer
         pandoc
         shellcheck
         source-code-pro
