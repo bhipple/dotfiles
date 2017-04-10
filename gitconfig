@@ -7,11 +7,13 @@
     co = checkout
     cob = checkout -b
     cop = "!f() { git fetch ${2:-origin} pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-    db = "!echo 'Deleting all branches merged into master ...' ; \
+    db = "!echo 'Deleting all branches merged into origin/master or origin/dev ...' ; \
        git fetch --all --prune ; \
-       git branch --merged origin/master | grep -Ev '(master|releases|[*])' | xargs -n 1 git branch -d ; \
-       git branch --merged origin/master -r | grep -Ev '(master|releases)' \
-            | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER "
+       for b in master dev; do \
+           git branch --merged origin/$b | grep -Ev '(master|dev|releases|[*])' | xargs -n 1 git branch -d ; \
+           git branch --merged origin/$b -r | grep -Ev '(master|dev|releases)' \
+                | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER; \
+       done"
     df = diff
     dfc = diff --cached
     dfh = diff -- .
