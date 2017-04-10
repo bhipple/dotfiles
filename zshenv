@@ -64,6 +64,10 @@ export LIBRARY_PATH="/opt/X11/lib:$LIBRARY_PATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# Spacemacs errors if it looks for an env var and it isn't set
+export MANPATH=""
+export GOPATH=""
+
 export GTAGSLABEL=pygments
 
 . ~/bin/resty
