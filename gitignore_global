@@ -43,3 +43,7 @@ GPATH
 GRTAGS
 GTAGS
 TAGS
+
+# Editor Files #
+################
+.tramp_history
