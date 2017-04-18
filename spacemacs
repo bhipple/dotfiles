@@ -64,6 +64,7 @@ values."
      (python :variables
              python-sort-imports-on-save nil
              python-enable-yapf-format-on-save t)
+     restclient
      salt
      search-engine
      shell-scripts
