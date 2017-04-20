@@ -21,8 +21,13 @@ create_ssh() {
 
 nix_install() {
     if ! [ -d /nix ]; then
-        echo "NixPkg not installed on this machine. Installing."
-        curl https://nixos.org/nix/install | sh
+        echo "NixPkg not installed on this machine."
+        if [[ $(groups | grep sudo) ]]; then
+            curl https://nixos.org/nix/install | sh
+        else
+            echo "Can't install NixPkg without sudo."
+            return
+        fi
     fi
 
     [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
