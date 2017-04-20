@@ -19,10 +19,6 @@
     ~/.emacs.d:
         force: true
         path: spacemacs-repo/
-    ~/.emacs.d/private/snippets:
-      create: true
-      force: true
-      path: yasnippet-snippets/
     ~/.spacemacs: spacemacs
     ~/.fzf: fzf/
     ~/.ghc/ghci.conf:
