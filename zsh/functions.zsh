@@ -12,6 +12,11 @@ confirm() {
     fi
 }
 
+# Removes "<none>" containers
+docker-rmi-anon() {
+    docker images | grep "<none>" | awk '{print $3}' | xargs -I{} docker rmi -f {}
+}
+
 vimdf() {
     nvim -p \
         $(git diff --name-only --diff-filter=M | tr '\n' ' ')
