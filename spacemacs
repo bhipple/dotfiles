@@ -407,7 +407,7 @@ you should place your code here."
              (call-interactively 'helm-grep-do-git-grep)))
     "oo" (lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
-    "ot" 'multi-term
+    "ot" 'org-insert-todo-heading-respect-content
     "os" 'org-sort-entries
     "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
   )
