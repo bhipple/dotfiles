@@ -10,6 +10,7 @@
 [submodule "yasnippet-snippets"]
     path = yasnippet-snippets
     url = https://github.com/bhipple/yasnippet-snippets
+    branch = master
 [submodule "fzf"]
     path = fzf
     url = https://github.com/junegunn/fzf
