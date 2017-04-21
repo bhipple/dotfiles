@@ -51,6 +51,7 @@
         imagemagick
         irssi
         neovim
+        vimPlugins.youcompleteme
         nodePackages.tern  # Needed by spacemacs JS layer
         pandoc
         shellcheck

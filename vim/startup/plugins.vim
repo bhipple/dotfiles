@@ -8,7 +8,6 @@ Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command 
 Plug 'SirVer/ultisnips'                                  " Text snippets
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
-Plug 'Valloric/YouCompleteMe'                            " Autocompletion
 Plug 'bhipple/vim-hindent'                               " Haskell code formatter
 Plug 'bhipple/vim-snippets'                              " My snippets fork
 Plug 'bhipple/vimux'                                     " Vim and Tmux Integration
@@ -57,6 +56,9 @@ endif
 
 
 call plug#end()
+
+" Include plugins installed with nixpkgs
+set rtp+=~/.nix-profile/share/vim-plugins/youcompleteme
 
 "" ============================================================================
 ""                              Plugin Settings
