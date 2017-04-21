@@ -1,18 +1,21 @@
 [submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+    path = dotbot
+    url = https://github.com/anishathalye/dotbot
 [submodule "zgen"]
-	path = zgen
-	url = https://github.com/tarjoilija/zgen
+    path = zgen
+    url = https://github.com/tarjoilija/zgen
 [submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+    path = tmux/plugins/tpm
+    url = https://github.com/tmux-plugins/tpm
 [submodule "yasnippet-snippets"]
-	path = yasnippet-snippets
-	url = https://github.com/bhipple/yasnippet-snippets
+    path = yasnippet-snippets
+    url = https://github.com/bhipple/yasnippet-snippets
 [submodule "fzf"]
-	path = fzf
-	url = https://github.com/junegunn/fzf
+    path = fzf
+    url = https://github.com/junegunn/fzf
 [submodule "spacemacs"]
-	path = spacemacs-repo
-	url = https://github.com/syl20bnr/spacemacs
+    path = spacemacs-repo
+    url = https://github.com/syl20bnr/spacemacs
+[submodule "reveal.js"]
+    path = reveal.js
+    url = https://github.com/hakimel/reveal.js
