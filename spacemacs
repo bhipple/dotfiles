@@ -401,8 +401,7 @@ you should place your code here."
     "ob" 'helm-buffers-list
     "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
     "of" 'magit-pull-from-upstream
-    "og" (lambda () "Git grep repository from root"
-           (interactive)
+    "og" (lambda () "Git grep repository from root" (interactive)
            (let ((current-prefix-arg '(4)))
              (call-interactively 'helm-grep-do-git-grep)))
     "oo" (lambda () (interactive) (find-file "~/org/me.org"))
@@ -422,6 +421,15 @@ you should place your code here."
 
     ;; Log completion time of DONE items
     (setq org-log-done 'time)
+
+    ;; Use pinned reveal.js
+    (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
+
+    ;; Enable org-babel
+    (org-babel-do-load-languages 'org-babel-load-languages '((shell . t)
+                                                             (python . t)
+                                                             (emacs-lisp . t)
+                                                             ))
 
     ;; Tags
     (setq org-tag-alist '(("ALGOS" . ?a)
