@@ -40,6 +40,9 @@ cd "$NIX_VERSION" || exit 1
 make -j 2
 make install
 
+echo "Setting up system profile environment variables"
+echo "export NIX_REMOTE=daemon" >> /etc/environment
+
 cat << 'EOM' > /etc/systemd/system/nix.service
 [Unit]
 Description=Nix daemon
@@ -90,7 +93,7 @@ nix-setup-user $1
 EOM
 
 chmod +x /root/nix-setup-user.sh
-cat "source /root/nix-setup-user.sh" >> /root/.bashrc
+echo "source /root/nix-setup-user.sh" >> /root/.bashrc
 
 echo "Finished installing multi-user nixpkg."
 echo "To enable a user, run nix-setup-user foouser"
