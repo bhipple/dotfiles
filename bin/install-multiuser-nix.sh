@@ -40,7 +40,7 @@ cd "$NIX_VERSION" || exit 1
 make -j 2
 make install
 
-cat << EOM > /etc/systemd/system/nix.service
+cat << 'EOM' > /etc/systemd/system/nix.service
 [Unit]
 Description=Nix daemon
 
@@ -80,6 +80,13 @@ nix-setup-user() {
 
     su -lc "cd; . /usr/local/etc/profile.d/nix.sh; NIX_REMOTE=daemon nix-channel --update" "$TARGET_USER"
 }
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <user>"
+    exit 1
+fi
+
+nix-setup-user $1
 EOM
 
 chmod +x /root/nix-setup-user.sh
