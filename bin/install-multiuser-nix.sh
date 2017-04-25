@@ -2,19 +2,40 @@
 # Run as root on a Debian machine in order to install
 # a multi-user nixpkg setup with 10 builders.
 
+if [[ $USER != "root" ]]; then
+    echo "Usage: sudo $0"
+    exit 1
+fi
+
 NIX_VERSION="nix-1.11.9"
 
-apt-get update && \
-  apt-get install build-essential pkg-config autotools-dev dh-autoreconf libssl-dev libbz2-dev libsqlite3-dev libcurl4-openssl-dev liblzma-dev libgc-dev libdbi-perl libdbd-sqlite3-perl libwww-curl-perl libxml2 libxslt-dev
+apt-get update && apt-get install -y \
+    autotools-dev \
+    build-essential \
+    dh-autoreconf \
+    libbz2-dev \
+    libcurl4-openssl-dev \
+    libdbd-sqlite3-perl \
+    libdbi-perl \
+    libgc-dev \
+    liblzma-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libwww-curl-perl \
+    libxml2 \
+    libxslt-dev \
+    pkg-config
 
 groupadd -r nixbld
-for n in $(seq 1 10); do useradd -c "Nix build user $n" \
-    -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
-    nixbld$n; done
+for n in $(seq 1 10); do
+    useradd -c "Nix build user $n" \
+            -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
+            "nixbld$n"
+done
 
 wget http://nixos.org/releases/nix/$NIX_VERSION/$NIX_VERSION.tar.xz
 tar -xvf $NIX_VERSION.tar.xz
-cd $NIX_VERSION
+cd "$NIX_VERSION" || exit 1
 ./configure --enable-gc
 make -j 2
 make install
@@ -38,7 +59,7 @@ touch /etc/default/nix
 systemctl enable nix
 systemctl start nix
 
-cat << EOM > /root/nix-setup-user.sh
+cat << 'EOM' > /root/nix-setup-user.sh
 nix-setup-user() {
     TARGET_USER="$1"
     SYMLINK_PATH="/home/$TARGET_USER/.nix-profile"
@@ -61,6 +82,7 @@ nix-setup-user() {
 }
 EOM
 
+chmod +x /root/nix-setup-user.sh
 cat "source /root/nix-setup-user.sh" >> /root/.bashrc
 
 echo "Finished installing multi-user nixpkg."
