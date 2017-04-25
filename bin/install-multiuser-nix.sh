@@ -78,8 +78,10 @@ nix-setup-user() {
     ln -s "$PROFILE_DIR/profile" "$SYMLINK_PATH"
     chown -h "$TARGET_USER:$TARGET_USER" "$SYMLINK_PATH"
 
-    echo "export NIX_REMOTE=daemon" >> "/home/$TARGET_USER/.profile"
-    echo ". /usr/local/etc/profile.d/nix.sh >> "/home/$TARGET_USER/.profile"
+    for p in bashrc zshrc; do
+        echo "export NIX_REMOTE=daemon" >> "/home/$TARGET_USER/.$p"
+        echo ". /usr/local/etc/profile.d/nix.sh >> "/home/$TARGET_USER/.$p"
+    done
 
     su -lc "cd; . /usr/local/etc/profile.d/nix.sh; NIX_REMOTE=daemon nix-channel --update" "$TARGET_USER"
 }
