@@ -27,6 +27,7 @@
         nix-repl
         par
         python
+        rlwrap
         tmux
         tree
         unzip
