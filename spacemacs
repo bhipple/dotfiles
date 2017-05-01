@@ -406,7 +406,10 @@ you should place your code here."
              (call-interactively 'helm-grep-do-git-grep)))
     "oo" (lambda () (interactive) (find-file "~/org/me.org"))
     "op" 'magit-push-current-to-upstream
-    "ot" 'org-insert-todo-heading-respect-content
+    "ot" (lambda () "Add org TODO [#C]" (interactive)
+           (org-insert-todo-heading-respect-content)
+           (org-priority-down)
+           (org-priority-down))
     "os" 'org-sort-entries
     "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
   )
@@ -498,7 +501,10 @@ you should place your code here."
             ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
             ("h" . "HOME searches")
             ("hh" "All HOME items" tags-todo "HOME")
-            ("ha" "High Priority HOME items and agenda" ((agenda "") (tags-todo "+HOME+PRIORITY=\"A\"")))
+            ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
+                                                               (org-agenda-archives-mode nil)
+                                                               (org-agenda-log-mode nil)))
+                                                   (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
             ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
             ("hs" "Search HOME items" ((tags "+HOME") (search "")))
             ("n" "Today's agenda and all TODOs" ((agenda "" ((org-agenda-span 'day)
