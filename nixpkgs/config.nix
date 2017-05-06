@@ -67,6 +67,18 @@
       ];
     });
 
+    pyEnv = with pkgs; with python27Packages; hiPrio (buildEnv {
+        name = "pyEnv";
+        paths = [
+          flake8
+          futures
+          isort
+          paramiko
+          pep8
+          yapf
+        ];
+    });
+
     haskellEnv = with pkgs; hiPrio (buildEnv {
       name = "haskellEnv";
       paths = [
