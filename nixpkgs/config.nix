@@ -26,6 +26,7 @@
         htop
         nix-repl
         par
+        pass
         python
         rlwrap
         tmux
