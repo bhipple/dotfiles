@@ -41,7 +41,7 @@
       name = "bigEnv";
       paths = [
         aspell
-        #commons-compress
+        chromium
         cmake
         emacs25
         gnumake
