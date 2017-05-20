@@ -353,6 +353,9 @@ you should place your code here."
   ;; git ref could be a sha, remote_branch, or ref~N
   (setq revert-without-query '(".*\.~[a-z0-9_]+~$"))
 
+  ;; Make ediff do a split for side-by-side diffing
+  (setq ediff-split-window-function 'split-window-horizontally)
+
   ;; Open jinja files in salt-mode
   (add-to-list 'auto-mode-alist '("\\.jinja\\'" . salt-mode))
 
@@ -537,7 +540,7 @@ you should place your code here."
   (add-to-list 'load-path "~/.emacs_local/")
   (require 'brh-local)
 
-  )
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
