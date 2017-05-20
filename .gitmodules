@@ -2,10 +2,21 @@
 		path = dotbot
 		url = https://github.com/anishathalye/dotbot
 		branch = master
-[submodule "zgen"]
-		path = zgen
-		url = https://github.com/tarjoilija/zgen
+[submodule "fzf"]
+		path = fzf
+		url = https://github.com/junegunn/fzf
+[submodule "org-html-themes"]
+		path = org-html-themes
+		url = https://github.com/fniessen/org-html-themes
 		branch = master
+[submodule "reveal.js"]
+		path = reveal.js
+		url = https://github.com/hakimel/reveal.js
+		branch = master
+[submodule "spacemacs"]
+		path = spacemacs-repo
+		url = https://github.com/syl20bnr/spacemacs
+		branch = develop
 [submodule "tmux/plugins/tpm"]
 		path = tmux/plugins/tpm
 		url = https://github.com/tmux-plugins/tpm
@@ -14,18 +25,7 @@
 		path = yasnippet-snippets
 		url = https://github.com/bhipple/yasnippet-snippets
 		branch = master
-[submodule "fzf"]
-		path = fzf
-		url = https://github.com/junegunn/fzf
-[submodule "spacemacs"]
-		path = spacemacs-repo
-		url = https://github.com/syl20bnr/spacemacs
-		branch = develop
-[submodule "reveal.js"]
-		path = reveal.js
-		url = https://github.com/hakimel/reveal.js
-		branch = master
-[submodule "org-html-themes"]
-		path = org-html-themes
-		url = https://github.com/fniessen/org-html-themes
+[submodule "zgen"]
+		path = zgen
+		url = https://github.com/tarjoilija/zgen
 		branch = master
