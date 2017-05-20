@@ -1,12 +1,15 @@
 [submodule "dotbot"]
     path = dotbot
     url = https://github.com/anishathalye/dotbot
+    branch = master
 [submodule "zgen"]
     path = zgen
     url = https://github.com/tarjoilija/zgen
+    branch = master
 [submodule "tmux/plugins/tpm"]
     path = tmux/plugins/tpm
     url = https://github.com/tmux-plugins/tpm
+    branch = master
 [submodule "yasnippet-snippets"]
     path = yasnippet-snippets
     url = https://github.com/bhipple/yasnippet-snippets
@@ -17,6 +20,8 @@
 [submodule "spacemacs"]
     path = spacemacs-repo
     url = https://github.com/syl20bnr/spacemacs
+    branch = develop
 [submodule "reveal.js"]
     path = reveal.js
     url = https://github.com/hakimel/reveal.js
+    branch = master
