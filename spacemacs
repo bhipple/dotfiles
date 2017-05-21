@@ -61,6 +61,7 @@ values."
      (org :variables
           org-startup-indented t
           org-reveal-js-support t
+          org-enable-bootstrap-support t
           org-enable-github-support t)
      pandoc
      (python :variables
