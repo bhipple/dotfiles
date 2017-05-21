@@ -435,6 +435,9 @@ you should place your code here."
     ;; Use pinned reveal.js
     (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
 
+    ;; When exporting, preserve line breaks
+    (setq org-export-preserve-breaks t)
+
     ;; Enable org-babel
     (org-babel-do-load-languages 'org-babel-load-languages '((shell . t)
                                                              (python . t)
