@@ -53,6 +53,11 @@ noproxy() {
     env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY "$@"
 }
 
+set-proxy() {
+    export http{,s}_proxy=$1
+    export HTTP{,S}_PROXY=$1
+}
+
 vimify() {
     (vim - -esbnN -c "$*" -c 'w!/dev/fd/3|q!' >/dev/null) 3>&1
 }
