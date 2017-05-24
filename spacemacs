@@ -35,6 +35,7 @@ values."
      ;; ----------------------------------------------------------------
      ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
+     asciidoc
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
