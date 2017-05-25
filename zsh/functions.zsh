@@ -58,6 +58,11 @@ set-proxy() {
     export HTTP{,S}_PROXY=$1
 }
 
+unproxy() {
+    unset http{,s}_proxy
+    unset HTTP{,S}_PROXY
+}
+
 vimify() {
     (vim - -esbnN -c "$*" -c 'w!/dev/fd/3|q!' >/dev/null) 3>&1
 }
