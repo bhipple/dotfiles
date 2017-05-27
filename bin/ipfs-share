@@ -1,15 +1,15 @@
 #!/usr/bin/env nix-shell
 #! nix-shell -i bash -p ipfs -p xsel
 #
-# Share a file on IPFS and copy the link to the clipboard.
+# Share a file or directory on IPFS and copy the root link to the clipboard.
 if [ -z "$1" ]; then
     echo "USAGE: $0 <file>"
     exit 1
 fi
 
-out=$(ipfs add "$1")
+out=$(ipfs add -r "$1")
 echo "$out"
 
-link="https://ipfs.io/ipfs/$(echo "$out" | awk '{print $2}')"
+link="https://ipfs.io/ipfs/$(echo "$out" | tail -1 | awk '{print $2}')"
 echo "$link" | xsel -b
 echo "Copied IPFS link to clipboard."
