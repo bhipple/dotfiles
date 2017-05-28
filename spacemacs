@@ -443,12 +443,13 @@ you should place your code here."
     (org-babel-do-load-languages 'org-babel-load-languages '((shell . t)
                                                              (python . t)
                                                              (emacs-lisp . t)
+                                                             (cpp . t)
+                                                             (haskell . t)
                                                              ))
 
     ;; Tags
     (setq org-tag-alist '(("ALGOS" . ?a)
                           ("CODING" . ?c)
-                          ("DEEP" . ?d)
                           ("EMACS" . ?e)
                           ("HASKELL" . ?h)
                           ("GYM" . ?g)
