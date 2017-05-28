@@ -22,7 +22,7 @@
 		url = https://github.com/tmux-plugins/tpm
 		branch = master
 [submodule "yasnippet-snippets"]
-		path = yasnippet-snippets
+	path = spacemacs/yasnippet-snippets
 		url = https://github.com/bhipple/yasnippet-snippets
 		branch = master
 [submodule "zgen"]
