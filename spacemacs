@@ -494,7 +494,8 @@ you should place your code here."
     (global-set-key "\C-cl" 'org-store-link)
 
     ;; Abbreviations for links
-    (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")))
+    (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")
+                                  ("omap" . "https://www.openstreetmap.org/search?query=%s")))
 
     ;; Set org-refile to autocomplete three levels deep and check all agenda files
     (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
