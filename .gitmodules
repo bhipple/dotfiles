@@ -14,7 +14,7 @@
 		url = https://github.com/hakimel/reveal.js
 		branch = master
 [submodule "spacemacs"]
-		path = spacemacs-repo
+	path = spacemacs/emacs.d
 		url = https://github.com/syl20bnr/spacemacs
 		branch = develop
 [submodule "tmux/plugins/tpm"]

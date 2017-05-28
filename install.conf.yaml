@@ -18,8 +18,8 @@
     ~/.dir_colors: dir_colors
     ~/.emacs.d:
         force: true
-        path: spacemacs-repo/
-    ~/.spacemacs: spacemacs
+        path: spacemacs/emacs.d
+    ~/.spacemacs: spacemacs/init.el
     ~/.fzf: fzf/
     ~/.ghc/ghci.conf:
       create: true
