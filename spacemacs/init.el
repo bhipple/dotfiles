@@ -86,7 +86,12 @@ values."
      yaml
 
      ;; Personal layers
+     ;; ~/dotfiles/spacemacs/layers/brh-org/
      brh-org
+
+     ;; Contains general emacs packages, config, funcs, keybindings
+     ;; ~/dotfiles/spacemacs/layers/brh-general/
+     brh-general
     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -339,69 +344,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; Don't ask about following symlinks
-  (setq vc-follow-symlinks t)
-
-  ;; Don't depend on $TERM
-  (setq system-uses-terminfo nil)
-
-  ;; Perform dired actions asynchronously
-  (dired-async-mode 1)
-
-  ;; Globally enable () matching as a minor mode
-  (electric-pair-mode)
-
-  ;; Enable caching. Invalidate the current project cache with C-c p i
-  (setq projectile-enable-caching t)
-
-  ;; Regex for buffers to automatically update when the file changes on disk
-  ;; Matches temp files created by ediff like foofile.~[git ref]~, where
-  ;; git ref could be a sha, remote_branch, or ref~N
-  (setq revert-without-query '(".*\.~[a-z0-9_]+~$"))
-
-  ;; Make ediff do a split for side-by-side diffing
-  (setq ediff-split-window-function 'split-window-horizontally)
-
-  ;; Open jinja files in salt-mode
-  (add-to-list 'auto-mode-alist '("\\.jinja\\'" . salt-mode))
-
-  ;; Fix tabs
-  (setq-default indent-tabs-mode nil)
-  (setq c-basic-indent 4)
-  (setq tab-width 4)
-
-  (global-set-key (kbd "C-h") 'evil-window-left)
-  (global-set-key (kbd "C-j") 'evil-window-down)
-  (global-set-key (kbd "C-k") 'evil-window-up)
-  (global-set-key (kbd "C-l") 'evil-window-right)
-
-  (global-set-key (kbd "<C-up>") 'shrink-window)
-  (global-set-key (kbd "<C-down>") 'enlarge-window)
-  (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
-  (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
-
-  (defun brh/shell-region (start end)
-    "Execute region in an inferior shell"
-    (interactive "r")
-    (shell-command (buffer-substring-no-properties start end)))
-
-  (spacemacs/set-leader-keys
-    "oa" 'org-agenda
-    "ob" 'helm-buffers-list
-    "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
-    "of" 'magit-pull-from-upstream
-    "og" (lambda () "Git grep repository from root" (interactive)
-           (let ((current-prefix-arg '(4)))
-             (call-interactively 'helm-grep-do-git-grep)))
-    "oo" (lambda () (interactive) (find-file "~/org/me.org"))
-    "op" 'magit-push-current-to-upstream
-    "ot" (lambda () "Add org TODO [#C]" (interactive)
-           (org-insert-todo-heading-respect-content)
-           (org-priority-down)
-           (org-priority-down))
-    "os" 'org-sort-entries
-    "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
-  )
+  ;; All of my general configuration settings are in the brh-general layer.
 
   ;; Load local settings
   (add-to-list 'load-path "~/.emacs_local/")

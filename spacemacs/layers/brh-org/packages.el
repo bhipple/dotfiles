@@ -17,7 +17,7 @@
 
 ;;; Code:
 
-(defconst brh-org-packages '(org org-habit)
+(defconst brh-org-packages '(org)
   "The list of Lisp packages required by the brh-org layer.")
 
 (defun brh-org/init-org-habit ()
@@ -25,6 +25,7 @@
 
 (defun brh-org/post-init-org ()
   (with-eval-after-load 'org
+    (require 'org-habit)
     (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
 
     (setq org-use-fast-todo-selection t)
