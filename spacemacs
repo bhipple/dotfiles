@@ -428,7 +428,7 @@ you should place your code here."
 
     (setq org-use-fast-todo-selection t)
     ;; Default TODO progression sequence.
-    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
+    (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
 
     ;; Log completion time of DONE items
     (setq org-log-done 'time)
@@ -492,6 +492,9 @@ you should place your code here."
 
     (global-set-key "\C-cb" 'org-iswitchb)
     (global-set-key "\C-cl" 'org-store-link)
+
+    ;; Abbreviations for links
+    (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")))
 
     ;; Set org-refile to autocomplete three levels deep and check all agenda files
     (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
