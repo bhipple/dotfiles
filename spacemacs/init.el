@@ -346,10 +346,15 @@ you should place your code here."
 
   ;; All of my general configuration settings are in the brh-general layer.
 
-  ;; Load local settings
+  ;; Path for user lisp code
+  (add-to-list 'load-path "~/dotfiles/spacemacs/lisp/")
   (add-to-list 'load-path "~/.emacs_local/")
-  (require 'brh-local)
 
+  ;; Make company behave more like YCM
+  (require 'company-simple-complete)
+
+  ;; Load local settings
+  (require 'brh-local)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
