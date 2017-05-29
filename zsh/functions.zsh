@@ -24,11 +24,9 @@ vimdf() {
 
 em() {
     if [ "$#" -eq 0 ]; then
-        emacs ~/org/me.org
-    elif [ "$1" = "e" ]; then
-        emacs ~/.emacs
+        nohup emacs ~/org/me.org &
     else
-        emacs "$@"
+        nohup emacs "$@" &
     fi
 }
 
