@@ -23,10 +23,12 @@ vimdf() {
 }
 
 em() {
-    if [ "$#" -eq 0 ]; then
-        nohup emacs ~/org/me.org &
+    if [ -f /tmp/emacs1000/server ]; then
+        emacsclient "$@"
+    elif [ "$#" -eq 0 ]; then
+        cd /tmp/emacs1000 && nohup emacs ~/org/me.org &
     else
-        nohup emacs "$@" &
+        cd /tmp/emacs1000 && nohup emacs "$@" &
     fi
 }
 
