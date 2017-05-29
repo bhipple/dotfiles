@@ -12,8 +12,8 @@
 (setq system-uses-terminfo nil)
 
 ;; Perform dired actions asynchronously
-(with-eval-after-load 'dired
-  (dired-async-mode 1))
+; (with-eval-after-load 'dired
+;   (dired-async-mode 1))
 
 ;; Globally enable () matching as a minor mode
 (electric-pair-mode)
