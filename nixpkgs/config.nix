@@ -86,6 +86,10 @@
         (haskellPackages.ghcWithPackages (ps: with ps;
           [ Cabal
             async
+            dhall
+            dhall-bash
+            dhall-json
+            dhall-nix
             filepath
             ghc-mod
             hindent

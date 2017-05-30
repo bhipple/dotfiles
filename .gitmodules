@@ -14,7 +14,7 @@
 		url = https://github.com/hakimel/reveal.js
 		branch = master
 [submodule "spacemacs"]
-		path = spacemacs-repo
+	path = spacemacs/emacs.d
 		url = https://github.com/syl20bnr/spacemacs
 		branch = develop
 [submodule "tmux/plugins/tpm"]
@@ -22,7 +22,7 @@
 		url = https://github.com/tmux-plugins/tpm
 		branch = master
 [submodule "yasnippet-snippets"]
-		path = yasnippet-snippets
+	path = spacemacs/yasnippet-snippets
 		url = https://github.com/bhipple/yasnippet-snippets
 		branch = master
 [submodule "zgen"]

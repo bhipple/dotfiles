@@ -18,16 +18,17 @@ values."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
 
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
-   dotspacemacs-ask-for-lazy-installation t
+   dotspacemacs-enable-lazy-installation 'unused
 
    ;; If non-nil layers with lazy install support are lazy installed.
+   dotspacemacs-ask-for-lazy-installation t
+
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/dotfiles/spacemacs/layers/")
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
@@ -40,7 +41,7 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-private-snippets-directory "~/dotfiles/yasnippet-snippets")
+                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets")
      better-defaults
      c-c++
      confluence
@@ -83,6 +84,14 @@ values."
      vimscript
      vinegar
      yaml
+
+     ;; Personal layers
+     ;; ~/dotfiles/spacemacs/layers/brh-org/
+     brh-org
+
+     ;; Contains general emacs packages, config, funcs, keybindings
+     ;; ~/dotfiles/spacemacs/layers/brh-general/
+     brh-general
     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -335,219 +344,15 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; Don't ask about following symlinks
-  (setq vc-follow-symlinks t)
+  ;; Path for user lisp code
+  (add-to-list 'load-path "~/dotfiles/spacemacs/lisp/")
+  (add-to-list 'load-path "~/.emacs_local/")
 
-  ;; Don't depend on $TERM
-  (setq system-uses-terminfo nil)
-
-  ;; Perform dired actions asynchronously
-  (dired-async-mode 1)
-
-  ;; Globally enable () matching as a minor mode
-  (electric-pair-mode)
-
-  ;; Enable caching. Invalidate the current project cache with C-c p i
-  (setq projectile-enable-caching t)
-
-  ;; Regex for buffers to automatically update when the file changes on disk
-  ;; Matches temp files created by ediff like foofile.~[git ref]~, where
-  ;; git ref could be a sha, remote_branch, or ref~N
-  (setq revert-without-query '(".*\.~[a-z0-9_]+~$"))
-
-  ;; Make ediff do a split for side-by-side diffing
-  (setq ediff-split-window-function 'split-window-horizontally)
-
-  ;; Open jinja files in salt-mode
-  (add-to-list 'auto-mode-alist '("\\.jinja\\'" . salt-mode))
-
-  ;; Fix tabs
-  (setq-default indent-tabs-mode nil)
-  (setq c-basic-indent 4)
-  (setq tab-width 4)
-
-  ;; Tramp with ssh
-  (setq tramp-default-method "ssh")
-
-  (global-set-key (kbd "C-h") 'evil-window-left)
-  (global-set-key (kbd "C-j") 'evil-window-down)
-  (global-set-key (kbd "C-k") 'evil-window-up)
-  (global-set-key (kbd "C-l") 'evil-window-right)
-
-  (global-set-key (kbd "<C-up>") 'shrink-window)
-  (global-set-key (kbd "<C-down>") 'enlarge-window)
-  (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
-  (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
-
-  (defun brh/shell-region (start end)
-    "Execute region in an inferior shell"
-    (interactive "r")
-    (shell-command (buffer-substring-no-properties start end)))
-
-  ;; recursively find .org files in provided directory
-  ;; modified from an Emacs Lisp Intro example
-  (defun brh/find-org-file-recursively (&optional directory filext)
-    "Return .org and .org_archive files recursively from DIRECTORY.
-     If FILEXT is provided, return files with extension FILEXT instead."
-    (interactive "Org Directory: ")
-    (let* (org-file-list
-     (case-fold-search t)       ; filesystems are case sensitive
-     (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
-     (filext (or filext "org$\\\|org_archive"))
-     (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
-     (cur-dir-list (directory-files directory t file-name-regex)))
-      ;; loop over directory listing
-      (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
-        (cond
-         ((file-regular-p file-or-dir) ; regular files
-    (if (string-match fileregex file-or-dir) ; org files
-        (add-to-list 'org-file-list file-or-dir)))
-         ((file-directory-p file-or-dir)
-    (dolist (org-file (brh/find-org-file-recursively file-or-dir filext)
-          org-file-list) ; add files found to result
-      (add-to-list 'org-file-list org-file)))))))
-
-  (spacemacs/set-leader-keys
-    "oa" 'org-agenda
-    "ob" 'helm-buffers-list
-    "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
-    "of" 'magit-pull-from-upstream
-    "og" (lambda () "Git grep repository from root" (interactive)
-           (let ((current-prefix-arg '(4)))
-             (call-interactively 'helm-grep-do-git-grep)))
-    "oo" (lambda () (interactive) (find-file "~/org/me.org"))
-    "op" 'magit-push-current-to-upstream
-    "ot" (lambda () "Add org TODO [#C]" (interactive)
-           (org-insert-todo-heading-respect-content)
-           (org-priority-down)
-           (org-priority-down))
-    "os" 'org-sort-entries
-    "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
-  )
-
-  (require 'org-habit)
-  (with-eval-after-load 'org
-    (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
-
-    (setq org-use-fast-todo-selection t)
-    ;; Default TODO progression sequence.
-    (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
-
-    ;; Log completion time of DONE items
-    (setq org-log-done 'time)
-
-    ;; Use pinned reveal.js
-    (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
-
-    ;; When exporting, preserve line breaks
-    (setq org-export-preserve-breaks t)
-
-    ;; Enable org-babel
-    (org-babel-do-load-languages 'org-babel-load-languages '((shell . t)
-                                                             (python . t)
-                                                             (emacs-lisp . t)
-                                                             ))
-
-    ;; Tags
-    (setq org-tag-alist '(("ALGOS" . ?a)
-                          ("CODING" . ?c)
-                          ("DEEP" . ?d)
-                          ("EMACS" . ?e)
-                          ("HASKELL" . ?h)
-                          ("GYM" . ?g)
-                          ("LISTS" . ?l)
-                          ("NIX" . ?n)
-                          ("PROJECT" . ?p)
-                          ("READING" . ?r)
-                          ("SOMEDAY" . ?s)
-                          ("VIM" ? .v)
-                          ("WORK" ? .w)
-                          ("ZSH" ? .z)))
-
-    ;; Org capture templates
-    (setq org-capture-templates
-          ;; Personal templates
-          '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
-                "* %?\nEntered %u\n")
-            ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
-                "* TODO [#C] %?\nDEADLINE: %^t")
-            ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
-                "* TODO [#C] %?\nEntered %u\n")
-            ("p" "Programming Item" entry (file+headline "~/org/me.org" "Programming")
-                "* TODO [#C] %?\n")
-            ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
-                "* TODO [#C] %?\nSCHEDULED: %^t")
-            ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-                "* TODO [#C] %?\n")
-
-            ;; Work.org templates
-            ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
-                "* %?\n")
-            ("w" "Work Todo" entry (file+headline "~/org/work/work.org" "Work Tasks")
-                 "* TODO [#C] %?\n")))
-
-    ;; Default notes file for capture
-    (setq org-default-notes-file "~/org/me.org")
-    (global-set-key "\C-cc" 'org-capture)
-
-    ;; Open up the agenda with C-c a
-    (global-set-key "\C-ca" 'org-agenda)
-
-    (global-set-key "\C-cb" 'org-iswitchb)
-    (global-set-key "\C-cl" 'org-store-link)
-
-    ;; Set org-refile to autocomplete three levels deep and check all agenda files
-    (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
-
-    ;; Archive to subdirectory
-    (setq org-archive-location "~/org/archive/%s_archive::")
-
-    ;; How far in advance to show deadlines on agenda views
-    (setq org-deadline-warning-days 10)
-
-    ;; By default, don't show DONE and archived items.
-    (setq org-agenda-log-mode nil)
-    (setq org-agenda-archives-mode nil)
-
-    ;; Org Agenda custom searches
-    (setq org-agenda-custom-commands
-          '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"")))
-            ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
-            ("h" . "HOME searches")
-            ("hh" "All HOME items" tags-todo "HOME")
-            ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
-                                                               (org-agenda-archives-mode nil)
-                                                               (org-agenda-log-mode nil)))
-                                                   (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
-            ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
-            ("hs" "Search HOME items" ((tags "+HOME") (search "")))
-            ("n" "Today's agenda and all TODOs" ((agenda "" ((org-agenda-span 'day)
-                                                             (org-agenda-log-mode t)))
-                                                 (todo "TODO")))
-            ("p" . "Priority searches")
-            ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
-            ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
-            ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
-            ("r" "Weekly Review" agenda "" ((org-agenda-span 'week)
-                                            (org-agenda-log-mode t)
-                                            (org-agenda-archives-mode t)))
-            ("w" . "WORK searches")
-            ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
-                                                               (org-agenda-archives-mode nil)
-                                                               (org-agenda-log-mode nil)))
-                                                   (tags-todo "+WORK-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
-            ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"")))
-            ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
-            ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
-            ("ww" "All WORK items" tags-todo "WORK")))
-
-    ;; Highlight source code blocks
-    (setq org-src-fontify-natively t))
+  ;; Make company behave more like YCM
+  (require 'company-simple-complete)
 
   ;; Load local settings
-  (add-to-list 'load-path "~/.emacs_local/")
   (require 'brh-local)
-
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
