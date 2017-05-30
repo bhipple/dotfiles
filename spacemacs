@@ -366,6 +366,9 @@ you should place your code here."
   (setq c-basic-indent 4)
   (setq tab-width 4)
 
+  ;; Tramp with ssh
+  (setq tramp-default-method "ssh")
+
   (global-set-key (kbd "C-h") 'evil-window-left)
   (global-set-key (kbd "C-j") 'evil-window-down)
   (global-set-key (kbd "C-k") 'evil-window-up)
