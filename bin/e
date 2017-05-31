@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+if [ -z "$EMACS_HOST" ]; then
+    echo "Required: \$EMACS_HOST variable set to hostname where the emacs server is running."
+    exit 1
+fi
+
+if [ -z "$1" ]; then
+    echo "USAGE: e <file>"
+    exit 1
+fi
+
+host=$(hostname)
+if [ "$host" = "$EMACS_HOST" ]; then
+    emacsclient "$1" &
+    return
+fi
+
+file_name=$(realpath "$1")
+
+ssh "$EMACS_HOST" "cd /tmp; nohup emacsclient /$host:$file_name" &
