@@ -38,10 +38,18 @@ create_builders() {
     done
 }
 
-build_from_source() {
+fetch_source() {
     wget http://nixos.org/releases/nix/$NIX_VERSION/$NIX_ARCHIVE{,.sha256}
-    sha256 -c $NIX_ARCHIVE{.sha256,} || echo "Downloaded invalid $NIX_ARCHIVE" && exit 1
+    expected=$(cat "$NIX_ARCHIVE".sha256)
+    actual=$(sha256sum "$NIX_ARCHIVE" | awk '{print $1}')
+    if [ "$expected" != "$actual" ]; then
+        echo "Downloaded invalid $NIX_ARCHIVE with sha256 $actual when I expected $expected"
+        exit 1
+    fi
     tar -xvf "$NIX_ARCHIVE"
+}
+
+build_from_source() {
     cd "$NIX_VERSION" || exit 1
     ./configure --enable-gc
     make -j 2
