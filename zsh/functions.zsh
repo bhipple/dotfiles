@@ -26,9 +26,9 @@ em() {
     if [ -f /tmp/emacs1000/server ]; then
         emacsclient "$@"
     elif [ "$#" -eq 0 ]; then
-        cd /tmp/emacs1000 && nohup emacs ~/org/me.org &
+        cd /tmp/emacs1000 && nohup emacs ~/org/me.org &; cd -
     else
-        cd /tmp/emacs1000 && nohup emacs "$@" &
+        cd /tmp/emacs1000 && nohup emacs "$@" &; cd -
     fi
 }
 
