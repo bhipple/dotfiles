@@ -8,42 +8,51 @@ if [[ $USER != "root" ]]; then
 fi
 
 NIX_VERSION="nix-1.11.9"
+NIX_ARCHIVE="$NIX_VERSION.tar.xz"
 
-apt-get update && apt-get install -y \
-    autotools-dev \
-    build-essential \
-    dh-autoreconf \
-    libbz2-dev \
-    libcurl4-openssl-dev \
-    libdbd-sqlite3-perl \
-    libdbi-perl \
-    libgc-dev \
-    liblzma-dev \
-    libsqlite3-dev \
-    libssl-dev \
-    libwww-curl-perl \
-    libxml2 \
-    libxslt-dev \
-    pkg-config
+install_prereqs() {
+    apt-get update && apt-get install -y \
+                              autotools-dev \
+                              build-essential \
+                              dh-autoreconf \
+                              libbz2-dev \
+                              libcurl4-openssl-dev \
+                              libdbd-sqlite3-perl \
+                              libdbi-perl \
+                              libgc-dev \
+                              liblzma-dev \
+                              libsqlite3-dev \
+                              libssl-dev \
+                              libwww-curl-perl \
+                              libxml2 \
+                              libxslt-dev \
+                              pkg-config
+}
 
-groupadd -r nixbld
-for n in $(seq 1 10); do
-    useradd -c "Nix build user $n" \
-            -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
-            "nixbld$n"
-done
+create_builders() {
+    groupadd -r nixbld
+    for n in $(seq 1 10); do
+        useradd -c "Nix build user $n" \
+                -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
+                "nixbld$n"
+    done
+}
 
-wget http://nixos.org/releases/nix/$NIX_VERSION/$NIX_VERSION.tar.xz
-tar -xvf $NIX_VERSION.tar.xz
-cd "$NIX_VERSION" || exit 1
-./configure --enable-gc
-make -j 2
-make install
+build_from_source() {
+    wget http://nixos.org/releases/nix/$NIX_VERSION/$NIX_ARCHIVE{,.sha256}
+    sha256 -c $NIX_ARCHIVE{.sha256,} || echo "Downloaded invalid $NIX_ARCHIVE" && exit 1
+    tar -xvf "$NIX_ARCHIVE"
+    cd "$NIX_VERSION" || exit 1
+    ./configure --enable-gc
+    make -j 2
+    make install
+}
 
-echo "Setting up system profile environment variables"
-echo "export NIX_REMOTE=daemon" >> /etc/environment
+setup_system() {
+    echo "Setting up system profile environment variables"
+    echo "export NIX_REMOTE=daemon" >> /etc/environment
 
-cat << 'EOM' > /etc/systemd/system/nix.service
+    cat << 'EOM' > /etc/systemd/system/nix.service
 [Unit]
 Description=Nix daemon
 
@@ -57,12 +66,14 @@ KillMode=process
 WantedBy=multi-user.target
 EOM
 
-touch /etc/default/nix
+    touch /etc/default/nix
 
-systemctl enable nix
-systemctl start nix
+    systemctl enable nix
+    systemctl start nix
+}
 
-cat << 'EOM' > /root/nix-setup-user.sh
+create_nix_setup_script() {
+    cat << 'EOM' > /root/nix-setup-user.sh
 nix-setup-user() {
     TARGET_USER="$1"
     SYMLINK_PATH="/home/$TARGET_USER/.nix-profile"
@@ -94,8 +105,19 @@ fi
 nix-setup-user $1
 EOM
 
-chmod +x /root/nix-setup-user.sh
-echo "source /root/nix-setup-user.sh" >> /root/.bashrc
+    chmod +x /root/nix-setup-user.sh
+    echo "source /root/nix-setup-user.sh" >> /root/.bashrc
+}
 
-echo "Finished installing multi-user nixpkg."
-echo "To enable a user, run nix-setup-user foouser"
+main() {
+    install_prereqs
+    build_from_source
+    create_builders
+    setup_system
+    create_nix_setup_script
+
+    echo "Finished installing multi-user nixpkg."
+    echo "To enable a user, run nix-setup-user foouser"
+}
+
+main
