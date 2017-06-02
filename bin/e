@@ -12,7 +12,7 @@ fi
 host=$(hostname)
 file_name=$(realpath "$1")
 if [ "$host" = "$EMACS_HOST" ]; then
-    emacsclient "$file_name" &
+    emacsclient -q -n "$file_name" &
 else
-    ssh "$EMACS_HOST" "cd /tmp; nohup emacsclient /$host:$file_name" &
+    ssh "$EMACS_HOST" "cd /tmp; nohup emacsclient -q -n /$host:$file_name" &
 fi
