@@ -9,6 +9,10 @@ fi
 
 host=$(hostname)
 file_name=$(realpath "$1")
+
+# If I'm already on the machine, or if my machine's hostname starts with brh
+# (desktop, laptop, etc.), then just open it; otherwise, ssh to EMACS_HOST and
+# open it there with tramp
 if [ "$host" = "$EMACS_HOST"  ] || [[ "$host" = brh* ]]; then
     emacsclient -q -n "$file_name" &
 else
