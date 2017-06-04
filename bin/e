@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-if [ -z "$EMACS_HOST" ]; then
-    echo "Required: \$EMACS_HOST variable set to hostname where the emacs server is running."
-    exit 1
-fi
+# Open a file with emacsclient, detecting if we should use TRAMP to get to the
+# machine where emacs is running.
 
 if [ -z "$1" ]; then
     echo "USAGE: e <file>"
@@ -11,7 +9,7 @@ fi
 
 host=$(hostname)
 file_name=$(realpath "$1")
-if [ "$host" = "$EMACS_HOST" ]; then
+if [ "$host" = "$EMACS_HOST"  ] || [[ "$host" = brh* ]]; then
     emacsclient -q -n "$file_name" &
 else
     ssh "$EMACS_HOST" "cd /tmp; nohup emacsclient -q -n /$host:$file_name" &
