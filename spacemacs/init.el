@@ -48,7 +48,6 @@ values."
      dash
      emacs-lisp
      git
-     github
      go
      graphviz
      gtags
