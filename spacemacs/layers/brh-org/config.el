@@ -114,5 +114,8 @@
         ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
         ("ww" "All WORK items" tags-todo "WORK")))
 
+(global-set-key (kbd "<f8>") 'org-agenda)
+(global-set-key (kbd "<f12>") 'brh/smart-agenda)
+
 ;; Highlight source code blocks
 (setq org-src-fontify-natively t)

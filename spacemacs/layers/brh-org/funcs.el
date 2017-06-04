@@ -21,4 +21,9 @@
           org-file-list) ; add files found to result
       (add-to-list 'org-file-list org-file)))))))
 
-
+;;
+(defun brh/smart-agenda ()
+  (interactive)
+  (if (file-exists-p "~/work/work.org")
+      (org-agenda nil "wa")
+      (org-agenda nil "ha")))
