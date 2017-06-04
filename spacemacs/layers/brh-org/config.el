@@ -1,7 +1,9 @@
 ;; Org variable configuration
 
+;; Dynamically find all agenda files by walking the directory
 (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
 
+;; Enable keybindings defined below for TODO selection
 (setq org-use-fast-todo-selection t)
 
 ;; Default TODO progression sequence.
