@@ -30,11 +30,12 @@
 ######################
 .DS_Store
 .DS_Store?
-._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
+._*
 Thumbs.db
+ehthumbs.db
+nohup.out
 
 # Tags Files #
 ##############
