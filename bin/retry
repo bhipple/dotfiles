@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Repeatedly retry something until it succeeds or the user sends SIGTERM
+try() {
+    if ! eval "$@"; then
+        sleep 1
+        echo "Retrying cmd: $*"
+        try "$@"
+    fi
+}
+
+try "$@"
