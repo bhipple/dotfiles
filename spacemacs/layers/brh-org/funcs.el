@@ -24,6 +24,6 @@
 ;;
 (defun brh/smart-agenda ()
   (interactive)
-  (if (file-exists-p "~/work/work.org")
+  (if (file-exists-p "~/org/work/work.org")
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
