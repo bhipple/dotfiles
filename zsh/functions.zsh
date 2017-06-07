@@ -50,17 +50,19 @@ cd() {
 }
 
 noproxy() {
-    env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY "$@"
+    env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY -u ftp_proxy -u ftps_proxy "$@"
 }
 
 set-proxy() {
     export http{,s}_proxy=$1
     export HTTP{,S}_PROXY=$1
+    export ftp{,s}_proxy=$1
 }
 
 unproxy() {
     unset http{,s}_proxy
     unset HTTP{,S}_PROXY
+    unset ftp{,s}_proxy=$1
 }
 
 vimify() {
