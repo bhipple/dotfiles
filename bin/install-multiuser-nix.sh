@@ -88,6 +88,7 @@ EOM
 create_nix_setup_script() {
     echo "Creating nix-setup-user.sh script"
     cat << 'EOM' > /root/nix-setup-user.sh
+#!/usr/bin/env bash
 nix-setup-user() {
     TARGET_USER="$1"
     USER_HOME=$(getent passwd "$1" | cut -d : -f 6)
