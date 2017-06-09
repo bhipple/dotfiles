@@ -11,31 +11,26 @@ NIX_VERSION="nix-1.11.9"
 NIX_ARCHIVE="$NIX_VERSION.tar.xz"
 
 install_prereqs() {
-    apt-get update && apt-get install -y \
-                              autotools-dev \
-                              build-essential \
-                              dh-autoreconf \
-                              libbz2-dev \
-                              libcurl4-openssl-dev \
-                              libdbd-sqlite3-perl \
-                              libdbi-perl \
-                              libgc-dev \
-                              liblzma-dev \
-                              libsqlite3-dev \
-                              libssl-dev \
-                              libwww-curl-perl \
-                              libxml2 \
-                              libxslt-dev \
-                              pkg-config
-}
-
-create_builders() {
-    groupadd -r nixbld
-    for n in $(seq 1 10); do
-        useradd -c "Nix build user $n" \
-                -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
-                "nixbld$n"
-    done
+    if [ $(which yum) ]; then
+        yum install flex bison perl-WWW-Curl perl-DBI perl-DBD-SQLite bzip2-devel
+    else
+        apt-get update && apt-get install -y \
+                                  autotools-dev \
+                                  build-essential \
+                                  dh-autoreconf \
+                                  libbz2-dev \
+                                  libcurl4-openssl-dev \
+                                  libdbd-sqlite3-perl \
+                                  libdbi-perl \
+                                  libgc-dev \
+                                  liblzma-dev \
+                                  libsqlite3-dev \
+                                  libssl-dev \
+                                  libwww-curl-perl \
+                                  libxml2 \
+                                  libxslt-dev \
+                                  pkg-config
+    fi
 }
 
 fetch_source() {
@@ -54,6 +49,16 @@ build_from_source() {
     ./configure --enable-gc
     make -j 2
     make install
+}
+
+create_builders() {
+    echo "Creating build daemon group and users"
+    groupadd -r nixbld
+    for n in $(seq 1 10); do
+        useradd -c "Nix build user $n" \
+                -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
+                "nixbld$n"
+    done
 }
 
 setup_system() {
@@ -81,10 +86,13 @@ EOM
 }
 
 create_nix_setup_script() {
+    echo "Creating nix-setup-user.sh script"
     cat << 'EOM' > /root/nix-setup-user.sh
+#!/usr/bin/env bash
 nix-setup-user() {
     TARGET_USER="$1"
-    SYMLINK_PATH="/home/$TARGET_USER/.nix-profile"
+    USER_HOME=$(getent passwd "$1" | cut -d : -f 6)
+    SYMLINK_PATH="$USER_HOME/.nix-profile"
     PROFILE_DIR="/nix/var/nix/profiles/per-user/$TARGET_USER"
 
     echo "Creating profile $PROFILE_DIR..."
@@ -98,8 +106,8 @@ nix-setup-user() {
     chown -h "$TARGET_USER:$TARGET_USER" "$SYMLINK_PATH"
 
     for p in bashrc zshrc; do
-        echo "export NIX_REMOTE=daemon" >> "/home/$TARGET_USER/.$p"
-        echo ". /usr/local/etc/profile.d/nix.sh >> "/home/$TARGET_USER/.$p"
+        echo "export NIX_REMOTE=daemon" >> "$USER_HOME/.$p"
+        echo ". /usr/local/etc/profile.d/nix.sh" >> "$USER_HOME/.$p"
     done
 
     su -lc "cd; . /usr/local/etc/profile.d/nix.sh; NIX_REMOTE=daemon nix-channel --update" "$TARGET_USER"

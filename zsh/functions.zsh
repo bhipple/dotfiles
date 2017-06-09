@@ -25,11 +25,16 @@ vimdf() {
 em() {
     if [ -f /tmp/emacs1000/server ]; then
         emacsclient "$@"
-    elif [ "$#" -eq 0 ]; then
-        cd /tmp/emacs1000 && nohup emacs ~/org/me.org &; cd -
-    else
-        cd /tmp/emacs1000 && nohup emacs "$@" &; cd -
+        return
     fi
+
+    mkdir -p /tmp/emacs1000 && pushd /tmp/emacs1000
+    if [ "$#" -eq 0 ]; then
+        nohup emacs ~/org/me.org &
+    else
+        nohup emacs "$@" &
+    fi
+    popd
 }
 
 check_last_exit_code() {
@@ -50,17 +55,19 @@ cd() {
 }
 
 noproxy() {
-    env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY "$@"
+    env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY -u ftp_proxy -u ftps_proxy "$@"
 }
 
 set-proxy() {
     export http{,s}_proxy=$1
     export HTTP{,S}_PROXY=$1
+    export ftp{,s}_proxy=$1
 }
 
 unproxy() {
     unset http{,s}_proxy
     unset HTTP{,S}_PROXY
+    unset ftp{,s}_proxy=$1
 }
 
 vimify() {
