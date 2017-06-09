@@ -25,11 +25,16 @@ vimdf() {
 em() {
     if [ -f /tmp/emacs1000/server ]; then
         emacsclient "$@"
-    elif [ "$#" -eq 0 ]; then
-        cd /tmp/emacs1000 && nohup emacs ~/org/me.org &; cd -
-    else
-        cd /tmp/emacs1000 && nohup emacs "$@" &; cd -
+        return
     fi
+
+    mkdir -p /tmp/emacs1000 && pushd /tmp/emacs1000
+    if [ "$#" -eq 0 ]; then
+        nohup emacs ~/org/me.org &
+    else
+        nohup emacs "$@" &
+    fi
+    popd
 }
 
 check_last_exit_code() {
