@@ -72,6 +72,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g H='--help'
     alias -g L='less -n'
     alias -g R='!! | less -n'
+    alias -g SUM='paste -sd+ - | bc'
 fi
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
