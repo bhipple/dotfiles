@@ -34,5 +34,7 @@
                                                              (haskell . t)
                                                              ))
 
+    ;; Setup persistence hooks for the clock
+    (org-clock-persistence-insinuate)
   )
 )

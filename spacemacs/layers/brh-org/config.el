@@ -57,14 +57,6 @@
 
 ;; Default notes file for capture
 (setq org-default-notes-file "~/org/me.org")
-(global-set-key "\C-cc" 'org-capture)
-
-;; Open up the agenda with C-c a
-(global-set-key "\C-ca" 'org-agenda)
-
-(global-set-key "\C-cb" 'org-iswitchb)
-(global-set-key "\C-cl" 'org-store-link)
-
 ;; Abbreviations for links
 (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")
                               ("omap" . "https://www.openstreetmap.org/search?query=%s")))
@@ -97,10 +89,11 @@
         ("n" "Today's agenda and all NEXT items" ((agenda "" ((org-agenda-span 'day)
                                                               (org-agenda-log-mode t)))
                                               (tags-todo "-SOMEDAY+TODO=\"NEXT\"")))
-        ("p" . "Priority searches")
+        ("p" . "Projects and Priority searches")
         ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
         ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
         ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
+        ("pl" "Project List" ((tags-todo "+PROJECT") (org-agenda-use-tag-inheritance nil)))
         ("r" "Weekly Review" agenda "" ((org-agenda-span 'week)
                                         (org-agenda-log-mode t)
                                         (org-agenda-archives-mode t)))
@@ -118,8 +111,22 @@
         ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
         ("ww" "All WORK items" tags-todo "WORK")))
 
-(global-set-key (kbd "<f8>") 'org-agenda)
-(global-set-key (kbd "<f12>") 'brh/smart-agenda)
-
-;; Highlight source code blocks
 (setq org-src-fontify-natively t)
+
+;; global Effort estimate values
+(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 0:00"))))
+
+;; If clocking out on a zero-time task, delete the clock entry entirely
+(setq org-clock-out-remove-zero-time-clocks t)
+
+;; Persist the clock through emacs reboots
+(setq org-clock-persist t)
+
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cl" 'org-store-link)
+
+(global-set-key (kbd "<f12>") 'brh/smart-agenda)
+(global-set-key (kbd "<f8>") 'org-agenda)
+(global-set-key (kbd "<f9>") 'org-clock-goto)
