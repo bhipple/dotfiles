@@ -36,7 +36,7 @@ fi
 # Reduce delay to 0.2 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=20
 
-PATH=~/bin_local:$PATH
+PATH=~/.nix-profile/bin:~/bin_local:$PATH
 PATH=~/bin:$PATH
 PATH=$PATH:~/.local/bin
 
