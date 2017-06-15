@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 host="$1"
-fname="$2"
+fname="$(realpath $2)"
 shift; shift;
 
 diff "$fname" <(ssh "$host" cat "$fname") "$@"
