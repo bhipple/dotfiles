@@ -113,7 +113,6 @@
       name = "bigEnvLinux";
       paths = [
         calibre
-        dropbox
         haskellPackages.threadscope
         lftp
         mupdf
