@@ -49,6 +49,7 @@
         gnupg21
         gnutls
         graphviz
+        httpie
         icu
         imagemagick
         irssi
