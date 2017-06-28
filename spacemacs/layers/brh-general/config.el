@@ -29,8 +29,11 @@
 ;; Make ediff do a split for side-by-side diffing
 (setq ediff-split-window-function 'split-window-horizontally)
 
-;; Open jinja files in salt-mode
+;; salt-mode for jinja files
 (add-to-list 'auto-mode-alist '("\\.jinja\\'" . salt-mode))
+
+;; python-mode for waf scripts
+(add-to-list 'auto-mode-alist '("\\wscript\\'" . python-mode))
 
 ;; Tramp with ssh
 (setq tramp-default-method "ssh")
