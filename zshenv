@@ -74,6 +74,7 @@ export GTAGSLABEL=pygments
 
 [[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
 
+[[ -f /usr/local/etc/profile.d/nix.sh ]] && . /usr/local/etc/profile.d/nix.sh
 export GPG=gpg2
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
