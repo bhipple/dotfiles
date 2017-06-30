@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Accept a remote server's public key for ssh ONLY IF we have not previously
+# accepted a key from that server.
+HOST=$1
+ssh-keyscan -t rsa,dsa "$HOST" 2>&1 | sort -u - ~/.ssh/known_hosts > ~/.ssh/tmp_hosts
+mv ~/.ssh/tmp_hosts ~/.ssh/known_hosts
