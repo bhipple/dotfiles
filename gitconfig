@@ -46,7 +46,9 @@
     shows = show --stat
     ss = show --stat
     st = status
+    ud = branch --set-upstream-to=origin/dev
     um = branch --set-upstream-to=origin/master
+    ut = branch --set-upstream-to=origin/testing
 
     # List aliases
     la = "!git config -l | grep alias | cut -c 7-"
