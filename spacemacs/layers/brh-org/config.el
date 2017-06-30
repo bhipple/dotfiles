@@ -114,7 +114,7 @@
 (setq org-src-fontify-natively t)
 
 ;; global Effort estimate values
-(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 0:00"))))
+(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 0:00"))))
 
 ;; If clocking out on a zero-time task, delete the clock entry entirely
 (setq org-clock-out-remove-zero-time-clocks t)
