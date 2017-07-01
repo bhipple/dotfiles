@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Update all of my git repos
+
+update() {
+    echo "Pulling $1"
+    cd "$1" && git pull &
+}
+
+update /etc/nixos
+update ~/org
+update ~/org/things-to-do
+update ~/dotfiles
+update ~/dotfiles_local
+
+wait
+echo "Finished updating"
