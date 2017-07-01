@@ -21,9 +21,20 @@
           org-file-list) ; add files found to result
       (add-to-list 'org-file-list org-file)))))))
 
-;;
+;; Show my work agenda if the work.org file exists, and my home agenda otherwise.
 (defun brh/smart-agenda ()
   (interactive)
   (if (file-exists-p "~/org/work/work.org")
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
+
+;; Not working yet; trying to convert a date like 4/27/2014 => [2014-04-27] for importing old docs in org mode.
+;; TODO: Figure out how to take the visual region selection, feed it to this, and replace the text with the output.
+(defun brh/convert-date (time-string)
+  (interactive "s")
+  (let* ((time (parse-time-string time-string))
+         (day (nth 3 time))
+         (month (nth 4 time))
+         (year (nth 5 time)))
+    (format-time-string "[%Y-%m-%d]"
+                        (encode-time 0 0 0 day month year))))

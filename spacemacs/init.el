@@ -17,7 +17,6 @@ values."
    ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
-   ;; (default 'unused)
 
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
@@ -45,6 +44,7 @@ values."
      better-defaults
      c-c++
      confluence
+     csv
      dash
      emacs-lisp
      git
