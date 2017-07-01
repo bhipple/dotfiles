@@ -2,8 +2,12 @@
 # Update all of my git repos
 
 update() {
-    echo "Pulling $1"
-    cd "$1" && git pull &
+    if [ -d "$1" ]; then
+        echo "Pulling $1"
+        cd "$1" && git pull &
+    else
+        echo "Skipping $1 - Not deployed on this machine."
+    fi
 }
 
 update /etc/nixos
