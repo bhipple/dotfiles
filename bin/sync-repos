@@ -21,6 +21,7 @@ update ~/dotfiles
 update ~/dotfiles_local
 update ~/org
 update ~/org/things-to-do
+update ~/personal
 
 wait
 echo "Finished updating"
