@@ -55,6 +55,7 @@ values."
               haskell-completion-backend 'ghc-mod)
      helm
      html
+     java
      javascript
      markdown
      nginx
