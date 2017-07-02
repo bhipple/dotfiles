@@ -16,10 +16,11 @@ update() {
 }
 
 update /etc/nixos
-update ~/org
-update ~/org/things-to-do
+update ~/.password-store
 update ~/dotfiles
 update ~/dotfiles_local
+update ~/org
+update ~/org/things-to-do
 
 wait
 echo "Finished updating"
