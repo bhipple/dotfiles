@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Update all of my git repos
 
-# TODO: Check keyring first
-keys
+if ! ssh-add -l | grep -q gitlab; then
+    keys
+fi
 
 update() {
     f() {
