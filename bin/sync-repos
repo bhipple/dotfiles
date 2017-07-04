@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Update all of my git repos
 
+# TODO: Check keyring first
+keys
+
 update() {
     f() {
         echo "Synchronizing $1"
