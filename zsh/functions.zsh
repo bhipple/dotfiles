@@ -184,7 +184,7 @@ fstash() {
 }
 
 # Get the foo/bar part of https://github.com/foo/bar.git or git@github.com:foo/bar.git
-gh_remote() {
+git-remote() {
     REMOTE=${1-origin}
     rmt=$(git remote get-url "$REMOTE" \
               | grep -Eo "([_A-Za-z0-9-]+\/[_A-Za-z0-9-]+(.git)?$)" \
@@ -197,30 +197,39 @@ gh_remote() {
     fi
 }
 
-_gh_swapper() {
-    repo=$(gh_remote "$1")
-    git remote remove "$1"
-    git remote add -mt "$1" "${2}${repo}.git"
+# Get the github.com part of http://github.com/foo/bar.git or git@github.com:foo/bar.git
+git-site() {
+    REMOTE=${1-origin}
+    git remote get-url "$REMOTE" \
+              | sed -e 's|^https://||' -e 's|^git@||' -e 's|\.git$||' -e 's|[:/].*||'
+}
+
+_git_swapper() {
+    repo=$(git-remote "$1")
+    git remote set-url "$1" "${2}${repo}.git"
     echo "Set remote $REMOTE to $(git remote get-url $REMOTE)"
-
 }
 
-gh_ssh_to_https() {
-    _gh_swapper "$1" "https://github.com/"
+git-ssh-to-https() {
+    site=$(git-site "$1")
+    echo "Setting $1 to https on $site"
+    _git_swapper "$1" "https://$site/"
 }
 
-gh_https_to_ssh() {
-    _gh_swapper "$1" "git@github.com:"
+git-https-to-ssh() {
+    site=$(git-site "$1")
+    echo "Setting $1 to ssh on $site"
+    _git_swapper "$1" "git@$site:"
 }
 
 # Swap between HTTPS and SSH, optionally specifying which remote.
-gh_swap_remote_protocol() {
+git-remote-swap-protocol() {
     REMOTE=${1-origin}
-    $(git remote get-url "$REMOTE" | grep "https") > /dev/null 2>&1
+    git remote get-url "$REMOTE" | grep "https" > /dev/null 2>&1
     if [[ $? -eq 0 ]]; then
-        gh_https_to_ssh "$REMOTE"
+        git-https-to-ssh "$REMOTE"
     else
-        gh_ssh_to_https "$REMOTE"
+        git-ssh-to-https "$REMOTE"
     fi
 }
 
