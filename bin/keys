@@ -3,11 +3,16 @@
 
 add() {
     key="$HOME/.ssh/$1"
-    if [ -f "$key" ]; then
-        ssh-add "$key"
-        echo "Added $key"
+    if ! [ -f "$key" ]; then
+        echo "ERROR: Failed to find key: $key"
+        exit 1
+    fi
+
+    if ssh-add -l | grep -q "$key"; then
+        echo "$key already added"
     else
-        echo "$key not found"
+        echo "Adding $key"
+        ssh-add "$key"
     fi
 }
 
