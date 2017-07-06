@@ -114,7 +114,8 @@
 (setq org-src-fontify-natively t)
 
 ;; global Effort estimate values
-(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 0:00"))))
+(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 0:00")
+                                    ("Depth_ALL" . "Light Deep"))))
 
 ;; If clocking out on a zero-time task, delete the clock entry entirely
 (setq org-clock-out-remove-zero-time-clocks t)
@@ -124,6 +125,20 @@
 
 ;; Change tasks to NEXT when clocking in
 (setq org-clock-in-switch-to-state 'bh/clock-in-to-next)
+
+;; Always keep clocksum formatted in hours and minutes; never days.
+(setq org-time-clocksum-format
+      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
+
+
+;; Don't let me delete/modify invisible blocks
+(setq org-catch-invisible-edits 'error)
+
+;; Link by IDs, not filename:header
+(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
+;; And don't preserve IDs whe cloning
+(setq org-clone-delete-id t)
 
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
