@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -i bash -p ipfs -p xsel
+#! nix-shell -i bash -p xsel
 #
 # Share a file or directory on IPFS and copy the root link to the clipboard.
 if [ -z "$1" ]; then
