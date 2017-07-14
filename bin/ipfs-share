@@ -9,7 +9,11 @@ fi
 
 out=$(ipfs add -r "$1")
 echo "$out"
+hash=$(echo "$out" | tail -1 | awk '{print $2}')
 
-link="https://ipfs.io/ipfs/$(echo "$out" | tail -1 | awk '{print $2}')"
+# Put the IPFS hash on the secondary clipboard
+echo "$hash" | xsel -s
+
+link="https://ipfs.io/ipfs/$hash"
 echo "$link" | xsel -b
-echo "Copied IPFS link to clipboard."
+echo "Copied $link to clipboard."
