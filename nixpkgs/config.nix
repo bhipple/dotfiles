@@ -27,7 +27,6 @@
         nix-repl
         par
         pass
-        python
         rlwrap
         tmux
         tree
@@ -76,8 +75,12 @@
           flake8
           futures
           isort
+          jedi
+          jsonrpclib
           paramiko
           pep8
+          pylint
+          setuptools
           yapf
         ];
     });
