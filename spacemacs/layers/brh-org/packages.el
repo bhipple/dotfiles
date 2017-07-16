@@ -36,5 +36,8 @@
 
     ;; Setup persistence hooks for the clock
     (org-clock-persistence-insinuate)
+
+    ;; Show the org clock in the mode line
+    (spaceline-toggle-org-clock-on)
   )
 )
