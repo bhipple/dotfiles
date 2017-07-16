@@ -42,6 +42,7 @@
       name = "bigEnv";
       paths = [
         aspell
+        weechat
         chromium
         cmake
         emacs25
