@@ -18,10 +18,11 @@
     dfc = diff --cached
     dfh = diff -- .
     dfs = diff --stat
-    dod = diff origin/develop -w
+    dod = diff origin/dev -w
     dom = diff origin/master -w
     dot = diff origin/testing -w
     doms = diff origin/master -w --stat
+    dods = diff origin/dev -w --stat
     f = fetch
     fa = fetch --all
     l = log
