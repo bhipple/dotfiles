@@ -37,3 +37,7 @@
 
 ;; Tramp with ssh
 (setq tramp-default-method "ssh")
+
+;; Yasnippet settings: just indent to starting column, instead of using emacs
+;; auto-indent. Auto messes up yaml, python, salt files, etc.
+(setq yas-indent-line 'fixed)
