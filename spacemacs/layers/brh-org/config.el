@@ -130,7 +130,6 @@
 (setq org-time-clocksum-format
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
-
 ;; Don't let me delete/modify invisible blocks
 (setq org-catch-invisible-edits 'error)
 

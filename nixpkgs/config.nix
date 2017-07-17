@@ -24,10 +24,10 @@
         gnused
         gnutar
         htop
+        mailutils
         nix-repl
         par
         pass
-        python
         rlwrap
         tmux
         tree
@@ -42,6 +42,7 @@
       name = "bigEnv";
       paths = [
         aspell
+        weechat
         chromium
         cmake
         emacs25
@@ -76,8 +77,12 @@
           flake8
           futures
           isort
+          jedi
+          jsonrpclib
           paramiko
           pep8
+          pylint
+          setuptools
           yapf
         ];
     });
