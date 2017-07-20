@@ -4,12 +4,6 @@
 
   hardware.pulseaudio.enable = true;
 
-  firefox = {
-    enableAdobeFlash = true;
-    enableGoogleTalkPlugin = true;
-    ffmpegSupport = true;
-  };
-
   packageOverrides = pkgs: {
     # Minimal set of packages to install everywhere
     minEnv = with pkgs; hiPrio (buildEnv {
