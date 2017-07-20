@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-out=$(ipfs add -r "$1")
+out=$(ipfs add -wr "$1")
 echo "$out"
 hash=$(echo "$out" | tail -1 | awk '{print $2}')
 
@@ -16,4 +16,4 @@ echo "$hash" | xsel -s
 
 link="https://ipfs.io/ipfs/$hash"
 echo "$link" | xsel -b
-echo "Copied $link to clipboard."
+echo "Copied link to clipboard and hash to secondary clipboard."
