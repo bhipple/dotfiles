@@ -37,7 +37,6 @@
       paths = [
         aspell
         bind
-        weechat
         chromium
         cmake
         emacs25
@@ -59,6 +58,7 @@
         upower
         vagrant
         vimPlugins.youcompleteme
+        weechat
         xclip
         xsel
         zeal
