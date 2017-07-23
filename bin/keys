@@ -2,7 +2,7 @@
 # Quick script to load up the keyring
 
 add() {
-    key="$HOME/.ssh/$1"
+    key="$1"
     if ! [ -f "$key" ]; then
         echo "ERROR: Failed to find key: $key"
         exit 1
@@ -16,5 +16,10 @@ add() {
     fi
 }
 
-add brh-key
-add gitlab
+add_all() {
+    for k in $(file ~/.ssh/* | grep "private key" | awk '{print $1}' | sed 's/:$//'); do
+        add "$k"
+    done
+}
+
+add_all

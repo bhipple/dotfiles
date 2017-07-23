@@ -36,6 +36,7 @@
       name = "bigEnv";
       paths = [
         aspell
+        bind
         weechat
         chromium
         cmake
