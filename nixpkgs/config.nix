@@ -18,7 +18,6 @@
         gnused
         gnutar
         htop
-        mailutils
         nix-repl
         par
         pass
