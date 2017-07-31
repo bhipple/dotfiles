@@ -22,6 +22,7 @@ update ~/dotfiles_local
 update ~/org
 update ~/org/things-to-do
 update ~/personal
+update ~/src/cr_cryptography_i
 
 wait
 echo "Finished updating"
