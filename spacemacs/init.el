@@ -66,6 +66,7 @@ values."
           org-enable-bootstrap-support t
           org-enable-github-support t)
      pandoc
+     php
      (python :variables
              python-sort-imports-on-save nil
              python-enable-yapf-format-on-save t)
