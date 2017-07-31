@@ -1,6 +1,7 @@
 {
   allowUnfree = true;
   allowBroken = true;
+  useSandbox = true;
 
   hardware.pulseaudio.enable = true;
 
@@ -71,7 +72,7 @@
           flake8
           futures
           isort
-          jedi
+          #jedi
           jsonrpclib
           paramiko
           pep8
