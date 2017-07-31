@@ -28,10 +28,14 @@
     (require 'org-habit)
 
     ;; Enable org-babel
-    (org-babel-do-load-languages 'org-babel-load-languages '((shell . t)
-                                                             (python . t)
+    (org-babel-do-load-languages 'org-babel-load-languages '((ditaa . t)
+                                                             (dot . t)
                                                              (emacs-lisp . t)
+                                                             (gnuplot . t)
                                                              (haskell . t)
+                                                             (org . t)
+                                                             (python . t)
+                                                             (shell . t)
                                                              ))
 
     ;; Setup persistence hooks for the clock
@@ -45,5 +49,4 @@
                               (if (and (fboundp 'org-clocking-p (org-clocking-p))) nil "NOT CLOCKING"))
     (spaceline-toggle-brh/inactive-org-on)
 
-  )
-)
+  ))
