@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Given two hex arguments, print their xor
+echo "$1 xor $2 equals:"
+xor_decimal=$((0x"$1" ^ 0x"$2"))
+xor_hex=$(echo "ibase=10;obase=16; $xor_decimal" | bc)
+hex "$xor_hex"
