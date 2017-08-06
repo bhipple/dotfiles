@@ -11,6 +11,9 @@
 set -o history
 set history on 10000
 
+export LANG="en_US.UTF-8"
+
+
 # update winsize after each command for better line-wrapping
 shopt -s checkwinsize
 
