@@ -78,6 +78,7 @@
           pep8
           pylint
           setuptools
+          yamllint
           yapf
         ];
     });
