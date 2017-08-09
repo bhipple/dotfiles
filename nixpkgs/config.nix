@@ -11,6 +11,7 @@
       name = "minEnv";
       paths = [
         bashInteractive
+        bc
         coreutils
         curl
         file
