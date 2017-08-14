@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 # Update all of my git repos
 
+check_uncommitted() {
+    diff=$(git diff-index HEAD)
+    if [ -n "$diff" ]; then
+        echo "WARNING: $1 has uncommitted files."
+    fi
+}
+
 update() {
     f() {
         echo "Synchronizing $1"
         cd "$1" || exit 1
+        check_uncommitted "$1"
         git pull
         git push
     }
