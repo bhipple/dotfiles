@@ -13,8 +13,8 @@ update() {
         echo "Synchronizing $1"
         cd "$1" || exit 1
         check_uncommitted "$1"
-        git pull
-        git push
+        git pull > /dev/null
+        git push > /dev/null
     }
     if [ -d "$1" ]; then
         f "$1" &
