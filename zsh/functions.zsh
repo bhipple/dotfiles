@@ -12,6 +12,17 @@ confirm() {
     fi
 }
 
+# Optionally print a msg, then ask the user if he'd like to continue or abort
+proceed() {
+    if [ -n "$1" ]; then
+        echo "$1"
+    fi
+    read -n "resp?Would you like to continue? [y/N] "
+    if ! [[ $resp =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+}
+
 # Removes "<none>" containers
 docker-rmi-anon() {
     docker images | grep "<none>" | awk '{print $3}' | xargs -I{} docker rmi -f {}
