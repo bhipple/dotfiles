@@ -14,7 +14,10 @@
            git branch --merged origin/$b | grep -Ev '(master|dev|testing|releases|[*])' | xargs -n 1 git branch -d ; \
            git branch --merged origin/$b -r | grep -Ev '(master|dev|testing|releases)' \
                 | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER; \
-       done"
+       done; \
+       echo ""; \
+       echo Branches remaining after cleanup:; \
+       git branch -a"
     df = diff
     dfc = diff --cached
     dfh = diff -- .
@@ -39,10 +42,11 @@
     rb = rebase
     rba = rebase --abort
     rbc = rebase --continue
+    rf = "!git checkout master; git pull; git db"
     rmt = remote -v
     rod = rebase origin/dev -i
-    rot = rebase origin/testing -i
     rom = rebase origin/master -i
+    rot = rebase origin/testing -i
     s = show
     sed = "!git ls-files | xargs sed -i"
     shows = show --stat
