@@ -36,6 +36,7 @@
     ls = log --stat
     logdog = log --decorate --oneline --graph
     p = pull
+    pp = "!git pull && git push"
     pr = pull-request
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     pu = push
