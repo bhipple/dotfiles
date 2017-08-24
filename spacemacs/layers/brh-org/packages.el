@@ -17,7 +17,7 @@
 
 ;;; Code:
 
-(defconst brh-org-packages '(org)
+(defconst brh-org-packages '(org-habit)
   "The list of Lisp packages required by the brh-org layer.")
 
 (defun brh-org/init-org-habit ()

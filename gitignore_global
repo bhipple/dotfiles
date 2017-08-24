@@ -35,6 +35,7 @@
 .Spotlight-V100
 .Trashes
 ._*
+.nfs*
 Thumbs.db
 ehthumbs.db
 nohup.out

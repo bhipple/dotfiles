@@ -6,11 +6,14 @@
 ;; Enable keybindings defined below for TODO selection
 (setq org-use-fast-todo-selection t)
 
-;; Default TODO progression sequence.
-(setq org-todo-keywords '((sequence "NEXT(n)" "TODO(t)" "BLOCKED(b)" "WAITING(w)" "|" "DONE(d)")))
+;; Log timestamps and state transitions into the LOGBOOK drawer
+(setq org-log-into-drawer t)
 
-;; Log completion time of DONE items
-(setq org-log-done 'time)
+;; The above already captures this information
+(setq org-log-done nil)
+
+;; Default TODO progression sequence.
+(setq org-todo-keywords '((sequence "NEXT(n)" "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "|" "DONE(d!)")))
 
 ;; Use pinned reveal.js
 (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
