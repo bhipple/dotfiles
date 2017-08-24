@@ -1,4 +1,4 @@
-;(when (configuration-layer/package-usedp 'brh-org)
+(with-eval-after-load 'org
   ;; Org variable configuration
 
   ;; Dynamically find all agenda files by walking the directory
@@ -152,4 +152,4 @@
   (global-set-key (kbd "<f8>") 'org-agenda)
   (global-set-key (kbd "<f9>") 'org-clock-goto)
 
-;;)
+)
