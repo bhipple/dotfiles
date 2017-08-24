@@ -1,3 +1,4 @@
+;;(when (configuration-layer/package-usedp 'brh-org)
   (defun brh/find-org-file-recursively (&optional directory filext)
     "Return .org and .org_archive files recursively from DIRECTORY.
      If FILEXT is provided, return files with extension FILEXT instead."
@@ -103,3 +104,4 @@ Switch projects and subprojects from NEXT back to TODO"
      ((and (member (org-get-todo-state) (list "NEXT"))
            (bh/is-project-p))
       "TODO"))))
+;;)
