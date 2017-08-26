@@ -80,6 +80,7 @@ fi
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
-
 # Setup autocomplete equivalents
-compdef g='git'
+if [ -z "$IN_NIX_SHELL" ]; then
+    compdef g='git'
+fi

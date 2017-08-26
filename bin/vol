@@ -1,5 +1,5 @@
-#!/usr/bin/env stack
--- stack --nix --install-ghc runghc --package regex-posix
+#!/usr/bin/env nix-shell
+#! nix-shell -i runghc -p "haskellPackages.ghcWithPackages (ps: with ps; [regex-posix])"
 import Control.Monad
 import Data.List
 import Data.Maybe
