@@ -5,4 +5,4 @@ addons:
     - hlint
     - haskell-platform
 script:
-    - hlint lib/*.hs
+    - hlint bin/vol
