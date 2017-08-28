@@ -69,7 +69,7 @@ values."
      php
      (python :variables
              python-sort-imports-on-save nil
-             python-enable-yapf-format-on-save t)
+             python-enable-yapf-format-on-save nil)
      restclient
      ruby
      salt
