@@ -14,7 +14,7 @@
   (setq org-log-done nil)
 
   ;; Default TODO progression sequence.
-  (setq org-todo-keywords '((sequence "NEXT(n)" "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "|" "DONE(d!)")))
+  (setq org-todo-keywords '((sequence "NEXT(n)" "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "|" "DONE(d!)" "ABANDONDED(a@)")))
 
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
@@ -47,17 +47,17 @@
           ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
           ("p" "Programming Item" entry (file+headline "~/org/me.org" "Programming")
-           "* TODO [#C] %?\n")
+           "* TODO [#C] %?\nEntered %u\n")
           ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nSCHEDULED: %^t")
           ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-           "* TODO [#C] %?\n")
+           "* TODO [#C] %?\nEntered %u\n")
 
           ;; Work.org templates
           ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
-           "* %?\n")
+           "* %?\nEntered %u\n")
           ("w" "Work Todo" entry (file+headline "~/org/work/work.org" "Work Tasks")
-           "* TODO [#C] %?\n")))
+           "* TODO [#C] %?\nEntered %u\n")))
 
   ;; Default notes file for capture
   (setq org-default-notes-file "~/org/me.org")
