@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 # Open a file with emacsclient, detecting if we should use TRAMP to get to the
 # machine where emacs is running.
+# TODO: enhance this script to support multiple args
 
 if [ -z "$1" ]; then
-    echo "USAGE: e <file>"
-    exit 1
+    files=""
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+    file_name=$(realpath "$files")
+else
+    file_name=$(realpath "$1")
 fi
 
 host=$(hostname)
-file_name=$(realpath "$1")
 
 # If I'm already on the machine, or if my machine's hostname starts with brh
 # (desktop, laptop, etc.), then just open it; otherwise, ssh to EMACS_HOST and
