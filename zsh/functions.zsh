@@ -105,6 +105,13 @@ fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
+# fe - Open a file with `e`
+fe() {
+    local files
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+    [[ -n "$files" ]] && e "${files[@]}"
+}
+
 # fbr - checkout git branch
 fbr() {
   local branches branch
