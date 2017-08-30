@@ -98,7 +98,7 @@ Skips capture tasks, projects, and subprojects.
 Switch projects and subprojects from NEXT back to TODO"
   (when (not (and (boundp 'org-capture-mode) org-capture-mode))
     (cond
-     ((and (member (org-get-todo-state) (list "TODO"))
+     ((and (member (org-get-todo-state) (list "TODO" "WAITING" "BLOCKED"))
            (bh/is-task-p))
       "NEXT")
      ((and (member (org-get-todo-state) (list "NEXT"))
