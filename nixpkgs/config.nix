@@ -5,9 +5,9 @@
 
   hardware.pulseaudio.enable = true;
 
-  packageOverrides = pkgs: {
+  packageOverrides = pkgs: with pkgs; {
     # Minimal set of packages to install everywhere
-    minEnv = with pkgs; hiPrio (buildEnv {
+    minEnv = hiPrio (buildEnv {
       name = "minEnv";
       paths = [
         bashInteractive
@@ -21,6 +21,7 @@
         gnutar
         htop
         nix-repl
+        nox
         par
         pass
         rlwrap
@@ -33,14 +34,14 @@
     });
 
     # For "permanent" systems; compatible on both Mac and Linux
-    bigEnv = with pkgs; hiPrio (buildEnv {
+    bigEnv = hiPrio (buildEnv {
       name = "bigEnv";
       paths = [
         aspell
         bind
         chromium
         cmake
-        emacs25
+        emacs
         gnumake
         gnupg21
         gnutls
@@ -67,52 +68,8 @@
       ];
     });
 
-    pyEnv = with pkgs; with python27Packages; hiPrio (buildEnv {
-        name = "pyEnv";
-        paths = [
-          flake8
-          futures
-          isort
-          #jedi
-          jsonrpclib
-          paramiko
-          pep8
-          pylint
-          setuptools
-          yamllint
-          yapf
-        ];
-    });
-
-    haskellEnv = with pkgs; hiPrio (buildEnv {
-      name = "haskellEnv";
-      paths = [
-        (haskellPackages.ghcWithPackages (ps: with ps;
-          [ Cabal
-            async
-            dhall
-            dhall-bash
-            dhall-json
-            dhall-nix
-            filepath
-            ghc-mod
-            hindent
-            hlint
-            hoogle
-            optparse-generic
-            text
-            text-show
-            trifecta
-            turtle
-            xmobar
-            xmonad
-            xmonad-contrib
-            xmonad-extras ]))
-      ];
-    });
-
     # For "permanent" systems; these packages don't seem to play well with MacOS
-    bigEnvLinux = with pkgs; hiPrio (buildEnv {
+    bigEnvLinux = hiPrio (buildEnv {
       name = "bigEnvLinux";
       paths = [
         calibre
@@ -122,5 +79,42 @@
         vlc
       ];
     });
+
+    pyEnv = python27.withPackages (ps: with ps; [
+        flake8
+        futures
+        isort
+        numpy
+        paramiko
+        pep8
+        pylint
+        setuptools
+        toolz
+        yamllint
+        yapf
+    ]);
+
+    haskellEnv = haskellPackages.ghcWithPackages (ps: with ps; [
+        Cabal
+        async
+        dhall
+        dhall-bash
+        dhall-json
+        dhall-nix
+        filepath
+        ghc-mod
+        hindent
+        hlint
+        hoogle
+        optparse-generic
+        text
+        text-show
+        trifecta
+        turtle
+        xmobar
+        xmonad
+        xmonad-contrib
+        xmonad-extras
+    ]);
   };
 }
