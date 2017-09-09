@@ -30,8 +30,15 @@ nix_install() {
         fi
     fi
 
+    CHANNEL="nixpkgs"
+    [[ -n "$IS_NIXOS" ]] && CHANNEL="nixos"
+
     [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
-    nix-env -j 4 -i minEnv
+    nix-env -j 4 -iA "$CHANNEL".minEnv "$CHANNEL.pyEnv"
+
+    if hostname | grep -qE "^brh"; then
+        nix-env -j 4 -iA "$CHANNEL".bigEnv "$CHANNEL".bigEnvLinux "$CHANNEL".haskellEnv
+    fi
 }
 
 fzf_install() {
