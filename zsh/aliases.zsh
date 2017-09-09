@@ -56,6 +56,7 @@ alias vr='vagrant destroy -f; vagrant up && vagrant ssh'
 alias vs='vagrant ssh'
 alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
+alias waf='./waf'
 alias wfc='curl wttr.in/new_york'
 alias wifi='nmcli d wifi'
 
