@@ -57,7 +57,7 @@ PATH=$PATH:/usr/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/sbin
 
-export PYTHONPATH=~/bin
+export PYTHONPATH=~/bin:$PYTHONPATH
 
 export LIBRARY_PATH="/opt/X11/lib:$LIBRARY_PATH"
 
@@ -81,6 +81,10 @@ export GPG=gpg2
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_COMPLETION_TRIGGER='~~'
+
+if uname -a | grep -q "NixOS" ; then
+    export IS_NIXOS=1
+fi
 
 pathDeduplicate() {
     export PATH="$(echo "$PATH" |
