@@ -80,7 +80,7 @@
       ];
     });
 
-    pyEnv = python27.withPackages (ps: with ps; [
+    pyEnv = hiPrio (python27.withPackages (ps: with ps; [
         flake8
         futures
         isort
@@ -92,7 +92,7 @@
         toolz
         yamllint
         yapf
-    ]);
+    ]));
 
     haskellEnv = haskellPackages.ghcWithPackages (ps: with ps; [
         Cabal
