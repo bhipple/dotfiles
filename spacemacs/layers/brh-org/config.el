@@ -46,8 +46,6 @@
            "* TODO [#C] %?\nDEADLINE: %^t")
           ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
-          ("p" "Programming Item" entry (file+headline "~/org/me.org" "Programming")
-           "* TODO [#C] %?\nEntered %u\n")
           ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nSCHEDULED: %^t")
           ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")

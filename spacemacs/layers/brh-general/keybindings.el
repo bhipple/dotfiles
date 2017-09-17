@@ -13,6 +13,7 @@
 (spacemacs/set-leader-keys
   "oa" 'org-agenda
   "ob" 'helm-buffers-list
+  "oc" 'org-capture
   "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
   "of" 'magit-pull-from-upstream
   "og" (lambda () "Git grep repository from root" (interactive)
