@@ -21,3 +21,5 @@ if [ "$host" = "$EMACS_HOST"  ] || [[ "$host" = brh* ]]; then
 else
     ssh "$EMACS_HOST" "cd /tmp; nohup emacsclient -q -n /$host:$file_name" &
 fi
+
+wait
