@@ -66,6 +66,7 @@ values."
           org-enable-bootstrap-support t
           org-enable-github-support t)
      pandoc
+     perl5
      php
      (python :variables
              python-sort-imports-on-save nil
