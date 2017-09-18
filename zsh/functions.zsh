@@ -41,7 +41,11 @@ em() {
 
     mkdir -p /tmp/emacs1000 && pushd /tmp/emacs1000
     if [ "$#" -eq 0 ]; then
-        nohup emacs ~/org/me.org &
+        if [ -f ~/dotfiles_local/notes/work.org ]; then
+            nohup emacs ~/dotfiles_local/notes/work.org &
+        else
+            nohup emacs ~/org/me.org &
+        fi
     else
         nohup emacs "$@" &
     fi
