@@ -29,6 +29,7 @@ update ~/dotfiles
 update ~/dotfiles_local
 update ~/org
 update ~/org/things-to-do
+update ~/org/work
 update ~/personal
 
 wait
