@@ -41,3 +41,10 @@
 ;; Yasnippet settings: just indent to starting column, instead of using emacs
 ;; auto-indent. Auto messes up yaml, python, salt files, etc.
 (setq yas-indent-line 'fixed)
+
+
+;; When in markdown mode, enable minor orgtbl-mode and format tables as markdown on save
+(add-hook 'markdown-mode-hook 'orgtbl-mode)
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook 'brh/cleanup-org-tables nil 'make-it-local)))
