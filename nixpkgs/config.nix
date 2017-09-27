@@ -73,6 +73,7 @@
       name = "bigEnvLinux";
       paths = [
         calibre
+        digikam
         haskellPackages.threadscope
         lftp
         mupdf
