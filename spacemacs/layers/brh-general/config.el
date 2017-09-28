@@ -42,6 +42,8 @@
 ;; auto-indent. Auto messes up yaml, python, salt files, etc.
 (setq yas-indent-line 'fixed)
 
+;; Use tab-n-go company
+(with-eval-after-load 'company (company-tng-configure-default))
 
 ;; When in markdown mode, enable minor orgtbl-mode and format tables as markdown on save
 (add-hook 'markdown-mode-hook 'orgtbl-mode)

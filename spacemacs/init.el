@@ -37,9 +37,10 @@ values."
      ;; ----------------------------------------------------------------
      asciidoc
      (auto-completion :variables
+                      auto-completion-complete-with-key-sequence-delay 0
                       auto-completion-enable-help-tooltip t
-                      auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-sort-by-usage t
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets")
      better-defaults
      c-c++
@@ -349,9 +350,6 @@ you should place your code here."
   ;; Path for user lisp code
   (add-to-list 'load-path "~/dotfiles/spacemacs/lisp/")
   (add-to-list 'load-path "~/.emacs_local/")
-
-  ;; Make company behave more like YCM
-  (require 'company-simple-complete)
 
   ;; Load local settings
   (require 'brh-local)
