@@ -128,6 +128,9 @@
   ;; Change tasks to NEXT when clocking in
   (setq org-clock-in-switch-to-state 'bh/clock-in-to-next)
 
+  ;; WAITING/BLOCKED state transitions will trigger a clock-out
+  (setq org-clock-out-when-done '("DONE" "WAITING" "BLOCKED"))
+
   ;; Always keep clocksum formatted in hours and minutes; never days.
   (setq org-time-clocksum-format
         '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
