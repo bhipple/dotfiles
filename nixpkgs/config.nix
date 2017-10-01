@@ -20,6 +20,7 @@
         gnused
         gnutar
         htop
+        jq
         nix-repl
         nox
         par
