@@ -26,6 +26,7 @@ update() {
 update /etc/nixos
 update ~/.password-store
 update ~/dotfiles
+update ~/dotfiles/spacemacs/yasnippet-snippets
 update ~/dotfiles_local
 update ~/org
 update ~/org/things-to-do
