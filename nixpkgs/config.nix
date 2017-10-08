@@ -52,6 +52,7 @@
         imagemagick
         irssi
         neovim
+        nixops
         nodePackages.tern  # Needed by spacemacs JS layer
         pandoc
         pdsh
