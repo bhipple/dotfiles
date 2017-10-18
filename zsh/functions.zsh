@@ -34,21 +34,13 @@ vimdf() {
 }
 
 em() {
-    if [ -f /tmp/emacs1000/server ]; then
+    if [ -f /tmp/emacs$UID/server ]; then
         emacsclient "$@"
         return
     fi
 
-    mkdir -p /tmp/emacs1000 && pushd /tmp/emacs1000
-    if [ "$#" -eq 0 ]; then
-        if [ -f ~/dotfiles_local/notes/work.org ]; then
-            nohup emacs ~/dotfiles_local/notes/work.org &
-        else
-            nohup emacs ~/org/me.org &
-        fi
-    else
-        nohup emacs "$@" &
-    fi
+    mkdir -p /tmp/emacs$UID && pushd /tmp/emacs$UID
+    nohup emacs "$@" &
     popd
 }
 
