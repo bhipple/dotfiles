@@ -72,9 +72,8 @@
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)
 
-  ;; By default, don't show DONE and archived items.
-  (setq org-agenda-log-mode nil)
-  (setq org-agenda-archives-mode nil)
+  ;; By default, show archived items.
+  (setq org-agenda-archives-mode t)
 
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
