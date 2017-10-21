@@ -14,7 +14,7 @@
   (setq org-log-done nil)
 
   ;; Default TODO progression sequence.
-  (setq org-todo-keywords '((sequence "NEXT(n)" "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "|" "DONE(d!)" "ABANDONDED(a@)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "|" "DONE(d!)" "ABANDONDED(a@)")))
 
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
@@ -87,9 +87,9 @@
                                                  (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
           ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
-          ("n" "Today's agenda and all NEXT items" ((agenda "" ((org-agenda-span 'day)
+          ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
                                                                 (org-agenda-log-mode t)))
-                                                    (tags-todo "-SOMEDAY+TODO=\"NEXT\"")))
+                                                    (tags-todo "-SOMEDAY+TODO=\"TODO\"")))
           ("p" . "Projects and Priority searches")
           ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
           ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
@@ -125,7 +125,7 @@
   (setq org-clock-persist t)
 
   ;; Change tasks to NEXT when clocking in
-  (setq org-clock-in-switch-to-state 'bh/clock-in-to-next)
+  (setq org-clock-in-switch-to-state 'bh/clock-in)
 
   ;; WAITING/BLOCKED state transitions will trigger a clock-out
   (setq org-clock-out-when-done '("DONE" "WAITING" "BLOCKED"))
