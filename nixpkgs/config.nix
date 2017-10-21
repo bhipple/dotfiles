@@ -44,7 +44,7 @@
         cmake
         emacs
         gnumake
-        gnupg21
+        gnupg
         gnutls
         graphviz
         httpie
@@ -59,6 +59,7 @@
         shellcheck
         source-code-pro
         stack
+        truecrypt
         upower
         vagrant
         vimPlugins.youcompleteme
