@@ -37,7 +37,7 @@ nix_install() {
     nix-env -j4 -k -iA "$CHANNEL".minEnv "$CHANNEL.pyEnv"
 
     if hostname | grep -qE "^brh"; then
-        nix-env -j4 -k -iA "$CHANNEL".bigEnv "$CHANNEL".bigEnvLinux "$CHANNEL".haskellEnv
+        nix-env -j4 -k -iA "$CHANNEL".bigEnv "$CHANNEL".bigEnvLinux
     fi
 }
 
