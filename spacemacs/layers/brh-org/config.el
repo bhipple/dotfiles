@@ -77,7 +77,7 @@
 
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
-        '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"")))
+        '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
           ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
           ("h" . "HOME searches")
           ("hh" "All HOME items" tags-todo "HOME")
@@ -103,7 +103,7 @@
                                                              (org-agenda-archives-mode nil)
                                                              (org-agenda-log-mode nil)))
                                                  (tags-todo "+WORK-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
-          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"")))
+          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
           ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
           ("we" "Work agenda for exporting to html" ((agenda "" ((org-agenda-span 'day)
                                                                  (org-agenda-archives-mode nil)
@@ -124,11 +124,11 @@
   ;; Persist the clock through emacs reboots
   (setq org-clock-persist t)
 
-  ;; Change tasks to NEXT when clocking in
+  ;; Change tasks to TODO when clocking in
   (setq org-clock-in-switch-to-state 'bh/clock-in)
 
-  ;; WAITING/BLOCKED state transitions will trigger a clock-out
-  (setq org-clock-out-when-done '("DONE" "WAITING" "BLOCKED"))
+  ;; State transitions that will trigger a clock-out
+  (setq org-clock-out-when-done '("DONE" "WAITING" "BLOCKED" "PR"))
 
   ;; Always keep clocksum formatted in hours and minutes; never days.
   (setq org-time-clocksum-format
