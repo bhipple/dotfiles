@@ -25,6 +25,7 @@ main = do
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
     _ <- spawn myTerminal
+    _ <- spawn "emacs"
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
@@ -101,8 +102,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_r), spawn restartCmd)
     ]
     ++
-    -- mod-{q,w,e,a,s,d} %! Switch focus to physical/Xinerama screens
-    -- mod-shift-{q,w,e,a,s,d} %! Throw client to physical/Xinerama screen
+    -- mod-{a,s,d} %! Switch focus to physical screens
+    -- mod-shift-{a,s,d} %! Throw client to physical screen
     [ ((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
       | (key, sc) <- zip xKeys xOrder
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
