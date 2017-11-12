@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+PROG="$(which "$1")"
+echo "$PROG"
+ldd "$PROG"
