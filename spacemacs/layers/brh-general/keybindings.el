@@ -24,5 +24,5 @@
   "ot" (lambda () "Add org TODO" (interactive)
          (org-insert-todo-heading-respect-content))
   "os" 'org-sort-entries
-  "ow" (lambda () (interactive) (find-file "~/org/work/work.org"))
+  "ow" (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   )

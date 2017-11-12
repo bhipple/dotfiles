@@ -57,6 +57,7 @@ alias vs='vagrant ssh'
 alias vu='vagrant up'
 alias vus='vagrant up && vagrant ssh'
 alias waf='./waf'
+alias wcb='./waf -v configure build'
 alias wfc='curl wttr.in/new_york'
 alias wifi='nmcli d wifi'
 

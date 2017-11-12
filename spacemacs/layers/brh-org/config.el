@@ -14,7 +14,7 @@
   (setq org-log-done nil)
 
   ;; Default TODO progression sequence.
-  (setq org-todo-keywords '((sequence "NEXT(n)" "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "|" "DONE(d!)" "ABANDONDED(a@)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "PR(p@)" "|" "DONE(d!)" "ABANDONDED(a@)")))
 
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
@@ -72,13 +72,12 @@
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)
 
-  ;; By default, don't show DONE and archived items.
-  (setq org-agenda-log-mode nil)
-  (setq org-agenda-archives-mode nil)
+  ;; By default, show archived items.
+  (setq org-agenda-archives-mode t)
 
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
-        '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"")))
+        '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
           ("c" "Currently active non-repeating items" tags-todo "-SOMEDAY-REPEATING")
           ("h" . "HOME searches")
           ("hh" "All HOME items" tags-todo "HOME")
@@ -88,9 +87,9 @@
                                                  (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
           ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
-          ("n" "Today's agenda and all NEXT items" ((agenda "" ((org-agenda-span 'day)
+          ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
                                                                 (org-agenda-log-mode t)))
-                                                    (tags-todo "-SOMEDAY+TODO=\"NEXT\"")))
+                                                    (tags-todo "-SOMEDAY+TODO=\"TODO\"")))
           ("p" . "Projects and Priority searches")
           ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
           ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
@@ -104,7 +103,7 @@
                                                              (org-agenda-archives-mode nil)
                                                              (org-agenda-log-mode nil)))
                                                  (tags-todo "+WORK-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
-          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"")))
+          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
           ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
           ("we" "Work agenda for exporting to html" ((agenda "" ((org-agenda-span 'day)
                                                                  (org-agenda-archives-mode nil)
@@ -125,11 +124,11 @@
   ;; Persist the clock through emacs reboots
   (setq org-clock-persist t)
 
-  ;; Change tasks to NEXT when clocking in
-  (setq org-clock-in-switch-to-state 'bh/clock-in-to-next)
+  ;; Change tasks to TODO when clocking in
+  (setq org-clock-in-switch-to-state 'bh/clock-in)
 
-  ;; WAITING/BLOCKED state transitions will trigger a clock-out
-  (setq org-clock-out-when-done '("DONE" "WAITING" "BLOCKED"))
+  ;; State transitions that will trigger a clock-out
+  (setq org-clock-out-when-done '("DONE" "WAITING" "BLOCKED" "PR"))
 
   ;; Always keep clocksum formatted in hours and minutes; never days.
   (setq org-time-clocksum-format

@@ -30,7 +30,6 @@ update ~/dotfiles/spacemacs/yasnippet-snippets
 update ~/dotfiles_local
 update ~/org
 update ~/org/things-to-do
-update ~/org/work
 update ~/personal
 
 wait

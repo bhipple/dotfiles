@@ -72,6 +72,9 @@ export GOPATH=""
 
 export GTAGSLABEL=pygments
 
+export UID=$(getent passwd "$USER" | cut -d":" -f3)
+export GID=$(getent passwd "$USER" | cut -d":" -f4)
+
 . ~/bin/resty
 
 [[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')

@@ -40,13 +40,13 @@
            git branch --merged origin/$b -r | grep -Ev '(master|dev|testing|releases)' \
                 | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER > /dev/null 2>&1; \
        done; \
-       git branch-gc \
-       git branch -f master origin/master \
-       git branch -f dev origin/dev \
-       git pull \
+       git branch-gc; \
+       git branch -f master origin/master; \
+       git branch -f dev origin/dev; \
+       git pull; \
        echo ""; \
        echo Branches remaining after cleanup:; \
-       git branch -a"
+       git branch -a;"
     rmt = remote -v
     rod = rebase origin/dev -i
     rom = rebase origin/master -i
