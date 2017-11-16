@@ -10,6 +10,7 @@
     minEnv = hiPrio (buildEnv {
       name = "minEnv";
       paths = [
+        ag
         bashInteractive
         bc
         coreutils
@@ -25,6 +26,7 @@
         nox
         par
         pass
+        ripgrep
         rlwrap
         tmux
         tree
