@@ -19,7 +19,6 @@ export_agenda() {
 
 if [ -f ~/dotfiles_local/notes/work.org ]; then
     export_agenda "wa" "agenda-todo"
-
 else
     export_agenda "ha" "agenda-todo"
     export_agenda "r" "review"
