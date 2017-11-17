@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Requires an emacs server running
+# TODO 1: Force log mode enabled. (org-agenda-log-mode) is a toggle
+# TODO 2: Same for archives mode
+
+OUTDIR="/tmp/org-$USER"
+mkdir -p "$OUTDIR"
+
+export_agenda() {
+    CMD="$1"
+    TARGET="$OUTDIR/$2"
+
+    emacsclient -a "" -nw -q \
+                --eval "(org-agenda nil \"$CMD\")" \
+                --eval "(org-agenda-write \"$TARGET.html\")" \
+                --eval "(org-agenda-write \"$TARGET.txt\")" \
+                --eval "(delete-frame)"
+}
+
+if [ -f ~/dotfiles_local/notes/work.org ]; then
+    export_agenda "wa" "agenda-todo"
+
+else
+    export_agenda "ha" "agenda-todo"
+    export_agenda "r" "review"
+fi
+
+echo "Exported agenda views:"
+ls -lh "$OUTDIR"
