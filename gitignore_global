@@ -21,6 +21,7 @@
 *.rar
 *.tar
 *.zip
+result
 
 # Logs and databases #
 ######################
@@ -40,6 +41,7 @@
 Thumbs.db
 ehthumbs.db
 nohup.out
+tmp
 
 # Tags Files #
 ##############
