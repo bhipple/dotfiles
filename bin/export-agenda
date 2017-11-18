@@ -24,5 +24,6 @@ else
     export_agenda "r" "review"
 fi
 
-echo "Exported agenda views:"
+echo "Exported agenda views to $OUTDIR
+"
 ls -lh "$OUTDIR"
