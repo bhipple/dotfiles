@@ -35,16 +35,16 @@
     rf = "!f() { \
        if [ -n $1 ]; then echo Checking out $1; git checkout -f $1 > /dev/null 2>&1; fi; \
        git fetch --all --prune > /dev/null 2>&1; \
-       for b in master dev; do \
-           echo Deleting branches merged into $b; \
-           git branch --merged origin/$b | grep -Ev '(master|dev|testing|releases|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
-           git branch --merged origin/$b -r | grep -Ev '(master|dev|testing|releases)' \
-                | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER > /dev/null 2>&1; \
-       done; \
-       git branch-gc; \
        git branch -f master origin/master > /dev/null 2>&1; \
        git branch -f dev origin/dev > /dev/null 2>&1; \
        git pull > /dev/null 2>&1; \
+       for b in master dev; do \
+           echo Deleting branches merged into $b; \
+           git branch --merged origin/$b | grep -Ev '(master|dev|stage|testing|releases|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
+           git branch --merged origin/$b -r | grep -Ev '(master|dev|stage|testing|releases)' \
+                | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER > /dev/null 2>&1; \
+       done; \
+       git branch-gc; \
        echo ""; \
        echo Branches remaining after cleanup:; \
        git branch -a; \
