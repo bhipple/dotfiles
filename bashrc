@@ -13,7 +13,6 @@ set history on 10000
 
 export LANG="en_US.UTF-8"
 
-
 # update winsize after each command for better line-wrapping
 shopt -s checkwinsize
 
@@ -25,6 +24,11 @@ shopt -s checkwinsize
 
 # Prompt
 PS1='\[\e[1;31m\][\u@\h: \w]\$\[\e[0m\] '
+
+if ! command -v tmux >/dev/null 2>&1; then
+    # Likely in a minimalist env like a qemu vm or chroot
+    return
+fi
 
 # Pull data out of the zsh files
 if [ -f ~/.zsh_local/zshrc_local_before.zsh ]; then
