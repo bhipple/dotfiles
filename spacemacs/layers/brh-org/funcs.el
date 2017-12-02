@@ -93,9 +93,8 @@ Callers of this function already widen the buffer view."
     (and is-a-task is-subproject)))
 
 (defun bh/clock-in (kw)
-  "Switch a task from TODO to NEXT when clocking in.
-Skips capture tasks, projects, and subprojects.
-Switch projects and subprojects from NEXT back to TODO"
-  (when (not (and (boundp 'org-capture-mode) org-capture-mode))
-    "TODO"))
+  "If task was in a blocked state, clocking in switches it to TODO"
+  (if (member kw org-clock-out-when-done)
+    "TODO"
+    kw))
 )
