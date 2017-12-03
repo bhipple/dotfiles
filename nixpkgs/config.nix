@@ -65,6 +65,7 @@
         upower
         vagrant
         vimPlugins.youcompleteme
+        vlc
         weechat
         xclip
         xsel
