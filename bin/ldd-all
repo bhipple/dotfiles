@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Run ldd on all shared objects in a directory tree
+if [ -n "$1" ]; then
+    echo "Will only print so names that match $1"
+    MATCH="$1"
+fi
+
+for l in $(find . -name '*.so'); do
+    out=$(ldd $l)
+    if [ -n "$MATCH" ]; then
+        echo "$out" | grep -q "$MATCH"
+        if [ $? -eq 0 ]; then
+            echo "$l"
+        fi
+    else
+        echo "$l"
+        ldd "$l"
+    fi
+done
