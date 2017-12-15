@@ -58,6 +58,7 @@ values."
      html
      java
      javascript
+     lua
      markdown
      nginx
      nixos
