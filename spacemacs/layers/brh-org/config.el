@@ -19,8 +19,16 @@
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
 
-  ;; When exporting, preserve line breaks
-  (setq org-export-preserve-breaks t)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Exporting Settings
+  ;; See http://orgmode.org/manual/Export-settings.html for more details
+  (setq org-export-with-clocks t)
+  (setq org-export-with-drawers t)
+  (setq org-export-with-properties t)
+  (setq org-export-with-priority t)
+
+  ;: Line breaks seem to get messed up regardless of whether this is T or F
+  ;(setq org-export-preserve-breaks t)
 
   ;; Tags
   (setq org-tag-alist '(("ALGOS" . ?a)

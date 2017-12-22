@@ -35,6 +35,7 @@ values."
      ;; ----------------------------------------------------------------
      ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
+     ansible
      asciidoc
      (auto-completion :variables
                       auto-completion-complete-with-key-sequence-delay 0
