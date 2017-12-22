@@ -15,6 +15,9 @@
         force: true
         create: true
         path: vim
+    ~/.config/nixpkgs/overlays:
+        create: true
+        path: config/nixpkgs/overlays/
     ~/.dir_colors: dir_colors
     ~/.emacs.d:
         force: true
@@ -31,7 +34,6 @@
     ~/.haskeline: haskeline
     ~/.inputrc: inputrc
     ~/.irssi: irssi/
-    ~/.nixpkgs: nixpkgs/
     ~/.quicklisp: quicklisp/
     ~/.sbclrc: sbclrc
     ~/.tmux.conf: tmux.conf
