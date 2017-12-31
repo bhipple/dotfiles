@@ -1,0 +1,10 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p alsaUtils
+# Test my microphone
+OUT=$(mktemp /tmp/mic-test.XXXXXX.mp3)
+
+echo "Recording for 3 seconds"
+arecord -d 3 $OUT
+
+echo "Replaying"
+aplay $OUT
