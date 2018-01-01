@@ -36,7 +36,7 @@ This function should only modify configuration layer settings."
      ansible
      asciidoc
      (auto-completion :variables
-                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-idle-delay 0.01
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
