@@ -45,6 +45,9 @@
 ;; Use tab-n-go company
 (with-eval-after-load 'company (company-tng-configure-default))
 
+;; Tell Spacemacs to put org clocks on my modeline by default
+(setq spaceline-org-clock-p t)
+
 ;; When in markdown mode, enable minor orgtbl-mode and format tables as markdown on save
 (add-hook 'markdown-mode-hook 'orgtbl-mode)
 (add-hook 'markdown-mode-hook
