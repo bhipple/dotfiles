@@ -48,6 +48,11 @@
 ;; Tell Spacemacs to put org clocks on my modeline by default
 (setq spaceline-org-clock-p t)
 
+;; YCM Configuration
+(setq ycmd-server-command (list "python" (file-truename "~/.nix-profile/bin/ycmd")))
+(setq ycmd-force-semantic-completion nil)
+(with-eval-after-load 'company global-ycmd-mode)
+
 ;; When in markdown mode, enable minor orgtbl-mode and format tables as markdown on save
 (add-hook 'markdown-mode-hook 'orgtbl-mode)
 (add-hook 'markdown-mode-hook

@@ -26,6 +26,7 @@ self: super:
       self.tree
       self.unzip
       self.wget
+      self.ycmd
       self.zsh
     ];
   });
