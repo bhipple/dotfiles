@@ -80,8 +80,11 @@ This function should only modify configuration layer settings."
      perl5
      php
      (python :variables
+             python-auto-set-local-pyenv-version nil
+             python-auto-set-local-pyenv-virtualenv nil
+             python-enable-yapf-format-on-save nil
              python-sort-imports-on-save nil
-             python-enable-yapf-format-on-save nil)
+             python-test-runner nil)
      restclient
      ruby
      salt
