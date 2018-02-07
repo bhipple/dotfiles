@@ -123,6 +123,7 @@
           ("ww" "All WORK items" tags-todo "+WORK")))
 
   (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively nil)
 
   ;; global Effort estimate values
   (setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 0:00")
