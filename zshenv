@@ -81,7 +81,7 @@ export GID=$(getent passwd "$USER" | cut -d":" -f4)
 
 [[ -f /usr/local/etc/profile.d/nix.sh ]] && . /usr/local/etc/profile.d/nix.sh
 
-export NIX_PATH=src=/home/bhipple/src/nixpkgs:$NIX_PATH
+if [ -d /home/bhipple/src/nixpkgs ]; then export NIX_PATH=src=/home/bhipple/src/nixpkgs:$NIX_PATH; fi
 export GPG=gpg2
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
