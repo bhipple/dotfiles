@@ -1,5 +1,6 @@
 [alias]
     ama = am --abort
+    authors = "!f() { git log --oneline --pretty='%ae' -100 | sort | uniq -c; }; f"
     br = branch
     bra = branch --all
     ca = commit --amend --no-edit
