@@ -1,6 +1,6 @@
 [alias]
     ama = am --abort
-    authors = "!f() { git log --oneline --pretty='%ae' -100 | sort | uniq -c; }; f"
+    authors = "!f() { git log --oneline --pretty='%ae' -100 | sort | uniq -c | sort -nk1; }; f"
     br = branch
     bra = branch --all
     ca = commit --amend --no-edit
@@ -43,8 +43,8 @@
        git pull > /dev/null 2>&1; \
        for b in master dev; do \
            echo Deleting branches merged into $b; \
-           git branch --merged origin/$b | grep -Ev '(master|dev|stage|testing|prod|releases|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
-           git branch --merged origin/$b -r | grep -Ev '(master|dev|stage|testing|prod|releases)' \
+           git branch --merged origin/$b | grep -Ev '(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
+           git branch --merged origin/$b -r | grep -Ev '(master|dev|stage|testing|prod|releases?)' \
                 | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER > /dev/null 2>&1; \
        done; \
        git branch-gc; \
