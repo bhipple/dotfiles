@@ -39,6 +39,7 @@
     ;;                                                          ))
     (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
                                                              (org . t)
+                                                             (perl . t)
                                                              (python . t)
                                                              (shell . t)
                                                              ))
