@@ -1,5 +1,6 @@
 [alias]
     ama = am --abort
+    authors = "!f() { git log --oneline --pretty='%ae' -100 | sort | uniq -c | sort -nk1; }; f"
     br = branch
     bra = branch --all
     ca = commit --amend --no-edit
@@ -31,6 +32,8 @@
     pu = push
     rb = rebase
     rba = rebase --abort
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
     rbc = rebase --continue
     rf = "!f() { \
        if [ -n $1 ]; then echo Checking out $1; git checkout -f $1 > /dev/null 2>&1; fi; \
@@ -40,8 +43,8 @@
        git pull > /dev/null 2>&1; \
        for b in master dev; do \
            echo Deleting branches merged into $b; \
-           git branch --merged origin/$b | grep -Ev '(master|dev|stage|testing|releases|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
-           git branch --merged origin/$b -r | grep -Ev '(master|dev|stage|testing|releases)' \
+           git branch --merged origin/$b | grep -Ev '(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
+           git branch --merged origin/$b -r | grep -Ev '(master|dev|stage|testing|prod|releases?)' \
                 | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER > /dev/null 2>&1; \
        done; \
        git branch-gc; \

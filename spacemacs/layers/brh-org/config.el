@@ -92,7 +92,7 @@
           ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode t)))
-                                                 (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
+                                                 (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY")))
           ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
           ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
@@ -110,7 +110,7 @@
           ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode t)))
-                                                 (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\""))
+                                                 (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY"))
                                                  ((org-agenda-tag-filter-preset '("+WORK"))))
           ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
           ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
@@ -123,6 +123,7 @@
           ("ww" "All WORK items" tags-todo "+WORK")))
 
   (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively nil)
 
   ;; global Effort estimate values
   (setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 0:00")
