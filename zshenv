@@ -2,6 +2,9 @@
 
 skip_global_compinit=1
 
+# Don't nice background processes
+unsetopt BG_NICE
+
 ## ============================================================================
 ##                           Environment Variables
 ## ============================================================================
