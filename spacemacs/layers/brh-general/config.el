@@ -11,6 +11,9 @@
 ;; Don't depend on $TERM
 (setq system-uses-terminfo nil)
 
+;; Big performance boost
+(setq auto-window-vscroll nil)
+
 ;; Perform dired actions asynchronously
 ; (with-eval-after-load 'dired
 ;   (dired-async-mode 1))
