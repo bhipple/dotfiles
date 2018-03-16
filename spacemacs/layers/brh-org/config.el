@@ -62,7 +62,7 @@
           ;; Work.org templates
           ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
            "* %?\nEntered %u\n")
-          ("w" "Work Todo" entry (file+headline "~/org/work/work.org" "Work Tasks")
+          ("w" "Work Someday / Maybe Todo" entry (file+headline "~/org/work/work.org" "Someday / Maybe WORK")
            "* TODO [#C] %?\nEntered %u\n")))
 
   ;; Default notes file for capture
