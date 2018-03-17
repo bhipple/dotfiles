@@ -13,15 +13,17 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/command-not-found
     zgen oh-my-zsh plugins/wd
     zgen oh-my-zsh plugins/web-search
+    zgen zsh-nix-shell
 
     # Github plugins
+    zgen load StackExchange/blackbox
+    zgen load chisui/zsh-nix-shell
     zgen load djui/alias-tips
     zgen load rupa/z
     zgen load zsh-users/zsh-autosuggestions
     zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-history-substring-search
     zgen load zsh-users/zsh-syntax-highlighting
-    zgen load StackExchange/blackbox
 
     # save all to init script
     zgen save
