@@ -7,13 +7,14 @@ trap 'rm -f "$dir/$$.tags"' EXIT
 
 # CTags
 git ls-files | \
-          ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql
+          ctags - -f"$dir/$$.tags"
           mv "$dir/$$.tags" "$dir/tags"
 
 # GNU Global Tags
+mkdir "$dir/$$.gtags"
 git ls-files | \
     gtags --file=- --skip-unreadable "$dir/$$.gtags"
-mv "$dir/$$.gtags/*" "$dir/.."
+mv "$dir"/$$.gtags/* "$dir/.."
 
 # Haskell Fast-Tags
 if hash fast-tags > /dev/null 2>&1; then
