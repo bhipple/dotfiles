@@ -80,6 +80,9 @@
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)
 
+  ;; Agenda clock report parameters
+  (setq org-agenda-clockreport-parameter-plist
+        '(:link f :maxlevel 5 :fileskip0 t :compact t :narrow 100))
   ;; By default, show archived items.
   (setq org-agenda-archives-mode t)
 
@@ -92,7 +95,10 @@
           ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode t)))
-                                                 (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY")))
+                                                 (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY")
+                                                 nil
+                                                 ("/tmp/hipple/home_agenda.html")
+                                                 ))
           ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
           ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
