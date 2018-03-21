@@ -20,7 +20,7 @@ EMACSCLIENT="emacsclient -q"
 # open it there with tramp
 if [ "$host" = "$EMACS_HOST"  ] || [[ "$host" = brh* ]]; then
     # Determine if we already have an emacs running, and if not start one
-    if ! pgrep emacsclient >/dev/null 2>&1; then
+    if ! ps aux | grep $USER | grep -v grep | grep emacs >/dev/null 2>&1; then
         EMACSCLIENT="$EMACSCLIENT --create-frame"
     fi
     EMACSCLIENT="$EMACSCLIENT $file_name"
