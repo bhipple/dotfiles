@@ -55,6 +55,7 @@ self: super:
       self.pandoc
       self.pdsh
       self.shellcheck
+      self.sloc
       self.source-code-pro
       self.stack
       self.truecrypt
