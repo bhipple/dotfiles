@@ -34,6 +34,7 @@
     ~/.haskeline: haskeline
     ~/.inputrc: inputrc
     ~/.irssi: irssi/
+    ~/.ledgerrc: ledgerrc
     ~/.quicklisp: quicklisp/
     ~/.sbclrc: sbclrc
     ~/.tmux.conf: tmux.conf
