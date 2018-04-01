@@ -2,6 +2,10 @@
 # Open a file with emacsclient, detecting if we should use TRAMP to get to the
 # machine where emacs is running, and detecting whether we should create a frame.
 
+debug() {
+    if [ -n "$DEBUG" ]; then echo "DEBUG: $1"; fi
+}
+
 # If no $1 given, use FZF to find a file.
 if [ -z "$1" ]; then
     files=""
@@ -12,7 +16,6 @@ else
 fi
 
 host=$(hostname)
-
 EMACSCLIENT="emacsclient -q"
 
 # If I'm already on the machine, or if my machine's hostname starts with brh
@@ -28,4 +31,5 @@ else
     EMACSCLIENT="ssh $EMACS_HOST 'cd /tmp; nohup $EMACSCLIENT /$host:file_name'"
 fi
 
+debug "Running EMACSCLIENT: $EMACSCLIENT"
 eval "$EMACSCLIENT" &
