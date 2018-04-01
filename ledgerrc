@@ -1,1 +1,2 @@
 --file ~/ledger/ledger.dat
+--price-db ~/ledger/price.db

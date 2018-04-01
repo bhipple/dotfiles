@@ -28,6 +28,7 @@ update ~/.password-store
 update ~/dotfiles
 update ~/dotfiles/spacemacs/yasnippet-snippets
 update ~/dotfiles_local
+update ~/ledger
 update ~/org
 update ~/personal
 

@@ -40,6 +40,7 @@ self: super:
       self.chromium
       self.cmake
       self.emacs
+      self.git-crypt
       self.gnumake
       self.gnupg
       self.gnutls
