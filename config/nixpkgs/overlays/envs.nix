@@ -48,19 +48,20 @@ self: super:
       self.icu
       self.imagemagick
       self.irssi
+      self.ledger
       self.neovim
       self.nixops
       self.nodePackages.tern  # Needed by spacemacs JS layer
       self.pandoc
       self.pdsh
       self.shellcheck
+      self.sloc
       self.source-code-pro
       self.stack
       self.truecrypt
       self.upower
       self.vagrant
       self.vimPlugins.youcompleteme
-      self.vlc
       self.weechat
       self.xclip
       self.xsel
