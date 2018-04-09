@@ -9,6 +9,7 @@ self: super:
       self.bc
       self.coreutils
       self.curl
+      self.feh
       self.file
       self.gitAndTools.hub
       self.global
