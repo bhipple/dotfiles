@@ -50,6 +50,7 @@ This function should only modify configuration layer settings."
      confluence
      csv
      dash
+     docker
      emacs-lisp
      finance
      git
