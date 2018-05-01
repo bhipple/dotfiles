@@ -44,7 +44,9 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
-                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets")
+                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets"
+                      ;; Removes company-files from the default list
+                      spacemacs-default-company-backends '(company-dabbrev-code company-gtags company-etags company-keywords company-dabbrev))
      better-defaults
      c-c++
      confluence
