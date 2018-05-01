@@ -20,6 +20,7 @@ alias jc="sudo journalctl"
 alias k='kitchen'
 alias kc='kitchen converge'
 alias kl='kitchen login'
+alias l='ledger'
 alias less='less -N'
 alias livestreamer='livestreamer --default-stream best'
 alias ll='ls -al'
