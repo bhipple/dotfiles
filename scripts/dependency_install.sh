@@ -34,11 +34,13 @@ nix_install() {
     [[ -n "$IS_NIXOS" ]] && CHANNEL="nixos"
 
     [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
-    nix-env -j4 -k -iA "$CHANNEL".minEnv "$CHANNEL.pyEnv"
+    CHANNELS="$CHANNEL.minEnv $CHANNEL.pyEnv"
 
     if hostname | grep -qE "^brh"; then
-        nix-env -j4 -k -iA "$CHANNEL".bigEnv "$CHANNEL".bigEnvLinux
+        CHANNELS="$CHANNELS $CHANNEL.bigEnv $CHANNEL.bigEnvLinux"
     fi
+
+    nix-env -j4 -k -riA "$CHANNELS"
 }
 
 fzf_install() {
