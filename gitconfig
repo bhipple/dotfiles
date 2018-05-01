@@ -44,18 +44,20 @@
     show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
     rbc = rebase --continue
     rf = "!f() { \
-       if [ -n $1 ]; then echo Checking out $1; git checkout -f $1 > /dev/null 2>&1; fi; \
-       git fetch --all --prune > /dev/null 2>&1; \
-       git branch -f master origin/master > /dev/null 2>&1; \
-       git branch -f dev origin/dev > /dev/null 2>&1; \
-       git pull > /dev/null 2>&1; \
-       for b in master dev; do \
-           echo Deleting branches merged into $b; \
-           git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d > /dev/null 2>&1; \
-           git branch --merged origin/$b -r | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?)' \
-                | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER > /dev/null 2>&1; \
+       if [ -n $1 ]; then git checkout -f $1 >/dev/null 2>&1; fi; \
+       git fetch --all --prune >/dev/null 2>&1; \
+       for b in origin/master origin/dev $(git branch -r | grep origin/release/); do \
+           git branch -f ${b#origin/} $b >/dev/null 2>&1; \
        done; \
-       git branch-gc; \
+       git branch -f master origin/master > /dev/null 2>&1; \
+       git branch -f dev origin/dev >/dev/null 2>&1; \
+       git pull >/dev/null 2>&1; \
+       for b in master dev; do \
+           git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d >/dev/null 2>&1; \
+           git branch --merged origin/$b -r | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?)' \
+                | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER >/dev/null 2>&1; \
+       done; \
+       git branch-gc >/dev/null 2>&1; \
        echo ""; \
        echo Branches remaining after cleanup:; \
        git branch -a; \
