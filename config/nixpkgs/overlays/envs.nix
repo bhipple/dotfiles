@@ -36,6 +36,7 @@ self: super:
   bigEnv = super.hiPrio (super.buildEnv {
     name = "bigEnv";
     paths = [
+      self.alsaUtils
       self.aspell
       self.bind
       self.chromium

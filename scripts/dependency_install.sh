@@ -40,7 +40,7 @@ nix_install() {
         CHANNELS="$CHANNELS $CHANNEL.bigEnv $CHANNEL.bigEnvLinux"
     fi
 
-    nix-env -j4 -k -riA "$CHANNELS"
+    (set -x; nix-env -j4 -k -riA $CHANNELS)
 }
 
 fzf_install() {
