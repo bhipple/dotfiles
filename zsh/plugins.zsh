@@ -16,7 +16,6 @@ if ! zgen saved; then
     zgen zsh-nix-shell
 
     # Github plugins
-    zgen load StackExchange/blackbox
     zgen load chisui/zsh-nix-shell
     zgen load djui/alias-tips
     zgen load rupa/z
