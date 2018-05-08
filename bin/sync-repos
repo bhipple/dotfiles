@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Update all of my git repos
+# Add my ssh keys to the agent, then update all of my git repos
 
 check_uncommitted() {
     diff=$(git diff-index HEAD)
@@ -23,10 +23,11 @@ update() {
     fi
 }
 
+keys
+
 update /etc/nixos
 update ~/.password-store
 update ~/dotfiles
-update ~/dotfiles/spacemacs/yasnippet-snippets
 update ~/dotfiles_local
 update ~/ledger
 update ~/org
