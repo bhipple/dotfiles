@@ -5,11 +5,9 @@ Plug 'LnL7/vim-nix'                                      " Nix Expression suppor
 Plug 'Raimondi/delimitMate'                              " Matching quotes, parens, and brackets
 Plug 'Shougo/denite.nvim'                                " Helm for Vim
 Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
-Plug 'SirVer/ultisnips'                                  " Text snippets
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }         " Haskell function information
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
 Plug 'bhipple/vim-hindent'                               " Haskell code formatter
-Plug 'bhipple/vim-snippets'                              " My snippets fork
 Plug 'bhipple/vimux'                                     " Vim and Tmux Integration
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }          " Haskell
 Plug 'bling/vim-airline'                                 " Status line
@@ -137,20 +135,6 @@ let g:syntastic_always_populate_loc_list = 1
 
 " Tagbar
 let g:tagbar_left = 1
-
-" UltiSnips
-" Magic to make the <enter> key expand snippes, even with YouCompleteMe installed.
-let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ulti_expand_or_jump_res = 0
-function! ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 
 " Vimux
 let g:VimuxOrientation = "h"
