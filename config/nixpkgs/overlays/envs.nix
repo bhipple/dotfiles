@@ -1,5 +1,7 @@
 self: super:
 {
+  # TODO: Condense these into one env, instead of multiple.
+
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (super.buildEnv {
     name = "minEnv";
@@ -21,6 +23,7 @@ self: super:
       self.nox
       self.par
       self.pass
+      self.pinentry
       self.ripgrep
       self.rlwrap
       self.tmux
@@ -44,7 +47,6 @@ self: super:
       self.emacs
       self.git-crypt
       self.gnumake
-      self.gnupg
       self.gnutls
       self.graphviz
       self.httpie

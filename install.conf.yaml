@@ -31,6 +31,7 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.globalrc: gtags.conf
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.haskeline: haskeline
     ~/.inputrc: inputrc
     ~/.irssi: irssi/
