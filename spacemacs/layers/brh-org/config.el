@@ -30,6 +30,7 @@
   ;: Line breaks seem to get messed up regardless of whether this is T or F
   ;(setq org-export-preserve-breaks t)
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Tags
   (setq org-tag-alist '(("ALGOS" . ?a)
                         ("CODING" . ?c)
@@ -45,6 +46,7 @@
                         ("WORK" ? .w)
                         ("ZSH" ? .z)))
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
   (setq org-capture-templates
         ;; Personal templates
@@ -160,6 +162,19 @@
   ;; And don't preserve IDs whe cloning
   (setq org-clone-delete-id t)
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Org-habit configuration
+  ;; Always show all habits on the agenda, even if we don't need to do them today
+  (setq org-habit-show-all-today t)
+
+  ;; On multi-day agenda pages, show habits done/scheduled for all days
+  (setq org-habit-show-habits-only-for-today nil)
+
+  ;; Move the habits more to the right than the default (40)
+  (setq org-habit-graph-coumn 120)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Keybindings for org-mode
   (global-set-key "\C-ca" 'org-agenda)
   (global-set-key "\C-cb" 'org-iswitchb)
   (global-set-key "\C-cc" 'org-capture)
