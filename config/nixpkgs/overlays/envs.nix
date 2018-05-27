@@ -64,6 +64,7 @@ self: super:
       self.nodePackages.tern  # Needed by spacemacs JS layer
       self.pandoc
       self.pdsh
+      self.poppler_utils
       self.shellcheck
       self.sloc
       self.source-code-pro
