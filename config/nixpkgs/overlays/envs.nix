@@ -42,8 +42,10 @@ self: super:
       self.alsaUtils
       self.aspell
       self.bind
+      self.calibre
       self.chromium
       self.cmake
+      self.digikam
       self.emacs
       self.git-crypt
       self.gnumake
@@ -54,6 +56,9 @@ self: super:
       self.imagemagick
       self.irssi
       self.ledger
+      self.lftp
+      self.mupdf
+      self.mupdf
       self.neovim
       self.nixops
       self.nodePackages.tern  # Needed by spacemacs JS layer
@@ -67,6 +72,7 @@ self: super:
       self.upower
       self.vagrant
       self.vimPlugins.youcompleteme
+      self.vlc
       self.weechat
       self.xclip
       self.xsel
@@ -75,24 +81,12 @@ self: super:
     ];
   });
 
-  # For "permanent" systems; these packages don't seem to play well with MacOS
-  bigEnvLinux = super.hiPrio (super.buildEnv {
-    name = "bigEnvLinux";
-    paths = [
-      self.calibre
-      self.digikam
-      self.haskellPackages.threadscope
-      self.lftp
-      self.mupdf
-      self.vlc
-    ];
-  });
-
   pyEnv = super.hiPrio (self.python27.withPackages (ps: with ps; [
     flake8
     futures
     isort
     numpy
+    ofxclient
     paramiko
     pep8
     pylint

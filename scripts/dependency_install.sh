@@ -37,7 +37,7 @@ nix_install() {
     CHANNELS="$CHANNEL.minEnv $CHANNEL.pyEnv"
 
     if hostname | grep -qE "^brh"; then
-        CHANNELS="$CHANNELS $CHANNEL.bigEnv $CHANNEL.bigEnvLinux"
+        CHANNELS="$CHANNELS $CHANNEL.bigEnv"
     fi
 
     (set -x; nix-env -j4 -k -riA $CHANNELS)
