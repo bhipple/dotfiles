@@ -60,6 +60,7 @@ self: super:
       self.mupdf
       self.mupdf
       self.neovim
+      self.nethogs
       self.nixops
       self.nodePackages.tern  # Needed by spacemacs JS layer
       self.pandoc
