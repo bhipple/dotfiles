@@ -35,7 +35,7 @@ self: super:
     ];
   });
 
-  # For "permanent" systems; compatible on both Mac and Linux
+  # For "permanent" systems
   bigEnv = super.hiPrio (super.buildEnv {
     name = "bigEnv";
     paths = [
