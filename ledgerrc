@@ -1,2 +1,3 @@
 --file ~/ledger/me.ledger
 --price-db ~/ledger/price.db
+--flat
