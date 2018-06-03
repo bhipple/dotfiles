@@ -61,3 +61,6 @@
 (add-hook 'markdown-mode-hook
           (lambda ()
             (add-hook 'after-save-hook 'brh/cleanup-org-tables nil 'make-it-local)))
+
+;; Use the primary system clipboard when yanking
+(setq x-select-enable-primary t)
