@@ -82,8 +82,6 @@ export GID=$(getent passwd "$USER" | cut -d":" -f4)
 
 [[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
 
-[[ -f /usr/local/etc/profile.d/nix.sh ]] && . /usr/local/etc/profile.d/nix.sh
-
 if [ -d /home/bhipple/src/nixpkgs ]; then export NIX_PATH=src=/home/bhipple/src/nixpkgs:$NIX_PATH; fi
 export GPG=gpg2
 
