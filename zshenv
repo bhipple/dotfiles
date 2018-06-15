@@ -47,8 +47,6 @@ PATH=$PATH:/usr/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/sbin
 
-export PYTHONPATH=~/bin:$PYTHONPATH
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
