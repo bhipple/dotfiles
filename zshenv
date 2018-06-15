@@ -28,11 +28,6 @@ if [ $? -eq 0 ]; then
     export MACOS="true"
 fi
 
-if hash nvim 2>/dev/null; then
-    alias vi=nvim
-    alias vim=nvim
-fi
-
 # Running in emacs ansi-term
 if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export AUTO_FU="skip"
@@ -53,8 +48,6 @@ else
 fi
 
 PATH=$PATH:~/.cabal/bin
-PATH=$PATH:~/.rvm/bin
-PATH=$PATH:/opt/chefdk/bin
 PATH=$PATH:/bin
 PATH=$PATH:/sbin
 PATH=$PATH:/usr/local/bin
