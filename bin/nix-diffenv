@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import sys
+import subprocess
+
+def deps(root):
+    return set(subprocess.check_output("nix path-info -r {} | cut -d'-' -f2-".format(root), shell=True).split())
+
+def row(key, d1, d2):
+    f = lambda d: "Yes" if key in d else "No"
+    in_d1 = f(d1)
+    in_d2 = f(d2)
+    if in_d1 != in_d2:
+         print "{} {} {}".format(key, in_d1, in_d2)
+
+def main():
+    p1 = sys.argv[1]
+    p2 = sys.argv[2]
+    d1 = deps(p1)
+    d2 = deps(p2)
+    print "Package", p1, p2
+    for k in d1.union(d2):
+        row(k, d1, d2)
+
+if __name__ == '__main__':
+    main()
