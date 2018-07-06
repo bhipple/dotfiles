@@ -1,12 +1,11 @@
 self: super:
 {
-  # TODO: Condense these into one env, instead of multiple.
+  # TODO: Condense these into one env with separate lists, instead of multiple.
 
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (super.buildEnv {
     name = "minEnv";
     paths = [
-      self.ag
       self.bashInteractive
       self.bc
       self.coreutils
@@ -24,6 +23,7 @@ self: super:
       self.par
       self.pass
       self.pinentry
+      self.procps
       self.ripgrep
       self.rlwrap
       self.tmux
