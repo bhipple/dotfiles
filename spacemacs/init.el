@@ -87,7 +87,8 @@ This function should only modify configuration layer settings."
              python-auto-set-local-pyenv-virtualenv nil
              python-enable-yapf-format-on-save nil
              python-sort-imports-on-save nil
-             python-test-runner nil)
+             python-test-runner nil
+             python-fill-column 120)
      restclient
      ruby
      salt
