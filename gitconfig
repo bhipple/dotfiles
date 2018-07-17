@@ -68,6 +68,8 @@
     ros = rebase origin/stage -i
     rot = rebase origin/testing -i
     s = show
+    # Warning: this converts symlinks to regular files! Consider just using this instead:
+    # rg --files | sed -i 's/foo/bar/g'
     sed = "!git ls-files | xargs sed -i"
     shows = show --stat
     ss = show --stat
