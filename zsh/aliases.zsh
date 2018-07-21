@@ -42,6 +42,7 @@ alias si='stack install'
 alias sqlite3='rlwrap sqlite3'
 alias st='stack test --file-watch'
 alias tn='tmux rename-window $(git rev-parse --show-toplevel | xargs basename)'
+alias trashdir='echo "Nuking pwd and all subdirs"; chmod -R a+rwx . && rm -rf *'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias uu='sudo apt-get update && sudo apt-get upgrade'
 alias v='vagrant'
