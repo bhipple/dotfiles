@@ -11,18 +11,20 @@
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
 (spacemacs/set-leader-keys
+  "dod" 'brh/diff-origin-dev
+  "dom" 'brh/diff-origin-master
   "oa" 'org-agenda
   "ob" 'helm-buffers-list
   "oc" 'org-capture
-  "od" (lambda () "EDiff with git revision" (interactive) (ediff-revision (buffer-file-name)))
+  "od" 'brh/diff-ref
   "of" 'magit-pull-from-upstream
   "og" (lambda () "Git grep repository from root" (interactive)
          (let ((current-prefix-arg '(4)))
            (call-interactively 'helm-grep-do-git-grep)))
   "oo" (lambda () (interactive) (find-file "~/org/me.org"))
   "op" 'magit-push-current-to-upstream
+  "os" 'org-sort-entries
   "ot" (lambda () "Add org TODO" (interactive)
          (org-insert-todo-heading-respect-content))
-  "os" 'org-sort-entries
   "ow" (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   )
