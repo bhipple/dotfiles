@@ -92,6 +92,7 @@
     preloadindex = true
     excludesfile = ~/.gitignore_global
 [diff]
+    algorithm = patience
     renameLimit = 2500
 [mergetool "fugitive"]
     cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
