@@ -54,7 +54,7 @@ This function should only modify configuration layer settings."
      dash
      docker
      emacs-lisp
-     ;;finance
+     finance
      git
      go
      graphviz
