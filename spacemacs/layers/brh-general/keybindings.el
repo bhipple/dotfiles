@@ -10,7 +10,10 @@
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
+(global-set-key (kbd "<f4>") 'brh/diff-head)
+
 (spacemacs/set-leader-keys
+  "dh" 'brh/diff-head
   "dod" 'brh/diff-origin-dev
   "dom" 'brh/diff-origin-master
   "oa" 'org-agenda

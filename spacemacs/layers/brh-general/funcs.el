@@ -13,10 +13,8 @@
 
 (defun brh/_diff-buffer (ref)
   "Diff the current buffer against ref"
-  (interactive)
-  (progn
-    (save-buffer 0)
-    (magit-diff ref nil (list buffer-file-name))))
+  (save-buffer 0)
+  (vc-version-ediff (list buffer-file-name) ref ""))
 
 (defun brh/diff-origin-master ()
   "Diff the current buffer against origin/master"
@@ -27,6 +25,11 @@
   "Diff the current buffer against origin/dev"
   (interactive)
   (brh/_diff-buffer "origin/dev"))
+
+(defun brh/diff-head ()
+  "Diff the current buffer against HEAD"
+  (interactive)
+  (brh/_diff-buffer "HEAD"))
 
 (defun brh/diff-ref ()
   "Diff the current buffer against an entered ref"
