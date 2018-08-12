@@ -16,7 +16,7 @@ else
 fi
 
 host=$(hostname)
-EMACSCLIENT="emacsclient -q"
+EMACSCLIENT="emacsclient -q -a vim"
 
 # If I'm already on the machine, or if my machine's hostname starts with brh
 # (desktop, laptop, etc.), then just open it; otherwise, ssh to EMACS_HOST and
@@ -28,7 +28,7 @@ if [ "$host" = "$EMACS_HOST"  ] || [[ "$host" = brh* ]]; then
     fi
     EMACSCLIENT="$EMACSCLIENT $file_name"
 else
-    EMACSCLIENT="ssh $EMACS_HOST 'cd /tmp; nohup $EMACSCLIENT /ssh:$USER@$host:$file_name'"
+    EMACSCLIENT="ssh $EMACS_HOST 'cd /tmp; nohup $EMACSCLIENT -T /ssh:$USER@$host: $file_name'"
 fi
 
 debug "Running EMACSCLIENT: $EMACSCLIENT"
