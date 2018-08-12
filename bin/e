@@ -28,7 +28,7 @@ if [ "$host" = "$EMACS_HOST"  ] || [[ "$host" = brh* ]]; then
     fi
     EMACSCLIENT="$EMACSCLIENT $file_name"
 else
-    EMACSCLIENT="ssh $EMACS_HOST 'cd /tmp; nohup $EMACSCLIENT /$host:file_name'"
+    EMACSCLIENT="ssh $EMACS_HOST 'cd /tmp; nohup $EMACSCLIENT /ssh:$USER@$host:$file_name'"
 fi
 
 debug "Running EMACSCLIENT: $EMACSCLIENT"
