@@ -9,6 +9,11 @@
         | cut --complement --characters=13-40 \
         | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest; \
         }; f"
+    bi = bisect
+    bib = bisect bad
+    big = bisect good
+    bir = bisect reset
+    bis = bisect start
     br = branch
     bra = branch --all
     ca = commit --amend --no-edit
@@ -114,9 +119,9 @@
     detachedHead = false
 [url "git://github.com/ghc/packages-"]
     insteadOf = git://github.com/ghc/packages/
+[magit]
+  hideCampaign = true
 
 # Allow local customizations
 [include]
     path = ~/.gitconfig_local
-[magit]
-  hideCampaign = true
