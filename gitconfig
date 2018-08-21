@@ -85,6 +85,7 @@
     st = status
     ud = branch --set-upstream-to=origin/dev
     um = branch --set-upstream-to=origin/master
+    us = branch --set-upstream-to=origin/stage
     ut = branch --set-upstream-to=origin/testing
 
     # List aliases
