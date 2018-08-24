@@ -1,25 +1,34 @@
-#!/usr/bin/env python
+#!/usr/bin/env nix-shell
+#! nix-shell -i python2 -p "python2.withPackages(ps: with ps; [ terminaltables ])"
+from __future__ import print_function
 import sys
 import subprocess
+import terminaltables
 
 def deps(root):
     return set(subprocess.check_output("nix path-info -r {} | cut -d'-' -f2-".format(root), shell=True).split())
 
 def row(key, d1, d2):
-    f = lambda d: "Yes" if key in d else "No"
+    f = lambda d: "X" if key in d else " "
     in_d1 = f(d1)
     in_d2 = f(d2)
     if in_d1 != in_d2:
-         print "{} {} {}".format(key, in_d1, in_d2)
+        return [key, in_d1, in_d2]
+    return []
 
 def main():
     p1 = sys.argv[1]
     p2 = sys.argv[2]
     d1 = deps(p1)
     d2 = deps(p2)
-    print "Package", p1, p2
+    rows = []
     for k in d1.union(d2):
-        row(k, d1, d2)
+        r = row(k, d1, d2)
+        if r:
+            rows += [r]
+    table_data = [["Package", "Old", "New"]] + sorted(rows)
+    table = terminaltables.GithubFlavoredMarkdownTable(table_data)
+    print(table.table)
 
 if __name__ == '__main__':
     main()
