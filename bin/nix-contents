@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# See a nice table print-out of the contents of a nix path and its dependencies
+# Can use it like this to diff two environments:
+# $ comm -3 " <($HOME/bin/nix-contents $OLD) <($HOME/bin/nix-contents $NEW) | column -t
+nix path-info -r "$1" | cut -d'-' -f2- | sed 's/-\([0-9]\)/ \1/' | column -t | grep [0-9] | sed '/-\(bin\|dev\|lib\)$/d' | sort -u
