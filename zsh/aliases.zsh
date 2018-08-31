@@ -66,9 +66,9 @@ fi
 # Lazily, I'm sourcing my aliases in my bashrc too.
 if [[ -n "$ZSH_NAME" ]]; then
     alias -g C='xsel -b'
-    alias -g G='grep'
-    alias -g GI='grep -i'
-    alias -g Gi='grep -i'
+    alias -g G='rg'
+    alias -g GI='rg -i'
+    alias -g Gi='rg -i'
     alias -g H='--help'
     alias -g L='less -n'
     alias -g R='!! | less -n'
