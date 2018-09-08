@@ -1,5 +1,5 @@
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
-alias cat='bat'
+alias cat='bat --theme=zenburn'
 alias cdr.='cd $(git rev-parse --show-toplevel)/..'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias fn='find . -name'
