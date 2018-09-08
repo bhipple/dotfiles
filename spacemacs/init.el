@@ -530,6 +530,14 @@ before packages are loaded."
   ;; Load org-mode at startup and initialize the agenda
   (find-file "~/org/me.org")
   (org-agenda-list)
+
+  ;; Opening an org file before org is fully initialized results in weird bullets
+  ;; Kill it so I can re-open from scratch
+  (kill-buffer)
+
+  ;; TODO: Right now my spacemacs doesn't do this for me, because I commented out a bug in use-package.
+  ;; Next time I update spacemacs take a second look at this.
+  (evil-ediff-init)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
