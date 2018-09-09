@@ -47,6 +47,7 @@ self: super:
       self.cmake
       self.digikam
       self.emacs
+      self.firefox
       self.git-crypt
       self.gnumake
       self.gnutls
@@ -83,9 +84,8 @@ self: super:
     ];
   });
 
-  pyEnv = super.hiPrio (self.python27.withPackages (ps: with ps; [
+  pyEnv = super.hiPrio (self.python3.withPackages (ps: with ps; [
     flake8
-    futures
     isort
     numpy
     ofxclient
