@@ -7,6 +7,7 @@ self: super:
     name = "minEnv";
     paths = [
       self.bashInteractive
+      self.bat
       self.bc
       self.coreutils
       self.curl

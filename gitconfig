@@ -96,6 +96,11 @@
     status = true
     branch = true
     diff = true
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  whitespace = red reverse
 [core]
     pager = less -F -X -R
     preloadindex = true
