@@ -21,7 +21,7 @@ if ! zgen saved; then
     # Github plugins
     zgen load chisui/zsh-nix-shell
     zgen load djui/alias-tips
-    zgen load hchbaw/auto-fu.zsh . pu
+    zgen load bhipple/auto-fu.zsh . personal
     zgen load rupa/z
     zgen load zsh-users/zsh-autosuggestions
     zgen load zsh-users/zsh-completions

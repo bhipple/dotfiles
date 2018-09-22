@@ -17,8 +17,8 @@ bindkey "^r" history-incremental-search-backward
 
 # Auto-fu adds additional modes to zsh zle. To get keybindings in one of these
 # modes with or without auto-fu, bind the key in all modes of that type.
-normalModes=("vicmd" "afu-vicmd")
-insertModes=("viins" "afu")
+normalModes=("vicmd")
+insertModes=("viins")
 if [ "$AUTO_FU" = "skip" ]; then
     normalModes=("vicmd")
     insertModes=("viins")
@@ -100,26 +100,16 @@ if [ "$AUTO_FU" = "skip" ]; then
 fi
 
 zle-line-init () { auto-fu-init; }; zle -N zle-line-init
-zle -N zle-keymap-select auto-fu-zle-keymap-select
 zstyle ':completion:*' completer _oldlist _complete
 zstyle ':auto-fu:var' postdisplay $'
 '
 
 my-reset-prompt-maybe () {
-  # XXX: While auto-stuff is in effect,
-  # when hitting <Return>, $KEYMAP becomes to `main`:
-  # <Return> → `reset-prompt`(*) → `accept-line` → `zle-line-init`
-  # → `zle-keymap-select` → `reset-promt` (again!)
-  # Skip unwanted `reset-prompt`(*).
   ((auto_fu_init_p==1)) && [[ ${KEYMAP-} == main ]] && return
-
-  # XXX: Please notice that `afu` is treated as Insert-mode-ish.
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins|afu)/}"
   zle reset-prompt
 }
 
 zle-keymap-select () {
-  auto-fu-zle-keymap-select "$@"
   my-reset-prompt-maybe
 }
 zle -N zle-keymap-select
