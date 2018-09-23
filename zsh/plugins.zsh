@@ -1,9 +1,6 @@
 # load zgen
-# auto-fu expects us to be in emacs mode before sourcing (wtf)
-bindkey -e
-bindkey $'\e' vi-cmd-mode
-source "${HOME}/.dotfiles/zgen/zgen.zsh"
 bindkey -v
+source "${HOME}/.dotfiles/zgen/zgen.zsh"
 
 # Check only when there's no init script
 # To regenerate zgen config from scratch, rm ~/.zgen/init.zsh
@@ -21,7 +18,6 @@ if ! zgen saved; then
     # Github plugins
     zgen load chisui/zsh-nix-shell
     zgen load djui/alias-tips
-    zgen load hchbaw/auto-fu.zsh . pu
     zgen load rupa/z
     zgen load zsh-users/zsh-autosuggestions
     zgen load zsh-users/zsh-completions
