@@ -43,6 +43,7 @@ bindkey '^[[Z' reverse-menu-complete
 ##                                  Prompt
 ## ============================================================================
 PROMPT='%{$fg[yellow]%}λ %m %{$fg[green]%}%c%{$fg[yellow]%}$(check_last_exit_code) →  %{$reset_color%}'
+RPROMPT=''
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
