@@ -51,6 +51,7 @@ self: super:
       self.firefox
       self.git-crypt
       self.gnumake
+      self.gnupg
       self.gnutls
       self.graphviz
       self.httpie
