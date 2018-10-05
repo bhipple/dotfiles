@@ -27,6 +27,8 @@
   "oo" (lambda () (interactive) (find-file "~/org/me.org"))
   "op" 'magit-push-current-to-upstream
   "os" 'org-sort-entries
+  "orr" 'brh/tmux-repeat
+  "ort" 'brh/tmux-run-terminal
   "ot" (lambda () "Add org TODO" (interactive)
          (org-insert-todo-heading-respect-content))
   "ow" (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
