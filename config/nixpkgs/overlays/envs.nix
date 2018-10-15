@@ -19,7 +19,6 @@ self: super:
       self.gnutar
       self.htop
       self.jq
-      self.nix-repl
       self.nox
       self.par
       self.pass
