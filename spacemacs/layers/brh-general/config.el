@@ -68,3 +68,16 @@
 ;; When compiling, jump the buffer automatically on failures, and use a high -j
 (setq compilation-auto-jump-to-first-error t)
 (setq helm-make-arguments "-j48")
+
+;; TODO: Clean this up and organize a bit better. I think I just need the setq stuff.
+(use-package evil-escape
+  :commands evil-escape-mode
+  :init
+  (setq evil-escape-excluded-states '(normal visual multiedit emacs motion)
+        evil-escape-excluded-major-modes '(neotree-mode)
+        evil-escape-key-sequence "jk"
+        evil-escape-delay 0.25)
+  (add-hook 'after-init-hook #'evil-escape-mode)
+  :config
+  ;; no `evil-escape' in minibuffer
+  (cl-pushnew #'minibufferp evil-escape-inhibit-functions :test #'eq))
