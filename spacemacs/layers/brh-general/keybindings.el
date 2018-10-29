@@ -1,5 +1,11 @@
-;; Global keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Saved Macros
+;; Replace a markdown inline link with a link reference
+(fset 'markdown-link-replace
+      [?y ?% ?G ?o escape ?p ?a ?: ?  escape ?\C-o ?\C-o ?% ?l ?d ?% ?G ?$ ?p ?d ?s ?\) ?\C-o ?\C-o])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Global keybindings
 (global-set-key (kbd "C-h") 'evil-window-left)
 (global-set-key (kbd "C-j") 'evil-window-down)
 (global-set-key (kbd "C-k") 'evil-window-up)
@@ -24,6 +30,7 @@
   "og" (lambda () "Git grep repository from root" (interactive)
          (let ((current-prefix-arg '(4)))
            (call-interactively 'helm-grep-do-git-grep)))
+  "oml" 'markdown-link-replace
   "oo" (lambda () (interactive) (find-file "~/org/me.org"))
   "op" 'magit-push-current-to-upstream
   "os" 'org-sort-entries
