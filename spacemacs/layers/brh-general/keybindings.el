@@ -39,4 +39,5 @@
   "ow" (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   "rr" 'brh/tmux-repeat
   "rt" 'brh/tmux-run-terminal
+  "rw" 'brh/tmux-run-waf
   )

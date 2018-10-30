@@ -39,7 +39,7 @@
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
   (save-buffer 0)
-  (shell-command (concat "tmux send-keys '" cmd "' KPEnter")))
+  (shell-command (concat "tmux send-keys '" cmd "' Enter")))
 
 (defun brh/tmux-run-terminal ()
   (interactive)
@@ -48,4 +48,8 @@
 (defun brh/tmux-repeat ()
   "Repeat the previous command in the active terminal session"
   (interactive)
-  (brh/_tmux-cmd "!!' KPENTER '"))
+  (brh/_tmux-cmd "jjk"))
+
+(defun brh/tmux-run-waf ()
+  (interactive)
+  (brh/_tmux-cmd "wcb"))
