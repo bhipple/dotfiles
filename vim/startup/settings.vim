@@ -45,9 +45,6 @@ set autoread
 " Configure the :make command
 set makeprg=make
 
-" Set path for file searches
-set path+=/home/bhipple/mbig/**
-
 " Ignore whitespace on diffs
 set diffopt+=iwhite
 
