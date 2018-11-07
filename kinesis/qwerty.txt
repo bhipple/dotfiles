@@ -1,10 +1,13 @@
 [=]>[`]
 [escape]>[kp-insert]
 [kp-escape]>[kp-insert]
+[caps]>[escape]
+[up]>[cbrack]
+[right]>[obrack]
 [`]>[=]
 [home]>[=]
 [end]>[rwin]
-[lctrl]>[obrack]
+[lctrl]>[escape]
 [delete]>[lctrl]
 [bspace]>[space]
 [rctrl]>[cbrack]
@@ -13,8 +16,6 @@
 [kp-rwin]>[kp-ralt]
 [pup]>[lalt]
 [pdown]>[rctrl]
-
-* Modification of the kp-shift layer
 [caps]>[kpshift]
 [kp-caps]>[kpshift]
 [kp-h]>[left]
