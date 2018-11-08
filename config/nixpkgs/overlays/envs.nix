@@ -1,6 +1,6 @@
 self: super:
 {
-  spacemacs = super.emacsWithPackages (epkgs: (with epkgs.melpaStablePackages; [
+  spacemacs = super.emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
     # archives
     # auto-highlight-symbol
     # centered-cursor-mode
@@ -73,6 +73,7 @@ self: super:
     # vi-tilde-fringe
     # vimrc-mode
     # zeal-at-point
+
     ac-ispell
     ac-php-core
     ace-jump-helm-line
@@ -147,7 +148,7 @@ self: super:
     evil
     evil-anzu
     evil-args
-    evil-escape
+    # evil-escape
     evil-iedit-state
     evil-lisp-state
     evil-magit
@@ -325,7 +326,7 @@ self: super:
     restart-emacs
     robe
     rspec-mode
-    rtags
+    # rtags
     rubocop
     ruby-hash-syntax
     ruby-test-mode
