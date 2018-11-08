@@ -2,78 +2,23 @@ self: super:
 {
   spacemacs = super.emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
     # archives
-    # auto-highlight-symbol
-    # centered-cursor-mode
-    # chruby
-    # clang-format
-    # clean-aindent-mode
-    # cmm-mode
-    # column-enforce-mode
-    # company-c-headers
-    # company-lua
-    # company-plsense
     # company-rtags
-    # confluence
     # csv-mode
-    # dactyl-mode
-    # disaster
-    # evil-cleverparens
-    # evil-ediff
-    # evil-exchange
-    # evil-goggles
-    # evil-indent-plus
-    # evil-ledger
-    # evil-lion
+    # doom-modeline
+    # drupal-mode
+    # evil-escape
     # evil-unimpaired
-    # flycheck-bashate
     # flycheck-rtags
     # font-lock
-    # gh-md
-    # gitignore-templates
-    # go-gen-test
-    # google-c-style
-    # helm-css-scss
-    # helm-flx
-    # helm-gitignore
-    # helm-hoogle
     # helm-rtags
-    # helm-xref
-    # highlight
-    # hlint-refactor
-    # insert-shebang
-    # jenkins
-    # js-doc
-    # link-hint
-    # livid-mode
-    # lorem-ipsum
     # mmm-mode
-    # mvn
-    # nix-update
-    # ob-restclient
-    # open-junk-file
-    # org-brain
     # org-plus-contrib
-    # org-present
-    # p4
-    # password-generator
     # php-extras
-    # pipenv
-    # pippel
-    # prettier-js
-    # pytest
-    # restclient
-    # restclient-helm
-    # rpm-spec-mode
-    # ruby-refactor
-    # seeing-is-believing
+    # rtags
+    # shrink-path
     # spinner
     # sql-indent
     # undo-tree
-    # uuidgen
-    # vi-tilde-fringe
-    # vimrc-mode
-    # zeal-at-point
-
     ac-ispell
     ac-php-core
     ace-jump-helm-line
@@ -91,21 +36,31 @@ self: super:
     auto-compile
     auto-complete
     auto-dictionary
+    auto-highlight-symbol
     auto-yasnippet
     avy
     bind-key
     bind-map
     browse-at-remote
     bundler
+    centered-cursor-mode
+    chruby
+    clang-format
+    clean-aindent-mode
+    cmm-mode
+    column-enforce-mode
     company
     company-anaconda
     company-ansible
+    company-c-headers
     company-cabal
     company-emacs-eclim
     company-ghc
     company-go
+    company-lua
     company-nixos-options
     company-php
+    company-plsense
     company-quickhelp
     company-restclient
     company-shell
@@ -115,22 +70,23 @@ self: super:
     company-web
     company-ycmd
     concurrent
+    confluence
     counsel
     counsel-projectile
     ctable
     cython-mode
+    dactyl-mode
     dash
     dash-functional
     deferred
     define-word
     diff-hl
     diminish
+    disaster
     docker
     docker-tramp
     dockerfile-mode
-    # doom-modeline
     dotenv-mode
-    # drupal-mode
     dumb-jump
     eclim
     editorconfig
@@ -148,8 +104,14 @@ self: super:
     evil
     evil-anzu
     evil-args
-    # evil-escape
+    evil-cleverparens
+    evil-ediff
+    evil-exchange
+    evil-goggles
     evil-iedit-state
+    evil-indent-plus
+    evil-ledger
+    evil-lion
     evil-lisp-state
     evil-magit
     evil-matchit
@@ -170,6 +132,7 @@ self: super:
     flx
     flx-ido
     flycheck
+    flycheck-bashate
     flycheck-haskell
     flycheck-ledger
     flycheck-pos-tip
@@ -179,6 +142,7 @@ self: super:
     fringe-helper
     fuzzy
     ggtags
+    gh-md
     ghc
     git-commit
     git-gutter
@@ -189,10 +153,12 @@ self: super:
     gitattributes-mode
     gitconfig-mode
     gitignore-mode
+    gitignore-templates
     gntp
     gnuplot
     go-eldoc
     go-fill-struct
+    go-gen-test
     go-guru
     go-impl
     go-mode
@@ -200,6 +166,7 @@ self: super:
     go-tag
     godoctor
     golden-ratio
+    google-c-style
     google-translate
     goto-chg
     gradle-mode
@@ -215,10 +182,14 @@ self: super:
     helm-c-yasnippet
     helm-company
     helm-core
+    helm-css-scss
     helm-dash
     helm-descbinds
+    helm-flx
     helm-git-grep
+    helm-gitignore
     helm-gtags
+    helm-hoogle
     helm-make
     helm-mode-manager
     helm-nixos-options
@@ -228,12 +199,15 @@ self: super:
     helm-pydoc
     helm-swoop
     helm-themes
+    helm-xref
     hierarchy
+    highlight
     highlight-indentation
     highlight-numbers
     highlight-parentheses
     hindent
     hl-todo
+    hlint-refactor
     ht
     htmlize
     hungry-delete
@@ -245,8 +219,11 @@ self: super:
     importmagic
     indent-guide
     inf-ruby
+    insert-shebang
     ivy
+    jenkins
     jinja2-mode
+    js-doc
     js2-mode
     js2-refactor
     json-mode
@@ -255,8 +232,11 @@ self: super:
     json-snatcher
     know-your-http-well
     ledger-mode
+    link-hint
     live-py-mode
+    livid-mode
     log4e
+    lorem-ipsum
     lua-mode
     macrostep
     magit
@@ -274,30 +254,38 @@ self: super:
     move-text
     multi-term
     multiple-cursors
+    mvn
     mwim
     nameless
     nginx-mode
     nix-mode
+    nix-update
     nixos-options
     ob-http
+    ob-restclient
+    open-junk-file
+    org-brain
     org-bullets
     org-category-capture
     org-download
     org-jira
     org-mime
     org-pomodoro
+    org-present
     org-projectile
     orgit
     overseer
     ox-gfm
     ox-pandoc
     ox-twbs
+    p4
     package-lint
     packed
     pandoc-mode
     paradox
     paredit
     parent-mode
+    password-generator
     pcache
     pcre2el
     persp-mode
@@ -307,15 +295,19 @@ self: super:
     phpcbf
     phpunit
     pip-requirements
+    pipenv
+    pippel
     pkg-info
     popup
     popwin
     pos-tip
     powerline
+    prettier-js
     projectile
     pug-mode
     py-isort
     pyenv-mode
+    pytest
     pythonic
     pyvenv
     rainbow-delimiters
@@ -324,11 +316,14 @@ self: super:
     request
     request-deferred
     restart-emacs
+    restclient
+    restclient-helm
     robe
+    rpm-spec-mode
     rspec-mode
-    # rtags
     rubocop
     ruby-hash-syntax
+    ruby-refactor
     ruby-test-mode
     ruby-tools
     rvm
@@ -338,8 +333,8 @@ self: super:
     sbt-mode
     scala-mode
     scss-mode
+    seeing-is-believing
     shell-pop
-    # shrink-path
     simple-httpd
     skewer-mode
     slim-mode
@@ -361,6 +356,9 @@ self: super:
     treemacs-projectile
     unfill
     use-package
+    uuidgen
+    vi-tilde-fringe
+    vimrc-mode
     volatile-highlights
     web-beautify
     web-completion-data
@@ -378,6 +376,7 @@ self: super:
     yasnippet
     yasnippet-snippets
     ycmd
+    zeal-at-point
   ]));
 
   # Minimal set of packages to install everywhere
@@ -424,7 +423,7 @@ self: super:
       self.chromium
       self.cmake
       self.digikam
-      self.emacs
+      self.spacemacs
       self.firefox
       self.git-crypt
       self.gnumake
@@ -442,14 +441,12 @@ self: super:
       self.neovim
       self.nethogs
       self.nixops
-      self.nodePackages.tern  # Needed by spacemacs JS layer
       self.pandoc
       self.pdsh
       self.poppler_utils
       self.shellcheck
       self.sloc
       self.source-code-pro
-      self.stack
       self.truecrypt
       self.upower
       self.vagrant
