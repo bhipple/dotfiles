@@ -1,20 +1,19 @@
 self: super:
 {
   spacemacs = super.emacsWithPackages (ep: (with ep.melpaPackages; [
-    # archives
     # company-rtags
     # doom-modeline # TODO: Has a dependency that fails (shrink-path.el)
     # ep.font-lock-plus # TODO: Fails with mismatched package name font-lock+
     # evil-unimpaired
     # flycheck-rtags
+    # haskell-snippets
     # helm-rtags
     # magit-svn # TODO: No such file or directory, git
-    # mmm-mode
     # rtags
-    # shrink-path
-    # spinner
+    # shrink-path # TODO: 404 not found on src tarball download
     # sql-indent
-    # undo-tree
+    # yasnippet
+    # yasnippet-snippets
     ac-ispell
     ace-jump-helm-line
     ace-link
@@ -66,6 +65,7 @@ self: super:
     company-ycmd
     concurrent
     confluence
+    copy-as-format
     counsel
     counsel-projectile
     ctable
@@ -91,8 +91,10 @@ self: super:
     engine-mode
     ensime
     ep.csv-mode
+    ep.mmm-mode
     ep.orgPackages.org
     ep.orgPackages.org-plus-contrib
+    ep.undo-tree
     epc
     epl
     esh-help
@@ -146,6 +148,8 @@ self: super:
     git-commit
     git-gutter
     git-gutter-fringe
+    git-gutter-fringe-plus
+    git-gutter-plus
     git-link
     git-messenger
     git-timemachine
@@ -174,7 +178,6 @@ self: super:
     groovy-mode
     haml-mode
     haskell-mode
-    # haskell-snippets
     hcl-mode
     helm
     helm-ag
@@ -347,6 +350,7 @@ self: super:
     treemacs
     treemacs-evil
     treemacs-projectile
+    treepy
     unfill
     use-package
     uuidgen
@@ -366,8 +370,6 @@ self: super:
     xterm-color
     yaml-mode
     yapfify
-    # yasnippet
-    # yasnippet-snippets
     ycmd
     zeal-at-point
   ]));
