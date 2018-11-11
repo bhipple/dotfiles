@@ -56,12 +56,6 @@
 (setq ycmd-force-semantic-completion nil)
 (with-eval-after-load 'company global-ycmd-mode)
 
-;; When in markdown mode, enable minor orgtbl-mode and format tables as markdown on save
-(add-hook 'markdown-mode-hook 'orgtbl-mode)
-(add-hook 'markdown-mode-hook
-          (lambda ()
-            (add-hook 'after-save-hook 'brh/cleanup-org-tables nil 'make-it-local)))
-
 ;; Use the primary system clipboard when yanking
 (setq x-select-enable-primary t)
 
