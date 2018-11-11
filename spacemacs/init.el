@@ -42,9 +42,9 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       auto-completion-idle-delay 0.01
                       auto-completion-enable-help-tooltip t
-                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-snippets-in-popup nil
                       auto-completion-enable-sort-by-usage t
-                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets"
+                      ;; auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets"
                       ;; Removes company-files from the default list
                       spacemacs-default-company-backends '(company-dabbrev-code company-gtags company-etags company-keywords company-dabbrev))
      better-defaults
@@ -83,7 +83,6 @@ This function should only modify configuration layer settings."
      pandoc
      perforce
      perl5
-     php
      (python :variables
              python-auto-set-local-pyenv-version nil
              python-auto-set-local-pyenv-virtualenv nil
@@ -128,7 +127,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(evil-ediff jenkins org-jira rpm-spec-mode package-lint nix-update)
+   dotspacemacs-additional-packages '(evil-ediff jenkins rpm-spec-mode package-lint nix-update)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -143,7 +142,7 @@ This function should only modify configuration layer settings."
    ;; installs only the used packages but won't delete unused ones. `all'
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
-   dotspacemacs-install-packages 'all))
+   dotspacemacs-install-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -261,7 +260,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(doom :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
