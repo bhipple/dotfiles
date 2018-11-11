@@ -469,9 +469,6 @@ self: super:
   pyEnv = super.hiPrio (self.python3.withPackages (ps: with ps; [
     flake8
     isort
-    numpy
-    ofxclient
-    paramiko
     pep8
     pylint
     setuptools
