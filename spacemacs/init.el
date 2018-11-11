@@ -46,7 +46,8 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-sort-by-usage t
                       ;; auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets"
                       ;; Removes company-files from the default list
-                      spacemacs-default-company-backends '(company-dabbrev-code company-gtags company-etags company-keywords company-dabbrev))
+                      ;; spacemacs-default-company-backends '(company-dabbrev-code company-gtags company-etags company-keywords company-dabbrev))
+                      )
      better-defaults
      c-c++
      confluence
@@ -218,7 +219,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-editing-style 'vim
 
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
+   dotspacemacs-verbose-loading t
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -543,3 +544,14 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ ))

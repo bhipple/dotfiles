@@ -366,8 +366,8 @@ self: super:
     xterm-color
     yaml-mode
     yapfify
-    yasnippet
-    yasnippet-snippets
+    # yasnippet
+    # yasnippet-snippets
     ycmd
     zeal-at-point
   ]));
