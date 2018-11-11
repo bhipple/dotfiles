@@ -174,7 +174,7 @@ self: super:
     groovy-mode
     haml-mode
     haskell-mode
-    haskell-snippets
+    # haskell-snippets
     hcl-mode
     helm
     helm-ag
