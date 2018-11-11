@@ -1,18 +1,16 @@
 self: super:
 {
-  spacemacs = super.emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
+  spacemacs = super.emacsWithPackages (ep: (with ep.melpaPackages; [
     # archives
     # company-rtags
-    # csv-mode
-    # doom-modeline
+    # doom-modeline # TODO: Has a dependency that fails (shrink-path.el)
     # drupal-mode
-    # evil-escape
+    # ep.font-lock-plus # TODO: Fails with mismatched package name font-lock+
     # evil-unimpaired
     # flycheck-rtags
-    # font-lock
     # helm-rtags
+    # magit-svn # TODO: No such file or directory, git
     # mmm-mode
-    # org-plus-contrib
     # php-extras
     # rtags
     # shrink-path
@@ -95,6 +93,9 @@ self: super:
     emmet-mode
     engine-mode
     ensime
+    ep.csv-mode
+    ep.orgPackages.org
+    ep.orgPackages.org-plus-contrib
     epc
     epl
     esh-help
@@ -106,6 +107,7 @@ self: super:
     evil-args
     evil-cleverparens
     evil-ediff
+    evil-escape
     evil-exchange
     evil-goggles
     evil-iedit-state
@@ -242,7 +244,6 @@ self: super:
     magit
     magit-gitflow
     magit-popup
-    magit-svn
     markdown-mode
     markdown-toc
     markup-faces
@@ -268,7 +269,6 @@ self: super:
     org-bullets
     org-category-capture
     org-download
-    org-jira
     org-mime
     org-pomodoro
     org-present
@@ -290,10 +290,6 @@ self: super:
     pcre2el
     persp-mode
     pfuture
-    php-auto-yasnippets
-    php-mode
-    phpcbf
-    phpunit
     pip-requirements
     pipenv
     pippel
