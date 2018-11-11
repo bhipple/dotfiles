@@ -4,21 +4,18 @@ self: super:
     # archives
     # company-rtags
     # doom-modeline # TODO: Has a dependency that fails (shrink-path.el)
-    # drupal-mode
     # ep.font-lock-plus # TODO: Fails with mismatched package name font-lock+
     # evil-unimpaired
     # flycheck-rtags
     # helm-rtags
     # magit-svn # TODO: No such file or directory, git
     # mmm-mode
-    # php-extras
     # rtags
     # shrink-path
     # spinner
     # sql-indent
     # undo-tree
     ac-ispell
-    ac-php-core
     ace-jump-helm-line
     ace-link
     ace-window
