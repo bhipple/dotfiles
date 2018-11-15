@@ -1,33 +1,21 @@
 servers = (
   {
-    address = "localhost";
-    chatnet = "BitlBee";
-    port = "6667";
-    autoconnect = "yes";
-  },
-  {
     address = "chat.freenode.net";
     chatnet = "Freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
     autoconnect = "yes";
   }
 );
 
 chatnets = {
-    Freenode = { type = "IRC"; };
-    BitlBee = {
-        type = "IRC";
-        autosendcmd = "/^MSG root identify ben";
-    }
+  Freenode = { type = "IRC"; };
 };
 
 channels = (
-  { name = "#nixos"; chatnet = "Freenode"; autojoin = "yes"; }
-  { name = "#haskell"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#haskell-beginners"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#xmonad"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#nixos"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#xmonad"; chatnet = "Freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -281,7 +269,6 @@ settings = {
   core = { real_name = "brh"; user_name = "brh"; nick = "brh"; };
 };
 
-ignores = ({
-    level = "JOINS PARTS QUITS NICKS";
-    network = ( "Freenode" );
-});
+ignores = (
+  { level = "JOINS PARTS QUITS NICKS"; network = ( "Freenode" ); }
+);
