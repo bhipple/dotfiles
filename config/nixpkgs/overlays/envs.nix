@@ -476,27 +476,4 @@ self: super:
     yamllint
     yapf
   ]));
-
-  haskellEnv = self.haskellPackages.ghcWithPackages (ps: with ps; [
-    Cabal
-    async
-    dhall
-    dhall-bash
-    dhall-json
-    dhall-nix
-    filepath
-    ghc-mod
-    hindent
-    hlint
-    hoogle
-    optparse-generic
-    text
-    text-show
-    trifecta
-    turtle
-    xmobar
-    xmonad
-    xmonad-contrib
-    xmonad-extras
-  ]);
 }
