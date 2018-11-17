@@ -428,7 +428,6 @@ self: super:
       self.calibre
       self.chromium
       self.cmake
-      self.digikam
       self.spacemacs
       self.firefox
       self.git-crypt
@@ -436,20 +435,17 @@ self: super:
       self.gnupg
       self.gnutls
       self.graphviz
-      self.httpie
       self.icu
       self.imagemagick
       self.irssi
       self.ledger
       self.lftp
       self.mupdf
-      self.mupdf
       self.neovim
       self.nethogs
       self.nixops
       self.pandoc
       self.pdsh
-      self.poppler_utils
       self.shellcheck
       self.sloc
       self.source-code-pro
@@ -458,7 +454,6 @@ self: super:
       self.vagrant
       self.vimPlugins.youcompleteme
       self.vlc
-      self.weechat
       self.xclip
       self.xsel
       self.zeal
