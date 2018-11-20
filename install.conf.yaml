@@ -36,7 +36,6 @@
       path: gnupg/gpg-agent.conf
     ~/.haskeline: haskeline
     ~/.inputrc: inputrc
-    ~/.irssi: irssi/
     ~/.ledgerrc: ledgerrc
     ~/.quicklisp: quicklisp/
     ~/.sbclrc: sbclrc

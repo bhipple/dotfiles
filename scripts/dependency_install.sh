@@ -43,16 +43,6 @@ nix_install() {
     (set -x; nix-env -j4 -k -riA $CHANNELS)
 }
 
-fzf_install() {
-    if ! [ -f ~/.fzf.zsh ]; then
-        echo "Installing fzf"
-        ./fzf/install --key-bindings --completion --no-update-rc
-    else
-        echo "fzf already installed"
-    fi
-}
-
 change_to_zsh
 create_ssh
 nix_install
-fzf_install
