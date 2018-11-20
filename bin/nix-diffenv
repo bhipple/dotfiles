@@ -6,7 +6,30 @@ import subprocess
 import terminaltables
 
 def deps(root):
-    return set(subprocess.check_output("nix path-info -r {} | cut -d'-' -f2-".format(root), shell=True).split())
+    # Filters out config files, patches, scripts, etc., so that we can see what's important.
+    filters = '|'.join([
+        '-doc$',
+        '.c$',
+        '.diff$',
+        '.drv$',
+        '.ds$',
+        '.el$',
+        '.h$',
+        '.hs$',
+        '.key$',
+        '.make$',
+        '.nix$',
+        '.patch$',
+        '.pl$',
+        '.py$',
+        '.sh$',
+        '.tmac$',
+        '.toml$',
+        '.xsl$',
+        'setup-hook',
+        'user-environment',
+    ])
+    return set(subprocess.check_output("nix path-info -r {} | grep -Ev '({})' | cut -d'-' -f2-".format(root, filters), shell=True).split())
 
 def row(key, d1, d2):
     f = lambda d: "X" if key in d else " "
