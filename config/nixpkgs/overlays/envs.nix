@@ -396,12 +396,14 @@ self: super:
       self.curl
       self.feh
       self.file
+      self.git-crypt
       self.gitAndTools.hub
       self.global
       self.gnused
       self.gnutar
       self.htop
       self.jq
+      self.ledger
       self.nox
       self.par
       self.pass
@@ -409,6 +411,7 @@ self: super:
       self.procps
       self.ripgrep
       self.rlwrap
+      self.spacemacs
       self.tmux
       self.tree
       self.unzip
@@ -428,9 +431,7 @@ self: super:
       self.calibre
       self.chromium
       self.cmake
-      self.spacemacs
       self.firefox
-      self.git-crypt
       self.gnumake
       self.gnupg
       self.gnutls
@@ -438,7 +439,6 @@ self: super:
       self.icu
       self.imagemagick
       self.irssi
-      self.ledger
       self.lftp
       self.mupdf
       self.neovim
