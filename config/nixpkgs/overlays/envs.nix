@@ -1,5 +1,31 @@
 self: super:
 {
+  waf-helm-make = super.stdenv.mkDerivation rec {
+    name = "helm-make";
+    version = "20181126";
+
+    src = super.fetchFromGitHub {
+      owner = "bhipple";
+      repo = name;
+      rev = "master";
+      sha256 = "12vwbircndqhwdvk506yy9lhg4mj60d8yghimrc3s6jfwc7z08yh";
+    };
+
+    phases = [ "unpackPhase" "installPhase" ];
+
+    # TODO: Figure out how to pass helm to this for byte compilation
+    # buildInputs = [ super.emacs super.emacsPackagesNg.helm ];
+    # buildPhase = ''
+    #   emacs -L . -L ${super.emacsPackagesNg.helm}/share/emacs/site-lisp \
+    #       --batch -f batch-byte-compile *.el
+    # '';
+    installPhase = ''
+      install -d $out/share/emacs/site-lisp
+      install *.el *.elc $out/share/emacs/site-lisp/
+    '';
+
+  };
+
   spacemacs = super.emacsWithPackages (ep: (with ep.melpaPackages; [
     # there's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
@@ -12,6 +38,8 @@ self: super:
         })
       ];
     }))
+
+    self.waf-helm-make
 
     # company-rtags
     # doom-modeline # TODO: Has a dependency that fails (shrink-path.el)
@@ -203,7 +231,6 @@ self: super:
     helm-gitignore
     helm-gtags
     helm-hoogle
-    helm-make
     helm-mode-manager
     helm-nixos-options
     helm-org-rifle
