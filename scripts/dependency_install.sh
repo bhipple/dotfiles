@@ -41,6 +41,9 @@ nix_install() {
     fi
 
     (set -x; nix-env -j4 -k -riA $CHANNELS)
+
+    # Also install plaid2qif from my nix user repo
+    nix-env -iA $CHANNEL.nur.repos.bhipple.plaid2qif
 }
 
 change_to_zsh
