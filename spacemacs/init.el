@@ -42,7 +42,7 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       auto-completion-idle-delay 0.01
                       auto-completion-enable-help-tooltip t
-                      auto-completion-enable-snippets-in-popup nil
+                      auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets"
                       ;; Removes company-files from the default list
