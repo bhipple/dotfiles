@@ -11,6 +11,7 @@ alias l='ledger'
 alias less='less -N'
 alias ll='ls -al'
 alias lower="tr '[:upper:]' '[:lower:]'"
+alias lp='ledger --file ~/ledger/personal.ledger'
 alias ls='ls --color'
 alias mkcd='. ~/bin/make_dir_and_cd.sh'
 alias mu='mupdf-x11'
