@@ -62,6 +62,7 @@
 ;; When compiling, jump the buffer automatically on failures, and use a high -j
 (setq compilation-auto-jump-to-first-error t)
 (setq helm-make-arguments "-j48")
+(setq helm-make-do-save t)
 
 ;; TODO: Clean this up and organize a bit better. I think I just need the setq stuff.
 (setq evil-escape-excluded-states '(normal visual multiedit emacs motion)

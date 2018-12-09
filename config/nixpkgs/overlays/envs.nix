@@ -394,6 +394,7 @@ self: super:
     uuidgen
     vi-tilde-fringe
     vimrc-mode
+    visual-fill-column
     volatile-highlights
     web-beautify
     web-completion-data
@@ -402,6 +403,7 @@ self: super:
     window-purpose
     winum
     with-editor
+    writeroom-mode
     ws-butler
     xcscope
     xml-rpc
