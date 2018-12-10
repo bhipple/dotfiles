@@ -57,7 +57,12 @@ fi
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
+# Setup autocomplete equivalents
+if [ -z "$IN_NIX_SHELL" ]; then
+    compdef g='git'
+fi
+
 # When processing completions for aliases, expand them to find out what
-# function(s) should be completed. This makes 'g' autocomplete for 'git', for
-# instance.
+# function(s) should be completed. Note that this does not work for
+# binaries/scripts wrapping the program, such as my bin/g script.
 zstyle ':completion:*' completer _expand_alias _complete _ignored
