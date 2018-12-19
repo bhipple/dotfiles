@@ -77,6 +77,7 @@ self: super:
     bind-map
     browse-at-remote
     bundler
+    cargo
     centered-cursor-mode
     chruby
     clang-format
@@ -107,6 +108,7 @@ self: super:
     confluence
     copy-as-format
     counsel
+    counsel-gtags
     counsel-projectile
     ctable
     cython-mode
@@ -277,11 +279,14 @@ self: super:
     livid-mode
     log4e
     lorem-ipsum
+    lsp-mode
+    lsp-rust
     lua-mode
     macrostep
     magit
     magit-gitflow
     magit-popup
+    magit-svn
     markdown-mode
     markdown-toc
     markup-faces
@@ -307,6 +312,7 @@ self: super:
     org-bullets
     org-category-capture
     org-download
+    org-journal
     org-mime
     org-pomodoro
     org-present
@@ -385,6 +391,7 @@ self: super:
     tern
     terraform-mode
     toc-org
+    toml-mode
     treemacs
     treemacs-evil
     treemacs-projectile

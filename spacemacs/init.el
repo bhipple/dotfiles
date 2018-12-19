@@ -77,10 +77,11 @@ This function should only modify configuration layer settings."
      nginx
      nixos
      (org :variables
-          org-startup-indented t
-          org-reveal-js-support t
           org-enable-bootstrap-support t
-          org-enable-github-support t)
+          org-enable-github-support t
+          org-enable-org-journal-support  t
+          org-reveal-js-support t
+          org-startup-indented t)
      pandoc
      perforce
      perl5
@@ -93,6 +94,7 @@ This function should only modify configuration layer settings."
              python-fill-column 120)
      restclient
      ruby
+     rust
      salt
      search-engine
      (shell :variables
@@ -128,7 +130,12 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(evil-ediff jenkins rpm-spec-mode package-lint nix-update)
+   dotspacemacs-additional-packages '(
+       evil-ediff
+       jenkins
+       nix-update
+       package-lint
+       rpm-spec-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()

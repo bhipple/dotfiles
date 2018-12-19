@@ -167,6 +167,9 @@
   ;; And don't preserve IDs whe cloning
   (setq org-clone-delete-id t)
 
+  ;; Set the org-journal directory
+  (setq org-journal-dir "~/personal/journal")
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org-habit configuration
   ;; Always show all habits on the agenda, even if we don't need to do them today
