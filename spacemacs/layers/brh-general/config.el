@@ -70,3 +70,7 @@
       evil-escape-key-sequence "jk"
       evil-escape-unordered-key-sequence t
       evil-escape-delay 0.25)
+
+;; Ensure that visual selection does not overwrite X clipboard
+;; http://spacemacs.org/doc/FAQ#prevent-the-visual-selection-overriding-my-system-clipboard
+(fset 'evil-visual-update-x-selection 'ignore)
