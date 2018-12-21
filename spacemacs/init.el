@@ -133,7 +133,6 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(
        evil-ediff
        jenkins
-       nix-update
        package-lint
        rpm-spec-mode)
 
