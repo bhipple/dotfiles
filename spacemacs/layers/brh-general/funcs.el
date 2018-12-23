@@ -47,3 +47,14 @@
 (defun brh/tmux-run-waf ()
   (interactive)
   (brh/_tmux-cmd "wcb"))
+
+;; Yanked from https://github.com/alphapapa/unpackaged.el#ensure-blank-lines-between-headings-and-before-contents
+(defun unpackaged/org-sort-multi (keys)
+  "Call `org-sort-entries' with multiple sorting methods specified in KEYS."
+  ;; Message copied from `org-sort-entries'.
+  (interactive (list (read-string "Sort by: [a]lpha  [n]umeric  [p]riority  p[r]operty  todo[o]rder  [f]unc
+         [t]ime [s]cheduled  [d]eadline  [c]reated  cloc[k]ing
+         A/N/P/R/O/F/T/S/D/C/K means reversed: ")))
+  (seq-do (lambda (key)
+            (org-sort-entries nil key))
+          (nreverse keys)))
