@@ -49,7 +49,10 @@ This function should only modify configuration layer settings."
                       ;; spacemacs-default-company-backends '(company-dabbrev-code company-gtags company-etags company-keywords company-dabbrev))
                       )
      better-defaults
-     c-c++
+     (c-c++ :variables
+            c-c++-backend 'rtags
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      confluence
      copy-as-format
      csv
