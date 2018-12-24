@@ -114,20 +114,20 @@
     renameLimit = 2500
 [grep]
     lineNumber = true
+[init]
+    templatedir = ~/.git_template
 [magit]
   hideCampaign = true
-[mergetool "fugitive"]
-    cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
-[mergetool]
-    keepBackup = false
 [merge]
     tool = fugitive
+[mergetool]
+    keepBackup = false
+[mergetool "fugitive"]
+    cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [protocol]
     version = 2
 [push]
     default = simple
-[init]
-    templatedir = ~/.git_template
 [url "git://github.com/ghc/packages-"]
     insteadOf = git://github.com/ghc/packages/
 
