@@ -23,11 +23,6 @@ else
     export VISUAL=vim
 fi
 
-cmd=$(uname -a | grep -q "Darwin")
-if [ $? -eq 0 ]; then
-    export MACOS="true"
-fi
-
 # Running in emacs ansi-term
 if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export AUTO_FU="skip"
