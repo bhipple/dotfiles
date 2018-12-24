@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Given a remote host and a file on localhost, diff that file between localhost
+# and the remote host's version.
 host="$1"
 fname="$(realpath $2)"
 shift; shift;

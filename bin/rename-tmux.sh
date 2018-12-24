@@ -10,6 +10,3 @@ else
     name=$(basename "$(pwd)")
 fi
 tmux rename-window "$name"
-
-#git rev-parse --show-toplevel | xargs basename
-#if [ -f ~/bin/tmux]
