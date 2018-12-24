@@ -10,11 +10,6 @@
       force: true
       path: bash_profile
     ~/.clang-format: clang-format
-    ~/.config/nvim/init.vim: vimrc
-    ~/.config/nvim:
-        force: true
-        create: true
-        path: vim
     ~/.config/nixpkgs:
         create: true
         path: config/nixpkgs/

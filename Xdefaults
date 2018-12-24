@@ -1,17 +1,13 @@
-
-
 ! $HOME/.Xdefaults
 !
 ! This file contains user defaults resources which are applied to
 ! all X-clients.
 !
 
-
 ! The Athena Widgets provided by Data General have 2 look-and-feels
 ! to choose from (athena and motif). The following resource sets
 ! the look-and-feel:
 *lookAndFeel: motif
-
 
 ! The following sets the customization resource to get
 ! special app-defaults, if they exist:

@@ -1,6 +1,5 @@
 #!/bin/sh
-lint()
-{
+lint() {
     fileregex="$1"
     binary="$2"
     files=$(git diff --name-only --diff-filter=ACMRTUXB --cached -- "$fileregex")
