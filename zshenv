@@ -34,7 +34,6 @@ export KEYTIMEOUT=20
 PATH=~/.nix-profile/bin:~/bin_local:$PATH
 PATH=~/bin:$PATH
 PATH=$PATH:~/.local/bin
-PATH=$PATH:~/.cabal/bin
 PATH=$PATH:/bin
 PATH=$PATH:/sbin
 PATH=$PATH:/usr/local/bin
@@ -53,8 +52,6 @@ export GTAGSLABEL=pygments
 
 export UID=$(getent passwd "$USER" | cut -d":" -f3)
 export GID=$(getent passwd "$USER" | cut -d":" -f4)
-
-[[ -f ~/.config/hub ]] && export GITHUB_STANDARD_TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $2}')
 
 if [ -d /home/bhipple/src/nixpkgs ]; then export NIX_PATH=src=/home/bhipple/src/nixpkgs:$NIX_PATH; fi
 export GPG=gpg2
