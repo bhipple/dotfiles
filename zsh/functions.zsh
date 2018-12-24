@@ -28,11 +28,6 @@ docker-rmi-anon() {
     docker images | grep "<none>" | awk '{print $3}' | xargs -I{} docker rmi -f {}
 }
 
-vimdf() {
-    nvim -p \
-        $(git diff --name-only --diff-filter=M | tr '\n' ' ')
-}
-
 em() {
     if [ -f /tmp/emacs$UID/server ]; then
         emacsclient "$@"
@@ -123,7 +118,6 @@ fo() {
     fi
 }
 
-
 # fbr - checkout git branch
 fbr() {
   local branches branch
@@ -132,8 +126,8 @@ fbr() {
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
-# fbr - checkout git branch (including remote branches)
-fbr() {
+# fbrr - checkout git branch (including remote branches)
+fbrr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
