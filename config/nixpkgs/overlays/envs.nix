@@ -432,6 +432,7 @@ self: super:
       self.curl
       self.feh
       self.file
+      self.fzf
       self.git-crypt
       self.gitAndTools.hub
       self.global
