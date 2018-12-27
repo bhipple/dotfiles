@@ -25,6 +25,7 @@ main = do
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
     _ <- spawn myTerminal
+    _ <- spawn "emacs --daemon"
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
