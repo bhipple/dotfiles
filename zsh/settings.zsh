@@ -69,9 +69,7 @@ done
 #  ============================================================================
 #                               FZF Config
 #  ============================================================================
-if ! [ -f ~/.fzf.zsh ]; then
-    echo "FZF not installed."
-    return
+if [ -d ~/.fzf/shell ]; then
+    source ~/.fzf/shell/completion.zsh
+    source ~/.fzf/shell/key-bindings.zsh
 fi
-
-source ~/.fzf.zsh
