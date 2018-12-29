@@ -8,10 +8,6 @@ unsetopt BG_NICE
 ## ============================================================================
 ##                           Environment Variables
 ## ============================================================================
-if ! [[ "$TERM" == "screen-256color" || "$TERM" == "dumb" ]]; then
-    export TERM=xterm-256color
-fi
-
 export GTEST_COLOR=yes
 
 # Use emacsclient on my desktop/laptop; vim on cloud nodes, etc.
