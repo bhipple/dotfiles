@@ -502,6 +502,7 @@ self: super:
       self.upower
       self.vagrant
       self.vimPlugins.youcompleteme
+      self.vim_configurable
       self.vlc
       self.xclip
       self.xsel
@@ -510,7 +511,7 @@ self: super:
     ];
   });
 
-  pyEnv = super.hiPrio (self.python2.withPackages (ps: with ps; [
+  pyEnv = super.lowPrio (self.python2.withPackages (ps: with ps; [
     flake8
     isort
     pep8
