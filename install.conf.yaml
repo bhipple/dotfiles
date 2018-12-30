@@ -10,6 +10,9 @@
       force: true
       path: bash_profile
     ~/.clang-format: clang-format
+    ~/.config/alacritty:
+        create: true
+        path: config/alacritty/
     ~/.config/nixpkgs:
         create: true
         path: config/nixpkgs/
