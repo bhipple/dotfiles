@@ -491,7 +491,6 @@ self: super:
       self.irssi
       self.lftp
       self.mupdf
-      self.neovim
       self.nethogs
       self.nixops
       self.pandoc
