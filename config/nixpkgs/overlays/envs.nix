@@ -125,6 +125,7 @@ self: super:
     docker-tramp
     dockerfile-mode
     dotenv-mode
+    dracula-theme
     dumb-jump
     eclim
     editorconfig
