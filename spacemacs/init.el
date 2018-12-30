@@ -46,9 +46,7 @@ This function should only modify configuration layer settings."
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/yasnippet-snippets")
      better-defaults
      (c-c++ :variables
-            c-c++-backend 'rtags
-            c-c++-default-mode-for-headers 'c++-mode
-            c-c++-enable-clang-support t)
+            c-c++-default-mode-for-headers 'c++-mode)
      confluence
      copy-as-format
      csv
