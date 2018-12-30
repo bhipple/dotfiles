@@ -44,7 +44,7 @@ self: super:
     # company-rtags
     # doom-modeline # TODO: Has a dependency that fails (shrink-path.el)
     # ep.font-lock-plus # TODO: Fails with mismatched package name font-lock+
-    # evil-unimpaired
+    # evil-unimpaired # TODO: Not packaged
     # flycheck-rtags
     # haskell-snippets
     # helm-rtags
@@ -54,6 +54,7 @@ self: super:
     # sql-indent
     # yasnippet
     # yasnippet-snippets
+
     ac-ispell
     ace-jump-helm-line
     ace-link
@@ -419,6 +420,16 @@ self: super:
     yapfify
     ycmd
     zeal-at-point
+  ] ++ [
+    # Many emacs packages may pull in dependencies on things they need
+    # automatically, but for those that don't, here are nix pkgs.
+
+    # Needed for ycmd
+    self.python2
+
+    # Not pulled in by the emacs package
+    self.ycmd
+
   ]));
 
   # Minimal set of packages to install everywhere
@@ -448,7 +459,8 @@ self: super:
       self.procps
       self.ripgrep
       self.rlwrap
-      self.spacemacs
+      # This should be installed automatically, but I want to use the nixpkgs channel instead of the nixos channel.
+      # self.spacemacs
       self.tmux
       self.tree
       self.unzip
@@ -497,7 +509,7 @@ self: super:
     ];
   });
 
-  pyEnv = super.hiPrio (self.python3.withPackages (ps: with ps; [
+  pyEnv = super.hiPrio (self.python2.withPackages (ps: with ps; [
     flake8
     isort
     pep8
