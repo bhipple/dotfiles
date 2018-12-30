@@ -436,6 +436,7 @@ self: super:
   minEnv = super.hiPrio (super.buildEnv {
     name = "minEnv";
     paths = [
+      self.alacritty
       self.bashInteractive
       self.bat
       self.bc
