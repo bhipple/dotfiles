@@ -46,6 +46,9 @@
                         ("WORK" ? .w)
                         ("ZSH" ? .z)))
 
+  ;; These tags should never be inherited for the purpose of property searches/filters
+  (setq org-tags-exclude-from-inheritance '("PROJECT"))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
   (setq org-capture-templates
@@ -112,7 +115,7 @@
           ("pa" "Priority A items" tags-todo "+PRIORITY=\"A\"")
           ("pb" "Priority B items" tags-todo "+PRIORITY=\"B\"")
           ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
-          ("pl" "Project List" ((tags-todo "+PROJECT") (org-agenda-use-tag-inheritance nil)))
+          ("pl" "Project List" ((tags "+PROJECT-TODO=\"DONE\"-TODO=\"ABANDONDED\"") (org-agenda-use-tag-inheritance nil)))
           ("r" "Weekly Review" agenda "" ((org-agenda-span 'week)
                                           (org-agenda-log-mode t)
                                           (org-agenda-log-mode-items '(closed clock state))
