@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Swap two files or directories safely
+
+swap() {
+    if [ ! -z "$2" ] && \
+       [ -e "$1" ] && \
+       [ -e "$2" ] && \
+       ! [ "$1" -ef "$2" ] && \
+       (([ -f "$1" ] && [ -f "$2" ]) || ([ -d "$1" ] && [ -d "$2" ]))
+    then
+        echo "Swapping $1 and $2"
+        tmp=$(mktemp -d $(dirname "$1")/XXXXXX)
+        mv "$1" "$tmp" && mv "$2" "$1" &&  mv "$tmp"/"$1" "$2"
+        rmdir "$tmp"
+    else
+        echo "Usage: swap file1 file2 or swap dir1 dir2"
+    fi
+}
+
+swap "$@"
