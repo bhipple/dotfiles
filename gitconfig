@@ -80,9 +80,13 @@
     ros = rebase origin/stage -i
     rot = rebase origin/testing -i
     s = show
-    # Warning: this converts symlinks to regular files! Consider just using this instead:
-    # rg --files | sed -i 's/foo/bar/g'
-    sed = "!git ls-files | xargs sed -i"
+    # Run a sed expression on all tracked files, skipping symlinks
+    sed = "!f() { \
+        for fn in $(git ls-files); do \
+            if [ -L $fn ]; then continue; fi; \
+            sed -i \"$1\" $fn; \
+        done \
+        }; f"
     shows = show --stat
     ss = show --stat
     st = status
