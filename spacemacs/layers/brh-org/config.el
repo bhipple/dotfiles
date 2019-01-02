@@ -1,9 +1,6 @@
 (with-eval-after-load 'org
   ;; Org variable configuration
 
-  ;; Dynamically find all agenda files by walking the directory
-  (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
-
   ;; Enable keybindings defined below for TODO selection
   (setq org-use-fast-todo-selection t)
 
@@ -50,37 +47,9 @@
   (setq org-tags-exclude-from-inheritance '("PROJECT"))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Org capture templates
-  (setq org-capture-templates
-        ;; Personal templates
-        '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
-           "* %?\nEntered %u\n")
-          ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
-           "* TODO [#C] %?\nDEADLINE: %^t")
-          ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
-           "* TODO [#C] %?\nEntered %u\n")
-          ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
-           "* TODO [#C] %?\nSCHEDULED: %^t")
-          ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-           "* TODO [#C] %?\nEntered %u\n")
-
-          ;; Work.org templates
-          ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
-           "* %?\nEntered %u\n")
-          ("w" "Work Someday / Maybe Todo" entry (file+headline "~/org/work/work.org" "Someday / Maybe WORK")
-           "* TODO [#C] %?\nEntered %u\n")))
-
-  ;; Default notes file for capture
-  (setq org-default-notes-file "~/org/me.org")
-  ;; Abbreviations for links
-  (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")
-                                ("omap" . "https://www.openstreetmap.org/search?query=%s")))
-
-  ;; Set org-refile to autocomplete three levels deep and check all agenda files
-  (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
-
-  ;; Archive to subdirectory
-  (setq org-archive-location "~/org/archive/%s_archive::")
+  ;; Org Agenda settings
+  ;; Dynamically find all agenda files by walking the directory
+  (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
 
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)
@@ -88,6 +57,7 @@
   ;; Agenda clock report parameters
   (setq org-agenda-clockreport-parameter-plist
         '(:link f :maxlevel 5 :fileskip0 t :compact t :narrow 100))
+
   ;; By default, show archived items.
   (setq org-agenda-archives-mode t)
 
@@ -137,6 +107,77 @@
                                                      ((org-agenda-tag-filter-preset '("+WORK"))))
           ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
           ("ww" "All WORK items" tags-todo "+WORK")))
+
+  ;; Org super-agenda groupings
+  ;; Some things to note about this:
+  ;; 1. "Other items" collects everything not matched, and has default order 99.
+  ;; 2. Tasks match group selectors top-to-bottom, and are consumed by the first match.
+  ;; For full documentation: https://github.com/alphapapa/org-super-agenda
+  (setq org-super-agenda-groups '(
+     (:name "Today"
+      :time-grid t
+      :log t)
+
+     (:name "Habits"
+      :habit t
+      :order 1000)
+
+     (:name "Scheduled and Deadlines"
+      :scheduled t
+      :deadline t)
+
+     (:name "Important"
+      :priority "A")
+
+     (:name "Quick wins"
+      :effort< "0:31")
+
+     (:name "Long tasks"
+            :effort> "1:01")
+
+     ; These categories should all appear after "Other Items"
+     (:order-multi (100
+       (:tag ("DEEP"))
+
+       (:name "Emacs and Org"
+        :tag ("EMACS" "ORG"))
+
+       (:name "Finance"
+        :tag ("FINANCE"))
+     ))))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Org capture templates
+  (setq org-capture-templates
+        ;; Personal templates
+        '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
+           "* %?\nEntered %u\n")
+          ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
+           "* TODO [#C] %?\nDEADLINE: %^t")
+          ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
+           "* TODO [#C] %?\nEntered %u\n")
+          ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
+           "* TODO [#C] %?\nSCHEDULED: %^t")
+          ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
+           "* TODO [#C] %?\nEntered %u\n")
+
+          ;; Work.org templates
+          ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
+           "* %?\nEntered %u\n")
+          ("w" "Work Someday / Maybe Todo" entry (file+headline "~/org/work/work.org" "Someday / Maybe WORK")
+           "* TODO [#C] %?\nEntered %u\n")))
+
+  ;; Default notes file for capture
+  (setq org-default-notes-file "~/org/me.org")
+  ;; Abbreviations for links
+  (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")
+                                ("omap" . "https://www.openstreetmap.org/search?query=%s")))
+
+  ;; Set org-refile to autocomplete three levels deep and check all agenda files
+  (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
+
+  ;; Archive to subdirectory
+  (setq org-archive-location "~/org/archive/%s_archive::")
 
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively nil)

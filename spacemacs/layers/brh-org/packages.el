@@ -17,15 +17,21 @@
 
 ;;; Code:
 
-(defconst brh-org-packages '(org)
+(defconst brh-org-packages '(org orb-habit org-super-agenda)
   "The list of Lisp packages required by the brh-org layer.")
 
 (defun brh-org/init-org-habit ()
   (use-package org-habit))
 
+(defun brh-org/init-org-super-agenda ()
+  (use-package org-super-agenda))
+
 (defun brh-org/post-init-org ()
   (with-eval-after-load 'org
     (require 'org-habit)
+    (require 'org-super-agenda)
+
+    (org-super-agenda-mode t)
 
     ;; Enable org-babel
     ;; (org-babel-do-load-languages 'org-babel-load-languages '((ditaa . t)

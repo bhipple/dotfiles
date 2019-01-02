@@ -319,6 +319,7 @@ self: super:
     org-pomodoro
     org-present
     org-projectile
+    org-super-agenda
     orgit
     overseer
     ox-gfm
