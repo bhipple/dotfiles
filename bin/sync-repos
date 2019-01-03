@@ -16,7 +16,7 @@ update() {
         git pull > /dev/null
         git push > /dev/null
     }
-    if [ -d "$1" ]; then
+    if [ -d "$1/.git" ]; then
         f "$1" &
     else
         echo "Skipping $1 - Not deployed on this machine."
