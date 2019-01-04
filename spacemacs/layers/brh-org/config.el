@@ -154,6 +154,8 @@
            "* %?\nEntered %u\n")
           ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
+          ("j" "Journal Entry" entry (file+datetree "~/personal/journal.org")
+           "* %U\n%?")
           ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
           ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
