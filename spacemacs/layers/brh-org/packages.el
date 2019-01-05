@@ -34,21 +34,16 @@
     (org-super-agenda-mode t)
 
     ;; Enable org-babel
-    ;; (org-babel-do-load-languages 'org-babel-load-languages '((ditaa . t)
-    ;;                                                          (dot . t)
-    ;;                                                          (emacs-lisp . t)
-    ;;                                                          (gnuplot . t)
-    ;;                                                          (haskell . t)
-    ;;                                                          (org . t)
-    ;;                                                          (python . t)
-    ;;                                                          (shell . t)
-    ;;                                                          ))
-    (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
-                                                             (org . t)
-                                                             (perl . t)
-                                                             (python . t)
-                                                             (shell . t)
-                                                             ))
+    (org-babel-do-load-languages 'org-babel-load-languages '(
+      (ditaa . t)
+      (emacs-lisp . t)
+      (gnuplot . t)
+      (haskell . nil)
+      (org . t)
+      (perl . t)
+      (python . t)
+      (shell . t)
+    ))
 
     ;; Setup persistence hooks for the clock
     (org-clock-persistence-insinuate)
