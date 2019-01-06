@@ -11,7 +11,7 @@
   (setq org-log-done nil)
 
   ;; Default TODO progression sequence.
-  (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "PR(p@)" "|" "DONE(d!)" "ABANDONDED(a@)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "BLOCKED(b@)" "WAITING(w@)" "PR(p@)" "|" "DONE(d!)" "ABANDONED(a@)")))
 
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
