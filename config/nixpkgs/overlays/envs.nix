@@ -219,6 +219,7 @@ self: super:
     graphviz-dot-mode
     groovy-imports
     groovy-mode
+    gruvbox-theme
     haml-mode
     haskell-mode
     hcl-mode
@@ -383,6 +384,7 @@ self: super:
     slim-mode
     smartparens
     smeargle
+    solarized-theme
     spaceline
     spaceline-all-the-icons
     string-inflection
