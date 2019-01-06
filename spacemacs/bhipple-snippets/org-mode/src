@@ -1,0 +1,6 @@
+# name: org source block
+# key: src
+# --
+#+BEGIN_SRC ${1:sh} :results output drawer
+$0
+#+END_SRC

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: future print_function
+# key: future
+# --
+from __future__ import absolute_import, division, print_function

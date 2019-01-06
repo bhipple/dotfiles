@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name:confirm
+# key: confirm
+# --
+confirm() {
+    if [ -n "$1" ]; then
+        echo "$1"
+    fi
+    read -r -p "Are you sure? [y/N] " response
+    response=${response,,}    # tolower
+    if ! [[ "$response" =~ ^(yes|y)$ ]]; then
+       exit 1
+    fi
+}

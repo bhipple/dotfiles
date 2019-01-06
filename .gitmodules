@@ -21,10 +21,6 @@
 		path = tmux/plugins/tpm
 		url = https://github.com/tmux-plugins/tpm
 		branch = master
-[submodule "yasnippet-snippets"]
-	path = spacemacs/yasnippet-snippets
-		url = https://github.com/bhipple/yasnippet-snippets
-		branch = master
 [submodule "zgen"]
 		path = zgen
 		url = https://github.com/tarjoilija/zgen

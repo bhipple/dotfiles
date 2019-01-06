@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Jinja2 for loop
+# key: for
+# --
+{% for ${1:var} in ${2:container} %}
+$0
+{% endfor %}

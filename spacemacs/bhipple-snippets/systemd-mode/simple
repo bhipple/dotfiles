@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: simple
+# key: simple
+# --
+[Unit]
+Description=$1
+
+[Service]
+ExecStart=$2
+
+[Install]
+WantedBy=multi-user.target
