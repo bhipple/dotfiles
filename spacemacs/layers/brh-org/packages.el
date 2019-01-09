@@ -31,7 +31,8 @@
     (require 'org-habit)
     (require 'org-super-agenda)
 
-    (org-super-agenda-mode t)
+    ; Don't enable this by default, because it looks terrible on weekly views; consider adding a keybinding to toggle
+    ; (org-super-agenda-mode t)
 
     ;; Enable org-babel
     (org-babel-do-load-languages 'org-babel-load-languages '(
