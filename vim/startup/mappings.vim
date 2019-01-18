@@ -29,13 +29,6 @@ nnoremap ? :set hlsearch<CR>?
 " Swap to last buffer
 nnoremap <silent> <F8> :b#<CR>
 
-" Compilation and testing with Dispatch
-nnoremap <F2> :call Cdroot()<CR>:Make clean<CR>
-nnoremap <F3> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make gtest -j")<CR>
-nnoremap <F4> :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make -j")<CR>
-
-noremap <F5> :cex[]<CR>:cclose<CR>
-
 
 "" ============================================================================
 ""                         Leader Mappings (Sorted)
@@ -71,7 +64,6 @@ nnoremap <Leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <Leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>ji :YcmCompleter GoToImprecise<CR>
 nnoremap <Leader>jj :YcmCompleter GoTo<CR>
-nnoremap <Leader>mk :w<CR>:call Cdroot()<CR>:call VimuxRunCommand("clear; make -j")<CR>
 nnoremap <Leader>rd :redraw!<CR>
 nnoremap <Leader>rr :w<CR>:call VimuxRunCommand('./' . bufname("%"))<CR>
 nnoremap <Leader>se :sp<CR>:e %:h<CR>
@@ -84,7 +76,6 @@ nnoremap <Leader>vc :w<CR>:call VimuxRunCommand('chmod +x *.hs; ./*.hs < input')
 nnoremap <Leader>ve :vsp<CR>:e %:h<CR>
 nnoremap <Leader>vl :w<CR>:call VimuxRunCommand('(load "' . bufname("%") . '")')<CR>
 nnoremap <Leader>vr :w<CR>:VimuxRunLastCommand<CR>
-nnoremap <Leader>vt :w<CR>:call VimuxRunCommand("clear; make test -j")<CR>
 nnoremap <Leader>vv :w<CR>:VimuxPromptCommand<CR>
 nnoremap <Leader>vx :VimuxInterruptRunner<CR>
 nnoremap <Leader>w :call StripTabsAndTrailingWhitespaces()<CR>:w<CR>
