@@ -32,6 +32,9 @@
 ;; Make ediff do a split for side-by-side diffing
 (setq ediff-split-window-function 'split-window-horizontally)
 
+;; Strongly prefer splitting to the right in split-window-sensibly
+(setq split-height-threshold nil)
+
 ;; salt-mode for jinja files
 (add-to-list 'auto-mode-alist '("\\.jinja\\'" . salt-mode))
 
