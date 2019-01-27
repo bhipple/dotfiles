@@ -38,6 +38,7 @@
         path: vim
     ~/.vimrc: vimrc
     ~/.vimrc_minimal: vimrc_minimal
+    ~/.xinitrc: xinitrc
     ~/.xmobarrc: xmobarrc
     ~/.xmonad:
         force: true
