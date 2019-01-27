@@ -69,6 +69,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask,               xK_p     ), spawn "dmenu_run")
     , ((modMask .|. shiftMask, xK_c     ), kill)
+    , ((modMask .|. shiftMask, xK_e     ), spawn "emc")
+    , ((modMask .|. shiftMask, xK_x     ), spawn "~/.xinitrc")
+    , ((controlMask .|. shiftMask, xK_l), spawn "sudo systemctl start physlock")
 
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -97,8 +100,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
     , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
 
-    -- locking and restarting
-    , ((controlMask .|. shiftMask, xK_l), spawn "slock")
+    -- restarting
     , ((modMask, xK_r), spawn restartCmd)
     ]
     ++
