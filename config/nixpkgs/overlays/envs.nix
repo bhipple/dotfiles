@@ -515,13 +515,16 @@ self: super:
   });
 
   pyEnv = super.lowPrio (self.python2.withPackages (ps: with ps; [
-    flake8
     isort
     pep8
-    pylint
     setuptools
-    toolz
     yamllint
     yapf
+  ]));
+
+  # Use nix-shell -p plaidPy for ledger cred updates
+  plaidPy = super.lowPrio (self.python2.withPackages (ps: with ps; [
+    plaid-python
+    flask
   ]));
 }
