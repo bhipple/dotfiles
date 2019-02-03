@@ -1,8 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Saved Macros
 ;; Replace a markdown inline link with a link reference
-(fset 'markdown-link-replace
+(fset 'brh/markdown-link-replace
       [?y ?% ?G ?o escape ?p ?a ?: ?  escape ?\C-o ?\C-o ?% ?l ?d ?% ?G ?$ ?p ?d ?s ?\) ?\C-o ?\C-o])
+
+; Swaps MM/DD/YYYY -> YYYY/MM/DD. Useful for importing financial transactions into ledger.
+; Cursor must be in the date for this to work.
+(fset 'brh/dateswap
+      [?E ?b ?h ?x ?d ?e ?0 ?P ?a ?/ escape])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global keybindings
@@ -30,7 +35,7 @@
   "og" (lambda () "Git grep repository from root" (interactive)
          (let ((current-prefix-arg '(4)))
            (call-interactively 'helm-grep-do-git-grep)))
-  "oml" 'markdown-link-replace
+  "oml" 'brh/markdown-link-replace
   "oo" (lambda () (interactive) (find-file "~/org/me.org"))
   "op" 'magit-push-current-to-upstream
   "os" 'org-sort-entries
