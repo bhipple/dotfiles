@@ -22,6 +22,7 @@ import qualified XMonad.StackSet as W
 import XMonadLocal
 
 main = do
+    _ <- spawn "~/.xinitrc"
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
     _ <- spawn myTerminal
