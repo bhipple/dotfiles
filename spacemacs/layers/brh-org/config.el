@@ -158,6 +158,13 @@
            "* %U\n"
            :immediate-finish t
            :jump-to-captured t)
+          ("l" "Lifting Log" table-line (file+olp "~/org/logs.org" "Weight Lifting" "Lifting Log")
+           "|     |     |     |     |     |     |                                                     |        | %u |"
+           ; TODO: It's putting in a newline after the entry! This should be the default, but somehow we get an extra \n
+           :empty-lines 0
+           :immediate-finish t
+           :table-line-pos "II+1"
+           :jump-to-captured t)
           ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
           ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
