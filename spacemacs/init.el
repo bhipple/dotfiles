@@ -129,11 +129,11 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
        dracula-theme
-       gruvbox-theme
-       solarized-theme
        evil-ediff
+       gruvbox-theme
        jenkins
        package-lint
+       solarized-theme
        rpm-spec-mode)
 
    ;; A list of packages that cannot be updated.
