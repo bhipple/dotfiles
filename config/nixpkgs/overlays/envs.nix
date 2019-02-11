@@ -311,6 +311,7 @@ self: super:
     ob-http
     ob-restclient
     open-junk-file
+    org-bookmark-heading
     org-brain
     org-bullets
     org-category-capture
