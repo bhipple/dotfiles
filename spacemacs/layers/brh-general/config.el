@@ -32,6 +32,10 @@
 ;; Make ediff do a split for side-by-side diffing
 (setq ediff-split-window-function 'split-window-horizontally)
 
+; Shut up about line length, unless it's really bad
+; TODO: Consider upstreaming into spacemacs' python-fill-column variable so this happens consistently and automatically.
+(setq flycheck-flake8-maximum-line-length 120)
+
 ;; Strongly prefer splitting to the right in split-window-sensibly
 (setq split-height-threshold nil)
 
