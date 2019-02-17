@@ -130,10 +130,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(
        dracula-theme
        evil-ediff
-       gruvbox-theme
        jenkins
        package-lint
-       solarized-theme
        rpm-spec-mode)
 
    ;; A list of packages that cannot be updated.
