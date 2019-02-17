@@ -41,19 +41,11 @@ self: super:
 
     self.waf-helm-make
 
-    # company-rtags
-    # doom-modeline # TODO: Has a dependency that fails (shrink-path.el)
-    # ep.font-lock-plus # TODO: Fails with mismatched package name font-lock+
-    # evil-unimpaired # TODO: Not packaged
-    # flycheck-rtags
-    # haskell-snippets
-    # helm-rtags
-    # magit-svn # TODO: No such file or directory, git
-    # rtags
-    # shrink-path # TODO: 404 not found on src tarball download
-    # sql-indent
-    # yasnippet
-    # yasnippet-snippets
+    # company-rtags  # Marked as broken
+    # evil-unimpaired  # TODO: Not packaged
+    # flycheck-rtags  # Marked as broken
+    # flycheck-rust  # Marked as broken
+    # helm-rtags  # Marked as broken
 
     ac-ispell
     ace-jump-helm-line
@@ -73,6 +65,7 @@ self: super:
     auto-dictionary
     auto-highlight-symbol
     auto-yasnippet
+    autothemer
     avy
     bind-key
     bind-map
@@ -124,6 +117,7 @@ self: super:
     docker
     docker-tramp
     dockerfile-mode
+    doom-modeline
     dotenv-mode
     dracula-theme
     dumb-jump
@@ -135,9 +129,12 @@ self: super:
     engine-mode
     ensime
     ep.csv-mode
+    ep.font-lock-plus
     ep.mmm-mode
     ep.orgPackages.org
     ep.orgPackages.org-plus-contrib
+    ep.rtags
+    ep.sql-indent
     ep.undo-tree
     epc
     epl
@@ -222,6 +219,7 @@ self: super:
     gruvbox-theme
     haml-mode
     haskell-mode
+    haskell-snippets
     hcl-mode
     helm
     helm-ag
@@ -380,6 +378,7 @@ self: super:
     scss-mode
     seeing-is-believing
     shell-pop
+    shrink-path
     simple-httpd
     skewer-mode
     slim-mode
@@ -423,6 +422,8 @@ self: super:
     xterm-color
     yaml-mode
     yapfify
+    yasnippet
+    yasnippet-snippets
     ycmd
     zeal-at-point
   ] ++ [
