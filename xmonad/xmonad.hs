@@ -25,6 +25,7 @@ main = do
     _ <- spawn "~/.xinitrc"
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
+    _ <- spawm "xautolock -time 20 -locker 'sudo systemctl start physlock'"
     _ <- spawn myTerminal
     _ <- spawn "emacs --daemon"
     xmonad $ conf screenCt xmproc
