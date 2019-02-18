@@ -129,7 +129,9 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(
        dracula-theme
        evil-ediff
-       jenkins
+       language-detection
+       org-jira
+       ox-jira
        package-lint
        rpm-spec-mode)
 
