@@ -53,10 +53,10 @@
 - shell:
     - [git submodule update --init --recursive, Updating submodules]
     - command: scripts/dependency_install.sh
-        stdin: true
-        stdout: true
-        stderr: true
+      stdin: true
+      stdout: true
+      stderr: true
     - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qall
-        stdin: true
-        stdout: true
-        stderr: true
+      stdin: true
+      stdout: true
+      stderr: true
