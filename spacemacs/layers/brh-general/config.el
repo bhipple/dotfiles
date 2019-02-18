@@ -59,7 +59,11 @@
 (setq spaceline-org-clock-p t)
 
 ;; YCMD Configuration
-(setq ycmd-server-command (list "python" (file-truename "~/.nix-profile/bin/ycmd")))
+; TODO: Figure out how this thing is supposed to startup. Looks like it passes an --options_file on its own:
+; https://github.com/abingham/emacs-ycmd/blob/master/ycmd.el#L2203
+(setq ycmd-server-command
+      (list (file-truename "~/.nix-profile/bin/ycmd/bin/ycmd")))
+
 (setq ycmd-force-semantic-completion nil)
 (with-eval-after-load 'company (global-ycmd-mode t))
 
