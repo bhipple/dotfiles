@@ -1,10 +1,36 @@
 ;; General emacs functions
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Misc
+;; Yanked from https://github.com/alphapapa/unpackaged.el#ensure-blank-lines-between-headings-and-before-contents
+(defun unpackaged/org-sort-multi (keys)
+  "Call `org-sort-entries' with multiple sorting methods specified in KEYS."
+  ;; Message copied from `org-sort-entries'.
+  (interactive (list (read-string "Sort by: [a]lpha  [n]umeric  [p]riority  p[r]operty  todo[o]rder  [f]unc
+         [t]ime [s]cheduled  [d]eadline  [c]reated  cloc[k]ing
+         A/N/P/R/O/F/T/S/D/C/K means reversed: ")))
+  (seq-do (lambda (key)
+            (org-sort-entries nil key))
+          (nreverse keys)))
+
 (defun brh/shell-region (start end)
   "Execute region in an inferior shell"
   (interactive "r")
   (shell-command (buffer-substring-no-properties start end)))
 
+(defun brh/sh-lines (cmd)
+  "Run a shell cmd and return its output lines as a list of strings, omitting nulls"
+  (interactive)
+  (split-string (shell-command-to-string cmd) "\n" t))
+
+(defun brh/projectile-init ()
+  "Mass initialize projectile caches for all git repos in ~/git and ~/src"
+  (interactive)
+  (mapc 'projectile-add-known-project
+      (brh/sh-lines "find ~/git/ ~/src/ -maxdepth 3 -name '.git' | grep -v dotfiles | sed 's|/.git||'")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Git Diff
 (defun brh/_diff-buffer (ref)
   "Diff the current buffer against ref"
   (save-buffer 0)
@@ -30,6 +56,8 @@
   (interactive)
   (brh/_diff-buffer (read-string "Ref to diff against: ")))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Tmux
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
   (save-buffer 0)
@@ -47,14 +75,3 @@
 (defun brh/tmux-run-waf ()
   (interactive)
   (brh/_tmux-cmd "wcb"))
-
-;; Yanked from https://github.com/alphapapa/unpackaged.el#ensure-blank-lines-between-headings-and-before-contents
-(defun unpackaged/org-sort-multi (keys)
-  "Call `org-sort-entries' with multiple sorting methods specified in KEYS."
-  ;; Message copied from `org-sort-entries'.
-  (interactive (list (read-string "Sort by: [a]lpha  [n]umeric  [p]riority  p[r]operty  todo[o]rder  [f]unc
-         [t]ime [s]cheduled  [d]eadline  [c]reated  cloc[k]ing
-         A/N/P/R/O/F/T/S/D/C/K means reversed: ")))
-  (seq-do (lambda (key)
-            (org-sort-entries nil key))
-          (nreverse keys)))
