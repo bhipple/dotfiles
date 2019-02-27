@@ -40,9 +40,10 @@ This function should only modify configuration layer settings."
      ansible
      asciidoc
      (auto-completion :variables
-                      auto-completion-idle-delay 0.01
                       auto-completion-enable-help-tooltip t
-                      auto-completion-enable-snippets-in-popup nil)
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-idle-delay 0.01
+                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets")
      better-defaults
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
@@ -139,10 +140,11 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   ;; TODO: When this initializes, it seems to scan a huge number of bogus
-   ;; directories for /snippets subdirs, which takes a very long time and also
-   ;; seems to bust initialization of org.
-   dotspacemacs-excluded-packages '(yasnippet)
+   dotspacemacs-excluded-packages '(
+       ;; Seems to have the behavior described here:
+       ;; https://github.com/syl20bnr/spacemacs/issues/11582
+       haskell-snippets
+   )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
