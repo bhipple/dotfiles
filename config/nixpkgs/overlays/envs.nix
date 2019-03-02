@@ -361,6 +361,7 @@ self: super:
     restart-emacs
     restclient
     restclient-helm
+    ripgrep
     robe
     rpm-spec-mode
     rspec-mode
