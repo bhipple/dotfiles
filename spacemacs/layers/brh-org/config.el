@@ -16,6 +16,8 @@
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
 
+  (setq org-lowest-priority ?E)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Exporting Settings
   ;; See http://orgmode.org/manual/Export-settings.html for more details
