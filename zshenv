@@ -46,9 +46,6 @@ export GOPATH=""
 
 export GTAGSLABEL=pygments
 
-export UID=$(getent passwd "$USER" | cut -d":" -f3)
-export GID=$(getent passwd "$USER" | cut -d":" -f4)
-
 if [ -d /home/bhipple/src/nixpkgs ]; then export NIX_PATH=src=/home/bhipple/src/nixpkgs:$NIX_PATH; fi
 export GPG=gpg2
 
