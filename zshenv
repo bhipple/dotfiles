@@ -19,11 +19,6 @@ else
     export VISUAL=vim
 fi
 
-# Running in emacs ansi-term
-if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
-    export AUTO_FU="skip"
-fi
-
 # Reduce delay to 0.2 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=20
 
