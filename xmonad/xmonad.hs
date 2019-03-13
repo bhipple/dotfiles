@@ -25,7 +25,10 @@ main = do
     _ <- spawn "~/.xinitrc"
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
-    _ <- spawn "xautolock -time 20 -locker 'sudo /run/current-system/sw/bin/slock'"
+    _ <- spawn "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
+    _ <- spawn "xset s off"
+    -- Standby time, suspend time, monitor off time
+    _ <- spawn "xset dpms 1800 1830 3600"
     _ <- spawn myTerminal
     _ <- spawn "emacs --daemon"
     xmonad $ conf screenCt xmproc
