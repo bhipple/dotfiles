@@ -16,7 +16,7 @@
   ;; Use pinned reveal.js
   (setq org-reveal-root "file:///home/bhipple/dotfiles/reveal.js")
 
-  (setq org-lowest-priority ?E)
+  (setq org-lowest-priority ?F)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Exporting Settings
