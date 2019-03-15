@@ -538,14 +538,6 @@ before packages are loaded."
 
   ;; Load local settings
   (require 'brh-local)
-
-  ;; Load org-mode at startup and initialize the agenda
-  (find-file "~/org/me.org")
-  (org-agenda-list)
-
-  ;; Opening an org file before org is fully initialized results in weird bullets
-  ;; Kill it so I can re-open from scratch
-  (kill-buffer)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
