@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : sell-security
+#key : sell-security
+# Shorthand for selling a security and tracking the cost basis
+# --
+Assets:${1:Account}   -${2:Num} ${3:ETH} {\$${4:cost}} [2018/MM/DD] @ \$${5:sale-price}
