@@ -449,6 +449,7 @@ self: super:
       self.bc
       self.coreutils
       self.curl
+      self.fd
       self.feh
       self.file
       self.fzf
