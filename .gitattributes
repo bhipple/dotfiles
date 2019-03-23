@@ -1,1 +1,2 @@
 spacemacs/bhipple-snippets/org-mode/*review       filter=git-crypt diff=git-crypt
+spacemacs/bhipple-snippets/ledger-mode/*          filter=git-crypt diff=git-crypt
