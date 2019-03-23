@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# Written as a script instead of a shell alias so that it's accessible from emacs & other tools
+ledger "$@"
