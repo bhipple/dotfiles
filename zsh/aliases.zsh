@@ -53,6 +53,9 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g SUM='paste -sd+ - | bc'
 fi
 
+# Remove this alias from oh-my-zsh
+unalias l
+
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
 # Setup autocomplete equivalents
