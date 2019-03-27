@@ -30,9 +30,7 @@ main = do
     -- Standby time, suspend time, monitor off time
     _ <- spawn "xset dpms 1800 1830 3600"
     _ <- spawn "emacs --daemon"
-    _ <- spawn myTerminal
     _ <- spawn "firefox"
-    _ <- spawn "emacsclient -c"
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
