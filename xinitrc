@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Configure monitors
 x1cg6_docked() {
-    xrandr --output DP1-2 --auto
-    xrandr --output eDP1 --off
+    xrandr --output DP-1-2 --auto
+    xrandr --output eDP-1 --off
     xrandr --dpi 96
 }
 
 x1cg6_undocked() {
-    xrandr --output eDP1 --auto
+    xrandr --output eDP-1 --auto
     xrandr --screen 0 --size 2560x1440
     xrandr --dpi 192
 }
