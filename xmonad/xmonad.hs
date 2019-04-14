@@ -8,6 +8,8 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.IndependentScreens
 import XMonad.Util.Run (spawnPipe)
+import XMonad.Layout.ThreeColumns
+import XMonad.Layout.NoBorders (smartBorders)
 
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
@@ -37,7 +39,13 @@ composeHook = composeAll [
     ]
 
 myManageHook = manageDocks <+> composeHook <+> manageHook def
-myLayoutHook = avoidStruts $ layoutHook def
+
+-- Set the layouts we'd like and their ordering. For all of the other layouts available, see:
+-- https://hackage.haskell.org/package/xmonad-contrib-0.15/docs/XMonad-Config-Prime.html#t:LayoutClass
+myLayoutHook = avoidStruts . smartBorders $ tiled ||| Mirror tiled ||| ThreeColMid 1 (3/100) (1/2) ||| Full
+    where
+      tiled = Tall 1 (3/100) (1/2)
+
 myLogHook xmproc = dynamicLogWithPP xmobarPP {
                             ppOutput = hPutStrLn xmproc,
                             ppTitle = xmobarColor "green" "" . shorten 50
