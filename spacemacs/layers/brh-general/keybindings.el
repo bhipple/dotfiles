@@ -5,9 +5,12 @@
       [?y ?% ?G ?o escape ?p ?a ?: ?  escape ?\C-o ?\C-o ?% ?l ?d ?% ?G ?$ ?p ?d ?s ?\) ?\C-o ?\C-o])
 
 ; Swaps MM/DD/YYYY -> YYYY/MM/DD. Useful for importing financial transactions into ledger.
-; Cursor must be in the date for this to work.
-(fset 'brh/dateswap
-      [?E ?b ?h ?x ?d ?e ?0 ?P ?a ?/ escape])
+(fset 'brh/dateswap-to-YYYY/MM/DD
+      [?E ?b ?h ?x ?d ?e ?B ?P ?a ?/ escape ?B])
+
+; Swaps YYYY/MM/DD -> MM/DD/YYYY. Inverse of the above function.
+(fset 'brh/dateswap-to-MM/DD/YYYY
+      [?l ?B ?d ?t ?/ ?E ?a ?/ escape ?p ?B ?x])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global keybindings
