@@ -281,7 +281,6 @@ self: super:
     log4e
     lorem-ipsum
     lsp-mode
-    lsp-rust
     lua-mode
     macrostep
     magit
@@ -437,6 +436,17 @@ self: super:
     # Not pulled in by the emacs package
     self.ycmd
 
+    # Needed by the spacemacs haskell layer
+    (self.haskellPackages.ghcWithPackages (pkgs: [
+      pkgs.apply-refact
+      pkgs.hasktags
+      pkgs.hlint
+      pkgs.hoogle
+      pkgs.stylish-haskell
+      # Market as broken upstream
+      # pkgs.ghc-mod
+      # pkgs.intero
+    ]))
   ]));
 
   # Minimal set of packages to install everywhere
