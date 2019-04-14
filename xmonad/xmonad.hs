@@ -2,11 +2,13 @@ import Control.Applicative
 import System.Exit
 import System.IO (hPutStrLn, Handle)
 import XMonad
+import XMonad.Actions.SpawnOn
 import XMonad.Core (WorkspaceId)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.IndependentScreens
 import XMonad.Util.Run (spawnPipe)
+
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
@@ -16,21 +18,14 @@ import qualified XMonad.StackSet as W
 
 -- Might need this at some point
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Hooks-EwmhDesktops.html
---import XMonad.Hooks.EwmhDesktops
+-- import XMonad.Hooks.EwmhDesktops
 
 -- Put any local configuration here
 import XMonadLocal
 
 main = do
-    _ <- spawn "~/.xinitrc"
     screenCt <- countScreens
     xmproc <- spawnPipe "xmobar"
-    _ <- spawn "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
-    _ <- spawn "xset s off"
-    -- Standby time, suspend time, monitor off time
-    _ <- spawn "xset dpms 1800 1830 3600"
-    _ <- spawn "emacs --daemon"
-    _ <- spawn "firefox"
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
@@ -48,6 +43,20 @@ myLogHook xmproc = dynamicLogWithPP xmobarPP {
                             ppTitle = xmobarColor "green" "" . shorten 50
                         }
 
+myStartupHook = do
+    spawn "~/.xinitrc"
+    spawn "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
+    -- Standby time, suspend time, monitor off time
+    spawn "xset s off"
+    spawn "xset dpms 1800 1830 3600"
+
+    -- Programs to launch
+    spawn "emacs --daemon"
+    -- TODO: This doesn't quite work to launch on other screens yet. Getting the
+    -- name of the workspace wrong, perhaps?
+    spawnOn "0_1" myTerminal
+    spawnOn "0_2" "firefox"
+
 restartCmd :: String
 restartCmd = "if type xmonad; then xmonad --recompile && \
               \xmonad --restart; else xmessage xmonad not in PATH; fi"
@@ -60,6 +69,7 @@ conf screenCt xmproc =
         , borderWidth = 3
         , focusFollowsMouse = False
         , XMonad.workspaces = myWorkspaces
+        , startupHook = myStartupHook
         , manageHook = myManageHook
         , layoutHook = myLayoutHook
         -- docksEventhook must come last in ordering!
