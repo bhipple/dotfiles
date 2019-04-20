@@ -64,6 +64,19 @@
   (setq org-agenda-start-with-log-mode t)
   (setq org-agenda-start-with-clockreport-mode t)
 
+  ;; Set all of the check parameters for clock consistency checks. These are
+  ;; currently all the default, except for max-duration, which I've bumped up to
+  ;; 12 hours for those days when I sleep a lot.
+  (setq org-agenda-clock-consistency-checks
+        '(:max-duration "12:00"
+         :min-duration 0
+         :max-gap "0:05"
+         :gap-ok-around ("4:00")
+         :default-face
+         ((:background "DarkRed")
+         (:foreground "white"))
+         :overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
+
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
         '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
@@ -72,7 +85,6 @@
           ("hh" "All HOME items" tags-todo "HOME")
           ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
-                                                             (org-agenda-show-clocking-issues t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
                                                  (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY")
                                                  nil
