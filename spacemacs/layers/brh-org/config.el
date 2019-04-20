@@ -60,10 +60,7 @@
   (setq org-agenda-clockreport-parameter-plist
         '(:link f :maxlevel 5 :fileskip0 t :compact t :narrow 100))
 
-  ;; By default, show archived items.
-  (setq org-agenda-archives-mode t)
-
-  ;; By default, start up with log-mode turned on
+  ;; By default, start up with log-mode and clockreport turned on
   (setq org-agenda-start-with-log-mode t)
   (setq org-agenda-start-with-clockreport-mode t)
 
