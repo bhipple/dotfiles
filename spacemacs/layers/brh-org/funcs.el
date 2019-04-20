@@ -86,4 +86,14 @@ Callers of this function already widen the buffer view."
   (if (member kw org-clock-out-when-done)
     "TODO"
     kw))
+
+(defun bh/remove-empty-drawer-on-clock-out ()
+  "Remove empty LOGBOOK drawers on clock out"
+  (interactive)
+  (save-excursion
+    (beginning-of-line 0)
+    (org-remove-empty-drawer-at "LOGBOOK" (point))))
+
+(add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
+
 )
