@@ -63,6 +63,9 @@
   ;; By default, show archived items.
   (setq org-agenda-archives-mode t)
 
+  ;; By default, start up with log-mode turned on
+  (setq org-agenda-start-with-log-mode t)
+
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
         '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
@@ -71,7 +74,7 @@
           ("hh" "All HOME items" tags-todo "HOME")
           ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
-                                                             (org-agenda-log-mode t)
+                                                             (org-agenda-show-clocking-issues t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
                                                  (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY")
                                                  nil
@@ -80,7 +83,6 @@
           ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
           ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
-                                                                (org-agenda-log-mode t)
                                                                 (org-agenda-log-mode-items '(closed clock state))))
                                                     (tags-todo "-SOMEDAY+TODO=\"TODO\"")))
           ("p" . "Projects and Priority searches")
@@ -89,13 +91,11 @@
           ("pc" "Priority C items" tags-todo "+PRIORITY=\"C\"")
           ("pl" "Project List" ((tags "+PROJECT-TODO=\"DONE\"-TODO=\"ABANDONED\"") (org-agenda-use-tag-inheritance nil)))
           ("r" "Weekly Review" agenda "" ((org-agenda-span 'week)
-                                          (org-agenda-log-mode t)
                                           (org-agenda-log-mode-items '(closed clock state))
                                           (org-agenda-archives-mode t)))
           ("w" . "WORK searches")
           ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
-                                                             (org-agenda-log-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
                                                  (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY"))
                                                  ((org-agenda-tag-filter-preset '("+WORK"))))
@@ -103,7 +103,6 @@
           ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
           ("we" "Work agenda for exporting to html" ((agenda "" ((org-agenda-span 'day)
                                                                  (org-agenda-archives-mode t)
-                                                                 (org-agenda-log-mode t)
                                                                  (org-agenda-log-mode-items '(closed clock state))))
                                                      (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\""))
                                                      ((org-agenda-tag-filter-preset '("+WORK"))))
