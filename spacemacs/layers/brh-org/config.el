@@ -205,6 +205,12 @@
   ;; Persist the clock through emacs reboots
   (setq org-clock-persist t)
 
+  ;; Allow clocking in to resume tasks with open clocks
+  (setq org-clock-in-resume t)
+
+  ;; Keep more than the default 5 entries
+  (setq org-clock-history-length 25)
+
   ;; Change tasks to TODO when clocking in
   (setq org-clock-in-switch-to-state 'bh/clock-in)
 
@@ -221,7 +227,7 @@
   ;; Link by IDs, not filename:header
   (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
-  ;; And don't preserve IDs whe cloning
+  ;; And don't preserve IDs when cloning
   (setq org-clone-delete-id t)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
