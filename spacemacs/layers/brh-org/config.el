@@ -65,6 +65,7 @@
 
   ;; By default, start up with log-mode turned on
   (setq org-agenda-start-with-log-mode t)
+  (setq org-agenda-start-with-clockreport-mode t)
 
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
