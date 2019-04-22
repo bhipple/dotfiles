@@ -45,6 +45,10 @@
   (interactive)
   (bh/clock-in-task-by-id "c63153ab-4b04-410b-a236-d5a6656b6f21"))
 
+(defun brh/clock-in-task-sleeping ()
+  (interactive)
+  (bh/clock-in-task-by-id "4b493e83-bdaa-4f38-9b33-088682d1cd43"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
 ;;
