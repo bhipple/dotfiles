@@ -214,11 +214,17 @@
   ;; Persist the clock through emacs reboots
   (setq org-clock-persist t)
 
+  ;; Do not prompt to resume an active clock
+  (setq org-clock-persist-query-resume nil)
+
+  ;; Enable auto clock resolution for finding open clocks
+  (setq org-clock-auto-clock-resolution (quote when-no-clock-is-running))
+
   ;; Allow clocking in to resume tasks with open clocks
   (setq org-clock-in-resume t)
 
   ;; Keep more than the default 5 entries
-  (setq org-clock-history-length 25)
+  (setq org-clock-history-length 35)
 
   ;; Change tasks to TODO when clocking in
   (setq org-clock-in-switch-to-state 'bh/clock-in)

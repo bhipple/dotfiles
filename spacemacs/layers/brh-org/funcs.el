@@ -33,7 +33,21 @@
   (let ((current-prefix-arg '(4)))
     (call-interactively 'org-clock-in)))
 
+(defun brh/clock-in-task-journal ()
+  (interactive)
+  (bh/clock-in-task-by-id "bb32a90c-2948-4661-aa09-6a343c2d9764"))
+
+(defun brh/clock-in-task-planning-and-organization ()
+  (interactive)
+  (bh/clock-in-task-by-id "f3232aa5-d43b-4147-91d8-56e93f17a6e5"))
+
+(defun brh/clock-in-task-rest-and-relaxation ()
+  (interactive)
+  (bh/clock-in-task-by-id "c63153ab-4b04-410b-a236-d5a6656b6f21"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
+;;
 (defun bh/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
@@ -92,5 +106,10 @@ Callers of this function already widen the buffer view."
   (if (member kw org-clock-out-when-done)
     "TODO"
     kw))
+
+(defun bh/clock-in-task-by-id (id)
+  "Clock in a task by id and jump to it in the buffer"
+  (org-with-point-at (org-id-find id 'marker) (org-clock-in nil))
+  (org-clock-goto))
 
 )
