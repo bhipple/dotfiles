@@ -27,6 +27,12 @@
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
 
+(defun brh/org-clock-in-with-prefix ()
+  "Clock in, setting the prefix argument to show recent clocks for selection"
+  (interactive)
+  (let ((current-prefix-arg '(4)))
+    (call-interactively 'org-clock-in)))
+
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
 (defun bh/is-project-p ()
   "Any task with a todo keyword subtask"
