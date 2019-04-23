@@ -31,7 +31,8 @@
   "Clock in, setting the prefix argument to show recent clocks for selection"
   (interactive)
   (let ((current-prefix-arg '(4)))
-    (call-interactively 'org-clock-in)))
+    (call-interactively 'org-clock-in)
+    (org-clock-goto)))
 
 (defun brh/clock-in-task-journal ()
   (interactive)
