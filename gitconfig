@@ -61,9 +61,6 @@
        for b in origin/master origin/dev $(git branch -r | grep origin/release/); do \
            git branch -f ${b#origin/} $b >/dev/null 2>&1; \
        done; \
-       git branch -f master origin/master > /dev/null 2>&1; \
-       git branch -f dev origin/dev >/dev/null 2>&1; \
-       git pull >/dev/null 2>&1; \
        for b in master dev; do \
            git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d >/dev/null 2>&1; \
            git branch --merged origin/$b -r | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?)' \
