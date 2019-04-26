@@ -27,6 +27,17 @@
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
 
+(defun brh/timestamp-for-clock ()
+  "Interactively create a CLOCK: timestamp entry by asking for start/finish"
+  (interactive)
+  (beginning-of-line)
+  (insert "CLOCK: ")
+  (org-time-stamp-inactive)
+  (insert "--")
+  (org-time-stamp-inactive)
+  (org-clock-update-time-maybe)
+  (beginning-of-line))
+
 (defun brh/org-clock-in-with-prefix ()
   "Clock in, setting the prefix argument to show recent clocks for selection"
   (interactive)
