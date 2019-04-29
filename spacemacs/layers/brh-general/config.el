@@ -90,3 +90,13 @@
 ;; Disable savehist-mode to improve performance and potentially avoid crashes:
 ;; https://github.com/syl20bnr/spacemacs/issues/8462
 (savehist-mode nil)
+
+;; Disables smartparens while still keeping it around for Spacemacs to use
+;; Also does not disable it for {}
+;; TODO: This doesn't work and causes initialization errors?
+;; (eval-after-load 'smartparens
+;;   '(progn
+;;      (sp-pair "(" nil :actions :rem)
+;;      (sp-pair "[" nil :actions :rem)
+;;      (sp-pair "'" nil :actions :rem)
+;;      (sp-pair "\"" nil :actions :rem)))
