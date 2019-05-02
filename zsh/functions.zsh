@@ -50,12 +50,6 @@ check_last_exit_code() {
   fi
 }
 
-cd() {
-    builtin cd "$@" || return
-    rename-tmux.sh >/dev/null 2>&1
-    return 0
-}
-
 set-proxy() {
     export http{,s}_proxy=$1
     export HTTP{,S}_PROXY=$1
