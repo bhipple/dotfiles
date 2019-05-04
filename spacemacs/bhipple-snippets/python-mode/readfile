@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: read lines in a file, trimming whitespace
+# key: readfile
+# --
+with open("${1:fname.txt}", 'r') as f:
+    lines = [l.strip() for l in f.readlines()]
