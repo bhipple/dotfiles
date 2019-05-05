@@ -29,6 +29,9 @@
   ;: Line breaks seem to get messed up regardless of whether this is T or F
   ;(setq org-export-preserve-breaks t)
 
+  ;; Leave previously unopened buffers open after a search, to speed up subsequent searches
+  (setq helm-org-rifle-close-unopened-file-buffers nil)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Tags
   (setq org-tag-alist '(("ALGOS" . ?a)
@@ -266,5 +269,6 @@
   (global-set-key (kbd "<f8>") 'org-agenda)
   (global-set-key (kbd "<f9>") 'org-clock-goto)
   (global-set-key (kbd "<f10>") 'brh/org-clock-in-with-prefix)
+  (global-set-key (kbd "<f11>") 'helm-org-rifle)
   (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 )
