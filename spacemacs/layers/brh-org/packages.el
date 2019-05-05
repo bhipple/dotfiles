@@ -17,14 +17,20 @@
 
 ;;; Code:
 
-(defconst brh-org-packages '(org org-super-agenda org-bookmark-heading)
+(defconst brh-org-packages '(org org-bookmark-heading org-mru-clock org-super-agenda)
   "The list of Lisp packages required by the brh-org layer.")
-
-(defun brh-org/init-org-super-agenda ()
-  (use-package org-super-agenda))
 
 (defun brh-org/init-org-bookmark-heading ()
   (use-package org-bookmark-heading))
+
+(defun brh-org/init-org-mru-clock ()
+  (use-package org-mru-clock
+    :init
+    (setq org-mru-clock-how-many 100
+          org-mru-clock-completing-read #'helm-comp-read)))
+
+(defun brh-org/init-org-super-agenda ()
+  (use-package org-super-agenda))
 
 (defun brh-org/post-init-org ()
   (with-eval-after-load 'org
