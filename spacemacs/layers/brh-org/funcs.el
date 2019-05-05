@@ -27,10 +27,14 @@
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
 
+(defun brh/current-line-empty-p ()
+  (looking-at "^$"))
+
 (defun brh/timestamp-for-clock ()
   "Interactively create a CLOCK: timestamp entry by asking for start/finish"
   (interactive)
   (beginning-of-line)
+  (when (not (brh/current-line-empty-p)) (evil-open-below 1))
   (insert "CLOCK: ")
   (org-time-stamp-inactive)
   (insert "--")
