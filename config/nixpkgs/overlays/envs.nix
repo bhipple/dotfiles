@@ -1,6 +1,12 @@
 self: super:
 {
-  waf-helm-make = super.stdenv.mkDerivation rec {
+  # Completely pin down absolutely everything about emacs on a specific NixPkgs import!
+  emacs-nixpkgs-pin = (import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/2458bfb00040c2f87e5c7d8b941635ce947647bf.tar.gz";
+    sha256 = "0shvsnwiq2jxh8c1bw10yjrp5anyvh9hmqjrk5819rfhlzcbq0hm";
+  }) {}).pkgs;
+
+  waf-helm-make = self.emacs-nixpkgs-pin.stdenv.mkDerivation rec {
     name = "helm-make";
     version = "20181126";
 
@@ -23,10 +29,9 @@ self: super:
       install -d $out/share/emacs/site-lisp
       install *.el *.elc $out/share/emacs/site-lisp/
     '';
-
   };
 
-  spacemacs = super.emacsWithPackages (ep: (with ep.melpaPackages; [
+  spacemacs = self.emacs-nixpkgs-pin.emacsWithPackages (ep: (with ep.melpaPackages; [
     # there's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
     # future version.
@@ -432,13 +437,13 @@ self: super:
     # automatically, but for those that don't, here are nix pkgs.
 
     # Needed for ycmd
-    self.python2
+    self.emacs-nixpkgs-pin.python2
 
     # Not pulled in by the emacs package
-    self.ycmd
+    self.emacs-nixpkgs-pin.ycmd
 
     # Needed by the spacemacs haskell layer
-    (self.haskellPackages.ghcWithPackages (pkgs: [
+    (self.emacs-nixpkgs-pin.haskellPackages.ghcWithPackages (pkgs: [
       pkgs.apply-refact
       pkgs.hasktags
       pkgs.hlint
