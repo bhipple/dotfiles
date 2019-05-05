@@ -315,6 +315,7 @@ self: super:
     org-download
     org-journal
     org-mime
+    org-mru-clock
     org-pomodoro
     org-present
     org-projectile
