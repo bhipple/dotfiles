@@ -2,8 +2,8 @@ self: super:
 {
   # Completely pin down absolutely everything about emacs on a specific NixPkgs import!
   emacs-nixpkgs-pin = (import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/2458bfb00040c2f87e5c7d8b941635ce947647bf.tar.gz";
-    sha256 = "0shvsnwiq2jxh8c1bw10yjrp5anyvh9hmqjrk5819rfhlzcbq0hm";
+    url = "https://github.com/NixOS/nixpkgs/archive/8660acf856bcba2d2f5559637e62d5ecc50aae59.tar.gz";
+    sha256 = "0yv1lklfwxfp75ira60x1sb6ypg58qc673dm2pf675vic2lmplhg";
   }) {}).pkgs;
 
   waf-helm-make = self.emacs-nixpkgs-pin.stdenv.mkDerivation rec {
@@ -51,6 +51,14 @@ self: super:
     # flycheck-rtags  # Marked as broken
     # flycheck-rust  # Marked as broken
     # helm-rtags  # Marked as broken
+
+    blacken
+    dante
+    lcr
+    language-detection
+    ox-jira
+    org-jira
+    lsp-haskell
 
     ac-ispell
     ace-jump-helm-line
@@ -432,7 +440,7 @@ self: super:
     yasnippet-snippets
     ycmd
     zeal-at-point
-  ] ++ [
+    ] ++ [
     # Many emacs packages may pull in dependencies on things they need
     # automatically, but for those that don't, here are nix pkgs.
 
@@ -484,8 +492,7 @@ self: super:
       self.procps
       self.ripgrep
       self.rlwrap
-      # This should be installed automatically, but I want to use the nixpkgs channel instead of the nixos channel.
-      # self.spacemacs
+      self.spacemacs
       self.tmux
       self.tree
       self.unzip
@@ -529,6 +536,7 @@ self: super:
       self.vlc
       self.xclip
       self.xsel
+      self.youtube-dl
       self.zeal
       self.zlib
     ];
