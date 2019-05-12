@@ -83,10 +83,6 @@
       evil-escape-unordered-key-sequence t
       evil-escape-delay 0.25)
 
-;; Ensure that visual selection does not overwrite X clipboard
-;; http://spacemacs.org/doc/FAQ#prevent-the-visual-selection-overriding-my-system-clipboard
-(fset 'evil-visual-update-x-selection 'ignore)
-
 ;; Disable savehist-mode to improve performance and potentially avoid crashes:
 ;; https://github.com/syl20bnr/spacemacs/issues/8462
 (savehist-mode nil)

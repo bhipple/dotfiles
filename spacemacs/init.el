@@ -532,6 +532,11 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; Ensure that visual selection does not overwrite X clipboard
+  ;; http://spacemacs.org/doc/FAQ#prevent-the-visual-selection-overriding-my-system-clipboard
+  ;; N.B. This has to go in user-config, so it loads after the spacemacs layers
+  (fset 'evil-visual-update-x-selection 'ignore)
+
   ;; Path for user lisp code
   (add-to-list 'load-path "~/dotfiles/spacemacs/lisp/")
   (add-to-list 'load-path "~/.emacs_local/")
