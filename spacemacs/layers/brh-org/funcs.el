@@ -34,6 +34,8 @@
   "Interactively create a CLOCK: timestamp entry by asking for start/finish"
   (interactive)
   (beginning-of-line)
+  ; Allow running from the middle of a clock table
+  (while (or (looking-at "CLOCK:") (looking-at ":END:")) (forward-line -1))
   (when (not (brh/current-line-empty-p)) (evil-open-below 1))
   (insert "CLOCK: ")
   (org-time-stamp-inactive)
