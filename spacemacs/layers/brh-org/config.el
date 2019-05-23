@@ -63,9 +63,8 @@
   (setq org-agenda-clockreport-parameter-plist
         '(:link f :maxlevel 5 :fileskip0 t :compact t :narrow 100))
 
-  ;; By default, start up with log-mode and clockreport turned on
+  ;; By default, start up with log-mode turned on
   (setq org-agenda-start-with-log-mode t)
-  (setq org-agenda-start-with-clockreport-mode t)
 
   ;; Set all of the check parameters for clock consistency checks. These are
   ;; currently all the default, except for max-duration, which I've bumped up to
