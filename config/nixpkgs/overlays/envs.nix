@@ -528,6 +528,7 @@ self: super:
       self.shellcheck
       self.sloc
       self.source-code-pro
+      self.thunderbolt
       self.truecrypt
       self.upower
       self.vagrant
