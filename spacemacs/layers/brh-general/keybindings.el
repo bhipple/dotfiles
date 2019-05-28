@@ -27,24 +27,24 @@
 (global-set-key (kbd "<f4>") 'brh/diff-head)
 
 (spacemacs/set-leader-keys
-  "dh" 'brh/diff-head
+  "dh"  'brh/diff-head
   "dod" 'brh/diff-origin-dev
   "dom" 'brh/diff-origin-master
-  "oa" 'org-agenda
-  "ob" 'helm-buffers-list
-  "oc" 'org-capture
-  "od" 'brh/diff-ref
-  "of" 'magit-pull-from-upstream
-  "og" (lambda () "Git grep repository from root" (interactive)
-         (let ((current-prefix-arg '(4)))
-           (call-interactively 'helm-grep-do-git-grep)))
+  "oa"  'org-agenda
+  "obw" 'brh/goto-weekly-review
+  "oc"  'org-capture
+  "od"  'brh/diff-ref
+  "of"  'magit-pull-from-upstream
+  "og"  (lambda () "Git grep repository from root" (interactive)
+          (let ((current-prefix-arg '(4)))
+            (call-interactively 'helm-grep-do-git-grep)))
   "oml" 'brh/markdown-link-replace
-  "oo" (lambda () (interactive) (find-file "~/org/me.org"))
-  "op" 'magit-push-current-to-upstream
-  "os" 'org-sort-entries
-  "ot" (lambda () "Add org TODO" (interactive)
-         (org-insert-todo-heading-respect-content))
-  "ow" (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
+  "oo"  (lambda () (interactive) (find-file "~/org/me.org"))
+  "op"  'magit-push-current-to-upstream
+  "os"  'org-sort-entries
+  "ot"  (lambda () "Add org TODO" (interactive)
+          (org-insert-todo-heading-respect-content))
+  "ow"  (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   "rr" 'brh/tmux-repeat
   "rt" 'brh/tmux-run-terminal
   "rw" 'brh/tmux-run-waf

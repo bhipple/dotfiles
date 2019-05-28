@@ -265,6 +265,8 @@
   (global-set-key "\C-cc" 'org-capture)
   (global-set-key "\C-cl" 'org-store-link)
 
+  (global-set-key (kbd "<f5>") 'brh/goto-weekly-review)
+  (global-set-key (kbd "<f7>") 'brh/timestamp-for-clock)
   (global-set-key (kbd "<f8>") 'org-agenda)
   (global-set-key (kbd "<f9>") 'org-clock-goto)
   (global-set-key (kbd "<f10>") 'brh/org-clock-in-with-prefix)

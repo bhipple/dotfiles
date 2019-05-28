@@ -67,6 +67,15 @@
   (interactive)
   (bh/clock-in-task-by-id "4b493e83-bdaa-4f38-9b33-088682d1cd43"))
 
+(defun brh/goto-weekly-review ()
+  "Go to the most recent weekly review"
+  (interactive)
+  (org-id-goto "9acee905-3db5-4cff-9526-928e9693a323")
+  (outline-show-subtree)
+  (org-down-element)
+  (dotimes (i 4) (org-forward-element))
+  (recenter))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
 ;;
