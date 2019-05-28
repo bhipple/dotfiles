@@ -31,6 +31,7 @@
   "dod" 'brh/diff-origin-dev
   "dom" 'brh/diff-origin-master
   "oa"  'org-agenda
+  "obh" 'brh/ledger-habit
   "obw" 'brh/goto-weekly-review
   "oc"  'org-capture
   "od"  'brh/diff-ref
