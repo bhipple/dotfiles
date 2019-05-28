@@ -41,7 +41,8 @@
     (goto-char (point-max))
     (newline)
     (recenter)
-    (yas-expand-snippet (yas-lookup-snippet name))))
+    (yas-expand-snippet (yas-lookup-snippet name))
+    (evil-insert nil)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Git Diff
