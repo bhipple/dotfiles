@@ -172,7 +172,7 @@
            :immediate-finish t
            :jump-to-captured t)
           ("l" "Lifting Log" table-line (file+olp "~/org/logs.org" "Weight Lifting" "Lifting Log")
-           "|     |     |     |     |     |     |                                                     |        | %u |"
+           "|     |     |     |     |     |     |                                                     | %u |"
            ; TODO: It's putting in a newline after the entry! This should be the default, but somehow we get an extra \n
            :empty-lines 0
            :immediate-finish t
