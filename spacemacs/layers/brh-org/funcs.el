@@ -56,22 +56,6 @@
     (call-interactively 'org-mru-clock-in)
     (org-clock-goto)))
 
-(defun brh/clock-in-task-home-journal ()
-  (interactive)
-  (bh/clock-in-task-by-id "bb32a90c-2948-4661-aa09-6a343c2d9764"))
-
-(defun brh/clock-in-task-home-planning-and-organization ()
-  (interactive)
-  (bh/clock-in-task-by-id "f3232aa5-d43b-4147-91d8-56e93f17a6e5"))
-
-(defun brh/clock-in-task-home-rest-and-relaxation ()
-  (interactive)
-  (bh/clock-in-task-by-id "c63153ab-4b04-410b-a236-d5a6656b6f21"))
-
-(defun brh/clock-in-task-home-sleeping ()
-  (interactive)
-  (bh/clock-in-task-by-id "4b493e83-bdaa-4f38-9b33-088682d1cd43"))
-
 (defun brh/goto-weekly-review ()
   "Go to the most recent weekly review"
   (interactive)
