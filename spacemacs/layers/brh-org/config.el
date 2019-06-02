@@ -247,6 +247,9 @@
   ;; And don't preserve IDs when cloning
   (setq org-clone-delete-id t)
 
+  ;; When in org-mode, automatically word wrap text on the line limit
+  (add-hook 'org-mode-hook #'spacemacs/toggle-auto-fill-mode-on)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org-habit configuration
   ;; Always show all habits on the agenda, even if we don't need to do them today
