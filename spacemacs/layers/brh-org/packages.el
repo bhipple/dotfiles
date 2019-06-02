@@ -27,8 +27,9 @@
   (use-package org-mru-clock
     :load-path "~/dotfiles/spacemacs/org-mru-clock"
     :init
-    (setq org-mru-clock-how-many 100
-          org-mru-clock-completing-read #'helm-comp-read)))
+    (setq org-mru-clock-completing-read #'helm-comp-read
+          org-mru-clock-files #'org-agenda-files
+          org-mru-clock-how-many 100)))
 
 (defun brh-org/init-org-super-agenda ()
   (use-package org-super-agenda))
