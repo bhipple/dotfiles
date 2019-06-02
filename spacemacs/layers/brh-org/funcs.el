@@ -57,6 +57,12 @@
   (helm-org-rifle)
   (brh/timestamp-for-clock))
 
+(defun brh/search-and-clock-in ()
+  "Search for an org task, then clock into it"
+  (interactive)
+  (helm-org-rifle)
+  (org-clock-in))
+
 (defun brh/org-clock-in-with-prefix ()
   "Clock in, setting the prefix argument to show recent clocks for selection"
   (interactive)
