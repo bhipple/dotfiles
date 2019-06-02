@@ -34,9 +34,14 @@
   "Interactively create a CLOCK: timestamp entry by asking for start/finish"
   (interactive)
   (beginning-of-line)
-  ; Allow running from the middle of a clock table
-  (while (or (looking-at "CLOCK:") (looking-at ":END:")) (forward-line -1))
-  (when (not (brh/current-line-empty-p)) (evil-open-below 1))
+  (widen)
+  (while (not (looking-at "^*"))
+    (org-up-element))
+  ; Search within the element for a LOGBOOK and go to it; throw an exception if missing
+  (re-search-forward "^:LOGBOOK:" (save-excursion (org-end-of-subtree)))
+  ; Cycle through to make sure the LOGBOOK drawer is opened
+  (org-down-element) (org-up-element)
+  (evil-open-below 1)
   (insert "CLOCK: ")
   (org-time-stamp-inactive)
   (insert "--")
