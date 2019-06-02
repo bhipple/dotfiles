@@ -260,19 +260,4 @@
 
   ;; Move the habits more to the right than the default (40)
   (setq org-habit-graph-coumn 120)
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Keybindings for org-mode
-  (global-set-key "\C-ca" 'org-agenda)
-  (global-set-key "\C-cb" 'org-iswitchb)
-  (global-set-key "\C-cc" 'org-capture)
-  (global-set-key "\C-cl" 'org-store-link)
-
-  (global-set-key (kbd "<f5>") 'brh/goto-weekly-review)
-  (global-set-key (kbd "<f7>") 'brh/timestamp-for-clock)
-  (global-set-key (kbd "<f8>") 'org-agenda)
-  (global-set-key (kbd "<f9>") 'org-clock-goto)
-  (global-set-key (kbd "<f10>") 'brh/org-clock-in-with-prefix)
-  (global-set-key (kbd "<f11>") 'helm-org-rifle)
-  (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 )
