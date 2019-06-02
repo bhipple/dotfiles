@@ -37,10 +37,12 @@
   (widen)
   (while (not (looking-at "^*"))
     (org-up-element))
+  (outline-show-subtree)
   ; Search within the element for a LOGBOOK and go to it; throw an exception if missing
   (re-search-forward "^:LOGBOOK:" (save-excursion (org-end-of-subtree)))
   ; Cycle through to make sure the LOGBOOK drawer is opened
   (org-down-element) (org-up-element)
+  (recenter)
   (evil-open-below 1)
   (insert "CLOCK: ")
   (org-time-stamp-inactive)
@@ -48,6 +50,12 @@
   (org-time-stamp-inactive)
   (org-clock-update-time-maybe)
   (beginning-of-line))
+
+(defun brh/search-and-timestamp-for-clock ()
+  "Search for an org task with helm-org-rifle, then insert a timestamp interactively"
+  (interactive)
+  (helm-org-rifle)
+  (brh/timestamp-for-clock))
 
 (defun brh/org-clock-in-with-prefix ()
   "Clock in, setting the prefix argument to show recent clocks for selection"
