@@ -56,11 +56,13 @@
     show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
     rbc = rebase --continue
     rf = "!f() { \
-       if [ -n $1 ]; then git checkout -f $1 >/dev/null 2>&1; fi; \
        git fetch --all --prune >/dev/null 2>&1; \
        for b in origin/master origin/dev $(git branch -r | grep origin/release/); do \
            git branch -f ${b#origin/} $b >/dev/null 2>&1; \
        done; \
+       if [ -n $1 ]; then \
+           git checkout -f $1 >/dev/null 2>&1; \
+       fi; \
        for b in master; do \
            git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d >/dev/null 2>&1; \
            git branch --merged origin/$b -r | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?)' \
