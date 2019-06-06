@@ -35,8 +35,8 @@
     doms = diff origin/master -w --stat
     dos = diff origin/stage -w
     dot = diff origin/testing -w
-    f = fetch
-    fa = fetch --all
+    f = fetch --prune
+    fa = fetch --all --prune
     g = !exec git
     git = !exec git
     l = log
