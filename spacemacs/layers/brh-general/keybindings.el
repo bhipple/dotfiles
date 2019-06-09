@@ -61,6 +61,6 @@
           (org-insert-todo-heading-respect-content))
   "ow"  (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   "rr" 'brh/tmux-repeat
-  "rt" 'brh/tmux-run-terminal
+  "rt" 'brh/helm-run-shell
   "rw" 'brh/tmux-run-waf
   )
