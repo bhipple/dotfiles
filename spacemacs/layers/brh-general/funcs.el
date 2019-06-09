@@ -29,21 +29,6 @@
   (mapc 'projectile-add-known-project
       (brh/sh-lines "find ~/git/ ~/src/ -maxdepth 3 -name '.git' | grep -v dotfiles | sed 's|/.git||'")))
 
-(defun brh/ledger-habit ()
-  "Interactively select a habit to log into ledger"
-  (interactive)
-  (let* ((sel (helm-comp-read "snippet: "
-                         '("w / weight"
-                           "f / fasting"
-                           "m / meditation")))
-         (name (nth 2 (split-string sel))))
-    (find-file "/home/bhipple/ledger/personal.ledger")
-    (goto-char (point-max))
-    (newline)
-    (recenter)
-    (yas-expand-snippet (yas-lookup-snippet name))
-    (evil-insert nil)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Git Diff
 (defun brh/_diff-buffer (ref)
