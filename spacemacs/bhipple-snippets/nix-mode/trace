@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: builtins.trace
+# key: trace
+# --
+builtins.trace "$1"
