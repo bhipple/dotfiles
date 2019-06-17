@@ -29,7 +29,8 @@
     :init
     (setq org-mru-clock-completing-read #'helm-comp-read
           org-mru-clock-files #'org-agenda-files
-          org-mru-clock-how-many 100)))
+          org-mru-clock-how-many 100
+          org-mru-clock-predicate #'org-mru-clock-exclude-done-and-archived)))
 
 (defun brh-org/init-org-super-agenda ()
   (use-package org-super-agenda))
