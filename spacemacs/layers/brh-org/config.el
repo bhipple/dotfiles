@@ -34,19 +34,20 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Tags
-  (setq org-tag-alist '(("ALGOS" . ?a)
-                        ("CODING" . ?c)
+  (setq org-tag-alist '(("CRYPTO" . ?c)
+                        ("DEEP" . ?d)
                         ("EMACS" . ?e)
-                        ("HASKELL" . ?h)
-                        ("GYM" . ?g)
-                        ("LISTS" . ?l)
+                        ("FINANCE" . ?f)
+                        ("HEALTH" . ?h)
+                        ("OKR" . ?k)
+                        ("LEDGER" . ?l)
                         ("NIX" . ?n)
+                        ("ORG" . ?o)
                         ("PROJECT" . ?p)
                         ("READING" . ?r)
                         ("SOMEDAY" . ?s)
-                        ("VIM" ? .v)
-                        ("WORK" ? .w)
-                        ("ZSH" ? .z)))
+                        ("WORK" . ?w)
+                        ("ZSH" . ?z)))
 
   ;; These tags should never be inherited for the purpose of property searches/filters
   (setq org-tags-exclude-from-inheritance '("PROJECT"))
