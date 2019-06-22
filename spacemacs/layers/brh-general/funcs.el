@@ -36,12 +36,20 @@
                               (brh/read-file-to-list "/home/bhipple/dotfiles_local/emacs_local/shell-cmds"))))
     (brh/_tmux-cmd sel)))
 
-
 (defun brh/read-file-to-list (fname)
   "Read a file and return a list of strings for the lines"
   (with-temp-buffer
     (insert-file-contents fname)
     (split-string (buffer-string) "\n" t)))
+
+(defun brh/ledger-food ()
+  "Interactively select a food to log into ledger"
+  (interactive)
+  (find-file "/home/bhipple/diet/ate.ledger")
+  (goto-char (point-max))
+  (newline)
+  (recenter)
+  (spacemacs/helm-yas))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Git Diff
