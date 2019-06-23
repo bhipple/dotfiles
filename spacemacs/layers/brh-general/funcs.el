@@ -45,7 +45,7 @@
 (defun brh/ledger-food ()
   "Interactively select a food to log into ledger"
   (interactive)
-  (find-file "/home/bhipple/diet/ate.ledger")
+  (find-file "/home/bhipple/diet/food.ledger")
   (goto-char (point-max))
   (newline)
   (recenter)
