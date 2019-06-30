@@ -96,3 +96,40 @@
 ;;      (sp-pair "[" nil :actions :rem)
 ;;      (sp-pair "'" nil :actions :rem)
 ;;      (sp-pair "\"" nil :actions :rem)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dash Docset Configuration
+; The docsets that I'm interested in. The full list of feed names is here:
+; https://github.com/Kapeli/feeds
+(setq brh/dash-docsets
+      '("Bash"
+        "Boost"
+        "C++"
+        "CMake"
+        "Docker"
+        "Emacs_Lisp"
+        "Groovy"
+        "Jinja"
+        "Python3"
+        "SaltStack"))
+
+; Browse right here in emacs!
+(setq dash-docs-browser-func 'eww)
+
+(add-hook 'c++-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Boost" "C++" "CMake"))))
+
+(add-hook 'dockerfile-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Docker"))))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Emacs Lisp"))))
+
+(add-hook 'groovy-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Groovy"))))
+
+(add-hook 'python-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Python 3" "Jinja" "SaltStack"))))
+
+(add-hook 'sh-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Bash"))))

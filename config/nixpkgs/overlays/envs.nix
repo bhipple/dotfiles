@@ -461,6 +461,9 @@ self: super:
     # Not pulled in by the emacs package
     self.emacs-nixpkgs-pin.ycmd
 
+    # Needed by dash-docsets
+    self.emacs-nixpkgs-pin.sqlite
+
     # Needed by the spacemacs haskell layer
     (self.emacs-nixpkgs-pin.haskellPackages.ghcWithPackages (pkgs: [
       pkgs.apply-refact

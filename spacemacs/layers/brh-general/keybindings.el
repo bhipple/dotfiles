@@ -41,7 +41,6 @@
 (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 
 (spacemacs/set-leader-keys
-  "dh"  'brh/diff-head
   "dod" 'brh/diff-origin-dev
   "dom" 'brh/diff-origin-master
   "oa"  'org-agenda
