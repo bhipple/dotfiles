@@ -40,7 +40,7 @@ nix_install() {
         CHANNELS="$CHANNELS $CHANNEL.bigEnv"
     fi
 
-    (set -x; nix-env -j4 -k -riA $CHANNELS)
+    (set -x; nix-env -j8 -k -riA $CHANNELS)
 
     # Also install plaid2qif from my nix user repo
     nix-env -iA $CHANNEL.nur.repos.bhipple.plaid2qif

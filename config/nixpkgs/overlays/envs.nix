@@ -2,8 +2,8 @@ self: super:
 {
   # Completely pin down absolutely everything about emacs on a specific NixPkgs import!
   emacs-nixpkgs-pin = (import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/8660acf856bcba2d2f5559637e62d5ecc50aae59.tar.gz";
-    sha256 = "0yv1lklfwxfp75ira60x1sb6ypg58qc673dm2pf675vic2lmplhg";
+    url = "https://github.com/NixOS/nixpkgs/archive/e295fd81370929a4268e94ba95d86f3f296d610c.tar.gz";
+    sha256 = "14ii393b43znn57y16wnad26jpllyhq1ca7g8czs33h199pf3pxb";
   }) {}).pkgs;
 
   waf-helm-make = self.emacs-nixpkgs-pin.stdenv.mkDerivation rec {
@@ -46,19 +46,23 @@ self: super:
 
     self.waf-helm-make
 
+    # company-ghci
     # company-rtags  # Marked as broken
+    # cpp-auto-include
+    # devdocs
+    # evil-textobj-line
     # evil-unimpaired  # TODO: Not packaged
+    # flycheck-package
     # flycheck-rtags  # Marked as broken
     # flycheck-rust  # Marked as broken
+    # helm-make
     # helm-rtags  # Marked as broken
-
-    blacken
-    dante
-    lcr
-    language-detection
-    ox-jira
-    org-jira
-    lsp-haskell
+    # intero
+    # nodejs-repl
+    # org-cliplink
+    # racer
+    # rubocopfmt
+    # symbol-overlay
 
     ac-ispell
     ace-jump-helm-line
@@ -82,6 +86,7 @@ self: super:
     avy
     bind-key
     bind-map
+    blacken
     browse-at-remote
     bundler
     cargo
@@ -120,6 +125,7 @@ self: super:
     ctable
     cython-mode
     dactyl-mode
+    dante
     dash
     dash-functional
     deferred
@@ -287,12 +293,15 @@ self: super:
     json-reformat
     json-snatcher
     know-your-http-well
+    language-detection
+    lcr
     ledger-mode
     link-hint
     live-py-mode
     livid-mode
     log4e
     lorem-ipsum
+    lsp-haskell
     lsp-mode
     lua-mode
     macrostep
@@ -326,6 +335,7 @@ self: super:
     org-bullets
     org-category-capture
     org-download
+    org-jira
     org-journal
     org-mime
     org-mru-clock
@@ -336,6 +346,7 @@ self: super:
     orgit
     overseer
     ox-gfm
+    ox-jira
     ox-pandoc
     ox-twbs
     p4
