@@ -50,7 +50,8 @@ This function should only modify configuration layer settings."
      confluence
      copy-as-format
      csv
-     dash
+     (dash :variables
+           dash-autoload-common-docsets nil)
      docker
      emacs-lisp
      finance
