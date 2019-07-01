@@ -46,6 +46,22 @@ nix_install() {
     nix-env -iA $CHANNEL.nur.repos.bhipple.plaid2qif
 }
 
+dasht_setup() {
+    dasht-docsets-install \
+        "^Bash$" \
+        "^Boost$" \
+        "^C++$" \
+        "^CMake$" \
+        "^Docker$" \
+        "^Emacs_Lisp$" \
+        "^Groovy$" \
+        "^Jinja$" \
+        "^Python_3$" \
+        "^SaltStack$" \
+
+}
+
 change_to_zsh
 create_ssh
 nix_install
+dasht_setup

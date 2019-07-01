@@ -525,6 +525,7 @@ self: super:
       self.calibre
       self.chromium
       self.cmake
+      self.dasht
       self.firefox
       self.gnumake
       self.gnupg
