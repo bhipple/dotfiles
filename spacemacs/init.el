@@ -73,6 +73,7 @@ This function should only modify configuration layer settings."
      markdown
      nginx
      nixos
+     notmuch
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
