@@ -253,9 +253,6 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org-habit configuration
-  ;; Always show all habits on the agenda, even if we don't need to do them today
-  (setq org-habit-show-all-today t)
-
   ;; On multi-day agenda pages, show habits done/scheduled for all days
   (setq org-habit-show-habits-only-for-today nil)
 
