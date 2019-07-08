@@ -52,6 +52,9 @@
 ;; auto-indent. Auto messes up yaml, python, salt files, etc.
 (setq yas-indent-line 'fixed)
 
+;; Don't ask to open large files literally
+(setq large-file-warning-threshold nil)
+
 ;; Use tab-n-go company
 (with-eval-after-load 'company (company-tng-configure-default))
 
