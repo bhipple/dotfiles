@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: overrideAttrs
+# key: overrideAttrs
+# --
+$1 = super.$1.overrideAttrs(_: {
+  $0
+});
