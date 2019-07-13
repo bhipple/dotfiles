@@ -61,16 +61,6 @@
 ;; Tell Spacemacs to put org clocks on my modeline by default
 (setq spaceline-org-clock-p t)
 
-;; YCMD Configuration
-; TODO: Figure out how this thing is supposed to startup. Looks like it passes an --options_file on its own:
-; https://github.com/abingham/emacs-ycmd/blob/master/ycmd.el#L2203
-(setq ycmd-server-command '("/home/bhipple/.nix-profile/bin/ycmd"))
-
-(set-variable 'ycmd-global-config "/home/bhipple/.ycm_extra_conf.py")
-
-(setq ycmd-force-semantic-completion nil)
-(with-eval-after-load 'company (global-ycmd-mode t))
-
 ;; Use the primary system clipboard when yanking
 (setq x-select-enable-primary t)
 
