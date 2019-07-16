@@ -6,31 +6,6 @@ self: super:
     sha256 = "14ii393b43znn57y16wnad26jpllyhq1ca7g8czs33h199pf3pxb";
   }) {}).pkgs;
 
-  waf-helm-make = self.emacs-nixpkgs-pin.stdenv.mkDerivation rec {
-    name = "helm-make";
-    version = "20181126";
-
-    src = super.fetchFromGitHub {
-      owner = "bhipple";
-      repo = name;
-      rev = "master";
-      sha256 = "12vwbircndqhwdvk506yy9lhg4mj60d8yghimrc3s6jfwc7z08yh";
-    };
-
-    phases = [ "unpackPhase" "installPhase" ];
-
-    # TODO: Figure out how to pass helm to this for byte compilation
-    # buildInputs = [ super.emacs super.emacsPackagesNg.helm ];
-    # buildPhase = ''
-    #   emacs -L . -L ${super.emacsPackagesNg.helm}/share/emacs/site-lisp \
-    #       --batch -f batch-byte-compile *.el
-    # '';
-    installPhase = ''
-      install -d $out/share/emacs/site-lisp
-      install *.el *.elc $out/share/emacs/site-lisp/
-    '';
-  };
-
   spacemacs = self.emacs-nixpkgs-pin.emacsWithPackages (ep: (with ep.melpaPackages; [
     # there's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
@@ -44,8 +19,6 @@ self: super:
       ];
     }))
 
-    self.waf-helm-make
-
     # company-ghci
     # company-rtags  # Marked as broken
     # cpp-auto-include
@@ -55,7 +28,6 @@ self: super:
     # flycheck-package
     # flycheck-rtags  # Marked as broken
     # flycheck-rust  # Marked as broken
-    # helm-make
     # helm-rtags  # Marked as broken
     # intero
     # nodejs-repl
@@ -250,8 +222,10 @@ self: super:
     helm-gitignore
     helm-gtags
     helm-hoogle
+    helm-make
     helm-mode-manager
     helm-nixos-options
+    helm-notmuch
     helm-org-rifle
     helm-projectile
     helm-purpose
@@ -324,6 +298,7 @@ self: super:
     nix-mode
     nix-update
     nixos-options
+    notmuch
     ob-http
     ob-restclient
     open-junk-file
