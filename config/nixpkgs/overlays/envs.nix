@@ -138,7 +138,6 @@ self: super:
     dockerfile-mode
     doom-modeline
     dotenv-mode
-    dracula-theme
     dumb-jump
     eclim
     editorconfig
