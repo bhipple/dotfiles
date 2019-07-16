@@ -115,7 +115,6 @@ self: super:
     company-tern
     company-terraform
     company-web
-    company-ycmd
     concurrent
     confluence
     copy-as-format
@@ -195,7 +194,6 @@ self: super:
     flycheck-haskell
     flycheck-ledger
     flycheck-pos-tip
-    flycheck-ycmd
     flyspell-correct
     flyspell-correct-helm
     fringe-helper
@@ -448,17 +446,10 @@ self: super:
     yapfify
     yasnippet
     yasnippet-snippets
-    ycmd
     zeal-at-point
     ] ++ [
     # Many emacs packages may pull in dependencies on things they need
     # automatically, but for those that don't, here are nix pkgs.
-
-    # Needed for ycmd
-    self.emacs-nixpkgs-pin.python2
-
-    # Not pulled in by the emacs package
-    self.emacs-nixpkgs-pin.ycmd
 
     # Needed by dash-docsets
     self.emacs-nixpkgs-pin.sqlite
