@@ -314,6 +314,7 @@ self: super:
     org-pomodoro
     org-present
     org-projectile
+    org-re-reveal
     org-super-agenda
     orgit
     overseer

@@ -86,7 +86,7 @@ This function should only modify configuration layer settings."
           org-enable-bootstrap-support t
           org-enable-github-support t
           org-enable-org-journal-support  t
-          org-reveal-js-support t
+          org-enable-reveal-js-support t
           org-startup-indented t)
      pandoc
      perforce
