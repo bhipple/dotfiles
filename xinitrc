@@ -15,7 +15,7 @@ x1cg6_undocked() {
 
 if grep -q x1cg6 /etc/hostname; then
     # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
-    if [[ $(xrandr | grep -cw connected) -eq 3 ]]; then
+    if xrandr | grep -q "DP-1-2 connected"; then
         x1cg6_docked
     else
         x1cg6_undocked
