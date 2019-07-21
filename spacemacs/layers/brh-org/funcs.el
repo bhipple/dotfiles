@@ -97,6 +97,19 @@
     (recenter)
     "|     |     |     |     |     |     |                                                     | %u |"))
 
+(defun _brh/org-capture-weekly-review ()
+  "Helper function to go to the weekly review, clock in, and expand my snippet"
+  (progn
+    (bh/clock-in-task-by-id "9acee905-3db5-4cff-9526-928e9693a323")
+    (org-id-goto "9acee905-3db5-4cff-9526-928e9693a323")
+    (show-subtree)
+    (re-search-forward "^** CLOSING NOTE")
+    (forward-line -1)
+    (insert "\n")
+    (yas-expand-snippet (yas-lookup-snippet "weeklyreviewtemplate"))
+    (recenter)
+    ""))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
 ;;
