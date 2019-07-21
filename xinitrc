@@ -3,8 +3,8 @@
 x1cg6_docked() {
     xrandr --dpi 96 \
            --output eDP-1 --off \
-           --output DP-1-2 --auto --pos 0x900 --primary \
-           --output DP-2-2 --auto --pos 2560x0 --rotate left
+           --output DP-2-2 --auto --pos 0x900 --primary \
+           --output DP-1-2 --auto --pos 2560x0 --rotate left
 }
 
 x1cg6_undocked() {
