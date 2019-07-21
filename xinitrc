@@ -8,9 +8,9 @@ x1cg6_docked() {
 }
 
 x1cg6_undocked() {
-    xrandr --output eDP-1 --auto --primary
-    xrandr --screen 0 --size 2560x1440
-    xrandr --dpi 192
+    xrandr --dpi 192 \
+           --screen 0 --size 2560x1440 \
+           --output eDP-1 --auto --primary --pos 0x0
 }
 
 if grep -q x1cg6 /etc/hostname; then
