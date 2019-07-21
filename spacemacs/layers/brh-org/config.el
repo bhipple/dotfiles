@@ -169,12 +169,11 @@
           ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
           ("j" "Journal Entry" entry (file+datetree "~/personal/journal.org")
-           "* %U\n"
+           (function brh/org-capture-journal)
            :immediate-finish t
            :jump-to-captured t)
           ("l" "Lifting Log" table-line (file+olp "~/org/logs.org" "Weight Lifting" "Lifting Log")
            "|     |     |     |     |     |     |                                                     | %u |"
-           ; TODO: It's putting in a newline after the entry! This should be the default, but somehow we get an extra \n
            :empty-lines 0
            :immediate-finish t
            :table-line-pos "II+1"
