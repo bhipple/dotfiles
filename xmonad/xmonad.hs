@@ -38,7 +38,7 @@ composeHook = composeAll [
         className =? "Gimp" --> doFloat
     ]
 
-myManageHook = manageDocks <+> composeHook <+> manageHook def
+myManageHook = manageDocks <+> composeHook <+> manageHook def <+> manageSpawn
 
 -- Set the layouts we'd like and their ordering. For all of the other layouts available, see:
 -- https://hackage.haskell.org/package/xmonad-contrib-0.15/docs/XMonad-Config-Prime.html#t:LayoutClass
@@ -56,14 +56,14 @@ myStartupHook = do
     spawn "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
     -- Standby time, suspend time, monitor off time
     spawn "xset s off"
-    spawn "xset dpms 1800 1830 3600"
+    spawn "xset dpms 1800 2000 3600"
 
     -- Programs to launch
-    spawn "emacs --daemon"
-    -- TODO: This doesn't quite work to launch on other screens yet. Getting the
-    -- name of the workspace wrong, perhaps?
-    spawnOn "0_1" myTerminal
-    spawnOn "0_2" "firefox"
+    spawnOn "0_1" "emacs --daemon ; emc"
+    spawnOn "0_2" myTerminal
+    spawnOn "0_3" "chromium"
+    spawnOn "1_1" myTerminal
+    spawnOn "1_2" "firefox"
 
 restartCmd :: String
 restartCmd = "if type xmonad; then xmonad --recompile && \
@@ -91,6 +91,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask,               xK_p     ), spawn "dmenu_run")
+    , ((modMask .|. shiftMask, xK_b     ), spawn "chromium")
     , ((modMask .|. shiftMask, xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_e     ), spawn "emc")
     , ((modMask .|. shiftMask, xK_f     ), spawn "firefox")
