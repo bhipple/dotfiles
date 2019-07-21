@@ -61,9 +61,9 @@ myStartupHook = do
     -- Programs to launch
     spawnOn "0_1" "emacs --daemon ; emc"
     spawnOn "0_2" myTerminal
-    spawnOn "0_3" "chromium"
-    spawnOn "1_1" myTerminal
-    spawnOn "1_2" "firefox"
+    spawnOn "1_1" "chromium"
+    spawnOn "1_2" myTerminal
+    spawnOn "1_3" "firefox"
 
 restartCmd :: String
 restartCmd = "if type xmonad; then xmonad --recompile && \
