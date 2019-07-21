@@ -169,7 +169,7 @@
           ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
           ("j" "Journal Entry" entry (file+datetree "~/personal/journal.org")
-           (function brh/org-capture-journal)
+           (function _brh/org-capture-journal)
            :immediate-finish t
            :jump-to-captured t)
           ("l" "Lifting Log" table-line (file+olp "~/org/logs.org" "Weight Lifting" "Lifting Log")
