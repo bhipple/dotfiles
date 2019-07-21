@@ -173,7 +173,7 @@
            :immediate-finish t
            :jump-to-captured t)
           ("l" "Lifting Log" table-line (file+olp "~/org/logs.org" "Weight Lifting" "Lifting Log")
-           "|     |     |     |     |     |     |                                                     | %u |"
+           (function _brh/org-capture-lifts)
            :empty-lines 0
            :immediate-finish t
            :table-line-pos "II+1"

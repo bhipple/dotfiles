@@ -89,6 +89,14 @@
     (bh/clock-in-task-by-id "bb32a90c-2948-4661-aa09-6a343c2d9764")
     "* %U\n"))
 
+(defun _brh/org-capture-lifts ()
+  (progn
+    (org-id-goto "eb8aed6d-2b42-4dd3-852a-a9bc343be131")
+    (org-todo 'done)
+    (org-id-goto "f9fb0821-2753-4f3d-9144-ad182059524b")
+    (recenter)
+    "|     |     |     |     |     |     |                                                     | %u |"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
 ;;
@@ -155,5 +163,4 @@ Callers of this function already widen the buffer view."
   "Clock in a task by id and jump to it in the buffer"
   (org-with-point-at (org-id-find id 'marker) (org-clock-in nil))
   (org-clock-goto))
-
 )
