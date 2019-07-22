@@ -138,7 +138,6 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(
        evil-ediff
        language-detection
-       org-jira
        ox-jira
        package-lint
        rpm-spec-mode)
@@ -559,8 +558,7 @@ before packages are loaded."
   (fset 'evil-visual-update-x-selection 'ignore)
 
   ;; Path for user lisp code
-  (add-to-list 'load-path "~/dotfiles/spacemacs/lisp/")
-  (add-to-list 'load-path "~/.emacs_local/")
+  (add-to-load-path-if-exists  "~/.emacs_local/")
 
   ;; Load local settings
   (require 'brh-local)
