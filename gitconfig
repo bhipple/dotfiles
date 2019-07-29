@@ -78,7 +78,9 @@
     rom = rebase origin/master -i
     ros = rebase origin/stage -i
     rot = rebase origin/testing -i
+    rso = "!f() { git fetch; git reset --hard origin/$(git sb); git log -1; }; f"
     s = show
+    sb = "!f() { git branch | grep '*' | awk '{print $2}'; }; f"
     # Run a sed expression on all tracked files, skipping symlinks
     sed = "!f() { \
         for fn in $(git ls-files); do \
