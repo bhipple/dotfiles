@@ -80,6 +80,9 @@
 ;; ansi-term
 ;; Evil mode is generally desirable, but it will eat a few key bindings. Here we
 ;; setup some shell hook bindings to preserve those.
+(defun brh/send-C-d ()
+  (term-send-raw-string "\C-d"))
+
 (defun brh/send-C-r ()
   (term-send-raw-string "\C-r"))
 
@@ -88,6 +91,9 @@
 
 (defun brh/setup-term-mode ()
   (progn
+    ; Maintain C-d, which is useful for killing interactive REPLs
+    ; TODO: This one doesn't work yet?
+    (evil-local-set-key 'insert (kbd "C-d") 'brh/send-C-d)
     ; Maintain C-r, which is useful for FZF activations and history
     (evil-local-set-key 'insert (kbd "C-r") 'brh/send-C-r)
     ; Maintain C-SPC, which is useful for zsh autosuggestions completion
