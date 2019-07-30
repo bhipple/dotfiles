@@ -77,6 +77,25 @@
   (brh/_diff-buffer (read-string "Ref to diff against: ")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ansi-term
+;; Evil mode is generally desirable, but it will eat a few key bindings. Here we
+;; setup some shell hook bindings to preserve those.
+(defun brh/send-C-r ()
+  (term-send-raw-string "\C-r"))
+
+(defun brh/send-C-space ()
+  (term-send-raw-string "\C-@"))
+
+(defun brh/setup-term-mode ()
+  (progn
+    ; Maintain C-r, which is useful for FZF activations and history
+    (evil-local-set-key 'insert (kbd "C-r") 'brh/send-C-r)
+    ; Maintain C-SPC, which is useful for zsh autosuggestions completion
+    (evil-local-set-key 'insert (kbd "C-SPC") 'brh/send-C-space)))
+
+(add-hook 'term-mode-hook 'brh/setup-term-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tmux
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
