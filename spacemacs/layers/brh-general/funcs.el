@@ -96,6 +96,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tmux
+; Save the previous shell cmd that I ran for convenience in tmux-repeat
+(setq brh/last-shell-cmd "")
+
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
   (save-buffer 0)
@@ -106,13 +109,15 @@
   (interactive)
   (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
          (cmds (brh/read-file-to-list cmd-file))
-         (sel (helm-comp-read "shell command: " cmds)))
+         (sel (helm-comp-read
+               "shell command: " cmds)))
     ; If we entered something new in the helm menu, add it to the list for the future
     (when (not (member sel cmds))
       (write-region (concat "\n" sel) nil cmd-file 'append))
+    (setq brh/last-shell-cmd sel)
     (brh/_tmux-cmd sel)))
 
 (defun brh/tmux-repeat ()
   "Repeat the previous command in the active terminal session"
   (interactive)
-  (brh/_tmux-cmd "jjk"))
+  (brh/_tmux-cmd brh/last-shell-cmd))
