@@ -104,8 +104,12 @@
 (defun brh/helm-run-shell ()
   "Interactively select a cmd to run in the shell with tmux"
   (interactive)
-  (let* ((sel (helm-comp-read "shell command: "
-                              (brh/read-file-to-list "/home/bhipple/dotfiles_local/emacs_local/shell-cmds"))))
+  (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
+         (cmds (brh/read-file-to-list cmd-file))
+         (sel (helm-comp-read "shell command: " cmds)))
+    ; If we entered something new in the helm menu, add it to the list for the future
+    (when (not (member sel cmds))
+      (write-region (concat "\n" sel) nil cmd-file 'append))
     (brh/_tmux-cmd sel)))
 
 (defun brh/tmux-repeat ()
