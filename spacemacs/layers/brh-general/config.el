@@ -76,6 +76,8 @@
       evil-escape-unordered-key-sequence t
       evil-escape-delay 0.25)
 
+; Fix for emacs 26.1 and ansi-term evil movement
+; See https://github.com/syl20bnr/spacemacs/issues/10779
 (setq term-char-mode-point-at-process-mark nil)
 
 ;; Disable savehist-mode to improve performance and potentially avoid crashes:
