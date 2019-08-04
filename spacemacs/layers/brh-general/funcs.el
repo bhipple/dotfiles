@@ -29,13 +29,6 @@
   (mapc 'projectile-add-known-project
       (brh/sh-lines "find ~/git/ ~/src/ -maxdepth 3 -name '.git' | grep -v dotfiles | sed 's|/.git||'")))
 
-(defun brh/helm-run-shell ()
-  "Interactively select a cmd to run in the shell with tmux"
-  (interactive)
-  (let* ((sel (helm-comp-read "shell command: "
-                              (brh/read-file-to-list "/home/bhipple/dotfiles_local/emacs_local/shell-cmds"))))
-    (brh/_tmux-cmd sel)))
-
 (defun brh/read-file-to-list (fname)
   "Read a file and return a list of strings for the lines"
   (with-temp-buffer
@@ -108,9 +101,12 @@
   (save-buffer 0)
   (shell-command (concat "tmux send-keys '" cmd "' Enter")))
 
-(defun brh/tmux-run-terminal ()
+(defun brh/helm-run-shell ()
+  "Interactively select a cmd to run in the shell with tmux"
   (interactive)
-  (brh/_tmux-cmd (read-string "Command to run: ")))
+  (let* ((sel (helm-comp-read "shell command: "
+                              (brh/read-file-to-list "/home/bhipple/dotfiles_local/emacs_local/shell-cmds"))))
+    (brh/_tmux-cmd sel)))
 
 (defun brh/tmux-repeat ()
   "Repeat the previous command in the active terminal session"
