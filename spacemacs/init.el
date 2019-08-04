@@ -104,8 +104,8 @@ This function should only modify configuration layer settings."
      salt
      search-engine
      (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-shell 'ansi-term
+            shell-default-position 'right)
      shell-scripts
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
