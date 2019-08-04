@@ -76,6 +76,8 @@
       evil-escape-unordered-key-sequence t
       evil-escape-delay 0.25)
 
+(setq term-char-mode-point-at-process-mark nil)
+
 ;; Disable savehist-mode to improve performance and potentially avoid crashes:
 ;; https://github.com/syl20bnr/spacemacs/issues/8462
 (savehist-mode nil)
