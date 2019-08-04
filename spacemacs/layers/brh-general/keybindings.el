@@ -62,5 +62,5 @@
   "ow"  (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   "rr" 'brh/tmux-repeat
   "rt" 'brh/helm-run-shell
-  "rw" 'brh/tmux-run-waf
-  )
+  "rT" (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
+  "rw" 'brh/tmux-run-waf)
