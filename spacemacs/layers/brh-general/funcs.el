@@ -121,3 +121,13 @@
   "Repeat the previous command in the active terminal session"
   (interactive)
   (brh/_tmux-cmd brh/last-shell-cmd))
+
+;; TODO: Work around the fact that the buffer is read-only, and also make sure
+;; that this incremental buffer fetch really works as expected.
+;; (defun brh/helm-run-ansi-shell ()
+;;   (interactive)
+;;   (if (get-buffer "*ansi-term-1*")
+;;     (switch-to-buffer-other-window "*ansi-term-1*")
+;;     (spacemacs/default-pop-shell))
+;;   (evil-append-line 1)
+;;   (insert "foobar"))
