@@ -39,6 +39,7 @@
                         ("EMACS" . ?e)
                         ("FINANCE" . ?f)
                         ("HEALTH" . ?h)
+                        ("JIRA" . ?j)
                         ("OKR" . ?k)
                         ("LEDGER" . ?l)
                         ("NIX" . ?n)
