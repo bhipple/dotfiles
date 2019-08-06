@@ -64,3 +64,7 @@
   "rt" 'brh/helm-run-shell
   "rT" (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
   "rw" 'brh/tmux-run-waf)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Specific mode keybindings
+(define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)

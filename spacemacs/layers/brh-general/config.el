@@ -95,6 +95,10 @@
 ;;      (sp-pair "\"" nil :actions :rem)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Elfeed Configuration
+(setq rmh-elfeed-org-files '("~/org/personal/elfeed.org"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Docset Configuration
 ; The docsets that I'm interested in. The full list of feed names is here:
 ; https://github.com/Kapeli/feeds

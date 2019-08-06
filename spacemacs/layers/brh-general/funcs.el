@@ -131,3 +131,10 @@
 ;;     (spacemacs/default-pop-shell))
 ;;   (evil-append-line 1)
 ;;   (insert "foobar"))
+
+
+(defun elfeed-mark-all-as-read ()
+  "Mark all unread elfeed items as read"
+  (interactive)
+  (mark-whole-buffer)
+  (elfeed-search-untag-all-unread))
