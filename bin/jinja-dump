@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+# Simple script to expand a jinja + yaml file and dump it to stdout.
+from __future__ import print_function
+
+import sys
+import os
+import jinja2
+import yaml
+
+
+def load_config(config_file):
+    '''Loads the YAML config after rendering it with Jinja2.'''
+    config_dir, config_filename = os.path.split(config_file)
+    jinja2_env = jinja2.Environment(loader=jinja2.FileSystemLoader(config_dir))
+    rendered_config = jinja2_env.get_template(config_filename).render()
+    config = yaml.safe_load(rendered_config)
+    return config
+
+
+if __name__ == '__main__':
+    print(load_config(sys.argv[1]))
