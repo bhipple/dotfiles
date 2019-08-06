@@ -61,6 +61,7 @@ This function should only modify configuration layer settings."
      (dash :variables
            dash-autoload-common-docsets nil)
      docker
+     elfeed
      emacs-lisp
      finance
      git

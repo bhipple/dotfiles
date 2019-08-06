@@ -38,6 +38,7 @@ self: super:
 
     ac-ispell
     ace-jump-helm-line
+    ace-jump-mode
     ace-link
     ace-window
     adoc-mode
@@ -49,6 +50,7 @@ self: super:
     ansible-doc
     anzu
     async
+    attrap
     auto-compile
     auto-complete
     auto-dictionary
@@ -113,8 +115,13 @@ self: super:
     eclim
     editorconfig
     eldoc-eval
+    elfeed
+    elfeed-goodies
+    elfeed-org
+    elfeed-web
     elisp-slime-nav
     emmet-mode
+    emms
     engine-mode
     ensime
     ep.csv-mode
@@ -298,6 +305,7 @@ self: super:
     nix-mode
     nix-update
     nixos-options
+    noflet
     notmuch
     ob-http
     ob-restclient
@@ -314,6 +322,7 @@ self: super:
     org-pomodoro
     org-present
     org-projectile
+    org-re-reveal
     org-re-reveal
     org-super-agenda
     orgit
