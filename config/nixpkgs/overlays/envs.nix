@@ -2,8 +2,9 @@ self: super:
 {
   # Completely pin down absolutely everything about emacs on a specific NixPkgs import!
   emacs-nixpkgs-pin = (import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/e295fd81370929a4268e94ba95d86f3f296d610c.tar.gz";
-    sha256 = "14ii393b43znn57y16wnad26jpllyhq1ca7g8czs33h199pf3pxb";
+    # 2019-08-10
+    url = "https://github.com/NixOS/nixpkgs/archive/ce82d0b61a914de18ab889951a31cdd64830d39a.tar.gz";
+    sha256 = "0058q242msr7cl95fdqh9lh475gdj40rhz2g5v6yl9cyh895l0lz";
   }) {}).pkgs;
 
   spacemacs = self.emacs-nixpkgs-pin.emacsWithPackages (ep: (with ep.melpaPackages; [
@@ -19,22 +20,14 @@ self: super:
       ];
     }))
 
-    # company-ghci
-    # company-rtags  # Marked as broken
-    # cpp-auto-include
-    # devdocs
-    # evil-textobj-line
-    # evil-unimpaired  # TODO: Not packaged
-    # flycheck-package
-    # flycheck-rtags  # Marked as broken
-    # flycheck-rust  # Marked as broken
-    # helm-rtags  # Marked as broken
-    # intero
-    # nodejs-repl
-    # org-cliplink
-    # racer
-    # rubocopfmt
-    # symbol-overlay
+    # Marked as broken
+    # company-rtags
+    # flycheck-rtags
+    # flycheck-rust
+    # helm-rtags
+
+    # Not packaged
+    # evil-unimpaired
 
     ac-ispell
     ace-jump-helm-line
@@ -77,6 +70,7 @@ self: super:
     company-cabal
     company-emacs-eclim
     company-ghc
+    company-ghci
     company-go
     company-lua
     company-nixos-options
@@ -95,6 +89,7 @@ self: super:
     counsel
     counsel-gtags
     counsel-projectile
+    cpp-auto-include
     ctable
     cython-mode
     dactyl-mode
@@ -103,6 +98,7 @@ self: super:
     dash-functional
     deferred
     define-word
+    devdocs
     diff-hl
     diminish
     disaster
@@ -157,6 +153,7 @@ self: super:
     evil-numbers
     evil-org
     evil-surround
+    evil-textobj-line
     evil-tutor
     evil-visual-mark-mode
     evil-visualstar
@@ -172,6 +169,7 @@ self: super:
     flycheck-bashate
     flycheck-haskell
     flycheck-ledger
+    flycheck-package
     flycheck-pos-tip
     flyspell-correct
     flyspell-correct-helm
@@ -260,6 +258,7 @@ self: super:
     indent-guide
     inf-ruby
     insert-shebang
+    intero
     ivy
     jenkins
     jinja2-mode
@@ -305,6 +304,7 @@ self: super:
     nix-mode
     nix-update
     nixos-options
+    nodejs-repl
     noflet
     notmuch
     ob-http
@@ -314,6 +314,7 @@ self: super:
     org-brain
     org-bullets
     org-category-capture
+    org-cliplink
     org-download
     org-jira
     org-journal
@@ -359,6 +360,7 @@ self: super:
     pytest
     pythonic
     pyvenv
+    racer
     rainbow-delimiters
     rake
     rbenv
@@ -372,6 +374,7 @@ self: super:
     rpm-spec-mode
     rspec-mode
     rubocop
+    rubocopfmt
     ruby-hash-syntax
     ruby-refactor
     ruby-test-mode
@@ -396,6 +399,7 @@ self: super:
     spaceline-all-the-icons
     string-inflection
     swiper
+    symbol-overlay
     symon
     systemd
     tablist
