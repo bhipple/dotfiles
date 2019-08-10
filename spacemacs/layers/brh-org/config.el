@@ -47,6 +47,7 @@
                         ("PROJECT" . ?p)
                         ("READING" . ?r)
                         ("SOMEDAY" . ?s)
+                        ("TECH" . ?t)
                         ("WORK" . ?w)
                         ("ZSH" . ?z)))
 
@@ -258,4 +259,9 @@
 
   ;; Move the habits more to the right than the default (40)
   (setq org-habit-graph-coumn 120)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Elfeed config
+  (setq-default elfeed-search-filter "@1-month-ago +unread ")
+
 )
