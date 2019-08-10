@@ -98,6 +98,12 @@
 ;; Elfeed Configuration
 (setq rmh-elfeed-org-files '("~/org/personal/elfeed.org"))
 
+; Set elfeed dates to be bold, purple, and underlined
+(custom-set-faces
+ '(elfeed-search-date-face
+   ((t :foreground "#f0f"
+       :underline t))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Docset Configuration
 ; The docsets that I'm interested in. The full list of feed names is here:

@@ -151,6 +151,8 @@ This function should only modify configuration layer settings."
        ;; Seems to have the behavior described here:
        ;; https://github.com/syl20bnr/spacemacs/issues/11582
        haskell-snippets
+       ;; The basic elfeed is actively maintained, but this is not; and it looks worse!
+       elfeed-goodies
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
