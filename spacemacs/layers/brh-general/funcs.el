@@ -67,7 +67,8 @@
 (defun brh/diff-ref ()
   "Diff the current buffer against an entered ref"
   (interactive)
-  (brh/_diff-buffer (read-string "Ref to diff against: ")))
+  (brh/_diff-buffer
+   (helm-comp-read "Ref to diff against: " (magit-list-refs))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ansi-term
