@@ -14,6 +14,10 @@ hash=$(echo "$out" | tail -1 | awk '{print $2}')
 # Put the IPFS hash on the secondary clipboard
 echo "$hash" | xsel -s
 
-link="https://ipfs.io/ipfs/$hash"
+# If resolving through my own IPFS gateway, use:
+ip=$(curl -s ipinfo.io | grep '"ip":' | awk '{print $2}' | sed 's|[",]||g')
+link="http://$ip:8080/ipfs/$hash"
+#link="https://ipfs.io/ipfs/$hash"
+
 echo "$link" | xsel -b
-echo "Copied link to clipboard and hash to secondary clipboard."
+echo "Copied link to clipboard and hash to secondary clipboard: $link"
