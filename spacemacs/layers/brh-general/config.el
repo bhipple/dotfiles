@@ -104,6 +104,9 @@
    ((t :foreground "#f0f"
        :underline t))))
 
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium-browser")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Docset Configuration
 ; The docsets that I'm interested in. The full list of feed names is here:
