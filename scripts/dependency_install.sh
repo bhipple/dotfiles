@@ -46,6 +46,8 @@ nix_install() {
     nix-env -iA $CHANNEL.nur.repos.bhipple.plaid2qif
 }
 
+# See here for list of docsets:
+# https://kapeli.com/dash#docsets
 dasht_setup() {
     dasht-docsets-install \
         "^Bash$" \
@@ -56,6 +58,8 @@ dasht_setup() {
         "^Emacs_Lisp$" \
         "^Groovy$" \
         "^Jinja$" \
+        "^NumPy$" \
+        "^Pandas$" \
         "^Python_3$" \
         "^SaltStack$" \
 
