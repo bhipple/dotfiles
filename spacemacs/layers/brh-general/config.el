@@ -94,6 +94,16 @@
 ;;      (sp-pair "'" nil :actions :rem)
 ;;      (sp-pair "\"" nil :actions :rem)))
 
+
+; Work-around for issue with evil search and minibuffer causing d, y, etc. to be
+; entered twice until an emacs restart. See here for details:
+; https://github.com/syl20bnr/spacemacs/issues/10410#issuecomment-391641439
+(defun kill-minibuffer ()
+  (interactive)
+  (when (windowp (active-minibuffer-window))
+    (evil-ex-search-exit)))
+(add-hook 'mouse-leave-buffer-hook #'kill-minibuffer)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Elfeed Configuration
 (setq rmh-elfeed-org-files '("~/org/personal/elfeed.org"))
