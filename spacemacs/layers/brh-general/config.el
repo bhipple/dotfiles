@@ -120,6 +120,8 @@
         "Emacs_Lisp"
         "Groovy"
         "Jinja"
+        "NumPy"
+        "Pandas"
         "Python3"
         "SaltStack"))
 
@@ -139,7 +141,7 @@
           (lambda () (setq-local dash-docs-docsets '("Groovy"))))
 
 (add-hook 'python-mode-hook
-          (lambda () (setq-local dash-docs-docsets '("Python 3" "Jinja" "SaltStack"))))
+          (lambda () (setq-local dash-docs-docsets '("Python 3" "Jinja" "NumPy" "Pandas" "SaltStack"))))
 
 (add-hook 'sh-mode-hook
           (lambda () (setq-local dash-docs-docsets '("Bash"))))
