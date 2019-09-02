@@ -77,6 +77,7 @@ This function should only modify configuration layer settings."
      imenu-list
      java
      javascript
+     lsp
      lua
      markdown
      nginx
@@ -94,7 +95,9 @@ This function should only modify configuration layer settings."
      (python :variables
              python-auto-set-local-pyenv-version nil
              python-auto-set-local-pyenv-virtualenv nil
+             python-backend 'lsp
              python-enable-yapf-format-on-save nil
+             python-lsp-server 'pyls
              python-sort-imports-on-save nil
              python-test-runner nil
              python-fill-column 120)

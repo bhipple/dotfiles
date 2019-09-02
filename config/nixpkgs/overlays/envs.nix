@@ -3,8 +3,8 @@ self: super:
   # Completely pin down absolutely everything about emacs on a specific NixPkgs import!
   emacs-nixpkgs-pin = (import (builtins.fetchTarball {
     # 2019-08-10
-    url = "https://github.com/NixOS/nixpkgs/archive/ce82d0b61a914de18ab889951a31cdd64830d39a.tar.gz";
-    sha256 = "0058q242msr7cl95fdqh9lh475gdj40rhz2g5v6yl9cyh895l0lz";
+    url = "https://github.com/NixOS/nixpkgs/archive/8d70f49cbd9311dd33e543cefb4279546f446325.tar.gz";
+    sha256 = "09n40nxhi8xdms6wa46i929w2g8shi8029bghkslfzai4i2z7qq2";
   }) {}).pkgs;
 
   spacemacs = self.emacs-nixpkgs-pin.emacsWithPackages (ep: (with ep.melpaPackages; [
@@ -57,6 +57,7 @@ self: super:
     browse-at-remote
     bundler
     cargo
+    ccls
     centered-cursor-mode
     chruby
     clang-format
@@ -72,6 +73,7 @@ self: super:
     company-ghc
     company-ghci
     company-go
+    company-lsp
     company-lua
     company-nixos-options
     company-php
@@ -90,6 +92,7 @@ self: super:
     counsel-gtags
     counsel-projectile
     cpp-auto-include
+    cquery
     ctable
     cython-mode
     dactyl-mode
@@ -227,10 +230,12 @@ self: super:
     helm-gitignore
     helm-gtags
     helm-hoogle
+    helm-lsp
     helm-make
     helm-mode-manager
     helm-nixos-options
     helm-notmuch
+    helm-org
     helm-org-rifle
     helm-projectile
     helm-purpose
@@ -279,7 +284,11 @@ self: super:
     log4e
     lorem-ipsum
     lsp-haskell
+    lsp-java
     lsp-mode
+    lsp-python-ms
+    lsp-treemacs
+    lsp-ui
     lua-mode
     macrostep
     magit
@@ -440,6 +449,9 @@ self: super:
     # Many emacs packages may pull in dependencies on things they need
     # automatically, but for those that don't, here are nix pkgs.
 
+    # Python tools
+    self.autoflake
+
     # Needed by dash-docsets
     self.emacs-nixpkgs-pin.sqlite
 
@@ -500,6 +512,7 @@ self: super:
     paths = [
       self.alsaUtils
       self.aspell
+      self.autoflake
       self.bind
       self.calibre
       self.chromium
@@ -540,6 +553,9 @@ self: super:
   pyEnv = super.lowPrio (self.python3.withPackages (ps: with ps; [
     isort
     pep8
+    pyls-isort
+    python-language-server
+    pyflakes
     setuptools
     yamllint
     yapf
