@@ -553,9 +553,11 @@ self: super:
   pyEnv = super.lowPrio (self.python3.withPackages (ps: with ps; [
     isort
     pep8
-    pyls-isort
-    python-language-server
     pyflakes
+    pyls-isort
+    pytest
+    pytest-mock
+    python-language-server
     setuptools
     yamllint
     yapf

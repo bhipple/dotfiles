@@ -99,7 +99,7 @@ This function should only modify configuration layer settings."
              python-enable-yapf-format-on-save nil
              python-lsp-server 'pyls
              python-sort-imports-on-save nil
-             python-test-runner nil
+             python-test-runner 'pytest
              python-fill-column 120)
      restclient
      ruby
