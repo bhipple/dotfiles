@@ -1,0 +1,4 @@
+[pycodestyle]
+# E265: block comment should start with '# ', catches the nix-shell shebang
+# E501: line too long
+ignore = E265,E501

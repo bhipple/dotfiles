@@ -19,6 +19,8 @@
           path: config/alacritty/
     ~/.config/nixpkgs:
           path: config/nixpkgs/
+    ~/.config/pycodestyle:
+          path: config/pycodestyle
     ~/.dir_colors: dir_colors
     ~/.emacs.d:
           force: true
