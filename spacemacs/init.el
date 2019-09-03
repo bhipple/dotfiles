@@ -90,6 +90,7 @@ This function should only modify configuration layer settings."
           org-enable-reveal-js-support t
           org-startup-indented t)
      pandoc
+     pdf
      perforce
      perl5
      (python :variables

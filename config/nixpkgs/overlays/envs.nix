@@ -350,6 +350,7 @@ self: super:
     password-generator
     pcache
     pcre2el
+    pdf-tools
     persp-mode
     pfuture
     pip-requirements
