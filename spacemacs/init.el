@@ -77,7 +77,8 @@ This function should only modify configuration layer settings."
      imenu-list
      java
      javascript
-     lsp
+     (lsp :variables
+          lsp-navigation 'simple)
      lua
      markdown
      nginx
