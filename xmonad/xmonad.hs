@@ -59,7 +59,7 @@ myStartupHook = do
     spawn "xset dpms 1800 2000 3600"
 
     -- Programs to launch
-    spawnOn "0_1" "emacs --daemon ; emc"
+    spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon ; emc; fi"
     spawnOn "1_1" "chromium"
 
 restartCmd :: String

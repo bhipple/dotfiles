@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Configure monitors
+# Configure monitors as-needed depending on whether we're plugged into the
+# docking station or not.
+
 x1cg6_docked() {
     xrandr --dpi 96 \
            --output eDP-1 --off \
