@@ -87,6 +87,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
+          org-enable-jira-support t
           org-enable-org-journal-support  t
           org-enable-reveal-js-support t
           org-startup-indented t)
@@ -143,7 +144,6 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(
        evil-ediff
        language-detection
-       ox-jira
        package-lint
        rpm-spec-mode)
 
