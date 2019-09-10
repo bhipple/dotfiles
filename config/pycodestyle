@@ -1,4 +1,5 @@
 [pycodestyle]
+# C0111: Missing module docstring
 # E265: block comment should start with '# ', catches the nix-shell shebang
 # E501: line too long
-ignore = E265,E501
+ignore = C0111,E265,E501
