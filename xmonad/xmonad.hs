@@ -17,6 +17,7 @@ import qualified XMonad.StackSet as W
 -- TODO
 -- * Investigate and setup xmonad-screenshot
 -- * Investigate xmonad-windownames
+-- * Take a look at xmobar DynamicBars, if I want to get it to show up on all monitors
 
 -- Might need this at some point
 -- http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Hooks-EwmhDesktops.html

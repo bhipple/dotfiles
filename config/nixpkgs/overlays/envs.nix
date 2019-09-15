@@ -449,13 +449,19 @@ self: super:
     # Many emacs packages may pull in dependencies on things they need
     # automatically, but for those that don't, here are nix pkgs.
 
-    # Python tools
-    self.autoflake
+    # Python Tools
+    self.emacs-nixpkgs-pin.autoflake
+
+    # Rust Tools
+    self.emacs-nixpkgs-pin.cargo
+    self.emacs-nixpkgs-pin.racer
+    self.emacs-nixpkgs-pin.rustc
+    self.emacs-nixpkgs-pin.rustfmt
 
     # Needed by dash-docsets
     self.emacs-nixpkgs-pin.sqlite
 
-    # Needed by the spacemacs haskell layer
+    # Haskell Tools
     (self.emacs-nixpkgs-pin.haskellPackages.ghcWithPackages (pkgs: [
       pkgs.apply-refact
       pkgs.hasktags
