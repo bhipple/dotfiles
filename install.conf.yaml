@@ -35,6 +35,7 @@
     ~/.haskeline: haskeline
     ~/.inputrc: inputrc
     ~/.ledgerrc: ledgerrc
+    ~/.pylintrc: pylintrc
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux/
     ~/.vim:
