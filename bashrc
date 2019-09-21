@@ -41,4 +41,5 @@ if [ -f ~/.zsh_local/zshrc_local_after.zsh ]; then
     source ~/.zsh_local/zshrc_local_after.zsh
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.nix-profile/share/fzf/completion.bash ] && source ~/.nix-profile/share/fzf/completion.bash
+[ -f ~/.nix-profile/share/fzf/key-bindings.bash ] && source ~/.nix-profile/share/fzf/key-bindings.bash

@@ -68,10 +68,8 @@ done
 #  ============================================================================
 #                               FZF Config
 #  ============================================================================
-if [ -d ~/.fzf/shell ]; then
-    source ~/.fzf/shell/completion.zsh
-    source ~/.fzf/shell/key-bindings.zsh
-fi
+[ -f ~/.nix-profile/share/fzf/completion.zsh ] && source ~/.nix-profile/share/fzf/completion.zsh
+[ -f ~/.nix-profile/share/fzf/key-bindings.zsh ] && source ~/.nix-profile/share/fzf/key-bindings.zsh
 
 #  ============================================================================
 #                           Autosuggest Config
