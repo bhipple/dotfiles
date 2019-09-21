@@ -14,10 +14,6 @@
 		path = spacemacs/emacs.d
 		url = https://github.com/syl20bnr/spacemacs
 		branch = develop
-[submodule "tmux/plugins/tpm"]
-		path = tmux/plugins/tpm
-		url = https://github.com/tmux-plugins/tpm
-		branch = master
 [submodule "zgen"]
 		path = zgen
 		url = https://github.com/tarjoilija/zgen

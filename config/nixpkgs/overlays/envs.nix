@@ -505,6 +505,10 @@ self: super:
       self.rlwrap
       self.spacemacs
       self.tmux
+      self.tmuxPlugins.copycat
+      self.tmuxPlugins.open
+      self.tmuxPlugins.sensible
+      self.tmuxPlugins.yank
       self.tree
       self.unzip
       self.wget

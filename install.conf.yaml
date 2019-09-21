@@ -36,7 +36,6 @@
     ~/.ledgerrc: ledgerrc
     ~/.pylintrc: pylintrc
     ~/.tmux.conf: tmux.conf
-    ~/.tmux: tmux/
     ~/.vim:
         force: true
         path: vim
