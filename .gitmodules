@@ -2,9 +2,6 @@
 		path = dotbot
 		url = https://github.com/anishathalye/dotbot
 		branch = master
-[submodule "fzf"]
-		path = fzf
-		url = https://github.com/junegunn/fzf
 [submodule "org-html-themes"]
 		path = org-html-themes
 		url = https://github.com/fniessen/org-html-themes

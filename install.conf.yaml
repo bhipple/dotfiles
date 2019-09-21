@@ -26,7 +26,6 @@
           force: true
           path: spacemacs/emacs.d
     ~/.spacemacs: spacemacs/init.el
-    ~/.fzf: fzf/
     ~/.ghc/ghci.conf:
         path: ghc/ghci.conf
     ~/.git_template: git_template/
