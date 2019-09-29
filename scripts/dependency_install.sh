@@ -61,6 +61,7 @@ dasht_setup() {
         "^NumPy$" \
         "^Pandas$" \
         "^Python_3$" \
+        "^Rust$" \
         "^SaltStack$" \
 
 }
