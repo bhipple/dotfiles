@@ -1,10 +1,19 @@
 #!/bin/sh
+
 lint() {
     fileregex="$1"
     binary="$2"
     files=$(git diff --name-only --diff-filter=ACMRTUXB --cached -- "$fileregex")
 
-    if [ -z "$files" ]; then
+    filtered=""
+    for f in $files; do
+        # Always skip zsh scripts, since these cannot be linted with shellcheck
+        if ! head -1  "$f" | grep -q zsh 2>/dev/null; then
+            filtered="$filtered $f"
+        fi
+    done
+
+    if [ -z "$filtered" ]; then
         return
     fi
 
@@ -13,7 +22,7 @@ lint() {
         return
     fi
 
-    lint=$(echo "$files" | xargs "$binary")
+    lint=$(echo "$filtered" | xargs "$binary")
     if [ "$?" -ne "0" ]; then
         echo "$binary linting errors:"
         echo "$lint"
