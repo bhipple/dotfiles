@@ -133,6 +133,7 @@
         "NumPy"
         "Pandas"
         "Python3"
+        "Rust"
         "SaltStack"))
 
 ; Browse right here in emacs!
@@ -152,6 +153,9 @@
 
 (add-hook 'python-mode-hook
           (lambda () (setq-local dash-docs-docsets '("Python 3" "Jinja" "NumPy" "Pandas" "SaltStack"))))
+
+(add-hook 'rust-mode-hook
+          (lambda () (setq-local dash-docs-docsets '("Rust"))))
 
 (add-hook 'sh-mode-hook
           (lambda () (setq-local dash-docs-docsets '("Bash"))))
