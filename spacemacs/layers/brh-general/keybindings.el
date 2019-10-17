@@ -59,6 +59,9 @@
   "os"  'org-sort-entries
   "ot"  (lambda () "Add org TODO" (interactive)
           (org-insert-todo-heading-respect-content))
+  "ovd" 'alsamixer-down-volume
+  "ovm" 'alsamixer-toggle-mute
+  "ovu" 'alsamixer-up-volume
   "ow"  (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
   "rr" 'brh/tmux-repeat
   "rt" 'brh/helm-run-shell

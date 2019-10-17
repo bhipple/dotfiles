@@ -38,6 +38,7 @@ self: super:
     aggressive-indent
     alert
     all-the-icons
+    alsamixer
     anaconda-mode
     ansible
     ansible-doc
