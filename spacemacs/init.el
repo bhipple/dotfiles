@@ -142,6 +142,7 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
+       alsamixer
        evil-ediff
        language-detection
        package-lint
