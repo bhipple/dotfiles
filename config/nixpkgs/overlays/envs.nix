@@ -1,14 +1,9 @@
 self: super:
 {
-  # Completely pin down absolutely everything about emacs on a specific NixPkgs import!
-  emacs-nixpkgs-pin = (import (builtins.fetchTarball {
-    # 2019-08-10
-    url = "https://github.com/NixOS/nixpkgs/archive/8d70f49cbd9311dd33e543cefb4279546f446325.tar.gz";
-    sha256 = "09n40nxhi8xdms6wa46i929w2g8shi8029bghkslfzai4i2z7qq2";
-  }) {}).pkgs;
 
-  spacemacs = self.emacs-nixpkgs-pin.emacsWithPackages (ep: (with ep.melpaPackages; [
-    # there's a bug in the current source of evil-escape that causes it to
+  # Build a spacemacs using the NUR emacs-overlay version pins
+  spacemacs = self.emacsWithPackages (ep: (with ep.melpaPackages; [
+    # There's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
     # future version.
     (ep.evil-escape.overrideAttrs (old: {
@@ -23,11 +18,18 @@ self: super:
     # Marked as broken
     # company-rtags
     # flycheck-rtags
-    # flycheck-rust
     # helm-rtags
 
     # Not packaged
     # evil-unimpaired
+
+    # Missing src url?!
+    # clang-format
+
+    # Build failure
+    # pdf-tools
+
+    # alsamixer
 
     ac-ispell
     ace-jump-helm-line
@@ -38,7 +40,6 @@ self: super:
     aggressive-indent
     alert
     all-the-icons
-    alsamixer
     anaconda-mode
     ansible
     ansible-doc
@@ -61,7 +62,6 @@ self: super:
     ccls
     centered-cursor-mode
     chruby
-    clang-format
     clean-aindent-mode
     cmm-mode
     column-enforce-mode
@@ -175,6 +175,7 @@ self: super:
     flycheck-ledger
     flycheck-package
     flycheck-pos-tip
+    flycheck-rust
     flyspell-correct
     flyspell-correct-helm
     fringe-helper
@@ -351,7 +352,6 @@ self: super:
     password-generator
     pcache
     pcre2el
-    pdf-tools
     persp-mode
     pfuture
     pip-requirements
@@ -451,19 +451,19 @@ self: super:
     # automatically, but for those that don't, here are nix pkgs.
 
     # Python Tools
-    self.emacs-nixpkgs-pin.autoflake
+    self.autoflake
 
     # Rust Tools
-    self.emacs-nixpkgs-pin.cargo
-    self.emacs-nixpkgs-pin.racer
-    self.emacs-nixpkgs-pin.rustc
-    self.emacs-nixpkgs-pin.rustfmt
+    self.cargo
+    self.racer
+    self.rustc
+    self.rustfmt
 
     # Needed by dash-docsets
-    self.emacs-nixpkgs-pin.sqlite
+    self.sqlite
 
     # Haskell Tools
-    (self.emacs-nixpkgs-pin.haskellPackages.ghcWithPackages (pkgs: [
+    (self.haskellPackages.ghcWithPackages (pkgs: [
       pkgs.apply-refact
       pkgs.hasktags
       pkgs.hlint
