@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Initiailize X. This currently does two things:
+# 1. Dynamically detect whether we're plugged into the docking station or not, and configure monitors as-needed.
+# 2. Disable the
 # Configure monitors as-needed depending on whether we're plugged into the
 # docking station or not.
 
@@ -15,11 +18,23 @@ x1cg6_undocked() {
            --output eDP-1 --auto --primary --pos 0x0
 }
 
-if grep -q x1cg6 /etc/hostname; then
-    # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
-    if xrandr | grep -q "DP-1-2 connected"; then
-        x1cg6_docked
-    else
-        x1cg6_undocked
+handle_docking() {
+    if grep -q x1cg6 /etc/hostname; then
+        # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
+        if xrandr | grep -q "DP-1-2 connected"; then
+            x1cg6_docked
+        else
+            x1cg6_undocked
+        fi
     fi
-fi
+}
+
+handle_touchpad() {
+    id=$(xinput list | rg -o 'Synaptics TouchPad.*id=([0-9]*)' -r '$1')
+    if [ -n "$id" ]; then
+        xinput set-prop "$id" "Device Enabled" 0
+    fi
+}
+
+handle_docking
+handle_touchpad
