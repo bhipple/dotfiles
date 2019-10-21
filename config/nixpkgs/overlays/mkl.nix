@@ -1,7 +1,7 @@
 self: super: {
 
   # Leave this commented out by default to get better Hydra cache efficiency
-  # python = super.python.override {
+  # python2 = super.python2.override {
   #   packageOverrides = python-self: python-super: {
   #     numpy = python-super.numpy.override {
   #       blas = super.pkgs.mkl;
