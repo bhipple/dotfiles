@@ -91,7 +91,7 @@
           ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
-                                                 (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY")
+                                                 (tags-todo "+HOME-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-SOMEDAY")
                                                  nil
                                                  ("/tmp/hipple/home_agenda.html")
                                                  ))
