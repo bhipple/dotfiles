@@ -118,6 +118,18 @@
     (setq brh/last-shell-cmd sel)
     (brh/_tmux-cmd sel)))
 
+(require 's)
+(defun brh/tmux-run-line ()
+  "Run the current line the cursor is on in a tmux-shell"
+  (interactive)
+  (brh/_tmux-cmd (s-trim (thing-at-point 'line t))))
+
+(defun brh/tmux-run-line-clear ()
+  "Run the current line the cursor is on in a tmux-shell after clearning the terminal"
+  (interactive)
+  (brh/_tmux-cmd "clear")
+  (brh/_tmux-cmd (s-trim (thing-at-point 'line t))))
+
 (defun brh/tmux-repeat ()
   "Repeat the previous command in the active terminal session"
   (interactive)

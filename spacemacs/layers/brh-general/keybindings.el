@@ -63,6 +63,8 @@
   "ovm" 'alsamixer-toggle-mute
   "ovu" 'alsamixer-up-volume
   "ow"  (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
+  "rl" 'brh/tmux-run-line
+  "rL" 'brh/tmux-run-line-clear
   "rr" 'brh/tmux-repeat
   "rt" 'brh/helm-run-shell
   "rT" (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
