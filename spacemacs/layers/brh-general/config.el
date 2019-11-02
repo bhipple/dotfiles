@@ -62,6 +62,7 @@
 (setq spaceline-org-clock-p t)
 
 ;; Use the primary system clipboard when yanking
+(setq select-enable-clipboard t)
 (setq select-enable-primary t)
 
 ;; When compiling, jump the buffer automatically on failures, and use a high -j
