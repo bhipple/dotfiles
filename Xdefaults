@@ -1,5 +1,3 @@
-! $HOME/.Xdefaults
-!
 ! This file contains user defaults resources which are applied to
 ! all X-clients.
 !
@@ -37,11 +35,3 @@ xterm*termName: xterm-256color
 *VT100.Translations: \
         #override <Key>BackSpace: string(0x7f) \n\
                   <Key>Delete:    string(0x1b) string("[3~")
-
-! rxvtop settings
-rxvtop1*background:lightgray
-rxvtop1*foreground:Black
-rxvtop*background:Black
-rxvtop*foreground:Yellow
-rxvtop2*background:Black
-rxvtop2*foreground:Green
