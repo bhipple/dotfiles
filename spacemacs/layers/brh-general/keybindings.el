@@ -43,6 +43,7 @@
 (spacemacs/set-leader-keys
   "dom" 'brh/diff-origin-master
   "oa"  'org-agenda
+  "oba" 'brh/org-agenda-write
   "obh" 'brh/ledger-habit
   "obw" 'brh/goto-weekly-review
   "oc"  'org-capture

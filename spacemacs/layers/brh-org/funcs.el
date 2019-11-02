@@ -27,6 +27,11 @@
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
 
+(defun brh/org-agenda-write ()
+  "Write the current agenda to the Chromium homepage file"
+  (interactive)
+  (org-agenda-write "/tmp/org-bhipple/review.html"))
+
 (defun brh/current-line-empty-p ()
   (looking-at "^$"))
 
