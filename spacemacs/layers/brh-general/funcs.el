@@ -54,11 +54,6 @@
   (interactive)
     (brh/_diff-buffer "origin/master"))
 
-(defun brh/diff-origin-dev ()
-  "Diff the current buffer against origin/dev"
-  (interactive)
-  (brh/_diff-buffer "origin/dev"))
-
 (defun brh/diff-head ()
   "Diff the current buffer against HEAD"
   (interactive)
@@ -118,7 +113,11 @@
     (setq brh/last-shell-cmd sel)
     (brh/_tmux-cmd sel)))
 
-(require 's)
+(defun brh/tmux-run-clear ()
+  "Send the clear command to the terminal"
+  (interactive)
+  (brh/_tmux-cmd "; clear"))
+
 (defun brh/tmux-run-line ()
   "Run the current line the cursor is on in a tmux-shell"
   (interactive)
@@ -127,7 +126,7 @@
 (defun brh/tmux-run-line-clear ()
   "Run the current line the cursor is on in a tmux-shell after clearning the terminal"
   (interactive)
-  (brh/_tmux-cmd "clear")
+  (brh/tmux-run-clear)
   (brh/_tmux-cmd (s-trim (thing-at-point 'line t))))
 
 (defun brh/tmux-repeat ()
