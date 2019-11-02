@@ -19,9 +19,6 @@ shopt -s checkwinsize
 # Source my generic aliases
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
-[ -f "$HOME"/.nix-profile/etc/profile.d/nix.sh ] && \
-    . "$HOME"/.nix-profile/etc/profile.d/nix.sh
-
 # Prompt
 PS1='\[\e[1;31m\][\u@\h: \w]\$\[\e[0m\] '
 
