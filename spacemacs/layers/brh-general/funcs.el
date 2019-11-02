@@ -95,9 +95,17 @@
 ; Save the previous shell cmd that I ran for convenience in tmux-repeat
 (setq brh/last-shell-cmd "")
 
+(defun brh/get-panes ()
+  "Get the number of the a tmux pane NOT running emacs on current window"
+  (interactive)
+  ; TODO: I now have the contents stored inside a buffer *Shell Command Output*. How do I read this into a var?
+  (shell-command "tmux list-panes | grep -v active | tail -1 | cut -d':' -f1"))
+
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
   (save-buffer 0)
+  ; TODO: Detect if spacemacs is running inside a terminal, and if so send it to a non-active tmux pane using the get-panes function above
+  ;(async-shell-command (concat "tmux send-keys -t 1 '" cmd "' Enter")))
   (async-shell-command (concat "tmux send-keys '" cmd "' Enter")))
 
 (defun brh/helm-run-shell ()
