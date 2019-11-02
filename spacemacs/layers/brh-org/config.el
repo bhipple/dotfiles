@@ -258,7 +258,7 @@
   (setq org-habit-show-habits-only-for-today nil)
 
   ;; Move the habits more to the right than the default (40)
-  (setq org-habit-graph-coumn 120)
+  (setq org-habit-graph-column 80)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Elfeed config
