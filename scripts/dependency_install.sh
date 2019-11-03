@@ -30,20 +30,15 @@ nix_install() {
         fi
     fi
 
-    CHANNEL="nixpkgs"
-    [[ -n "$IS_NIXOS" ]] && CHANNEL="nixos"
-
-    [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]] && . ~/.nix-profile/etc/profile.d/nix.sh
-    CHANNELS="$CHANNEL.minEnv $CHANNEL.pyEnv"
+    CHANNEL="nixos"
+    ATTRS="$CHANNEL.minEnv $CHANNEL.pyEnv"
 
     if hostname | grep -qE "^brh"; then
-        CHANNELS="$CHANNELS $CHANNEL.bigEnv"
+        # Also install plaid2qif from my nix user repo
+        ATTRS="$ATTRS $CHANNEL.bigEnv $CHANNEL.nur.repos.bhipple.plaid2qif"
     fi
 
-    (set -x; nix-env -j8 -k -riA $CHANNELS)
-
-    # Also install plaid2qif from my nix user repo
-    nix-env -iA $CHANNEL.nur.repos.bhipple.plaid2qif
+    (set -x; nix-env -j8 -k -riA $ATTRS)
 }
 
 # See here for list of docsets:
