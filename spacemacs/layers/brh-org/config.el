@@ -95,7 +95,7 @@
                                                  nil
                                                  ("/tmp/hipple/home_agenda.html")
                                                  ))
-          ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING")
+          ("hc" "Currently active non-repeating HOME items" tags-todo "+HOME-SOMEDAY-REPEATING-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"")
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
           ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
                                                                 (org-agenda-log-mode-items '(closed clock state))))
