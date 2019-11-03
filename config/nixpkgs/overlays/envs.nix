@@ -20,14 +20,6 @@ self: super: let
     # Not packaged
     # evil-unimpaired
 
-    # Missing src url?!
-    # clang-format
-
-    # Build failure
-    # pdf-tools
-
-    # alsamixer
-
     ac-ispell
     ace-jump-helm-line
     ace-jump-mode
@@ -37,6 +29,7 @@ self: super: let
     aggressive-indent
     alert
     all-the-icons
+    alsamixer
     anaconda-mode
     ansible
     ansible-doc
@@ -59,6 +52,7 @@ self: super: let
     ccls
     centered-cursor-mode
     chruby
+    clang-format
     clean-aindent-mode
     cmm-mode
     column-enforce-mode
@@ -228,6 +222,7 @@ self: super: let
     helm-gitignore
     helm-gtags
     helm-hoogle
+    helm-ls-git
     helm-lsp
     helm-make
     helm-mode-manager
@@ -348,6 +343,7 @@ self: super: let
     password-generator
     pcache
     pcre2el
+    pdf-tools
     persp-mode
     pfuture
     pip-requirements
@@ -416,6 +412,7 @@ self: super: let
     toml-mode
     treemacs
     treemacs-evil
+    treemacs-magit
     treemacs-projectile
     treepy
     unfill
@@ -425,6 +422,7 @@ self: super: let
     vimrc-mode
     visual-fill-column
     volatile-highlights
+    vterm
     web-beautify
     web-completion-data
     web-mode
@@ -445,7 +443,7 @@ self: super: let
   ];
 
   # Many emacs packages may pull in dependencies on things they need
-  # automatically, but for those that don't, here are nix pkgs.
+  # automatically, but for those that don't, here are the requisite NixPkgs.
   myEmacsDeps = [
     # Python Tools
     self.autoflake
@@ -474,13 +472,11 @@ self: super: let
 
 in {
 
-  spacemacsOverlay = self.emacsWithPackagesFromUsePackage {
+  # Build a spacemacs with the pinned overlay import
+  spacemacs = self.emacsWithPackagesFromUsePackage {
     config = "";
-    extraEmacsPackages = ep: (myEmacsPkgs ep);
+    extraEmacsPackages = ep: ((myEmacsPkgs ep) ++ myEmacsDeps);
   };
-
-  # Build a spacemacs using the NUR emacs-overlay version pins
-  spacemacs = self.emacsWithPackages (ep: (myEmacsPkgs ep) ++ myEmacsDeps);
 
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (super.buildEnv {
