@@ -39,6 +39,12 @@ nix_install() {
     fi
 
     (set -x; nix-env -j8 -k -riA $ATTRS)
+
+    # TODO: Crazy hack until I figure out WTF to do here
+    (
+        cd ~/src/nixpkgs
+        nix-env -f . -iA spacemacs
+    )
 }
 
 # See here for list of docsets:

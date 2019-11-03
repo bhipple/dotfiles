@@ -507,7 +507,7 @@ in {
       self.procps
       self.ripgrep
       self.rlwrap
-      self.spacemacs
+      #self.spacemacs
       self.tmux
       self.tmuxPlugins.copycat
       self.tmuxPlugins.open
