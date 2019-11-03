@@ -1,8 +1,5 @@
-self: super:
-{
-
-  # Build a spacemacs using the NUR emacs-overlay version pins
-  spacemacs = self.emacsWithPackages (ep: (with ep.melpaPackages; [
+self: super: let
+  myEmacsPkgs = ep: with ep.melpaPackages; [
     # There's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
     # future version.
@@ -445,7 +442,12 @@ self: super:
     yasnippet
     yasnippet-snippets
     zeal-at-point
-    ] ++ [
+  ];
+
+in {
+
+  # Build a spacemacs using the NUR emacs-overlay version pins
+  spacemacs = self.emacsWithPackages (ep: (myEmacsPkgs ep) ++ [
     # Many emacs packages may pull in dependencies on things they need
     # automatically, but for those that don't, here are nix pkgs.
 
@@ -472,7 +474,7 @@ self: super:
       # pkgs.ghc-mod
       # pkgs.intero
     ]))
-  ]));
+  ]);
 
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (super.buildEnv {
