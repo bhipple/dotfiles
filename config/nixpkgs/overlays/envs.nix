@@ -444,13 +444,9 @@ self: super: let
     zeal-at-point
   ];
 
-in {
-
-  # Build a spacemacs using the NUR emacs-overlay version pins
-  spacemacs = self.emacsWithPackages (ep: (myEmacsPkgs ep) ++ [
-    # Many emacs packages may pull in dependencies on things they need
-    # automatically, but for those that don't, here are nix pkgs.
-
+  # Many emacs packages may pull in dependencies on things they need
+  # automatically, but for those that don't, here are nix pkgs.
+  myEmacsDeps = [
     # Python Tools
     self.autoflake
 
@@ -474,7 +470,17 @@ in {
       # pkgs.ghc-mod
       # pkgs.intero
     ]))
-  ]);
+  ];
+
+in {
+
+  spacemacsOverlay = self.emacsWithPackagesFromUsePackage {
+    config = "";
+    extraEmacsPackages = ep: (myEmacsPkgs ep);
+  };
+
+  # Build a spacemacs using the NUR emacs-overlay version pins
+  spacemacs = self.emacsWithPackages (ep: (myEmacsPkgs ep) ++ myEmacsDeps);
 
   # Minimal set of packages to install everywhere
   minEnv = super.hiPrio (super.buildEnv {
