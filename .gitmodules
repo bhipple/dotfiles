@@ -18,6 +18,3 @@
 		path = zgen
 		url = https://github.com/tarjoilija/zgen
 		branch = master
-[submodule "spacemacs/org-mru-clock"]
-		path = spacemacs/org-mru-clock
-		url = https://github.com/unhammer/org-mru-clock

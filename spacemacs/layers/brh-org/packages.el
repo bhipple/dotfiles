@@ -25,7 +25,6 @@
 
 (defun brh-org/init-org-mru-clock ()
   (use-package org-mru-clock
-    :load-path "~/dotfiles/spacemacs/org-mru-clock"
     :init
     (setq org-mru-clock-completing-read #'helm-comp-read
           org-mru-clock-files #'org-agenda-files
