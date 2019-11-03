@@ -123,7 +123,6 @@ self: super:
     emmet-mode
     emms
     engine-mode
-    ensime
     ep.csv-mode
     ep.font-lock-plus
     ep.mmm-mode
