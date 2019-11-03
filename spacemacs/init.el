@@ -60,7 +60,8 @@ This function should only modify configuration layer settings."
      (dash :variables
            dash-autoload-common-docsets nil)
      docker
-     elfeed
+     (elfeed :variables
+             elfeed-enable-goodies nil)
      emacs-lisp
      finance
      git
@@ -156,8 +157,6 @@ This function should only modify configuration layer settings."
        ;; Seems to have the behavior described here:
        ;; https://github.com/syl20bnr/spacemacs/issues/11582
        haskell-snippets
-       ;; The basic elfeed is actively maintained, but this is not; and it looks worse!
-       elfeed-goodies
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
