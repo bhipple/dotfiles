@@ -14,7 +14,6 @@ alias ls='ls --color'
 alias mkcd='. ~/bin/make_dir_and_cd.sh'
 alias mu='mupdf-x11'
 alias mupdf='mupdf-x11'
-alias myip='curl ipinfo.io'
 alias rfwifi='nmcli r wifi off && nmcli r wifi on'
 alias sc="sudo systemctl"
 alias sdiff='diff --side-by-side'
