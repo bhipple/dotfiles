@@ -17,7 +17,8 @@ font:
   size: 9.0
 
 # Display the time it takes to redraw each frame.
-render_timer: false
+debug:
+  render_timer: false
 
 ################################################################################
 # Color Schemes
