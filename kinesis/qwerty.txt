@@ -46,6 +46,14 @@
 * F -> escape on the shift layer
 [kp-f]>[escape]
 
+* R and U to [{ and }]
+[kp-r]>[obrack]
+[kp-u]>[cbrack]
+
+* E and I to < and >
+[kp-e]>[<]
+[kp-i]>[>]
+
 * Arrow keys on hjkl. Note that these shadow the 456 numpad keys!
 [kp-h]>[left]
 [kp4]>[down]
