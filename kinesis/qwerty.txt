@@ -14,11 +14,17 @@
 [escape]>[kp-insert]
 [kp-escape]>[kp-insert]
 
-* TODO: This one could probably be moved.
-[left]>[escape]
+* On the bottom row, provide the following brackets without requiring shift:
+*     < [ {     } ] >
+{intl-\}>{-Rshift}{,}{+Rshift}
+[left]>[obrack]
+{right}>{-Rshift}{obrack}{+Rshift}
+{up}>{-Rshift}{cbrack}{+Rshift}
+[down]>[cbrack]
+{obrack}>{-Rshift}{.}{+Rshift}
 
-[right]>[obrack]
-[up]>[cbrack]
+* TODO: Find something for the bottom right key!
+[cbrack]>[null]
 
 ********************************************************************************
 ** Left Thumb Pad Key Remappings
