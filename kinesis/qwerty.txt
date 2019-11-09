@@ -15,16 +15,17 @@
 [kp-escape]>[kp-insert]
 
 * On the bottom row, provide the following brackets without requiring shift:
-*     < [ {     } ] >
+*     < { [     ] } >
 {intl-\}>{-Rshift}{,}{+Rshift}
-[left]>[obrack]
-{right}>{-Rshift}{obrack}{+Rshift}
-{up}>{-Rshift}{cbrack}{+Rshift}
-[down]>[cbrack]
+{left}>{-Rshift}{obrack}{+Rshift}
+[right]>[obrack]
+
+[up]>[cbrack]
+{down}>{-Rshift}{cbrack}{+Rshift}
 {obrack}>{-Rshift}{.}{+Rshift}
 
-* TODO: Find something for the bottom right key!
-[cbrack]>[null]
+* Map the bottom-most right key to insert
+[cbrack]>[kp-insert]
 
 ********************************************************************************
 ** Left Thumb Pad Key Remappings
@@ -38,10 +39,8 @@
 
 ********************************************************************************
 ** Right Thumb Pad Key Remappings
-[kp-rwin]>[kp-ralt]
 [pup]>[lalt]
 [pdown]>[rctrl]
-[rctrl]>[cbrack]
 [rwin]>[ralt]
 
 ********************************************************************************
@@ -54,13 +53,20 @@
 * F -> escape on the shift layer
 [kp-f]>[escape]
 
-* R and U to [{ and }]
-[kp-r]>[obrack]
-[kp7]>[cbrack]
+* S and D to Page Up and Page Down
+[kp-s]>[pdown]
+[kp-d]>[pup]
 
-* E and I to < and >. Note that these are shift actions of , and ., so we need macros!
-{kp-e}>{-Rshift}{,}{+Rshift}
-{kp8}>{-Rshift}{.}{+Rshift}
+* On the top layer, provide these keys:
+*    W E R    U I O
+*    < { [    ] } >
+{kp-w}>{-Rshift}{,}{+Rshift}
+{kp-e}>{-Rshift}{obrack}{+Rshift}
+[kp-r]>[obrack]
+
+[kp7]>[cbrack]
+{kp8}>{-Rshift}{cbrack}{+Rshift}
+{kp9}>{-Rshift}{.}{+Rshift}
 
 * Arrow keys on hjkl. Note that these shadow the 456 numpad keys!
 [kp-h]>[left]
