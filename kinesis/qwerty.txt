@@ -2,7 +2,9 @@
 ** General Key Remappings
 * Move the top-left equal to be backtick and tilde, like a normal keyboard
 [=]>[`]
-[`]>[=]
+
+* Map the bottom left key to delete, for the rare instances where it's handy
+[`]>[delete]
 
 * Swap backspace and space, so bs is on the left
 [bspace]>[space]
@@ -21,7 +23,7 @@
 ********************************************************************************
 ** Left Thumb Pad Key Remappings
 [delete]>[lctrl]
-[end]>[rwin]
+end]>[rwin]
 
 * Put =/+ on a reasonable key!
 [home]>[=]
@@ -50,9 +52,10 @@
 [kp-r]>[obrack]
 [kp-u]>[cbrack]
 
-* E and I to < and >
-[kp-e]>[<]
-[kp-i]>[>]
+* TODO: This goes bang?
+* E and I to < and >. Note that these are shift actions of , and ., so we need macros!
+* [kp-e]>{shift}{,}
+* [kp-i]>{shift}{.}
 
 * Arrow keys on hjkl. Note that these shadow the 456 numpad keys!
 [kp-h]>[left]

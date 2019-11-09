@@ -13,7 +13,9 @@ if ! [ -e "$tgt" ]; then
     echo "********************************************************************************"
     echo "Kinesis keyboard is not mounted; skipping deployment"
 else
-    echo "Copied to $tgt"
+    echo "********************************************************************************"
+    echo "Copying to $tgt with this diff:"
+    diff out.txt "$tgt"
     sudo cp out.txt "$tgt"
     echo "********************************************************************************"
     cat "$tgt"
