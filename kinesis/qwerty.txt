@@ -23,7 +23,7 @@
 ********************************************************************************
 ** Left Thumb Pad Key Remappings
 [delete]>[lctrl]
-end]>[rwin]
+[end]>[rwin]
 
 * Put =/+ on a reasonable key!
 [home]>[=]
@@ -50,12 +50,11 @@ end]>[rwin]
 
 * R and U to [{ and }]
 [kp-r]>[obrack]
-[kp-u]>[cbrack]
+[kp7]>[cbrack]
 
 * TODO: This goes bang?
 * E and I to < and >. Note that these are shift actions of , and ., so we need macros!
-* [kp-e]>{shift}{,}
-* [kp-i]>{shift}{.}
+[kp-e]>{-Rshift}{,}{+Rshift}
 
 * Arrow keys on hjkl. Note that these shadow the 456 numpad keys!
 [kp-h]>[left]
