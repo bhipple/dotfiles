@@ -1,25 +1,53 @@
+********************************************************************************
+** General Key Remappings
+* Move the top-left equal to be backtick and tilde, like a normal keyboard
 [=]>[`]
 [`]>[=]
+
+* Swap backspace and space, so bs is on the left
 [bspace]>[space]
-[caps]>[kpshift]
+[space]>[bspace]
+
+* Map the actual Esc key to insert
+[escape]>[kp-insert]
+[kp-escape]>[kp-insert]
+
+* TODO: This one could probably be moved.
+[left]>[escape]
+
+[right]>[obrack]
+[up]>[cbrack]
+
+********************************************************************************
+** Left Thumb Pad Key Remappings
 [delete]>[lctrl]
 [end]>[rwin]
-[escape]>[kp-insert]
+
+* Put =/+ on a reasonable key!
 [home]>[=]
+
+[lctrl]>[escape]
+
+********************************************************************************
+** Right Thumb Pad Key Remappings
+[kp-rwin]>[kp-ralt]
+[pup]>[lalt]
+[pdown]>[rctrl]
+[rctrl]>[cbrack]
+[rwin]>[ralt]
+
+********************************************************************************
+** KP Shift key bindings
+
+* Remap caps to the kpshift layer
+[caps]>[kpshift]
 [kp-caps]>[kpshift]
-[kp-escape]>[kp-insert]
+
+* F -> escape on the shift layer
 [kp-f]>[escape]
+
+* Arrow keys on hjkl. Note that these shadow the 456 numpad keys!
 [kp-h]>[left]
 [kp4]>[down]
 [kp5]>[up]
 [kp6]>[right]
-[kp-rwin]>[kp-ralt]
-[lctrl]>[escape]
-[left]>[escape]
-[pdown]>[rctrl]
-[pup]>[lalt]
-[rctrl]>[cbrack]
-[right]>[obrack]
-[rwin]>[ralt]
-[space]>[bspace]
-[up]>[cbrack]
