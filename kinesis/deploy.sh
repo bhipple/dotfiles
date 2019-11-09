@@ -21,8 +21,8 @@ deploy() {
     # Strip comments and blank lines before deployment
     sed 's|^\*.*||' qwerty.txt | sed '/^\s*$/d' > out.txt
 
-    if grep '^[^\[]' out.txt; then
-        echo "Syntax error! Every line must start with ["
+    if grep '^[^\[{]' out.txt; then
+        echo "Syntax error! Every line must start with [ or {"
         exit 1
     fi
 

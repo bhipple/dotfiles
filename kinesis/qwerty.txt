@@ -54,7 +54,7 @@
 
 * TODO: This goes bang?
 * E and I to < and >. Note that these are shift actions of , and ., so we need macros!
-[kp-e]>{-Rshift}{,}{+Rshift}
+{kp-e}>{-Rshift}{,}{+Rshift}
 
 * Arrow keys on hjkl. Note that these shadow the 456 numpad keys!
 [kp-h]>[left]
