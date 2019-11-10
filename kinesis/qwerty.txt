@@ -76,4 +76,4 @@
 
 * ; on the kpshift layer is a macro to add a ; to the end of the line:
 * ESC a ; ESC
-{kpplus}>{escape}{A}{;}{escape}
+{kpplus}>{escape}{-Rshift}{a}{+Rshift}{;}{escape}
