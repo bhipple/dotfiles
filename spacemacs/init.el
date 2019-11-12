@@ -39,17 +39,26 @@ This function should only modify configuration layer settings."
      ansible
      asciidoc
      (auto-completion :variables
-                      auto-completion-enable-help-tooltip t
-                      auto-completion-enable-snippets-in-popup t
+                      ; Try to keep the auto-completion snappy!
+                      auto-completion-enable-help-tooltip nil
+                      auto-completion-enable-snippets-in-popup nil
                       auto-completion-idle-delay 0.01
-                      ;; Removes company-files from the default list
+                      ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
-                        '(company-semantic
+                        '(
+                          ; Appears to be slow, and likely redundant with lsp?
+                          ; company-semantic
+                          ; These search for strings in the buffer and are quite useful!
+                          company-dabbrev
                           company-dabbrev-code
-                          company-gtags
-                          company-etags
+                          ; This one tanks on slow filesystems
+                          ; company-files
+                          ; These don't appear to do much and have upstream performance woes
+                          ; company-etags
+                          ; company-gtags
+                          ; This one is very lightweight, and just adds language keywords
                           company-keywords
-                          company-dabbrev)
+                          )
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets")
      better-defaults
      (c-c++ :variables
