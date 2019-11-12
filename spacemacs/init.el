@@ -42,6 +42,7 @@ This function should only modify configuration layer settings."
                       ; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
                       auto-completion-enable-snippets-in-popup nil
+                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
                       auto-completion-idle-delay 0.01
                       ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
@@ -57,9 +58,7 @@ This function should only modify configuration layer settings."
                           ; company-etags
                           ; company-gtags
                           ; This one is very lightweight, and just adds language keywords
-                          company-keywords
-                          )
-                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets")
+                          company-keywords))
      better-defaults
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
