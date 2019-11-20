@@ -505,6 +505,7 @@ self: super: let
       # pkgs.intero
     ]))
   ];
+
 in {
 
   inherit emacs-jit libjit;
