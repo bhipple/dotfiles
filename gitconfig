@@ -133,8 +133,6 @@
     version = 2
 [push]
     default = simple
-[url "git://github.com/ghc/packages-"]
-    insteadOf = git://github.com/ghc/packages/
 
 # Allow local customizations
 [include]
