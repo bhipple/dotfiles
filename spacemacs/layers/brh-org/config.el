@@ -34,7 +34,8 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Tags
-  (setq org-tag-alist '(("CRYPTO" . ?c)
+  (setq org-tag-alist '(("AWS" . ?a)
+                        ("CRYPTO" . ?c)
                         ("DEEP" . ?d)
                         ("EMACS" . ?e)
                         ("FINANCE" . ?f)
