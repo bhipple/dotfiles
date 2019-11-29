@@ -24,6 +24,7 @@ in {
       self.htop
       self.jq
       self.ledger
+      self.nixpkgs-fmt
       self.nox
       self.par
       self.pass
