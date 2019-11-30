@@ -87,7 +87,8 @@ This function should only modify configuration layer settings."
      java
      javascript
      (lsp :variables
-          lsp-navigation 'simple)
+          lsp-navigation 'simple
+          lsp-ui-doc-enable nil)
      lua
      markdown
      nginx
