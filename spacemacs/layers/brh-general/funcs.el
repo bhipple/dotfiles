@@ -107,7 +107,7 @@
       ; TODO: Attempt to just return 0 if we didn't find a valid non-active tmux
       ; split, which implies that we have an X11 emacs on a single-pane window.
       ; Not really sure this is actually working.
-      (if res res 0))))
+      (if res res "0"))))
 
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
