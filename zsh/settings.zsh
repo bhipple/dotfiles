@@ -68,8 +68,12 @@ done
 #  ============================================================================
 #                               FZF Config
 #  ============================================================================
-[ -f ~/.nix-profile/share/fzf/completion.zsh ] && source ~/.nix-profile/share/fzf/completion.zsh
-[ -f ~/.nix-profile/share/fzf/key-bindings.zsh ] && source ~/.nix-profile/share/fzf/key-bindings.zsh
+FZF_BIN=$(command -v fzf)
+FZF_ZSHDIR="$(dirname $(dirname $FZF_BIN))/share/fzf"
+for f in completion.zsh key-bindings.zsh; do
+    tgt="$FZF_ZSHDIR/$f"
+    [ -f $tgt ] && source $tgt
+done
 
 #  ============================================================================
 #                           Autosuggest Config
