@@ -47,8 +47,8 @@ This function should only modify configuration layer settings."
                       ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
                         '(
-                          ; Appears to be slow, and likely redundant with lsp?
-                          ; company-semantic
+                          ; Might be slow, possibly redundant with lsp?
+                          company-semantic
                           ; These search for strings in the buffer and are quite useful!
                           company-dabbrev
                           company-dabbrev-code
