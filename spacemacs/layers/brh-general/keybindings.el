@@ -41,30 +41,32 @@
 (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 
 (spacemacs/set-leader-keys
-  "dom" 'brh/diff-origin-master
-  "oa"  'org-agenda
-  "oba" 'brh/org-agenda-write
-  "obh" 'brh/ledger-habit
-  "obw" 'brh/goto-weekly-review
-  "oc"  'org-capture
-  "od"  'brh/diff-ref
-  "of"  'magit-pull-from-upstream
-  "og"  (lambda () "Git grep repository from root" (interactive)
-          (let ((current-prefix-arg '(4)))
-            (call-interactively 'helm-grep-do-git-grep)))
-  "oml" 'brh/markdown-link-replace
-  "oo"  (lambda () (interactive) (find-file "~/org/me.org"))
-  "op"  'magit-push-current-to-upstream
-  "os"  'org-sort-entries
-  "ot"  (lambda () "Add org TODO" (interactive)
-          (org-insert-todo-heading-respect-content))
-  "ovd" 'alsamixer-down-volume
-  "ovm" 'alsamixer-toggle-mute
-  "ovu" 'alsamixer-up-volume
-  "ow"  (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
-  "rc"  'brh/tmux-run-clear
-  "rl"  'brh/tmux-run-line
-  "rL"  'brh/tmux-run-line-clear
-  "rr"  'brh/tmux-repeat
-  "rt"  'brh/helm-run-shell
-  "rT"  (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds")))
+  "dom"  'brh/diff-origin-master
+  "oa"   'org-agenda
+  "oba"  'brh/org-agenda-write
+  "obgc" 'org-capture-goto-last-stored
+  "obgr" 'org-refile-goto-last-stored
+  "obh"  'brh/ledger-habit
+  "obw"  'brh/goto-weekly-review
+  "oc"   'org-capture
+  "od"   'brh/diff-ref
+  "of"   'magit-pull-from-upstream
+  "og"   (lambda () "Git grep repository from root" (interactive)
+           (let ((current-prefix-arg '(4)))
+             (call-interactively 'helm-grep-do-git-grep)))
+  "oml"  'brh/markdown-link-replace
+  "oo"   (lambda () (interactive) (find-file "~/org/me.org"))
+  "op"   'magit-push-current-to-upstream
+  "os"   'org-sort-entries
+  "ot"   (lambda () "Add org TODO" (interactive)
+           (org-insert-todo-heading-respect-content))
+  "ovd"  'alsamixer-down-volume
+  "ovm"  'alsamixer-toggle-mute
+  "ovu"  'alsamixer-up-volume
+  "ow"   (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
+  "rc"   'brh/tmux-run-clear
+  "rl"   'brh/tmux-run-line
+  "rL"   'brh/tmux-run-line-clear
+  "rr"   'brh/tmux-repeat
+  "rt"   'brh/helm-run-shell
+  "rT"   (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds")))
