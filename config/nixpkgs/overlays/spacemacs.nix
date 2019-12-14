@@ -1,5 +1,18 @@
 self: super: let
 
+  libgccjit = super.stdenv.mkDerivation rec {
+    pname = "libgccjit";
+    inherit (self.gcc.cc) src version;
+
+    depsBuildBuild = [ self.buildPackages.stdenv.cc ];
+    nativeBuildInputs = [ self.libiberty ];
+
+    configurePhase = ''
+      mkdir build && cd build
+      ../configure --enable-languages=jit --disable-bootstrap --enable-host-shared
+    '';
+  };
+
   libjit = super.stdenv.mkDerivation rec {
     pname = "libjit";
     version = "0.1.4";
@@ -22,6 +35,20 @@ self: super: let
     preConfigure = "./bootstrap";
   };
 
+  gccemacs = (super.emacs.override { srcRepo = true; }).overrideAttrs(o: rec {
+    name = "gccemacs";
+    version = "27";
+    src = super.fetchFromGitLab {
+      owner = "koral";
+      repo = "gccemacs";
+      # https://gitlab.com/koral/gccemacs/commits/dev
+      rev = "6795fc4db37687e654981a7656eff41ae22cf9dc";
+      sha256 = "03wc5068yj63i1a3qcdqkf5gv1vzqhp146x8mx887hyljkx6iqzj";
+    };
+    patches = [ ];
+    buildInputs = o.buildInputs ++ [ self.jansson self.libgcc self.gcc ];
+  });
+
   emacs-jit = (super.emacs.override { srcRepo = true; }).overrideAttrs(o: rec {
     name = "emacs-27-jit";
     version = "27";
@@ -32,7 +59,7 @@ self: super: let
       sha256 = "0qlnmzj45qsj4cs4lahvjm67zc27g0kiy3p80611srfmkvw8q6yy";
     };
     patches = [ ];
-    buildInputs = o.buildInputs ++ [ super.jansson libjit ];
+    buildInputs = o.buildInputs ++ [ self.jansson libjit ];
   });
 
   myEmacsPkgs = ep: with ep.melpaPackages; [
@@ -508,7 +535,7 @@ self: super: let
 
 in {
 
-  inherit emacs-jit libjit;
+  inherit emacs-jit gccemacs libjit libgccjit;
 
   # Build a spacemacs with the pinned overlay import
   spacemacs = self.emacsWithPackagesFromUsePackage {
