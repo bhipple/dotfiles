@@ -46,6 +46,7 @@
   "oba"  'brh/org-agenda-write
   "obgc" 'org-capture-goto-last-stored
   "obgr" 'org-refile-goto-last-stored
+  "obgw" 'brh/goto-weekly-review
   "obh"  'brh/ledger-habit
   "obw"  'brh/goto-weekly-review
   "oc"   'org-capture
