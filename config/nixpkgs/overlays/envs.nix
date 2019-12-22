@@ -56,6 +56,7 @@ in {
       self.chromium
       self.cmake
       self.dasht
+      self.direnv
       self.firefox
       self.gnumake
       self.gnupg
