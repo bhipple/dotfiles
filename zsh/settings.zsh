@@ -66,10 +66,17 @@ for m in $visualModes; do
 done
 
 #  ============================================================================
+#                              Direnv Config
+#  ============================================================================
+if command -v 2>&1 >/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
+#  ============================================================================
 #                               FZF Config
 #  ============================================================================
 FZF_BIN=$(command -v fzf)
-FZF_ZSHDIR="$(dirname $(dirname $FZF_BIN))/share/fzf"
+FZF_ZSHDIR="$FZF_BIN:a:h:h/share/fzf"
 for f in completion.zsh key-bindings.zsh; do
     tgt="$FZF_ZSHDIR/$f"
     [ -f $tgt ] && source $tgt
