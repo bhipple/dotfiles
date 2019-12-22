@@ -2,11 +2,12 @@
 confirm() {
     cmd="$1"
     msg="$2"
-    echo "Evaluating: $cmd"
     if [ -n "$msg" ]; then
         echo "$msg"
+    else
+        echo "Would you like to run: $cmd"
     fi
-    read -n "resp?Are you sure? [y/N] "
+    read -n "resp?Proceed? [y/N] "
     if [[ $resp =~ ^[Yy]$ ]]; then
         eval "$cmd"
     fi
