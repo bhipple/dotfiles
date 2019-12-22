@@ -152,6 +152,7 @@ self: super: let
     cython-mode
     dactyl-mode
     dante
+    dap-mode
     dash
     dash-functional
     deferred

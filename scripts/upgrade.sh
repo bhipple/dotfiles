@@ -2,13 +2,14 @@
 set -euo pipefail
 # Script for helping with bumps and upgrades
 
-source ~/dotfiles/zsh/functions.zsh
+. ~/dotfiles/zsh/functions.zsh
 
 EMACS_OVERLAY="https://github.com/nix-community/emacs-overlay"
 
 emacs_overlay() {
     rev=$(git ls-remote "$EMACS_OVERLAY" refs/heads/master | awk '{print $1}')
     hash=$(nix-prefetch-url --unpack "$EMACS_OVERLAY/archive/$rev.tar.gz")
+    # TODO: Just sed these in
     echo "Change emacs-overlay with rev=$rev and sha256=$hash"
 }
 

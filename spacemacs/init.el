@@ -130,7 +130,6 @@ This function should only modify configuration layer settings."
      systemd
      terraform
      tmux
-     treemacs
      version-control
      vimscript
      vinegar
@@ -303,7 +302,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 13.0
                                :weight normal
                                :width normal)
 
