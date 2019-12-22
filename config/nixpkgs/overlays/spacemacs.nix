@@ -160,6 +160,7 @@ self: super: let
     devdocs
     diff-hl
     diminish
+    direnv
     disaster
     docker
     docker-tramp
