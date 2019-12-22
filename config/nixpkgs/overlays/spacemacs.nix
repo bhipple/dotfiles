@@ -249,7 +249,7 @@ self: super: let
     gitignore-mode
     gitignore-templates
     gntp
-    gnuplot
+    gnuplot-mode
     go-eldoc
     go-fill-struct
     go-gen-test
