@@ -27,8 +27,6 @@ if [[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
     source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
-source ~/.zsh/functions.zsh
-
 if [[ -f ~/.zsh_local/zshrc_local_before.zsh ]]; then
     source ~/.zsh_local/zshrc_local_before.zsh
 fi
@@ -36,6 +34,10 @@ fi
 fpath+=(~/.zsh/completions $fpath)
 
 source ~/.zsh/plugins.zsh
+
+# N.B. functions should go after plugins, since we define fzf helpers
+source ~/.zsh/functions.zsh
+
 source ~/.zsh/settings.zsh
 source ~/.zsh/aliases.zsh
 
