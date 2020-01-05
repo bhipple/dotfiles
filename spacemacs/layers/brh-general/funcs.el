@@ -98,6 +98,9 @@
 (defun brh/get-tmux-pane ()
   "Get the number of the a tmux pane NOT running emacs on current window"
   (interactive)
+  ; TODO: Replace all this nonsense using the shell command buffer with just:
+  ; (replace-regexp-in-string"\n$" "" (shell-command-to-string "tmux list-panes ..."))
+
   (save-excursion
     (shell-command "tmux list-panes | grep -v active | tail -1 | cut -d':' -f1")
     ; TODO: There has to be a simpler way to get the buffer as a string!
