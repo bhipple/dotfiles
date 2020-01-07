@@ -92,7 +92,8 @@ This function should only modify configuration layer settings."
      lua
      markdown
      nginx
-     nixos
+     (nixos :variables
+            nixos-enable-company nil)
      notmuch
      (org :variables
           org-enable-bootstrap-support t
