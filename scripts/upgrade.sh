@@ -9,8 +9,9 @@ EMACS_OVERLAY="https://github.com/nix-community/emacs-overlay"
 emacs_overlay() {
     rev=$(git ls-remote "$EMACS_OVERLAY" refs/heads/master | awk '{print $1}')
     hash=$(nix-prefetch-url --unpack "$EMACS_OVERLAY/archive/$rev.tar.gz")
-    # TODO: Just sed these in
-    echo "Change emacs-overlay with rev=$rev and sha256=$hash"
+    echo "Updating emacs-overlay.nix to $rev and $hash"
+    sed -i "s|^  rev = .*|  rev = \"$rev\"|"           ~/dotfiles/config/nixpkgs/overlays/emacs-overlay.nix
+    sed -i "s|^  sha256 = .*|  sha256 = \"$hash\"|"    ~/dotfiles/config/nixpkgs/overlays/emacs-overlay.nix
 }
 
 submodules() {
