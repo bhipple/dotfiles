@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
-set -euo pipefail
 # Script for helping with bumps and upgrades
-
 . ~/dotfiles/zsh/functions.zsh
+
+set -euo pipefail
 
 EMACS_OVERLAY="https://github.com/nix-community/emacs-overlay"
 
@@ -21,12 +21,13 @@ submodules() {
 }
 
 zgen() {
-    rm ~/.zgen/init.zsh
+    rm -f ~/.zgen/init.zsh
     zgen update
 }
 
 ################################################################################
 # MAIN
+echo "Starting upgrade ..."
 confirm emacs_overlay "Would you like to update the emacs-overlay version?"
 confirm submodules    "Would you like to update the git submodules?"
 confirm zgen          "Would you like to update the zgen zsh plugins?"
