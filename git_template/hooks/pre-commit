@@ -30,6 +30,7 @@ lint() {
     fi
 }
 
-lint "*.hs" "hlint"
-lint "*.py" "pyflakes"
-lint "*.sh" "shellcheck"
+lint "*.hs"  "hlint"
+lint "*.nix" "nixpkgs-fmt"
+lint "*.py"  "pyflakes"
+lint "*.sh"  "shellcheck"
