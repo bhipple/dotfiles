@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+# Setup a Rust shell for development
+RUST="$HOME/dotfiles/etc/rust-shell.nix"
+echo "Initializing $RUST"
+nix-shell $@ $RUST
