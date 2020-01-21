@@ -27,6 +27,13 @@
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
 
+(defun brh/smart-todo ()
+  "Go to work.org if it exists, otherwise me.org"
+  (interactive)
+  (if (file-exists-p "~/org/work/work.org")
+      (find-file "~/dotfiles_local/notes/work.org")
+      (find-file "~/org/me.org")))
+
 (defun brh/org-agenda-write ()
   "Write the current agenda to the Chromium homepage file"
   (interactive)

@@ -56,7 +56,7 @@
            (let ((current-prefix-arg '(4)))
              (call-interactively 'helm-grep-do-git-grep)))
   "oml"  'brh/markdown-link-replace
-  "oo"   (lambda () (interactive) (find-file "~/org/me.org"))
+  "oo"   'brh/smart-todo
   "op"   'magit-push-current-to-upstream
   "os"   'org-sort-entries
   "ot"   (lambda () "Add org TODO" (interactive)
@@ -64,7 +64,7 @@
   "ovd"  'alsamixer-down-volume
   "ovm"  'alsamixer-toggle-mute
   "ovu"  'alsamixer-up-volume
-  "ow"   (lambda () (interactive) (find-file "~/dotfiles_local/notes/work.org"))
+  "ow"   'brh/smart-todo
   "rc"   'brh/tmux-run-clear
   "rl"   'brh/tmux-run-line
   "rL"   'brh/tmux-run-line-clear
