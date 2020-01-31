@@ -7,7 +7,7 @@
 
 - link:
     ~/.dotfiles: ''
-    ~/.Xdefaults: Xdefaults
+    ~/.Xresources: Xresources
     ~/.bashrc:
         force: true
         path: bashrc

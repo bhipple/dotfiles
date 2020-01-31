@@ -1,6 +1,5 @@
 ! This file contains user defaults resources which are applied to
 ! all X-clients.
-!
 
 ! The Athena Widgets provided by Data General have 2 look-and-feels
 ! to choose from (athena and motif). The following resource sets
@@ -27,7 +26,9 @@ XTerm*font:     -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 XTerm*boldFont: -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 XTerm*background: black
 XTerm*foreground: green
-xterm*termName: xterm-256color
+XTerm*termName: xterm-24bit
+
+UXTerm*termName: xterm-24bit
 
 # Make the backspace key behave properly
 *backarrowKey: false
