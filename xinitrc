@@ -36,5 +36,11 @@ handle_touchpad() {
     fi
 }
 
+# Apparently this needs to be called at every login!
+xresources() {
+    xrdb -merge ~/.Xresources 2>&1 >/dev/null
+}
+
+xresources
 handle_docking
 handle_touchpad
