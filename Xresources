@@ -18,7 +18,7 @@ Mwm*iconDecoration: label activelabel
 Mwm*iconPlacement: bottom right
 
 ! UXTerm settings
-UXTerm*faceName: DejaVu Sans Mono:size=12
+UXTerm*faceName: Source Code Pro Sans Mono:size=12
 UXTerm*font:     -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 UXTerm*boldFont: -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 UXTerm*termName: xterm-24bit
