@@ -58,7 +58,8 @@ This function should only modify configuration layer settings."
                           ; company-etags
                           ; company-gtags
                           ; This one is very lightweight, and just adds language keywords
-                          company-keywords))
+                          company-keywords)
+                      :disabled-for nixos)
      better-defaults
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
