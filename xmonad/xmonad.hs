@@ -32,7 +32,7 @@ main = do
     xmonad $ conf screenCt xmproc
 
 myTerminal :: String
-myTerminal = "alacritty"
+myTerminal = "uxterm"
 
 -- Program names that should not be managed and tiled
 composeHook = composeAll [
@@ -60,7 +60,7 @@ myStartupHook = do
     spawn "xset dpms 1800 2000 3600"
 
     -- Programs to launch
-    spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon ; emc; fi"
+    spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon ; fi"
     spawnOn "1_1" "chromium"
 
 restartCmd :: String
