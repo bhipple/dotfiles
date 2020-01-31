@@ -32,7 +32,7 @@ PATH=$PATH:/usr/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/sbin
 
-# You may need to manually set your language environment
+# Enable full support for Unicode explicitly
 export LANG=en_US.UTF-8
 
 # Spacemacs errors if it looks for an env var and it isn't set

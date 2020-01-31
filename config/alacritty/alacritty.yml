@@ -5,6 +5,8 @@
 # When a field is left undefined, we get the defaults; since I'm only modifying
 # a few fields and since upsream is changing the config actively, I've stripped
 # this config to just have my overrides.
+env:
+    TERM: xterm-24bit
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
