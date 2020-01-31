@@ -164,6 +164,8 @@ This function should only modify configuration layer settings."
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
+       anaconda-mode
+       company-anaconda
        ;; Seems to have the behavior described here:
        ;; https://github.com/syl20bnr/spacemacs/issues/11582
        haskell-snippets

@@ -354,6 +354,7 @@ self: super: let
     magit
     magit-gitflow
     magit-popup
+    magit-section
     magit-svn
     markdown-mode
     markdown-toc
