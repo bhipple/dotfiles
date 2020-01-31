@@ -14,7 +14,6 @@
     ~/.bash_profile:
         force: true
         path: bash_profile
-    ~/.clang-format: clang-format
     ~/.config/alacritty:
           path: config/alacritty/
     ~/.config/nixpkgs:
