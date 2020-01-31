@@ -6,7 +6,6 @@ in {
   minEnv = super.hiPrio (super.buildEnv {
     name = "minEnv";
     paths = [
-      self.alacritty
       self.bashInteractive
       self.bat
       self.bc
@@ -39,6 +38,7 @@ in {
       self.tmuxPlugins.yank
       self.tree
       self.unzip
+      self.uxterm
       self.wget
       self.zsh
     ];
