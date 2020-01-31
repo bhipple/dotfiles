@@ -83,6 +83,8 @@ self: super: let
     # Not packaged
     # evil-unimpaired
 
+    ep.elpaPackages.xclip
+
     ac-ispell
     ace-jump-helm-line
     ace-jump-mode
