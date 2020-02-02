@@ -8,23 +8,27 @@ if [ -z "$1" ]; then
 fi
 
 cd ~/src/nixpkgs || exit 1
+
 ATTR=$1
 FNAME=$(EDITOR=ls nix edit -f . $ATTR)
 
 main() {
-    if ! grep -q verifyCargoDeps $FNAME; then
-        echo "Need to add verifyCargoDeps = true; to $FNAME"
+    if ! grep -q legacyCargoFetcher $FNAME; then
+        echo "Need to add legacyCargoFetcher = false; to $FNAME"
         exit 1
     fi
 
-    if ! nix-build -A $ATTR 2>&1 | tee /tmp/nix-rust-logfile; then
-        actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile | cut -d':' -f3-)
-        echo "Build failed; cargoSha256 should be $actual"
-        sed -i "s|cargoSha256.*|cargoSha256 = \"$actual\";|" $FNAME
+    echo "Nuking cargoSha256 reference in $FNAME"
+    sed -i 's|cargoSha256.*|cargoSha256 = "0000000000000000000000000000000000000000000000000000";|' $FNAME;
 
-        echo "Trying again..."
-        nix-build -A $ATTR || exit 1
-    fi
+    echo "Rebuilding $ATTR to find correct cargoSha256"
+    nix-build -A $ATTR 2>&1 | tee /tmp/nix-rust-logfile
+    actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile | cut -d':' -f3-)
+    echo "Build failed; cargoSha256 should be $actual"
+    sed -i "s|cargoSha256.*|cargoSha256 = \"$actual\";|" $FNAME
+
+    echo "Rebuilding $ATTR, expecting a pass"
+    nix-build -A $ATTR || exit 1
 
     echo "Finished successfully!"
 }
