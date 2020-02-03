@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
-set -o pipefail
+set -euo pipefail
 
 # Helper script for migrating a NixPkgs Rust pkg to the new cargoSha256 verification.
 if [ -z "$1" ]; then
     echo "USAGE: $0 <attribute>"
+    echo "EXAMPLE: $0 ripgrep"
     exit 1
 fi
 
@@ -12,25 +13,29 @@ cd ~/src/nixpkgs || exit 1
 ATTR=$1
 FNAME=$(EDITOR=ls nix edit -f . $ATTR)
 
+section() {
+    echo "********************************************************************************"
+    echo "$ATTR: $1"
+    echo "********************************************************************************"
+}
+
 main() {
     if ! grep -q legacyCargoFetcher $FNAME; then
         echo "Need to add legacyCargoFetcher = false; to $FNAME"
         exit 1
     fi
 
-    echo "Nuking cargoSha256 reference in $FNAME"
+    section "Nuking cargoSha256 reference for $FNAME, then rebuilding"
     sed -i 's|cargoSha256.*|cargoSha256 = "0000000000000000000000000000000000000000000000000000";|' $FNAME;
-
-    echo "Rebuilding $ATTR to find correct cargoSha256"
-    nix-build -A $ATTR 2>&1 | tee /tmp/nix-rust-logfile
-    actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile | cut -d':' -f3-)
-    echo "Build failed; cargoSha256 should be $actual"
+    nix-build -A $ATTR 2>&1 | tee /tmp/nix-rust-logfile-$ATTR || true
+    actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile-$ATTR | cut -d':' -f3-)
+    echo "Build of $ATTR failed; cargoSha256 should be $actual"
     sed -i "s|cargoSha256.*|cargoSha256 = \"$actual\";|" $FNAME
 
-    echo "Rebuilding $ATTR, expecting a pass"
+    section "Rebuilding with updated hash, expecting a pass:"
     nix-build -A $ATTR || exit 1
 
-    echo "Finished successfully!"
+    section "Finished successfully!"
 }
 
 main
