@@ -4,9 +4,23 @@ cd ~/src/nixpkgs || exit 1
 
 ATTRS=(
     # All of the new fetchCargo packages
-    broot fido2luks gitAndTools.git-workspace hexdino mdsh nix-du tre-command wagyu
+    broot
+    fido2luks
+    gitAndTools.git-workspace
+    hexdino
+    mdsh
+    nix-du
+    tre-command
+    wagyu
     # Plus a spot-check of older ones
-    cargo rustc rx ripgrep exa
+    cargo
+    exa
+    ripgrep
+    rustc
+    rx
+    # These ones have some special inherit cargoSha256 abstraction to note
+    parity
+    tree-sitter
 )
 
 # Re-run the fix-rust-p2 script and verify no hash changes
