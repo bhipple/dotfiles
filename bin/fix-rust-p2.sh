@@ -5,6 +5,13 @@ set -euo pipefail
 cd ~/src/nixpkgs || exit 1
 git checkout -f feature/fetchcargo-tar-gz
 
+# We could write a really smart sed, but it'd get lost in the diff for code
+# review. Instead, send a small PR to parity and tree-sitter that update them to
+# the new cargo fetcher first, prior to doing this.
+for f in pkgs/applications/blockchains/parity/default.nix pkgs/development/tools/parsing/tree-sitter/default.nix; do
+    sed -i '/^  inherit cargoSha256;/a  # Delete this on next update\n  legacyCargoFetcher = true;\n' $f
+done
+
 fix() {
     sed -i 's|^, legacyCargoFetcher.*|, legacyCargoFetcher ? false|' pkgs/build-support/rust/default.nix
 

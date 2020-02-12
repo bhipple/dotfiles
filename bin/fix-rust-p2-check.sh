@@ -19,7 +19,7 @@ ATTRS=(
     rustc
     rx
     # These ones have some special inherit cargoSha256 abstraction to note
-    parity
+    # parity FIXME
     tree-sitter
 )
 
