@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 cd ~/src/nixpkgs || exit 1
+git checkout -f master || true
+git clean -ffdx
 
 ATTRS=(
-    # All of the new fetchCargo packages
+    # The fetchCargo packages that were already using the new implementation
     broot
     fido2luks
     gitAndTools.git-workspace
@@ -12,21 +14,21 @@ ATTRS=(
     nix-du
     tre-command
     wagyu
-    # Plus a spot-check of older ones
+    # Plus a spot-check of ones using the old implementation
     cargo
     exa
+    nix-index
     ripgrep
     rustc
     rx
-    # These ones have some special inherit cargoSha256 abstraction to note
-    # parity FIXME
+    termplay
+    # These ones have some special conditions to note accounted for in the sed
+    ja2-stracciatella
+    parity
     tree-sitter
 )
 
 # Re-run the fix-rust-p2 script and verify no hash changes
-rm -rf old new
-rm -f result* || true
-git checkout -f feature/fetchcargo-tar-gz || true
 mkdir -p old new
 nix build -L -f . ${ATTRS[@]}
 
