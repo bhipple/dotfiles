@@ -26,7 +26,10 @@ create_ssh() {
 nix_install() {
     if ! [ -d ~/src/nixpkgs ]; then
         mkdir -p ~/src
-        (cd ~/src && git clone https://github.com/NixOS/nixpkgs)
+        cd ~/src
+        git clone https://github.com/NixOS/nixpkgs
+        git remote add bhipple https://github.com/bhipple/nixpkgs
+        git fetch --all
     fi
 
     if ! [ -d /nix ]; then
@@ -51,10 +54,8 @@ nix_install() {
 
     # TODO: Crazy hack until I figure out WTF to do here
     if [ -n "$INSTALL_ALL" ]; then
-        (
-            cd ~/src/nixpkgs
-            nix-env -f . -iA spacemacs
-        )
+        cd ~/src/nixpkgs
+        nix-env -f . -iA spacemacs
     fi
 }
 
