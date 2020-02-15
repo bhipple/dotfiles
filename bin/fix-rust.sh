@@ -25,7 +25,7 @@ main() {
     sed -i 's|cargoSha256.*|cargoSha256 = "0000000000000000000000000000000000000000000000000000";|' $FNAME;
     nix-build -A $ATTR 2>&1 | tee /tmp/nix-rust-logfile-$ATTR || true
     actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile-$ATTR | cut -d':' -f3-)
-    echo "Build of $ATTR failed; cargoSha256 should be $actual"
+    echo "Build of $ATTR determined that cargoSha256 should be $actual"
     sed -i "s|cargoSha256.*|cargoSha256 = \"$actual\";|" $FNAME
 
     section "Rebuilding with updated hash, expecting a pass:"
