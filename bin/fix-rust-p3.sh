@@ -12,7 +12,7 @@ git diff
 
 # Covers almost all of them, fortunately
 HAPPY="""\
-$ATTR: upgrade cargo fetcher implementation and cargoSha256
+$ATTR: upgrade cargo fetcher and cargoSha256
 
 Infra upgrade as part of #79975; no functional change expected.
 """
@@ -21,10 +21,12 @@ Infra upgrade as part of #79975; no functional change expected.
 # Fortunately, they're broken on the "legacy" implementation only, so we can
 # just upgrade.
 SAD="""\
-$ATTR: fix build by migrating off legacy fetchCargo implementation
+$ATTR: fix build by migrating off legacy fetchCargo
 
 Currently broken; see #79975 for details. Would also be fixed by #80153
 eventually, but since we want to upgrade either way we might as well do so now.
+
+https://https://hydra.nixos.org/job/nixpkgs/trunk/$ATTR.x86_64-linux
 """
 
 git commit -am"$HAPPY"
