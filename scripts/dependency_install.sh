@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+if hostname | grep -qE "^brh"; then
+    INSTALL_ALL=1
+fi
+
 ##########################################
 # Change shell to zsh, if not already done
 #
@@ -38,23 +42,27 @@ nix_install() {
     CHANNEL="nixos"
     ATTRS="$CHANNEL.minEnv $CHANNEL.pyEnv"
 
-    if hostname | grep -qE "^brh"; then
+    if [ -n "$INSTALL_ALL" ]; then
         # Also install plaid2qif from my nix user repo
         ATTRS="$ATTRS $CHANNEL.bigEnv $CHANNEL.nur.repos.bhipple.plaid2qif"
     fi
 
-    (set -x; nix-env -j8 -k -riA $ATTRS)
+    (set -x; nix-env -j$(nproc) -k -riA $ATTRS)
 
     # TODO: Crazy hack until I figure out WTF to do here
-    (
-        cd ~/src/nixpkgs
-        nix-env -f . -iA spacemacs
-    )
+    if [ -n "$INSTALL_ALL" ]; then
+        (
+            cd ~/src/nixpkgs
+            nix-env -f . -iA spacemacs
+        )
+    fi
 }
 
 # See here for list of docsets:
 # https://kapeli.com/dash#docsets
 dasht_setup() {
+    if [ -z "$INSTALL_ALL" ]; then return; fi
+
     dasht-docsets-install \
         "^Bash$" \
         "^Boost$" \
