@@ -4,7 +4,7 @@ ATTR=$1
 
 cd ~/src/nixpkgs || exit 1
 git fetch origin
-git checkout -b u/fix-$ATTR || git checkout u/fix-$ATTR
+git checkout -b u/rust-cargo-$ATTR || git checkout u/rust-cargo-$ATTR
 git reset --hard origin/master
 
 fix-rust.sh $ATTR
