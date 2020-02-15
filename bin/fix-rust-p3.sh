@@ -26,7 +26,7 @@ $ATTR: fix build by migrating off legacy fetchCargo
 Currently broken; see #79975 for details. Would also be fixed by #80153
 eventually, but since we want to upgrade either way we might as well do so now.
 
-https://https://hydra.nixos.org/job/nixpkgs/trunk/$ATTR.x86_64-linux
+https://hydra.nixos.org/job/nixpkgs/trunk/$ATTR.x86_64-linux
 """
 
 git commit -am"$HAPPY"
