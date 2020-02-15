@@ -6,7 +6,6 @@ in {
   minEnv = super.hiPrio (super.buildEnv {
     name = "minEnv";
     paths = [
-      self.bashInteractive
       self.bat
       self.bc
       self.coreutils
@@ -16,19 +15,13 @@ in {
       self.file
       self.fzf
       self.git-crypt
-      self.gitAndTools.hub
-      self.global
       self.gnused
       self.gnutar
       self.htop
       self.jq
-      self.ledger
-      self.nixpkgs-fmt
-      self.nox
       self.par
       self.pass
       self.pinentry
-      self.procps
       self.ripgrep
       self.rlwrap
       self.tmux
@@ -38,8 +31,8 @@ in {
       self.tmuxPlugins.yank
       self.tree
       self.unzip
-      self.uxterm
       self.wget
+      self.xterm
       self.zsh
     ];
   });
@@ -58,6 +51,7 @@ in {
       self.dasht
       self.direnv
       self.firefox
+      self.gitAndTools.hub
       self.gnumake
       self.gnupg
       self.gnutls
@@ -65,10 +59,12 @@ in {
       self.icu
       self.imagemagick
       self.irssi
+      self.ledger
       self.lftp
       self.mupdf
       self.nethogs
       self.nixops
+      self.nixpkgs-fmt
       self.pandoc
       self.pdsh
       self.shellcheck
@@ -95,9 +91,7 @@ in {
     pyflakes
     pyls-isort
     pytest
-    pytest-mock
     python-language-server
-    setuptools
     yamllint
     yapf
   ]));
