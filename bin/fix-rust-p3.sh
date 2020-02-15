@@ -30,10 +30,15 @@ eventually, but since we want to upgrade either way we might as well do so now.
 git commit -am"$HAPPY"
 #git commit -am"$SAD"
 
+################################################################################
+# Auto-PR via hub
 git push $USER
 rm -f hub-log
 hub pull-request | tee hub-log
 
+PR=$(grep nixpkgs hub-log | sed 's|.*pull/||')
+TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $NF}')
+
 # Tell ofBorg to build it!
-# curl -s -H "Authorization: token $TOKEN" -XPOST \
-#     -d "{\"body\": \"@grahamcofborg build $ATTR\"} https://api.github.com/repos/NixOS/nixpkgs/issues/$PR/comments"
+curl -s -H "Authorization: token $TOKEN" -XPOST \
+    -d "{\"body\": \"@grahamcofborg build $ATTR\"}" https://api.github.com/repos/NixOS/nixpkgs/issues/$PR/comments
