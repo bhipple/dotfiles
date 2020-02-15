@@ -3,6 +3,8 @@ set -eo pipefail
 
 # Simple script to check nix attrs for build status on Hydra
 while [ -n "$1" ]; do
-    chromium https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux
+    chromium https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux >/dev/null 2&>1
+    res=$(curl -s https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux  | rg -o 'title="[A-Za-z]+"' | sed 's|title=||' | sed 's|"||g' | head -1)
+    echo "Last status of $1 = $res"
     shift
 done
