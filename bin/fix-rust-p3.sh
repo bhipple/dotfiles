@@ -36,7 +36,7 @@ git commit -am"$HAPPY"
 # Auto-PR via hub
 git push $USER
 rm -f hub-log
-hub pull-request | tee hub-log
+hub pull-request --no-edit | tee hub-log
 
 PR=$(grep nixpkgs hub-log | sed 's|.*pull/||')
 TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $NF}')

@@ -19,6 +19,11 @@ section() {
 }
 
 main() {
+    if ! grep -q "Delete this on next update" $FNAME; then
+        echo "Did not find what I was looking for; probably already done?"
+        exit 1
+    fi
+
     sed -i '/.*Delete this on next update.*/,/^$/d' $FNAME
 
     section "Nuking cargoSha256 reference for $FNAME, then rebuilding"
