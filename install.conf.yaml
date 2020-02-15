@@ -14,8 +14,6 @@
     ~/.bash_profile:
         force: true
         path: bash_profile
-    ~/.config/alacritty:
-          path: config/alacritty/
     ~/.config/nixpkgs:
           path: config/nixpkgs/
     ~/.config/pycodestyle:
