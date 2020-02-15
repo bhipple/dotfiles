@@ -1,14 +1,13 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-# Helper script for migrating a NixPkgs Rust pkg to the new cargoSha256 verification.
+# Helper script for migrating a NixPkgs Rust pkg to the new cargoSha256
+# verification. Run from the root of a NixPkgs git checkout.
 if [ -z "$1" ]; then
     echo "USAGE: $0 <attribute>"
     echo "EXAMPLE: $0 ripgrep"
     exit 1
 fi
-
-cd ~/src/nixpkgs || exit 1
 
 ATTR=$1
 FNAME=$(EDITOR=ls nix edit -f . $ATTR)
@@ -20,10 +19,7 @@ section() {
 }
 
 main() {
-    if ! grep -q legacyCargoFetcher $FNAME; then
-        echo "Need to add legacyCargoFetcher = false; to $FNAME"
-        exit 1
-    fi
+    sed -i '/.*Delete this on next update.*/,/^$/d' $FNAME
 
     section "Nuking cargoSha256 reference for $FNAME, then rebuilding"
     sed -i 's|cargoSha256.*|cargoSha256 = "0000000000000000000000000000000000000000000000000000";|' $FNAME;

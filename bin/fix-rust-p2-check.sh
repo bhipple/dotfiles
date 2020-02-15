@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 cd ~/src/nixpkgs || exit 1
-git checkout -f master || true
 git clean -ffdx
+git checkout -f master
 
 ATTRS=(
     # The fetchCargo packages that were already using the new implementation
@@ -22,10 +22,13 @@ ATTRS=(
     rustc
     rx
     termplay
+    texlab
     # These ones have some special conditions to note accounted for in the sed
     ja2-stracciatella
     parity
     tree-sitter
+    # This one has a cargo build hook that needs write access to the vendor dir!
+    spotifyd
 )
 
 # Re-run the fix-rust-p2 script and verify no hash changes
