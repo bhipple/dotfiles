@@ -1,30 +1,22 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'                              " Matching quotes, parens, and brackets
-Plug 'Shougo/vimproc', { 'do': 'make' }                  " Asynchronous command execution library
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
 Plug 'bhipple/vimux'                                     " Vim and Tmux Integration
-Plug 'bling/vim-airline'                                 " Status line
 Plug 'christoomey/vim-tmux-navigator'                    " Window/Pane switching with Vim and Tmux
-Plug 'derekwyatt/vim-fswitch', { 'for': 'cpp' }          " Fastswitch (cpp/h toggle)
 Plug 'godlygeek/tabular'                                 " Align blocks of text
-Plug 'lambdalisue/neovim-prompt'                         " Prompt library for vim plugins
-Plug 'lambdalisue/vim-gita'                              " Magit for Vim
 Plug 'luochen1990/rainbow'                               " Rainbow parenthesis coloring
 Plug 'mhinz/vim-grepper'                                 " Asynchronous Grep -> QuickFix List
 Plug 'scrooloose/syntastic'                              " Syntax checking
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
-Plug 'tpope/vim-speeddating'                             " Increment and decrement timestamps
 Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
 Plug 'tpope/vim-commentary'                              " Comment/uncomment operator
 Plug 'tpope/vim-fugitive'                                " Git Wrapper
 Plug 'tpope/vim-repeat'                                  " Dot operator for plugins
-Plug 'tpope/vim-rhubarb'                                 " Vim + Git + Hub
 Plug 'tpope/vim-surround'                                " Surrounding text
 Plug 'tpope/vim-tbone'                                   " vim and tmux mappings
 Plug 'tpope/vim-unimpaired'                              " Pairs of keyboard mappings for common tasks
 Plug 'tpope/vim-vinegar'                                 " netrw improvement
-Plug 'vim-scripts/Tabmerge'                              " Merge tabs into splits
 
 call plug#end()
 
