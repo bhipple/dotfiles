@@ -31,4 +31,9 @@ git commit -am"$HAPPY"
 #git commit -am"$SAD"
 
 git push $USER
-hub pull-request
+rm -f hub-log
+hub pull-request | tee hub-log
+
+# Tell ofBorg to build it!
+# curl -s -H "Authorization: token $TOKEN" -XPOST \
+#     -d "{\"body\": \"@grahamcofborg build $ATTR\"} https://api.github.com/repos/NixOS/nixpkgs/issues/$PR/comments"
