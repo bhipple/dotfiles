@@ -31,6 +31,7 @@ in {
       self.tmuxPlugins.yank
       self.tree
       self.unzip
+      self.vim_configurable
       self.wget
       self.xterm
       self.zsh
@@ -74,8 +75,6 @@ in {
       self.truecrypt
       self.upower
       self.vagrant
-      self.vimPlugins.youcompleteme
-      self.vim_configurable
       self.vlc
       self.xclip
       self.xsel
