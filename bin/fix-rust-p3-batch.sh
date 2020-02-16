@@ -6,7 +6,7 @@ git pull origin master
 OPEN=$(curl -s https://github.com/NixOS/nixpkgs/pulls/bhipple)
 
 ATTRS=""
-CANDIDATES=$(rg -l 'Delete this on next' | rg -o '[^/]*/default.nix' | sed 's|/default.nix||' | head -20)
+CANDIDATES=$(rg -l 'Delete this on next' | rg -o '[^/]*/default.nix' | sed 's|/default.nix||' | head -50)
 for candidate in $CANDIDATES; do
     if echo "$OPEN" | grep -q "$candidate: "; then
         echo "PR already open for $candidate"
@@ -27,3 +27,5 @@ for attr in $ATTRS; do
     fix-rust-p3.sh $attr || echo "$attr failed, go take a look!"
     echo "[$(date)] Failed to build $attr" >> failure-log
 done
+
+echo "DONE"
