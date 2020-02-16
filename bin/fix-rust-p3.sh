@@ -19,7 +19,7 @@ git commit -am"$MSG"
 
 ################################################################################
 # Auto-PR via hub
-git push $USER
+git push -f $USER
 rm -f hub-log
 hub pull-request --no-edit | tee hub-log
 
