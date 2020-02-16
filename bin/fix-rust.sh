@@ -29,7 +29,7 @@ main() {
     section "Nuking cargoSha256 reference for $FNAME, then rebuilding"
     sed -i 's|cargoSha256.*|cargoSha256 = "0000000000000000000000000000000000000000000000000000";|' $FNAME;
     nix-build -A $ATTR 2>&1 | tee /tmp/nix-rust-logfile-$ATTR || true
-    actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile-$ATTR | cut -d':' -f3-)
+    actual=$(grep 'got:.*sha256:.*' /tmp/nix-rust-logfile-$ATTR | cut -d':' -f3- | tail -1)
     echo "Build of $ATTR determined that cargoSha256 should be $actual"
     sed -i "s|cargoSha256.*|cargoSha256 = \"$actual\";|" $FNAME
 

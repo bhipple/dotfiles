@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euxo pipefail
-cd ~/src/nixpkgs || exit 1
 git clean -ffdx
 git checkout -f master
 

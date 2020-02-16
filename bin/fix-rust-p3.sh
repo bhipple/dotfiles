@@ -2,7 +2,6 @@
 set -euo pipefail
 ATTR=$1
 
-cd ~/src/nixpkgs || exit 1
 git fetch origin
 git checkout -b u/rust-cargo-$ATTR || git checkout u/rust-cargo-$ATTR
 git reset --hard origin/master
@@ -10,27 +9,13 @@ git reset --hard origin/master
 fix-rust.sh $ATTR
 git diff
 
-# Covers almost all of them, fortunately
-HAPPY="""\
+MSG="""\
 $ATTR: upgrade cargo fetcher and cargoSha256
 
 Infra upgrade as part of #79975; no functional change expected.
 """
 
-# Missed a few, alas :(
-# Fortunately, they're broken on the "legacy" implementation only, so we can
-# just upgrade.
-SAD="""\
-$ATTR: fix build by migrating off legacy fetchCargo
-
-Currently broken; see #79975 for details. Would also be fixed by #80153
-eventually, but since we want to upgrade either way we might as well do so now.
-
-https://hydra.nixos.org/job/nixpkgs/trunk/$ATTR.x86_64-linux
-"""
-
-git commit -am"$HAPPY"
-#git commit -am"$SAD"
+git commit -am"$MSG"
 
 ################################################################################
 # Auto-PR via hub

@@ -2,7 +2,6 @@
 set -euo pipefail
 # Once staging hits master, run this and send the treewide PR to master. This
 # should not cause any hash changes.
-cd ~/src/nixpkgs || exit 1
 
 COMMENT="Delete this on next update; see #79975 for details"
 
