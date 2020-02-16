@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
+git checkout -f master
+git pull origin master
 
-SELECTED=$(rg -l 'Delete this on next' | rg -o '[^/]*/default.nix' | sed 's|/default.nix||'  | head -100 | tail -80 | head -20)
-echo "Processing $SELECTED"
+OPEN=$(curl -s https://github.com/NixOS/nixpkgs/pulls/bhipple)
 
-git checkout -- .
-git checkout -b upgrade/rust-batch || git checkout upgrade/rust-batch
-
-for ATTR in $SELECTED; do
-    git checkout -- .
-    fix-rust.sh $ATTR || continue
-    git diff --exit-code || continue
-
-MSG="""\
-$ATTR: upgrade cargo fetcher and cargoSha256
-
-Infra upgrade as part of #79975; no functional change expected.
-"""
-
-    git commit -am"$MSG"
-
-    git show
+ATTRS=""
+CANDIDATES=$(rg -l 'Delete this on next' | rg -o '[^/]*/default.nix' | sed 's|/default.nix||' | head -10)
+for candidate in $CANDIDATES; do
+    if echo "$OPEN" | grep -q "$candidate: "; then
+        echo "PR already open for $candidate"
+    elif hydra $candidate | grep Succeeded; then
+        echo "Added $candidate to list"
+        ATTRS="$ATTRS $candidate"
+    else
+        echo "$candidate is failing on master or unable to be found on Hydra; skipping for now"
+    fi
 done
+
+echo "Processing $ATTRS"
+
+# for attr in $ATTRS; do
+#     fix-rust-p3.sh  $attr
+# done
