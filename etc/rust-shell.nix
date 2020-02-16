@@ -7,9 +7,9 @@ stdenv.mkDerivation {
     cargo
   ];
   buildInputs = [
-    # Example Run-time Additional Dependencies
-    rustfmt
     openssl
+    pkg-config
+    rustfmt
   ];
 
   RUST_BACKTRACE = 1;
