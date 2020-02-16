@@ -20,6 +20,6 @@ done
 
 echo "Processing $ATTRS"
 
-# for attr in $ATTRS; do
-#     fix-rust-p3.sh  $attr
-# done
+for attr in $ATTRS; do
+    fix-rust-p3.sh  $attr
+done
