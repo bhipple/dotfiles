@@ -1,10 +1,16 @@
 #!/usr/bin/env zsh
-set -eo pipefail
-
 # Simple script to check nix attrs for build status on Hydra
+
+# Chain together with something like this to find all the Rust failures:
+# rg -l 'Delete this on next' | rg -o '[^/]*/default.nix' | sed 's|/default.nix||' | xargs hydra
 while [ -n "$1" ]; do
-    chromium https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux >/dev/null 2&>1
+    printf "Last status of $1 = "
     res=$(curl -s https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux  | rg -o 'title="[A-Za-z]+"' | sed 's|title=||' | sed 's|"||g' | head -1)
-    echo "Last status of $1 = $res"
+    echo "$res"
+
+    if [ "$res" = "Failed" ]; then
+        chromium https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux >/dev/null 2&>1
+    fi
+
     shift
 done
