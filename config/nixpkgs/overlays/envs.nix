@@ -46,12 +46,11 @@ in {
       self.aspell
       self.autoflake
       self.bind
-      self.calibre
       self.chromium
       self.cmake
       self.dasht
       self.direnv
-      self.firefox
+      self.discord
       self.gitAndTools.hub
       self.gnumake
       self.gnupg
