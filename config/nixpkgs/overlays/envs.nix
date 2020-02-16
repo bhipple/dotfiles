@@ -60,11 +60,10 @@ in {
       self.imagemagick
       self.irssi
       self.ledger
-      self.lftp
       self.mupdf
-      self.nethogs
       self.nixops
       self.nixpkgs-fmt
+      self.nload
       self.pandoc
       self.pdsh
       self.shellcheck
