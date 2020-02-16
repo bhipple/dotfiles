@@ -22,8 +22,11 @@ git commit -am"$MSG"
 git push -f $USER
 rm -f hub-log
 
-# TODO: Before running again, rate limit this with something like:
-# while [ $(curl https://events.nix.ci/stats.php | jq -r .evaluator.messages.waiting) -gt 1 ]; do sleep 30; done
+while [ $(curl https://events.nix.ci/stats.php | jq -r .evaluator.messages.waiting) -gt 1 ]; do
+    echo "Waiting for the OfBorg queue to die down before submitting another PR"
+    sleep 30
+done
+
 hub pull-request --no-edit | tee hub-log
 
 PR=$(grep nixpkgs hub-log | sed 's|.*pull/||')
