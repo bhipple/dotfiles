@@ -35,6 +35,7 @@ main() {
 
     section "Rebuilding with updated hash, expecting a pass:"
     nix-build -A $ATTR || exit 1
+    ~/git/nixpkgs-review/result/bin/nixpkgs-review wip --batch
 
     section "Finished successfully!"
 }

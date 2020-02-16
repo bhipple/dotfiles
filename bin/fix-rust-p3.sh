@@ -12,7 +12,7 @@ git diff
 MSG="""\
 $ATTR: upgrade cargo fetcher and cargoSha256
 
-Infra upgrade as part of #79975; no functional change expected.
+Infra upgrade as part of #79975; ran \`nixpkgs-review wip\` successfully.
 """
 
 git commit -am"$MSG"
