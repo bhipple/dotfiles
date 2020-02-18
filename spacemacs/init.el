@@ -78,8 +78,7 @@ This function should only modify configuration layer settings."
      graphviz
      groovy
      gtags
-     (haskell :variables
-              haskell-completion-backend 'ghc-mod)
+     haskell
      helm
      html
      (ibuffer :variables
