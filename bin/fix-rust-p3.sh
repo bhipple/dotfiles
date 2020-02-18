@@ -23,7 +23,7 @@ git push -f $USER
 rm -f hub-log
 
 while [ $(curl https://events.nix.ci/stats.php | jq -r .evaluator.messages.waiting) -gt 1 ]; do
-    echo "Waiting for the OfBorg queue to die down before submitting another PR"
+    echo "Waiting for the OfBorg queue to die down before submitting another PR" | tee -a wait-log.txt
     sleep 30
 done
 
