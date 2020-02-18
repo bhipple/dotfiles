@@ -1,13 +1,20 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # Simple script to check nix attrs for build status on Hydra
-
-# Chain together with something like this to find all the Rust failures:
-# rg -l 'Delete this on next' | rg -o '[^/]*/default.nix' | sed 's|/default.nix||' | xargs hydra
 while [ -n "$1" ]; do
-    url="https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux"
-    echo $url
-    printf "Last status of $1 = "
+    nixos_url="https://hydra.nixos.org/job/nixos/release-20.03/nixpkgs.$1.x86_64-linux"
+    master_url="https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux"
+    # NixOS and unstable master channels have slightly different syntax; swap here
+    #url="$master_url"
+    url="$nixos_url"
+    channel=$(echo "$url" | sed 's|.*/job/||' | sed 's|/.*||')
+
+    printf "Last status of $1 on $channel = "
     res=$(curl -s "$url"  | rg -o 'title="[A-Za-z]+"' | sed 's|title=||' | sed 's|"||g' | head -1)
     echo "$res"
+
+    if [ "$res" = "Failed" ]; then
+        xdg-open "$url" >/dev/null 2&>1
+    fi
+
     shift
 done
