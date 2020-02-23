@@ -10,8 +10,7 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # oh-my-zsh plugins
-    zgen oh-my-zsh plugins/wd
-    zgen oh-my-zsh plugins/web-search
+    zgen oh-my-zsh plugins/history
 
     # Github plugins
     zgen load djui/alias-tips
