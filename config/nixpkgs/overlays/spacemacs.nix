@@ -6,60 +6,30 @@ self: super: let
 
     depsBuildBuild = [ self.buildPackages.stdenv.cc ];
     nativeBuildInputs = [ self.libiberty ];
+    buildInputs = with self; [
+      gmp mpfr libmpc libelf gcc
+    ];
 
     configurePhase = ''
       mkdir build && cd build
-      ../configure --enable-languages=jit --disable-bootstrap --enable-host-shared
+      ../configure --enable-languages=jit --disable-bootstrap --enable-host-shared --disable-multilib
     '';
-  };
 
-  libjit = super.stdenv.mkDerivation rec {
-    pname = "libjit";
-    version = "0.1.4";
-
-    src = super.fetchgit {
-      url = "https://git.savannah.gnu.org/git/libjit.git";
-      rev = "v${version}";
-      sha256 = "14pwr5dl5157pr3c8xrzpdl9acxdgxkddrmhd2cplkzgbygxyjll";
-    };
-
-    buildInputs = [
-      super.autoconf
-      super.automake
-      super.flex
-      super.libtool
-      super.pkgconfig
-      super.texinfo
-      super.yacc
-    ];
-    preConfigure = "./bootstrap";
+    hardeningDisable = [ "format" ];
   };
 
   gccemacs = (super.emacs.override { srcRepo = true; }).overrideAttrs(o: rec {
     name = "gccemacs";
     version = "27";
-    src = super.fetchFromGitLab {
-      owner = "koral";
-      repo = "gccemacs";
-      # https://gitlab.com/koral/gccemacs/commits/dev
-      rev = "6795fc4db37687e654981a7656eff41ae22cf9dc";
-      sha256 = "03wc5068yj63i1a3qcdqkf5gv1vzqhp146x8mx887hyljkx6iqzj";
-    };
-    patches = [ ];
-    buildInputs = o.buildInputs ++ [ self.jansson self.libgcc self.gcc ];
-  });
-
-  emacs-jit = (super.emacs.override { srcRepo = true; }).overrideAttrs(o: rec {
-    name = "emacs-27-jit";
-    version = "27";
     src = super.fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
-      rev = "a25a9896d51bbf340675713bc45d15e3846fb816";
-      sha256 = "0qlnmzj45qsj4cs4lahvjm67zc27g0kiy3p80611srfmkvw8q6yy";
+      rev = "3130690882d187a5d6b757fd109c60c84009d973";
+      sha256 = "0gk62qq4s1qhssqq0hxdsgmnmnivq8ypqmp770jrmbd96ahd5h8v";
     };
     patches = [ ];
-    buildInputs = o.buildInputs ++ [ self.jansson libjit ];
+    buildInputs = o.buildInputs ++ [ self.jansson self.libgccjit ];
+    configureFlags = o.configureFlags ++ [ "--with-nativecomp" ];
   });
 
   myEmacsPkgs = ep: with ep.melpaPackages; [
@@ -237,6 +207,7 @@ self: super: let
     flyspell-correct-helm
     fringe-helper
     fuzzy
+    gcmh
     ggtags
     gh-md
     ghc
@@ -518,7 +489,6 @@ self: super: let
 
     # Rust Tools
     self.cargo
-    self.racer
     self.rustc
     self.rustfmt
 
@@ -531,7 +501,6 @@ self: super: let
       pkgs.hasktags
       pkgs.hlint
       pkgs.hoogle
-      pkgs.stylish-haskell
       # Market as broken upstream
       # pkgs.ghc-mod
       # pkgs.intero
@@ -540,12 +509,12 @@ self: super: let
 
 in {
 
-  inherit emacs-jit gccemacs libjit libgccjit;
+  inherit gccemacs libgccjit;
 
   # Build a spacemacs with the pinned overlay import
   spacemacs = self.emacsWithPackagesFromUsePackage {
     config = "";
-    package = emacs-jit;
+    package = self.emacsGit;
     extraEmacsPackages = ep: ((myEmacsPkgs ep) ++ myEmacsDeps);
   };
 
