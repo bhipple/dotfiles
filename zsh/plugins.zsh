@@ -10,7 +10,6 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # oh-my-zsh plugins
-    zgen oh-my-zsh plugins/command-not-found
     zgen oh-my-zsh plugins/wd
     zgen oh-my-zsh plugins/web-search
 
