@@ -77,7 +77,6 @@ This function should only modify configuration layer settings."
      go
      graphviz
      groovy
-     gtags
      haskell
      helm
      html
