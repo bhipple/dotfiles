@@ -81,10 +81,6 @@
 ; See https://github.com/syl20bnr/spacemacs/issues/10779
 (setq term-char-mode-point-at-process-mark nil)
 
-;; Disable savehist-mode to improve performance and potentially avoid crashes:
-;; https://github.com/syl20bnr/spacemacs/issues/8462
-(savehist-mode nil)
-
 ;; Disables smartparens while still keeping it around for Spacemacs to use
 ;; Also does not disable it for {}
 ;; TODO: This doesn't work and causes initialization errors?
@@ -104,6 +100,21 @@
   (when (windowp (active-minibuffer-window))
     (evil-ex-search-exit)))
 (add-hook 'mouse-leave-buffer-hook #'kill-minibuffer)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Performance / Garbage Collector Optimizations
+;; Much of this logic is deferred to spacemancs and gcmh:
+;; https://gitlab.com/koral/gcmh/-/tree/master
+;; Show when the garbage collector runs
+(setq gcmh-verbose t)
+
+;; Per suggestion on lsp-mode, increase read-process output
+;; https://github.com/emacs-lsp/lsp-mode/#performance
+(setq read-process-output-max (* 4 1024 1024)) ;; 4mb
+
+;; Disable savehist-mode to improve performance and potentially avoid crashes:
+;; https://github.com/syl20bnr/spacemacs/issues/8462
+(savehist-mode nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Elfeed Configuration
