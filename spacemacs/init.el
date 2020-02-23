@@ -36,7 +36,6 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
-     ansible
      asciidoc
      (auto-completion :variables
                       ; Try to keep the auto-completion snappy!
@@ -63,7 +62,6 @@ This function should only modify configuration layer settings."
      better-defaults
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
-     confluence
      copy-as-format
      csv
      (dash :variables

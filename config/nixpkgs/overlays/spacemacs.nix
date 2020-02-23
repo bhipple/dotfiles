@@ -484,6 +484,11 @@ self: super: let
   # Many emacs packages may pull in dependencies on things they need
   # automatically, but for those that don't, here are the requisite NixPkgs.
   myEmacsDeps = [
+    # General tools
+    self.direnv   # For direnv-mode
+    self.ripgrep  # For helm
+    self.sqlite   # For dash-docsets
+
     # Python Tools
     self.autoflake
 
@@ -491,9 +496,6 @@ self: super: let
     self.cargo
     self.rustc
     self.rustfmt
-
-    # Needed by dash-docsets
-    self.sqlite
 
     # Haskell Tools
     (self.haskellPackages.ghcWithPackages (pkgs: [
