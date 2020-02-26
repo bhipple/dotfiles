@@ -1,6 +1,6 @@
 ;;; packages.el --- brh-general layer packages file for Spacemacs.
 ;;
-(defconst brh-general-packages '(direnv gcmh nix-update s solarized-theme tmux-pane xclip))
+(defconst brh-general-packages '(direnv gcmh nix-update s solarized-theme tmux-pane))
 
 (defun brh-general/init-direnv ()
   (use-package direnv
@@ -23,7 +23,7 @@
 (defun brh-general/init-tmux-pane ()
   (use-package tmux-pane))
 
-(defun brh-general/init-xclip ()
-  (use-package xclip
-   :init
-   (when (not (display-graphic-p)) (xclip-mode))))
+;; (defun brh-general/init-xclip ()
+;;   (use-package xclip
+;;    :init
+;;    (when (not (display-graphic-p)) (xclip-mode))))

@@ -162,9 +162,18 @@ This function should only modify configuration layer settings."
    dotspacemacs-excluded-packages '(
        anaconda-mode
        company-anaconda
+       magit-svn
        ;; Seems to have the behavior described here:
        ;; https://github.com/syl20bnr/spacemacs/issues/11582
        haskell-snippets
+       ;; Don't care about treemacs at all
+       lsp-treemacs
+       treemacs
+       treemacs-evil
+       treemacs-icons-dired
+       treemacs-magit
+       treemacs-persp
+       treemacs-projectile
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
