@@ -12,7 +12,7 @@ git diff
 MSG="""\
 $ATTR: upgrade cargo fetcher and cargoSha256
 
-Infra upgrade as part of #79975; ran \`nixpkgs-review wip\` successfully.
+Infra upgrade as part of #79975; no functional change expected.
 """
 
 git commit -am"$MSG"
@@ -27,11 +27,4 @@ while [ $(curl -s https://events.nix.ci/stats.php | jq -r .evaluator.messages.wa
     sleep 30
 done
 
-hub pull-request --no-edit | tee hub-log
-
-# Tell ofBorg to build it!
-# Per comment from Graham C, this is unnecessary
-# PR=$(grep nixpkgs hub-log | sed 's|.*pull/||')
-# TOKEN=$(grep oauth_token ~/.config/hub | awk '{print $NF}')
-# curl -s -H "Authorization: token $TOKEN" -XPOST \
-#     -d "{\"body\": \"@grahamcofborg build $ATTR\"}" https://api.github.com/repos/NixOS/nixpkgs/issues/$PR/comments
+hub pull-request --no-edit
