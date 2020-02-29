@@ -24,8 +24,10 @@ done
 echo "Processing $ATTRS"
 
 for attr in $ATTRS; do
-    fix-rust-p3.sh $attr || echo "$attr failed, go take a look!"
-    echo "[$(date)] Failed to build $attr" >> failure-log
+    if ! fix-rust-p3.sh $attr; then
+        echo "$attr failed, go take a look!"
+        echo "[$(date)] Failed to build $attr" >> failure-log
+    fi
 done
 
 echo "DONE"

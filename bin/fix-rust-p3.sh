@@ -9,13 +9,14 @@ git reset --hard origin/master
 fix-rust.sh $ATTR
 git diff
 
+SUBJECT="$ATTR: upgrade cargo fetcher and cargoSha256"
 MSG="""\
-$ATTR: upgrade cargo fetcher and cargoSha256
+$SUBJECT
 
 Infra upgrade as part of #79975; no functional change expected.
 """
 
-git commit -am"$MSG"
+git commit -am"$SUBJECT"
 
 ################################################################################
 # Auto-PR via hub
@@ -27,4 +28,4 @@ while [ $(curl -s https://events.nix.ci/stats.php | jq -r .evaluator.messages.wa
     sleep 30
 done
 
-hub pull-request --no-edit
+hub pull-request -m"$MSG" --no-edit
