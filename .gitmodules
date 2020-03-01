@@ -18,3 +18,6 @@
 		path = zgen
 		url = https://github.com/tarjoilija/zgen
 		branch = master
+[submodule "nur-packages"]
+	path = nur-packages
+	url = https://github.com/bhipple/nur-packages
