@@ -12,7 +12,14 @@ self: super: let
 
     configurePhase = ''
       mkdir build && cd build
-      ../configure --enable-languages=jit --disable-bootstrap --enable-host-shared --disable-multilib
+      mkdir -p gcc/include
+
+      ../configure \
+        --disable-fixincludes \
+        --enable-languages=jit \
+        --disable-bootstrap \
+        --enable-host-shared \
+        --disable-multilib
     '';
 
     hardeningDisable = [ "format" ];

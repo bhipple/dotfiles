@@ -1,23 +1,23 @@
 [submodule "dotbot"]
-		path = dotbot
-		url = https://github.com/anishathalye/dotbot
-		branch = master
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+	branch = master
 [submodule "org-html-themes"]
-		path = org-html-themes
-		url = https://github.com/fniessen/org-html-themes
-		branch = master
+	path = org-html-themes
+	url = https://github.com/fniessen/org-html-themes
+	branch = master
 [submodule "reveal.js"]
-		path = reveal.js
-		url = https://github.com/hakimel/reveal.js
-		branch = master
+	path = reveal.js
+	url = https://github.com/hakimel/reveal.js
+	branch = master
 [submodule "spacemacs"]
-		path = spacemacs/emacs.d
-		url = https://github.com/syl20bnr/spacemacs
-		branch = develop
+	path = spacemacs/emacs.d
+	url = https://github.com/syl20bnr/spacemacs
+	branch = develop
 [submodule "zgen"]
-		path = zgen
-		url = https://github.com/tarjoilija/zgen
-		branch = master
+	path = zgen
+	url = https://github.com/tarjoilija/zgen
+	branch = master
 [submodule "nur-packages"]
 	path = nur-packages
 	url = https://github.com/bhipple/nur-packages
