@@ -36,6 +36,7 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
+     ansible ; needed for yaml-mode
      asciidoc
      (auto-completion :variables
                       ; Try to keep the auto-completion snappy!
@@ -131,6 +132,7 @@ This function should only modify configuration layer settings."
      version-control
      vimscript
      vinegar
+     xclipboard
      yaml
 
      ;; Personal layers
