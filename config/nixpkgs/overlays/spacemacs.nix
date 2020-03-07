@@ -1,44 +1,5 @@
 self: super: let
 
-  libgccjit = super.stdenv.mkDerivation rec {
-    pname = "libgccjit";
-    inherit (self.gcc.cc) src version;
-
-    depsBuildBuild = [ self.buildPackages.stdenv.cc ];
-    nativeBuildInputs = [ self.libiberty ];
-    buildInputs = with self; [
-      gmp mpfr libmpc libelf gcc
-    ];
-
-    configurePhase = ''
-      mkdir build && cd build
-      mkdir -p gcc/include
-
-      ../configure \
-        --disable-fixincludes \
-        --enable-languages=jit \
-        --disable-bootstrap \
-        --enable-host-shared \
-        --disable-multilib
-    '';
-
-    hardeningDisable = [ "format" ];
-  };
-
-  gccemacs = (super.emacs.override { srcRepo = true; }).overrideAttrs(o: rec {
-    name = "gccemacs";
-    version = "27";
-    src = super.fetchFromGitHub {
-      owner = "emacs-mirror";
-      repo = "emacs";
-      rev = "3130690882d187a5d6b757fd109c60c84009d973";
-      sha256 = "0gk62qq4s1qhssqq0hxdsgmnmnivq8ypqmp770jrmbd96ahd5h8v";
-    };
-    patches = [ ];
-    buildInputs = o.buildInputs ++ [ self.jansson self.libgccjit ];
-    configureFlags = o.configureFlags ++ [ "--with-nativecomp" ];
-  });
-
   myEmacsPkgs = ep: with ep.melpaPackages; [
     # There's a bug in the current source of evil-escape that causes it to
     # fail to build. We'll patch it out for now and hope it gets fixed in a
@@ -286,7 +247,6 @@ self: super: let
     highlight-indentation
     highlight-numbers
     highlight-parentheses
-    hindent
     hl-todo
     hlint-refactor
     ht
@@ -489,7 +449,9 @@ self: super: let
   ];
 
   # Many emacs packages may pull in dependencies on things they need
-  # automatically, but for those that don't, here are the requisite NixPkgs.
+  # automatically, but for those that don't, here are the requisite NixPkgs. Nix
+  # will wrap these into a buildEnv dir, and then add it to the wrapped emacs'
+  # `exec-path` variable so that they're accessible inside emacs.
   myEmacsDeps = [
     # General tools
     self.direnv   # For direnv-mode
@@ -505,20 +467,10 @@ self: super: let
     self.rustfmt
 
     # Haskell Tools
-    (self.haskellPackages.ghcWithPackages (pkgs: [
-      pkgs.apply-refact
-      pkgs.hasktags
-      pkgs.hlint
-      pkgs.hoogle
-      # Market as broken upstream
-      # pkgs.ghc-mod
-      # pkgs.intero
-    ]))
+    self.selected-hies
   ];
 
 in {
-
-  inherit gccemacs libgccjit;
 
   # Build a spacemacs with the pinned overlay import
   spacemacs = self.emacsWithPackagesFromUsePackage {
