@@ -31,6 +31,6 @@ lint() {
 }
 
 lint "*.hs"  "hlint"
-lint "*.nix" "nixpkgs-fmt"
+#lint "*.nix" "nixpkgs-fmt"
 lint "*.py"  "pyflakes"
 lint "*.sh"  "shellcheck"
