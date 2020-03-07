@@ -465,9 +465,6 @@ self: super: let
     self.cargo
     self.rustc
     self.rustfmt
-
-    # Haskell Tools
-    self.selected-hies
   ];
 
 in {

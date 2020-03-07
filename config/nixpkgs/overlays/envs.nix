@@ -45,6 +45,7 @@ in {
       self.alsaUtils
       self.aspell
       self.autoflake
+      self.selected-hies  # Haskell IDE tools
       self.bind
       self.chromium
       self.cmake
