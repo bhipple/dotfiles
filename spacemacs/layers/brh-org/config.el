@@ -169,6 +169,8 @@
            "* %?\nEntered %u\n")
           ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
+          ("i" "Inbox TODO" entry (file+headline "~/org/me.org" "Inbox")
+           "* TODO [#C] %?\nEntered %u\n")
           ("j" "Journal Entry" entry (file+datetree "~/personal/journal.org")
            (function _brh/org-capture-journal)
            :immediate-finish t
