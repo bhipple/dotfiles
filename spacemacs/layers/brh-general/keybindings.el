@@ -42,6 +42,8 @@
 
 (spacemacs/set-leader-keys
   "dom"  'brh/diff-origin-master
+  "jj"   'dumb-jump-go
+  "jk"   'dumb-jump-back
   "oa"   'org-agenda
   "oba"  'brh/org-agenda-write
   "obgc" 'org-capture-goto-last-stored

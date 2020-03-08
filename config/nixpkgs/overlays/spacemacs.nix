@@ -107,7 +107,6 @@ self: super: let
     dockerfile-mode
     doom-modeline
     dotenv-mode
-    dumb-jump
     eclim
     editorconfig
     eldoc-eval
