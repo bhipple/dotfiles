@@ -72,7 +72,6 @@ in {
       self.source-code-pro
       self.thunderbolt
       self.truecrypt
-      self.upower
       self.vagrant
       self.vlc
       self.xclip
