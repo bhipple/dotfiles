@@ -67,6 +67,7 @@ in {
       self.nload
       self.pandoc
       self.pdsh
+      self.remmina
       self.shellcheck
       self.sloc
       self.source-code-pro
