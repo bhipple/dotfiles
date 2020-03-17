@@ -197,6 +197,7 @@
 
   ;; Default notes file for capture
   (setq org-default-notes-file "~/org/me.org")
+
   ;; Abbreviations for links
   (setq org-link-abbrev-alist '(("gmap" . "http://maps.google.com/maps?q=%s")
                                 ("omap" . "https://www.openstreetmap.org/search?query=%s")))
