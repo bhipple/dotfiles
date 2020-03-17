@@ -1,6 +1,9 @@
 (with-eval-after-load 'org
   ;; Org variable configuration
 
+  ;; Hook to tell if I'm at home or at work, to be re-used by other functions
+  (setq brh/at-work (file-exists-p "~/org/work/work.org"))
+
   ;; Enable keybindings defined below for TODO selection
   (setq org-use-fast-todo-selection t)
 
@@ -163,13 +166,15 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
+  (setq brh/default-org-file (if brh/at-work "~/org/work/work.org" "~/org/me.org"))
+
   (setq org-capture-templates
         ;; Personal templates
         '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
            "* %?\nEntered %u\n")
           ("d" "Deadline Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
-          ("i" "Inbox TODO" entry (file+headline "~/org/me.org" "Inbox")
+          ("i" "Inbox TODO" entry (file+headline brh/default-org-file "Inbox")
            "* TODO [#C] %?\nEntered %u\n")
           ("j" "Journal Entry" entry (file+datetree "~/personal/journal.org")
            (function _brh/org-capture-journal)
@@ -181,19 +186,13 @@
            :immediate-finish t
            :table-line-pos "II+1"
            :jump-to-captured t)
-          ("m" "Someday/Maybe Item" entry (file+headline "~/org/me.org" "Someday / Maybe")
+          ("m" "Someday/Maybe Item" entry (file+headline brh/default-org-file "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
           ("r" "Weekly Review" entry (file "~/org/logs.org")
            (function _brh/org-capture-weekly-review))
           ("s" "Scheduled Item" entry (file+headline "~/org/me.org" "Tasks")
            "* TODO [#C] %?\nSCHEDULED: %^t")
-          ("t" "Standard Todo" entry (file+headline "~/org/me.org" "Tasks")
-           "* TODO [#C] %?\nEntered %u\n")
-
-          ;; Work.org templates
-          ("n" "Work Note" entry (file+headline "~/org/work/work.org" "Work Notes")
-           "* %?\nEntered %u\n")
-          ("w" "Work Someday / Maybe Todo" entry (file+headline "~/org/work/work.org" "Someday / Maybe WORK")
+          ("t" "Standard Todo" entry (file+headline brh/default-org-file "Tasks")
            "* TODO [#C] %?\nEntered %u\n")))
 
   ;; Default notes file for capture

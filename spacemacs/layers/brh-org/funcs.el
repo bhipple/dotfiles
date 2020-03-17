@@ -21,16 +21,16 @@
       (add-to-list 'org-file-list org-file)))))))
 
 (defun brh/smart-agenda ()
-  "Show my work agenda if the work.org file exists, and my home agenda otherwise."
+  "Show my work agenda if at work, and my home agenda otherwise."
   (interactive)
-  (if (file-exists-p "~/org/work/work.org")
+  (if brh/at-work
       (org-agenda nil "wa")
       (org-agenda nil "ha")))
 
 (defun brh/smart-todo ()
-  "Go to work.org if it exists, otherwise me.org"
+  "Go to work.org if at work, otherwise me.org"
   (interactive)
-  (if (file-exists-p "~/org/work/work.org")
+  (if brh/at-work
       (find-file "~/dotfiles_local/notes/work.org")
       (find-file "~/org/me.org")))
 
