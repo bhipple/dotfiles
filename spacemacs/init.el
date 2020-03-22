@@ -73,6 +73,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      finance
      git
+     github
      go
      graphviz
      groovy

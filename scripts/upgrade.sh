@@ -22,7 +22,6 @@ submodules() {
 }
 
 zgen() {
-    rm -f ~/.zgen/init.zsh
     zgen update
 }
 
