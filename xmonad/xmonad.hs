@@ -63,7 +63,7 @@ myStartupHook = do
     spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/Linux-Wallpaper-32.png"
 
     -- Programs to launch
-    spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon ; emc; fi"
+    spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
     spawnOn "1_1" "chromium"
 
 restartCmd :: String
