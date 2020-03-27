@@ -60,7 +60,7 @@ myStartupHook = do
     spawn "xset dpms 1800 2000 3600"
 
     -- Set the wallpaper
-    spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/Linux-Wallpaper-32.png"
+    spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/kinesis-advantage-2.png"
 
     -- Programs to launch
     spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
