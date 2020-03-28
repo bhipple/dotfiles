@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Nix 20.03 backport commit
+# key: nix-backport
+# --
+CC @NixOS/nixos-release-managers
+
+ZHF: #80379
