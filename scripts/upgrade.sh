@@ -21,7 +21,7 @@ submodules() {
     done
 }
 
-zgen() {
+zgen_up() {
     zgen update
 }
 
@@ -30,4 +30,4 @@ zgen() {
 echo "Starting upgrade ..."
 confirm emacs_overlay "Would you like to update the emacs-overlay version?"
 confirm submodules    "Would you like to update the git submodules?"
-confirm zgen          "Would you like to update the zgen zsh plugins?"
+confirm zgen_up       "Would you like to update the zgen zsh plugins?"
