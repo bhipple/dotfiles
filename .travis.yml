@@ -1,8 +1,0 @@
-language: bash
-addons:
-  apt:
-    packages:
-    - hlint
-    - haskell-platform
-script:
-    - hlint bin/vol
