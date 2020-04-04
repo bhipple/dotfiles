@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+set -eo pipefail
+# Script to turn the spot market on or off
+
+if [[ $1 == "on" ]]; then
+    val=true
+else
+    val=false
+fi
+
+echo "********************************************************************************"
+echo "Setting distribute = $val"
+
+sed -i "s|distributedBuilds.*|distributedBuilds = $val;|" /etc/nixos/distribute.nix
+cat /etc/nixos/distribute.nix
+
+echo "********************************************************************************"
+echo "Rebuilding localhost"
+sudo nixos-rebuild switch
+
+echo "********************************************************************************"
+echo "Running NixOps"
+export AWS_ACCESS_KEY=$(grep aws_access_key_id ~/dotfiles_local/aws/credentials | cut -d'=' -f2)
+~/src/nixops/result/bin/nixops deploy --kill-obsolete --allow-reboot
