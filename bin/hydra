@@ -12,6 +12,7 @@ while [ -n "$1" ]; do
         echo "$res"
 
         if [ "$res" = "Failed" ]; then
+            echo "$url"
             xdg-open "$url" >/dev/null 2&>1
         fi
 
