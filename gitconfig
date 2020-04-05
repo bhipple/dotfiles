@@ -131,6 +131,8 @@
     version = 2
 [push]
     default = simple
+[rerere]
+  enabled = true
 
 # Allow local customizations
 [include]
