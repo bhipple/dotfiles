@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 # Script for helping with bumps and upgrades
 . ~/dotfiles/zsh/functions.zsh
+. ~/dotfiles/zsh/plugins.zsh
 
 set -euo pipefail
 
@@ -15,7 +16,7 @@ emacs_overlay() {
 }
 
 submodules() {
-    for sub in $(git submodule | grep -v spacemacs | awk '{print $2}'); do
+    for sub in $(git submodule | grep -v spacemacs | grep -v nur-packages | awk '{print $2}'); do
         echo "Updating $sub"
         (cd "$sub" && git pull origin master)
     done
