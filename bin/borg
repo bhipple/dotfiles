@@ -12,13 +12,17 @@ hub pr show --format '%t' $PR
 echo "********************************************************************************"
 # TODO: add nixpkgs-review to shell once there's a release upstream with --no-shell
 # In the meantime, this is a nix-build off of upstream master branch.
-/nix/store/iwqx7187c9gibm67izx8kcsmcbyvpvqj-nixpkgs-review/bin/nixpkgs-review pr --no-shell $PR
+~/src/nixpkgs-review/result/bin/nixpkgs-review \
+    pr \
+    --token $(awk '/oauth/ {print $NF}' ~/.config/hub) \
+    --no-shell \
+    --post-result \
+    $PR
 
 echo "********************************************************************************"
 TOKEN=$(awk '/oauth/ {print $NF}' ~/.config/hub)
 CACHE=${XDG_CACHE_HOME:-${HOME}/.cache}/nixpkgs-review/pr-$PR
-escaped_msg=$(sed -e 's|"|\\"|g' -e 's|`||g' -e 's|\n|\\n|g' $CACHE/report.md)
-echo "{\"event\": \"APPROVE\", \"body\": \"$escaped_msg\"}" > $CACHE/review.json
+echo "{\"event\": \"APPROVE\"}" > $CACHE/review.json
 
 curl -sH "Authorization: token $TOKEN" -H "Content-Type: text/json; charset=utf-8" \
      -XPOST https://api.github.com/repos/NixOS/nixpkgs/pulls/$PR/reviews \
