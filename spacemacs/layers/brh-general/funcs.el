@@ -122,7 +122,7 @@
     (shell-command full-cmd t t)))
 
 (defun brh/helm-run-shell ()
-  "Interactively select a cmd to run in the shell with tmux"
+  "Interactively select a cmd to run in the emacs async shell"
   (interactive)
   (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
          (cmds (brh/read-file-to-list cmd-file))
@@ -132,7 +132,10 @@
     (when (not (member sel cmds))
       (write-region (concat "\n" sel) nil cmd-file 'append))
     (setq brh/last-shell-cmd sel)
-    (brh/_tmux-cmd sel)))
+    ; (brh/_tmux-cmd sel)
+    ; (brh/_tmux-cmd sel)
+    (async-shell-command sel)
+    ))
 
 (defun brh/tmux-run-clear ()
   "Send the clear command to the terminal"
@@ -155,12 +158,9 @@
   (interactive)
   (brh/_tmux-cmd brh/last-shell-cmd))
 
-;; TODO: Work around the fact that the buffer is read-only, and also make sure
-;; that this incremental buffer fetch really works as expected.
-;; (defun brh/helm-run-ansi-shell ()
-;;   (interactive)
-;;   (if (get-buffer "*ansi-term-1*")
-;;     (switch-to-buffer-other-window "*ansi-term-1*")
-;;     (spacemacs/default-pop-shell))
-;;   (evil-append-line 1)
-;;   (insert "foobar"))
+; I might someday want to use this, but for now let's just stick with the emacs shell
+(defun brh/helm-run-vterm ()
+  (interactive)
+  (unless (get-buffer "*vterm-1*")
+    (spacemacs/default-pop-shell))
+  (comint-send-string "*vterm-1*" "ls\n"))
