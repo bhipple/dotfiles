@@ -18,9 +18,6 @@
 ; (with-eval-after-load 'dired
 ;   (dired-async-mode 1))
 
-;; Globally enable () matching as a minor mode
-(electric-pair-mode)
-
 ;; Enable caching. Invalidate the current project cache with C-c p i
 (setq projectile-enable-caching t)
 
@@ -82,15 +79,16 @@
 (setq term-char-mode-point-at-process-mark nil)
 
 ;; Disables smartparens while still keeping it around for Spacemacs to use
-;; Also does not disable it for {}
-;; TODO: This doesn't work and causes initialization errors?
-;; (eval-after-load 'smartparens
-;;   '(progn
-;;      (sp-pair "(" nil :actions :rem)
-;;      (sp-pair "[" nil :actions :rem)
-;;      (sp-pair "'" nil :actions :rem)
-;;      (sp-pair "\"" nil :actions :rem)))
-
+;; https://github.com/syl20bnr/spacemacs/issues/12533
+(with-eval-after-load 'smartparens (progn
+ (defadvice spacemacs-editing/init-smartparens (around disable-smartparens activate))
+ (show-smartparens-global-mode -1)
+ (show-smartparens-mode -1)
+ (turn-off-smartparens-mode)
+ (turn-off-smartparens-strict-mode)
+ (remove-hook 'comint-mode-hook 'smartparens-mode)
+ (remove-hook 'prog-mode-hook 'smartparens-mode)
+ (remove-hook 'minibuffer-setup-hook 'spacemacs//conditionally-enable-smartparens-mode)))
 
 ; Work-around for issue with evil search and minibuffer causing d, y, etc. to be
 ; entered twice until an emacs restart. See here for details:
