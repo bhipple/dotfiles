@@ -1,6 +1,6 @@
 # load zgen
 bindkey -v
-source "${HOME}/.dotfiles/zgen/zgen.zsh"
+source "${HOME}/dotfiles/zgen/zgen.zsh"
 
 # Check only when there's no init script
 # To regenerate zgen config from scratch, rm ~/.zgen/init.zsh
