@@ -8,6 +8,9 @@
 ;; Don't ask about following symlinks
 (setq vc-follow-symlinks t)
 
+;; Don't show gravitar images next to committers
+(setq magit-revision-show-gravatars nil)
+
 ;; Don't depend on $TERM
 (setq system-uses-terminfo nil)
 
