@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+cd ~/src/nixpkgs && ~/src/nixpkgs-review/result/bin/nixpkgs-review --token $(awk '/oauth/ {print $NF}' ~/.config/hub) $@

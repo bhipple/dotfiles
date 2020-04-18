@@ -17,7 +17,6 @@ alias mu='mupdf-x11'
 alias mupdf='mupdf-x11'
 alias nb='nix-build $HOME/src/nixpkgs/default.nix -A'
 alias npi='nix path-info -rhsS'
-alias nr='cd ~/src/nixpkgs && ~/src/nixpkgs-review/result/bin/nixpkgs-review'
 alias rfwifi='nmcli r wifi off && nmcli r wifi on'
 alias sc="sudo systemctl"
 alias sdiff='diff --side-by-side'
