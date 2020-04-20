@@ -43,7 +43,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip nil
                       auto-completion-enable-snippets-in-popup nil
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
-                      auto-completion-idle-delay 0.01
+                      auto-completion-idle-delay 0.0
                       ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
                         '(
