@@ -87,24 +87,24 @@
          :overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
 
   ;; Tags for inactive tasks
-  (setq brh-org-non-actionable "-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-TODO=\"ABANDONED\"-TODO=\"DONE\"")
+  (setq brh-org-non-actionable "-SOMEDAY-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-TODO=\"ABANDONED\"-TODO=\"DONE\"")
 
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
         '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
-          ("c" "Currently active non-repeating items" tags-todo (concat "-SOMEDAY-REPEATING" brh-org-non-actionable))
+          ("c" "Currently active non-repeating items" tags-todo (concat "-REPEATING" brh-org-non-actionable))
           ("h" . "HOME searches")
           ("hh" "All HOME items" tags-todo "HOME")
           ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
-                                                 (tags-todo (concat "+HOME-SOMEDAY-INBOX-REPEATING" brh-org-non-actionable))
+                                                 (tags-todo (concat "+HOME-INBOX-REPEATING" brh-org-non-actionable))
                                                  (tags-todo "+REPEATING")
                                                  (tags-todo "+INBOX")
                                                  nil
                                                  ("/tmp/hipple/home_agenda.html")
                                                  ))
-          ("hc" "Currently active non-repeating HOME items" tags-todo (concat "+HOME-SOMEDAY-REPEATING-INBOX" brh-org-non-actionable))
+          ("hc" "Currently active non-repeating HOME items" tags-todo (concat "+HOME-REPEATING-INBOX" brh-org-non-actionable))
           ("hs" "Search HOME items" ((tags "+HOME") (search "")))
           ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
                                                                 (org-agenda-log-mode-items '(closed clock state))))
@@ -119,7 +119,8 @@
           ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
-                                                 (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\"-SOMEDAY"))
+                                                 (tags-todo brh-org-non-actionable)
+                                                 (tags-todo "+INBOX"))
                                                  ((org-agenda-tag-filter-preset '("+WORK"))))
           ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
           ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
