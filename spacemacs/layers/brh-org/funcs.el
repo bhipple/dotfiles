@@ -37,6 +37,7 @@
 (defun brh/org-agenda-write ()
   "Write the current agenda to the Chromium homepage file"
   (interactive)
+  (make-directory "/tmp/org-bhipple")
   (org-agenda-write "/tmp/org-bhipple/review.html"))
 
 (defun brh/current-line-empty-p ()
