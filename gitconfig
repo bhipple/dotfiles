@@ -58,13 +58,14 @@
        for b in origin/master origin/dev $(git branch -r | grep origin/release/); do \
            git branch -f ${b#origin/} $b >/dev/null 2>&1; \
        done; \
+       git branch -vv | grep ': gone]'|  grep -v '*' | awk '{ print $1; }' | xargs -r git branch -D; \
        if [ -n $1 ]; then \
            git checkout -f $1 >/dev/null 2>&1; \
        fi; \
        for b in master; do \
-           git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -n 1 git branch -d >/dev/null 2>&1; \
+           git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -rn 1 git branch -d >/dev/null 2>&1; \
            git branch --merged origin/$b -r | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?)' \
-                | grep $USER | cut -f2- -d'/' | xargs -n 1 git push --delete $USER >/dev/null 2>&1; \
+                | grep $USER | cut -f2- -d'/' | xargs -rn 1 git push --delete $USER >/dev/null 2>&1; \
        done; \
        git branch-gc >/dev/null 2>&1; \
        echo ""; \
