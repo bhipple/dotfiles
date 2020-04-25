@@ -64,7 +64,8 @@
   "oml"  'brh/markdown-link-replace
   "oo"   'brh/smart-todo
   "op"   'magit-push-current-to-upstream
-  "os"   'org-sort-entries
+  "oso"  'org-sort-entries
+  "oss"  'brh/sort-section
   "ot"   (lambda () "Add org TODO" (interactive)
            (org-insert-todo-heading-respect-content))
   "ovd"  'alsamixer-down-volume
