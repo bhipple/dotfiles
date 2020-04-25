@@ -21,7 +21,10 @@ Mwm*iconPlacement: bottom right
 UXTerm*faceName: Source Code Pro Sans Mono:size=12
 UXTerm*font:     -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 UXTerm*boldFont: -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
-UXTerm*termName: xterm-24bit
+XTerm*termName: xterm-24bit
+
+! Mouse selecting should automatically copy
+UXTerm*VT100*selectToClipboard: true
 
 ! Make the backspace key behave properly
 *backarrowKey: false
