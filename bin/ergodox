@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+# Flash the latest on the ergo-dox
+hex=$(ls -rt ~/Downloads/*.hex | tail -1)
+
+echo "Flashing $hex"
+wally $hex
