@@ -4,6 +4,10 @@
 (fset 'brh/markdown-link-replace
       [?y ?% ?G ?o escape ?p ?a ?: ?  escape ?\C-o ?\C-o ?% ?l ?d ?% ?G ?$ ?p ?d ?s ?\) ?\C-o ?\C-o])
 
+;; TODO: It really feels like this one should be do-able by an elisp function directly.
+(fset 'brh/visual-paragraph
+      [escape ?v ?i ?p])
+
 ; Swaps MM/DD/YYYY -> YYYY/MM/DD. Useful for importing financial transactions into ledger.
 (fset 'brh/dateswap-to-YYYY/MM/DD
       [?E ?b ?h ?x ?d ?e ?B ?P ?a ?/ escape ?B])

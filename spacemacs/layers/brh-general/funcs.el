@@ -36,17 +36,10 @@
     (split-string (buffer-string) "\n" t)))
 
 (defun brh/sort-section ()
-  "Select the lines from the cursor's line that have the same starting indentaiton, then sort region"
+  "Sort the lines in a paragraph"
   (interactive)
-  (beginning-of-line)
-  (let ((beg (point))
-        ; (leading-ws (length (re-search-forward "^\s*"))
-        )
-     ; TODO: This should also be a little smarter and stop sorting when the
-     ; indentation changes, not just stop on a blank line; but a blank line is
-     ; close enough to what we want!
-     (while (not (looking-at "^$")) (forward-line))
-     (sort-lines beg (point))))
+  (execute-kbd-macro 'brh/visual-paragraph)
+  (command-execute 'sort-lines))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Docs
