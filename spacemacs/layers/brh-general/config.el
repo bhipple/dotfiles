@@ -101,6 +101,9 @@
     (evil-ex-search-exit)))
 (add-hook 'mouse-leave-buffer-hook #'kill-minibuffer)
 
+; Use smartparens in Java
+(add-hook 'java-mode-hook (lambda () #'smartparens-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Performance / Garbage Collector Optimizations
 ;; Much of this logic is deferred to spacemancs and gcmh:
