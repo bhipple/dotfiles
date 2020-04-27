@@ -119,7 +119,7 @@
           ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
-                                                 (tags-todo brh-org-non-actionable)
+                                                 (tags-todo (concat "-INBOX" brh-org-non-actionable))
                                                  (tags-todo "+INBOX"))
                                                  ((org-agenda-tag-filter-preset '("+WORK"))))
           ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
