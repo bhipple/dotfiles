@@ -140,7 +140,7 @@
     (setq brh/last-shell-cmd sel)
     (brh/preferred-shell-func sel)))
 
-(setq brh/preferred-shell-func (cmd)
+(defun brh/preferred-shell-func (cmd)
   "Run a md in my preferred shell. Changes based on context."
   ; (brh/_tmux-cmd cmd)
   ; (async-shell-command cmd)
