@@ -138,10 +138,14 @@
     (when (not (member sel cmds))
       (write-region (concat "\n" sel) nil cmd-file 'append))
     (setq brh/last-shell-cmd sel)
-    ; (brh/_tmux-cmd sel)
-    ; (run-in-vterm sel)
-    (async-shell-command sel)
-    ))
+    (brh/preferred-shell-func sel)))
+
+(setq brh/preferred-shell-func (cmd)
+  "Run a md in my preferred shell. Changes based on context."
+  ; (brh/_tmux-cmd cmd)
+  ; (async-shell-command cmd)
+  (run-in-vterm cmd)
+)
 
 (defun brh/tmux-run-clear ()
   "Send the clear command to the terminal"

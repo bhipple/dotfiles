@@ -13,7 +13,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/history
 
     # Github plugins
-    zgen load djui/alias-tips
+    # zgen load djui/alias-tips # temporarily remove for my presentation
     zgen load rupa/z
     zgen load zsh-users/zsh-autosuggestions
     zgen load zsh-users/zsh-completions
