@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 # Simple script to check nix attrs for build status on Hydra
-while [ -n "$1" ]; do
-    # NixOS and unstable master channels have slightly different syntax; swap here
-    nixos_url="https://hydra.nixos.org/job/nixos/release-20.03/nixpkgs.$1.x86_64-linux"
-    master_url="https://hydra.nixos.org/job/nixpkgs/trunk/$1.x86_64-linux"
-    for url in $nixos_url $master_url; do
-        channel=$(echo "$url" | sed 's|.*/job/||' | sed 's|/.*||')
+unstable=$(mktemp)
+release=$(mktemp)
 
-        printf "Last status of $1 on $channel = "
-        res=$(curl -s "$url"  | rg -o 'title="[A-Za-z]+"' | sed 's|title=||' | sed 's|"||g' | head -1)
-        echo "$res"
+hydra-check --channel unstable $@ > $unstable &
+hydra-check --channel 20.03 $@ > $release &
+wait
 
-        if [ "$res" = "Failed" ]; then
-            echo "$url"
-            xdg-open "$url" >/dev/null 2&>1
-        fi
-
-    done
-    shift
-done
+echo "********************************************************************************"
+echo "Unstable:"
+cat "$unstable"
+echo "********************************************************************************"
+echo "Release 20.03:"
+cat "$release"
