@@ -155,7 +155,8 @@
 (defun brh/tmux-run-line ()
   "Run the current line the cursor is on in a tmux-shell. Trim a leading '$ ', if found"
   (interactive)
-  (brh/_tmux-cmd (replace-regexp-in-string"^$ " "" (s-trim (thing-at-point 'line t)))))
+  (brh/_tmux-cmd (replace-regexp-in-string "^[$> ]*" ""
+                   (s-trim (thing-at-point 'line t)))))
 
 (defun brh/tmux-run-line-clear ()
   "Run the current line the cursor is on in a tmux-shell after clearning the terminal"

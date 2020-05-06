@@ -163,14 +163,16 @@ This function should only modify configuration layer settings."
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
-       anaconda-mode
-       company-anaconda
-       magit-svn
+       ;; Very pretty, but let's avoid rendering lag
+       org-bullets
        ;; Seems to have the behavior described here:
        ;; https://github.com/syl20bnr/spacemacs/issues/11582
        haskell-snippets
-       ;; Don't care about treemacs at all
+       ;; Never use these at all
+       anaconda-mode
+       company-anaconda
        lsp-treemacs
+       magit-svn
        treemacs
        treemacs-evil
        treemacs-icons-dired
