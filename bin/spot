@@ -22,3 +22,16 @@ echo "**************************************************************************
 echo "Running NixOps"
 export AWS_ACCESS_KEY=$(grep aws_access_key_id ~/dotfiles_local/aws/credentials | cut -d'=' -f2)
 ~/src/nixops/result/bin/nixops deploy --kill-obsolete --allow-reboot
+
+if [[ $1 == "on" ]]; then
+    echo "********************************************************************************"
+    echo "Builder is available and ready for submissions! Going to prime the cache though"
+    nixops ssh borg git clone https://github.com/NixOS/nixpkgs &
+    nixops ssh borg NIXPKGS_ALLOW_UNFREE=1 nix build --no-link -Lf https://github.com/NixOS/nixpkgs/archive/master.tar.gz mkl &
+    wait
+    nixops ssh borg "cd nixpkgs && NIXPKGS_ALLOW_UNFREE=1 nix-build -A cudatoolkit"
+    nixops ssh borg "cd nixpkgs && NIXPKGS_ALLOW_UNFREE=1 nix-env -f . -iA glances"
+
+    echo "To do a review entirely remotely, do something like this:"
+    echo nixops ssh borg "cd nixpkgs && nixpkgs-review pr 75827"
+fi
