@@ -1,5 +1,5 @@
 {
-  allowUnfree = true;
+  allowUnfree = false;
 
   # Add the Nix User Repository
   packageOverrides = pkgs: {
