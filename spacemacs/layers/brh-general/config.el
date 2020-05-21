@@ -114,10 +114,6 @@
 ;; Set the max GC run at 2GB of RAM
 (setq gcmh-high-cons-threshold #x80000000)
 
-;; Per suggestion on lsp-mode, increase read-process output
-;; https://github.com/emacs-lsp/lsp-mode/#performance
-(setq read-process-output-max (* 4 1024 1024)) ;; 4mb
-
 ;; Disable savehist-mode to improve performance and potentially avoid crashes:
 ;; https://github.com/syl20bnr/spacemacs/issues/8462
 (savehist-mode nil)
