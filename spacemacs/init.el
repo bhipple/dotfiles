@@ -175,6 +175,9 @@ This function should only modify configuration layer settings."
        ;; Never use these at all
        anaconda-mode
        company-anaconda
+       company-rtags
+       flycheck-rtags
+       helm-rtags
        lsp-treemacs
        magit-svn
        treemacs
