@@ -41,6 +41,11 @@
   (execute-kbd-macro 'brh/visual-paragraph)
   (command-execute 'sort-lines))
 
+(defun brh/number-list (times)
+  "Insert the numbers 1 through N on lines"
+  (interactive "sInsert numbers 1 through N for N = ")
+  (dotimes (i (string-to-number times)) (insert (format "%d\n" (1+ i)))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Docs
 (defun brh/install-docsets ()
