@@ -38,14 +38,15 @@ fi
 # Global Aliases
 # Lazily, I'm sourcing my aliases in my bashrc too.
 if [[ -n "$ZSH_NAME" ]]; then
-    alias -g C='xsel -b'
-    alias -g G='rg'
-    alias -g GI='rg -i'
-    alias -g Gi='rg -i'
+    alias -g C='| xsel -b'
+    alias -g G='| rg'
+    alias -g GI='| rg -i'
+    alias -g Gi='| rg -i'
     alias -g H='--help'
-    alias -g L='less -n'
+    alias -g K='--keep-going'
+    alias -g L='| less -n'
     alias -g R='!! | less -n'
-    alias -g SUM='paste -sd+ - | bc'
+    alias -g SUM='| paste -sd+ - | bc'
 fi
 
 # Remove this alias from oh-my-zsh
