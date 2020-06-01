@@ -128,7 +128,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
 
     -- restarting
-    , ((modMask, xK_r), spawn restartCmd)
+    , ((modMask, xK_q), spawn restartCmd)
     ]
     ++
     -- mod-{a,s,d} %! Switch focus to physical screens

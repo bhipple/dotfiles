@@ -5,3 +5,5 @@ hex=$(ls -rt ~/Downloads/*.hex | tail -1)
 
 echo "Flashing $hex"
 wally $hex
+
+rm -rf ~/Downloads/*.hex

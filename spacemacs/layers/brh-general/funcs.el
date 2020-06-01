@@ -41,6 +41,13 @@
   (execute-kbd-macro 'brh/visual-paragraph)
   (command-execute 'sort-lines))
 
+(defun brh/number-list ()
+  "Insert the numbers 1 through N on lines, optionally with a custom format string"
+  (interactive)
+  (let ((times (string-to-number (read-string "Insert numbers 1 through N for N = ")))
+        (format-str (helm-comp-read "Format string for each line: " '("%d\n" "%d. \n" "* TODO %d\n"))))
+    (dotimes (i times) (insert (format format-str (1+ i))))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dash Docs
 (defun brh/install-docsets ()

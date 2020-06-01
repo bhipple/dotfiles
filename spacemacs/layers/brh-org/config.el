@@ -99,8 +99,8 @@
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
                                                  (tags-todo (concat "+HOME-INBOX-REPEATING" brh-org-non-actionable))
-                                                 (tags-todo "+REPEATING")
                                                  (tags-todo "+INBOX")
+                                                 (tags-todo "+REPEATING")
                                                  nil
                                                  ("/tmp/hipple/home_agenda.html")
                                                  ))

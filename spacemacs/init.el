@@ -2,6 +2,9 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; Unfortunately, this requires write access to the nix store to work.
+(setq comp-deferred-compilation nil)
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -42,8 +45,9 @@ This function should only modify configuration layer settings."
                       ; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
                       auto-completion-enable-snippets-in-popup nil
-                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
                       auto-completion-idle-delay 0.0
+                      auto-completion-minimum-prefix-length 1
+                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
                       ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
                         '(
@@ -171,6 +175,9 @@ This function should only modify configuration layer settings."
        ;; Never use these at all
        anaconda-mode
        company-anaconda
+       company-rtags
+       flycheck-rtags
+       helm-rtags
        lsp-treemacs
        magit-svn
        treemacs
@@ -215,9 +222,9 @@ It should only modify the values of Spacemacs settings."
    ;; portable dumper in the cache directory under dumps sub-directory.
    ;; To load it when starting Emacs add the parameter `--dump-file'
    ;; when invoking Emacs 27.1 executable on the command line, for instance:
-   ;;   ./emacs --dump-file=~/.emacs.d/.cache/dumps/spacemacs.pdmp
-   ;; (default spacemacs.pdmp)
-   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+   ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
+   ;; (default spacemacs-27.1.pdmp)
+   dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
 
    ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -236,6 +243,13 @@ It should only modify the values of Spacemacs settings."
    ;; performance issues due to garbage collection operations.
    ;; (default '(100000000 0.1))
    dotspacemacs-gc-cons '(100000000 0.1)
+
+   ;; Set `read-process-output-max' when startup finishes.
+   ;; This defines how much data is read from a foreign process.
+   ;; Setting this >= 1 MB should increase performance for lsp servers
+   ;; in emacs 27.
+   ;; (default (* 1024 1024))
+   dotspacemacs-read-process-output-max (* 4 1024 1024)
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
