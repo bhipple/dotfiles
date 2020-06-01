@@ -36,8 +36,10 @@ handle_touchpad() {
     fi
 }
 
-# Apparently this needs to be called at every login!
 xresources() {
+    xmodmap ~/dotfiles_local/xmodmap/colemak
+
+    # Apparently this needs to be called at every login!
     xrdb -merge ~/.Xresources 2>&1 >/dev/null
 }
 
