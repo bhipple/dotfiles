@@ -6,6 +6,8 @@
 # docking station or not.
 
 x1cg6_docked() {
+    xmodmap ~/dotfiles_local/xmodmap/qwerty
+
     xrandr --dpi 96 \
            --output eDP-1 --off \
            --output DP-2-2 --auto --pos 0x900 --primary \
@@ -13,6 +15,8 @@ x1cg6_docked() {
 }
 
 x1cg6_undocked() {
+    xmodmap ~/dotfiles_local/xmodmap/colemak
+
     xrandr --dpi 192 \
            --screen 0 --size 2560x1440 \
            --output eDP-1 --auto --primary --pos 0x0
@@ -37,8 +41,6 @@ handle_touchpad() {
 }
 
 xresources() {
-    xmodmap ~/dotfiles_local/xmodmap/colemak
-
     # Apparently this needs to be called at every login!
     xrdb -merge ~/.Xresources 2>&1 >/dev/null
 }
