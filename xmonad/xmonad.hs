@@ -11,6 +11,8 @@ import XMonad.Util.Run (spawnPipe)
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.NoBorders (smartBorders)
 
+import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioRaiseVolume, xF86XK_AudioLowerVolume, xF86XK_AudioMute)
+
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
@@ -127,6 +129,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- increase or decrease number of windows in the master area
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
     , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
+
+    -- volume controls
+    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
+    , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%-")
+    , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
 
     -- restarting
     , ((modMask, xK_q), spawn restartCmd)
