@@ -12,3 +12,7 @@ class Actions:
         print("Alive")
         subprocess.check_call(['touch', '/tmp/alive'])
         return "ran"
+
+    def launch():
+        """Startup dmenu to launch a program"""
+        subprocess.check_call(['dmenu_run'])
