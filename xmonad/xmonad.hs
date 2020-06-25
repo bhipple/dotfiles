@@ -40,6 +40,8 @@ myTerminal = "uxterm"
 composeHook = composeAll [
         className =? "Gimp" --> doFloat
       , className =? "Tabletop Simulator" --> doFloat
+      , className =? "Talon" --> doFloat
+      , className =? "talon" --> doFloat
     ]
 
 myManageHook = manageDocks <+> composeHook <+> manageHook def <+> manageSpawn
