@@ -28,6 +28,12 @@
 [cbrack]>[kp-insert]
 
 ********************************************************************************
+** Foot Pad Remappings
+[kp-lp-tab]>[space]
+[kp-mp-kpshf]>[enter]
+[kp-rp-kpent]>[bspace]
+
+********************************************************************************
 ** Left Thumb Pad Key Remappings
 [delete]>[lctrl]
 [end]>[rwin]
