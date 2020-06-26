@@ -1,10 +1,6 @@
-#!/usr/bin/env nix-shell
-#! nix-shell -i bash -p alsaUtils
-# Test my microphone
-OUT=$(mktemp /tmp/mic-test.XXXXXX.mp3)
+#!/usr/bin/env sh
+# Setup the mic to echo everything in realtime
+pactl load-module module-loopback
 
-echo "Recording for 2 seconds"
-arecord -d 2 $OUT
-
-echo "Replaying"
-aplay $OUT
+echo "When done, run:"
+echo "pactl unload-module module-loopback"

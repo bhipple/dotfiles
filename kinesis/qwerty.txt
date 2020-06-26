@@ -28,6 +28,15 @@
 [cbrack]>[kp-insert]
 
 ********************************************************************************
+** Foot Pad Remappings. Left-middle-right with and without KP shift
+[lp-tab]>[space]
+[mp-kpshf]>[enter]
+[rp-kpent]>[bspace]
+[kp-lp-tab]>[space]
+[kp-mp-kpshf]>[enter]
+[kp-rp-kpent]>[bspace]
+
+********************************************************************************
 ** Left Thumb Pad Key Remappings
 [delete]>[lctrl]
 [end]>[rwin]
