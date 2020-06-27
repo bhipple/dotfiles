@@ -59,10 +59,15 @@ myLogHook xmproc = dynamicLogWithPP xmobarPP {
 
 myStartupHook = do
     spawn "~/.xinitrc"
+
     spawn "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
+
     -- Standby time, suspend time, monitor off time
     spawn "xset s off"
     spawn "xset dpms 1800 2000 3600"
+
+    -- TODO: Move this to systemd
+    spawn "notify-osd"
 
     -- Programs to launch
     spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
