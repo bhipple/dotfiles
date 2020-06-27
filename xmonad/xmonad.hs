@@ -69,7 +69,7 @@ myStartupHook = do
     spawnOn "1_1" "chromium"
 
     -- Set the wallpaper
-    spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/kinesis-advantage-2.png"
+    spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/talon-alphabet.png"
 
 
 restartCmd :: String
