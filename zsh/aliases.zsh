@@ -47,7 +47,9 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g K='--keep-going'
     alias -g L='| less -n'
     alias -g R='!! | less -n'
+    alias -g S='| sort'
     alias -g SUM='| paste -sd+ - | bc'
+    alias -g W='| wc -l'
 fi
 
 # Remove this alias from oh-my-zsh
