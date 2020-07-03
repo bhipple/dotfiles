@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+# inotify-watch script using inotify-tools
+echo "Watching:"
+git ls-files
+
+while true; do
+    inotifywait -e close_write $(git ls-files)
+    echo "********************************************************************************"
+    echo "$@"
+    eval $@
+done
