@@ -128,10 +128,12 @@
   (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
          (cmds (brh/read-file-to-list cmd-file))
          (sel (helm-comp-read
-               "shell command: " cmds)))
-    ; If we entered something new in the helm menu, add it to the list for the future
-    (when (not (member sel cmds))
-      (write-region (concat "\n" sel) nil cmd-file 'append))
+               "shell command: " cmds))
+         (updated-cmds (delete-dups (cons sel cmds))))
+    ; Always put the run command first in the file, so it's at the top of the helm menu.
+    (with-temp-buffer
+      (insert (string-join updated-cmds "\n"))
+      (write-region (point-min) (point-max) cmd-file))
     (setq brh/last-shell-cmd sel)
     (brh/preferred-shell-func sel)))
 
