@@ -50,6 +50,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g S='| sort'
     alias -g SUM='| paste -sd+ - | bc'
     alias -g W='| wc -l'
+    alias -g X='| xargs'
 fi
 
 # Remove this alias from oh-my-zsh
