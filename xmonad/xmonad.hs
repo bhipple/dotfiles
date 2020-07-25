@@ -105,10 +105,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_p     ), spawn "dmenu_run")
     , ((modMask .|. shiftMask, xK_b     ), spawn "chromium")
     , ((modMask .|. shiftMask, xK_c     ), kill)
+    , ((modMask .|.            xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_e     ), spawn "emacsclient -c")
+    , ((modMask .|.            xK_e     ), spawn "emacsclient -c")
     , ((modMask .|. shiftMask, xK_f     ), spawn "firefox")
     , ((modMask .|. shiftMask, xK_x     ), spawn "~/.xinitrc")
-    , ((controlMask .|. shiftMask, xK_l), spawn "sudo /run/current-system/sw/bin/slock")
+    , ((controlMask .|. shiftMask, xK_l),  spawn "sudo /run/current-system/sw/bin/slock")
 
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
