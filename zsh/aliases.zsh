@@ -51,6 +51,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g SUM='| paste -sd+ - | bc'
     alias -g W='| wc -l'
     alias -g X='| xargs'
+    alias -g Y='--yes'
 
     alias -g P1="2>&1 | awk '{print $1}'"
     alias -g P2="2>&1 | awk '{print $2}'"
@@ -61,7 +62,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g P7="2>&1 | awk '{print $7}'"
     alias -g P8="2>&1 | awk '{print $8}'"
     alias -g P9="2>&1 | awk '{print $9}'"
-    alias -g PN="2>&1 | awk '{print $NF}"
+    alias -g PN="2>&1 | awk '{print $NF}'"
     alias -g PNF="2>&1 | awk '{print $NF}'"
 fi
 
