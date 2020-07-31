@@ -173,6 +173,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
   (setq brh/default-org-file (if brh/at-work "~/org/work/work.org" "~/org/me.org"))
+  (setq brh/journal-file (if brh/at-work "~/org/work/journal.org" "~/personal/journal.org"))
 
   (setq org-capture-templates
         ;; Personal templates
@@ -182,7 +183,7 @@
            "* TODO [#C] %?\nDEADLINE: %^t")
           ("i" "Inbox TODO" entry (file+headline brh/default-org-file "Inbox")
            "* TODO [#C] %?\nEntered %u\n")
-          ("j" "Journal Entry" entry (file+datetree "~/personal/journal.org")
+          ("j" "Journal Entry" entry (file+datetree brh/journal-file)
            (function _brh/org-capture-journal)
            :immediate-finish t
            :jump-to-captured t)
