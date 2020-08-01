@@ -103,12 +103,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask,               xK_p     ), spawn "dmenu_run")
-    , ((modMask .|. shiftMask, xK_b     ), spawn "chromium")
+    , ((modMask,               xK_b     ), spawn "chromium")
     , ((modMask .|. shiftMask, xK_c     ), kill)
-    , ((modMask .|.            xK_c     ), kill)
+    , ((modMask,               xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_e     ), spawn "emacsclient -c")
-    , ((modMask .|.            xK_e     ), spawn "emacsclient -c")
-    , ((modMask .|. shiftMask, xK_f     ), spawn "firefox")
+    , ((modMask,               xK_e     ), spawn "emacsclient -c")
+    , ((modMask,               xK_f     ), spawn "chromium")
     , ((modMask .|. shiftMask, xK_x     ), spawn "~/.xinitrc")
     , ((controlMask .|. shiftMask, xK_l),  spawn "sudo /run/current-system/sw/bin/slock")
 
