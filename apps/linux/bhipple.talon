@@ -2,6 +2,7 @@
 ################################################################################
 # General
 launch: user.launch()
+alphabet: user.alphabet()
 
 ################################################################################
 # Org Mode
@@ -10,6 +11,7 @@ org done: key(ctrl-c ctrl-t d)
 
 ################################################################################
 # Emacs
+emacs client: emacsclient()
 
 # Window management
 emacs right: key(space w l)
