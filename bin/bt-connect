@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+while ! audio | grep bluez; do
+    echo "Trying to connect to headset ..."
+    echo -e 'connect 38:18:4C:7D:CA:CB' | sudo bluetoothctl
+    sleep 1
+done
+
+echo "Connected to headset ..."
