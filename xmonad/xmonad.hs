@@ -11,7 +11,8 @@ import XMonad.Util.Run (spawnPipe)
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.NoBorders (smartBorders)
 
-import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioRaiseVolume, xF86XK_AudioLowerVolume, xF86XK_AudioMute)
+-- See http://hackage.haskell.org/package/X11-1.4.6/docs/Graphics-X11-ExtraTypes-XF86.html
+import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioRaiseVolume, xF86XK_AudioLowerVolume, xF86XK_AudioMute, xF86XK_Search)
 
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
@@ -42,6 +43,7 @@ composeHook = composeAll [
       , className =? "Tabletop Simulator" --> doFloat
       , className =? "Talon" --> doFloat
       , className =? "talon" --> doFloat
+      , className =? "Dunst" --> doFloat
     ]
 
 myManageHook = manageDocks <+> composeHook <+> manageHook def <+> manageSpawn
@@ -139,24 +141,30 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
     , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
 
+    -- restarting
+    , ((modMask, xK_q), spawn restartCmd)
+
+    ----------------------------------------------------------------------------
+    -- Interaction with ErgoDox sending special keys for functions
     -- volume controls
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
     , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%-")
     , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
 
-    -- restarting
-    , ((modMask, xK_q), spawn restartCmd)
+    -- Headset connect
+    , ((0, xF86XK_Search), spawn "bt-connect")
+
     ]
     ++
-    -- mod-{a,s,d} %! Switch focus to physical screens
-    -- mod-shift-{a,s,d} %! Throw client to physical screen
+    -- mod-{s,d} %! Switch focus to physical screens
+    -- mod-shift-{s,d} %! Throw client to physical screen
     [ ((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
       | (key, sc) <- zip xKeys xOrder
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
     ]
     ++
-    -- mod-[1..6] %! Switch focus to workspace N of this screen
-    -- mod-shift-[1..6] %! Move client to workspace N of this screen
+    -- mod-[1..9] %! Switch focus to workspace N of this screen
+    -- mod-shift-[1..9] %! Move client to workspace N of this screen
     [ ((m .|. modMask, k), windows $ onCurrentScreen f i)
     | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
