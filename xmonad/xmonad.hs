@@ -67,7 +67,7 @@ myStartupHook = do
     spawn "xset dpms 1800 2000 3600"
 
     -- TODO: Move this to systemd
-    spawn "notify-osd"
+    spawn "dunst"
 
     -- Programs to launch
     spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
