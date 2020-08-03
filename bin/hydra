@@ -1,4 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash -p hydra-check
+#!nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/609cc7bb6220733eb173832501e31649901bdf02.tar.gz
+# TODO: Delete after 20.09, since hydra-check is not on 20.03
+#
 # Simple script to check nix attrs for build status on Hydra
 unstable=$(mktemp)
 release=$(mktemp)

@@ -1,5 +1,8 @@
 ;; General configuration settings
 
+;; Very useful when debugging; incredibly annoying when not
+(setq debug-on-error nil)
+
 ;; Fix tabs
 (setq-default indent-tabs-mode nil)
 (setq c-basic-indent 4)

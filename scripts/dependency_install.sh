@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1
 fi
@@ -43,14 +45,14 @@ nix_install() {
     fi
 
     CHANNEL="nixos"
-    ATTRS="$CHANNEL.minEnv $CHANNEL.pyEnv"
+    ATTRS="$CHANNEL.minEnv"
 
     if [ -n "$INSTALL_ALL" ]; then
         # Also install plaid2qif from my nix user repo
         ATTRS="$ATTRS $CHANNEL.bigEnv $CHANNEL.nur.repos.bhipple.plaid2qif"
     fi
 
-    (set -x; nix-env -j$(nproc) -k -riA $ATTRS)
+    (set -x; NIXPKGS_ALLOW_UNFREE=1 nix-env -j$(nproc) -k -riA $ATTRS)
 
     # TODO: Crazy hack until I figure out WTF to do here
     if [ -n "$INSTALL_ALL" ]; then
