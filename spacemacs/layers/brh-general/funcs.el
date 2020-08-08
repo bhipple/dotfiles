@@ -108,15 +108,34 @@
 ; Save the previous shell cmd that I ran for convenience in tmux-repeat
 (setq brh/last-shell-cmd "")
 
+; Sticky choice of shell implementation to call
+(setq brh/current-shell-func 'run-in-vterm)
+
+(defun brh/set-preferred-shell-func ()
+  "Run a cmd in my preferred shell. Changes based on context."
+  (interactive)
+  ; Of these,
+  ; async-shell-command is really lightweight and always works, but it can't take interactive input or re-run a cmd, etc.
+  ; vterm is heavier, but stays in emacs
+  ; tmux works nicely with the full, normal shell and multiple monitors
+  (let* ((choices '("vterm" "tmux" "async-shell-command"))
+         (sel (helm-comp-read
+               "terminal runner choice: " choices)))
+    (cond ((string-equal sel "vterm") (setq brh/current-shell-func 'run-in-vterm))
+          ((string-equal sel "tmux") (setq brh/current-shell-func 'brh/_tmux-cmd))
+          ((string-equal sel "async-shell-command") (setq brh/current-shell-func 'async-shell-command))
+          (t (message "Choice not recognized")))))
+
 (defun brh/get-tmux-pane ()
   "Get the number of the a tmux pane NOT running emacs on current window"
   (interactive)
-  (replace-regexp-in-string "\n$" "" (shell-command-to-string "tmux list-panes | grep -v active | tail -1 | cut -d':' -f1")))
+  (replace-regexp-in-string "\n$" "" (shell-command-to-string "tmux-pane-for-emacs.py")))
 
 (defun brh/_tmux-cmd (cmd)
   "Send a command to the active tmux terminal session. Also saves the buffer"
   (save-buffer 0)
   ; TODO: Detect if spacemacs is running inside a terminal, and if so send it to
+
   ; a non-active tmux pane
   (let* ((target-pane (brh/get-tmux-pane))
          (full-cmd (concat "tmux send-keys -t " target-pane " '" cmd "' Enter")))
@@ -135,14 +154,7 @@
       (insert (string-join updated-cmds "\n"))
       (write-region (point-min) (point-max) cmd-file))
     (setq brh/last-shell-cmd sel)
-    (brh/preferred-shell-func sel)))
-
-(defun brh/preferred-shell-func (cmd)
-  "Run a md in my preferred shell. Changes based on context."
-  ; (brh/_tmux-cmd cmd)
-  ; (async-shell-command cmd)
-  (run-in-vterm cmd)
-)
+    (funcall brh/current-shell-func sel)))
 
 (defun brh/tmux-run-clear ()
   "Send the clear command to the terminal"
