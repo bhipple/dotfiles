@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 # Script for helping with bumps and upgrades
+
+# For confirm
 . ~/dotfiles/zsh/functions.zsh
-. ~/dotfiles/zsh/plugins.zsh
+# For zgen
+#. ~/dotfiles/zsh/plugins.zsh
 
 set -euo pipefail
 
