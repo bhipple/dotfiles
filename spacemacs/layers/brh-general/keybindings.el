@@ -72,11 +72,11 @@
   "ovm"  'alsamixer-toggle-mute
   "ovu"  'alsamixer-up-volume
   "ow"   'brh/smart-todo
-  "rc"   'brh/tmux-run-clear
+  "rc"   'brh/run-shell-clear
   "rC"   (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
-  "rl"   'brh/tmux-run-line
-  "rL"   'brh/tmux-run-line-clear
-  "rr"   'brh/tmux-repeat
-  "rt"   'brh/helm-run-shell
+  "rl"   'brh/run-shell-line
+  "rL"   'brh/run-shell-line-clear
+  "rr"   'brh/run-shell-repeat
+  "rt"   'brh/run-shell-helm
   "rT"   'brh/set-preferred-shell-func
   )

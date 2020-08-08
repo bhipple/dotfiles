@@ -104,8 +104,8 @@
 (add-hook 'term-mode-hook 'brh/setup-term-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Tmux
-; Save the previous shell cmd that I ran for convenience in tmux-repeat
+;; Run Shell
+; Save the previous shell cmd that I ran for convenience
 (setq brh/last-shell-cmd "")
 
 ; Sticky choice of shell implementation to call
@@ -126,9 +126,8 @@
           ((string-equal sel "async-shell-command") (setq brh/current-shell-func 'async-shell-command))
           (t (message "Choice not recognized")))))
 
-(defun brh/get-tmux-pane ()
+(defun brh/_get-tmux-pane ()
   "Get the number of the a tmux pane NOT running emacs on current window"
-  (interactive)
   (replace-regexp-in-string "\n$" "" (shell-command-to-string "tmux-pane-for-emacs.py")))
 
 (defun brh/_tmux-cmd (cmd)
@@ -137,11 +136,11 @@
   ; TODO: Detect if spacemacs is running inside a terminal, and if so send it to
 
   ; a non-active tmux pane
-  (let* ((target-pane (brh/get-tmux-pane))
+  (let* ((target-pane (brh/_get-tmux-pane))
          (full-cmd (concat "tmux send-keys -t " target-pane " '" cmd "' Enter")))
     (shell-command full-cmd t t)))
 
-(defun brh/helm-run-shell ()
+(defun brh/run-shell-helm ()
   "Interactively select a cmd to run in the emacs async shell"
   (interactive)
   (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
@@ -156,27 +155,27 @@
     (setq brh/last-shell-cmd sel)
     (funcall brh/current-shell-func sel)))
 
-(defun brh/tmux-run-clear ()
+(defun brh/run-shell-clear ()
   "Send the clear command to the terminal"
   (interactive)
-  (brh/_tmux-cmd "; clear"))
+  (funcall brh/current-shell-func "; clear"))
 
-(defun brh/tmux-run-line ()
-  "Run the current line the cursor is on in a tmux-shell. Trim a leading '$ ', if found"
+(defun brh/run-shell-line ()
+  "Run the current line the cursor is on in a shell. Trim a leading '$ ', if found"
   (interactive)
-  (brh/_tmux-cmd (replace-regexp-in-string "^[$> ]*" ""
+  (funcall brh/current-shell-func (replace-regexp-in-string "^[$> ]*" ""
                    (s-trim (thing-at-point 'line t)))))
 
-(defun brh/tmux-run-line-clear ()
-  "Run the current line the cursor is on in a tmux-shell after clearning the terminal"
+(defun brh/run-shell-line-clear ()
+  "Run the current line the cursor is on in a shell after clearing the terminal"
   (interactive)
-  (brh/tmux-run-clear)
-  (brh/tmux-run-line))
+  (brh/run-shell-clear)
+  (brh/run-shell-line))
 
-(defun brh/tmux-repeat ()
+(defun brh/run-shell-repeat ()
   "Repeat the previous command in the active terminal session"
   (interactive)
-  (brh/_tmux-cmd brh/last-shell-cmd))
+  (funcall brh/current-shell-func brh/last-shell-cmd))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Yanked from https://www.reddit.com/r/emacs/comments/ft84xy/run_shell_command_in_new_vterm/
