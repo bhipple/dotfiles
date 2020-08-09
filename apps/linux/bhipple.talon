@@ -14,6 +14,7 @@ run terminal: key(super-enter)
 # Org Mode
 org agenda: key(f12)
 org done: key(ctrl-c ctrl-t d)
+org review: key(space o a r)
 
 ################################################################################
 # Emacs
