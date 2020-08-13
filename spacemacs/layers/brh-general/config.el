@@ -196,4 +196,4 @@
 
   (defun git-gutter+-remote-file-path (dir file)
     (let ((file (tramp-file-name-localname (tramp-dissect-file-name file))))
-      (replace-regexp-in-string (concat "\\`" dir) "" file)))
+      (replace-regexp-in-string (concat "\\`" dir) "" file))))
