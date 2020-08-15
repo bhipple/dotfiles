@@ -82,8 +82,7 @@ for f in completion.zsh key-bindings.zsh; do
     [ -f $tgt ] && source $tgt
 done
 
-export _ZO_FZF_OPTS="--no-sort --reverse --border --height 40%
-
+export _ZO_FZF_OPTS="--no-sort --reverse --border --height 40%"
 
 #  ============================================================================
 #                           Autosuggest Config
