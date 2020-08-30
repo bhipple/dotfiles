@@ -48,6 +48,9 @@
 ;; python-mode for waf scripts
 (add-to-list 'auto-mode-alist '("\\wscript\\'" . python-mode))
 
+;; Use polmode in ein
+(setq ein:polymode t)
+
 ;; Tramp with ssh
 (setq tramp-default-method "ssh")
 
