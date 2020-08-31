@@ -48,6 +48,7 @@
     ;; Enable org-babel
     (org-babel-do-load-languages 'org-babel-load-languages '(
       (ditaa . t)
+      (ein . t)
       (emacs-lisp . t)
       (gnuplot . t)
       (haskell . nil)
