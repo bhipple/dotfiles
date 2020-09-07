@@ -109,7 +109,7 @@
 (setq brh/last-shell-cmd "")
 
 ; Sticky choice of shell implementation to call
-(setq brh/current-shell-func 'run-in-vterm)
+(setq brh/current-shell-func 'brh/_tmux-cmd)
 
 (defun brh/set-preferred-shell-func ()
   "Run a cmd in my preferred shell. Changes based on context."
