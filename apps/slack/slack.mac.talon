@@ -1,5 +1,5 @@
 os: mac
-app: Slack
+app: slack
 -
 # Workspace
 workspace <number>: key("cmd-{number}")
@@ -63,3 +63,5 @@ mark channel read: key(esc)
     # Miscellaneous
 (slack | lack) shortcuts: key(cmd-/)
 emote <user.text>: "{text}"
+toggle left sidebar: key(cmd-shift-d)
+toggle right sidebar: key(cmd-.)

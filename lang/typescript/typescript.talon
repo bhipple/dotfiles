@@ -34,6 +34,10 @@ action(user.code_state_else):
   insert(" else {}")
   key(left enter)
 
+action(user.code_block): 
+  insert("{}") 
+  key(left enter)
+
 action(user.code_self): "this"
 
 action(user.code_state_while):
@@ -80,11 +84,12 @@ action(user.code_state_for_each):
   insert(".forEach()")
   key(left)
 
-action(user.code_null): "null"
+action(user.code_break): "break;"
+action(user.code_next): "continue;"
+action(user.code_true): "true"
+action(user.code_false): "false"
 
-action(user.code_private_function): "private "
-action(user.code_protected_function): "protected "
-action(user.code_public_function): "public "
+action(user.code_null): "null"
 
 action(user.code_operator_indirection): ""
 action(user.code_operator_address_of): ""
@@ -126,10 +131,6 @@ action(user.code_operator_bitwise_left_shift_assignment): " <<= "
 action(user.code_operator_bitwise_right_shift): " >> "
 action(user.code_operator_bitwise_right_shift_assignment): " >>= "
 
-state block:
-  insert("{}")
-  key(left enter)
-
 state const: "const "
 
 state let: "let "
@@ -153,3 +154,7 @@ state reduce:
   key(left)
 
 state spread: "..."
+
+^funky <user.text>$: user.code_private_function(text)
+^pro funky <user.text>$: user.code_protected_function(text)
+^pub funky <user.text>$: user.code_public_function(text)

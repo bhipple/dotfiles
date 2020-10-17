@@ -1,8 +1,12 @@
 os: windows
-app: Windows Explorer
-app: explorer.exe
+app: windows_explorer
+#many commands should work in most save/open dialog. 
+#note the "show options" stuff won't work unless work 
+#unless the path is displayed in the title, which is rare for those
+app: /.*/
+and title: /(Save|Open|Browse|Select)/
 -
-tag(): file_manager
+tag(): user.file_manager
 action(user.file_manager_go_back):
     key("alt-left")
 action(user.file_manager_go_forward):
@@ -12,4 +16,4 @@ action(user.file_manager_open_parent):
     
 ^go <user.letter>$: user.file_manager_open_volume("{letter}:")
 go app data: user.file_manager_open_directory("%AppData%")
-go talon: user.file_manager_open_directory("%AppData%\Talon")
+go program files: user.file_manager_open_directory("%programfiles%")
