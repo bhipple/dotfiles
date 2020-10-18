@@ -19,11 +19,16 @@ org review: key(space o a r)
 ################################################################################
 # Emacs
 
+emacs run: key(space r t)
+
 # Window management
 emacs right: key(space w l)
 emacs left: key(space w h)
 emacs up: key(space w k)
 emacs down: key(space w j)
+
+emacs save: key(escape : w a enter)
+emacs close: key(: b d enter)
 
 ################################################################################
 # XMonad Monitor actions
