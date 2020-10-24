@@ -68,12 +68,13 @@ myStartupHook = do
     spawn "xset s off"
     spawn "xset dpms 1800 2000 3600"
 
-    -- TODO: Move this to systemd
-    spawn "dunst"
-
-    -- Programs to launch
+    -- Programs to launch on specific desktops
     spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
     spawnOn "1_1" "chromium"
+
+    -- General programs to launch
+    spawn "dunst"
+    spawn "~/ledger/scripts/notebook.sh"
 
     -- Set the wallpaper
     spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/talon-alphabet.png"
