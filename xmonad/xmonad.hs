@@ -68,6 +68,9 @@ myStartupHook = do
     spawn "xset s off"
     spawn "xset dpms 1800 2000 3600"
 
+    -- Fix pulseaudio sound
+    spawn "pactl load-module module-detect"
+
     -- Programs to launch on specific desktops
     spawnOn "0_1" "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
     spawnOn "1_1" "chromium"
@@ -75,6 +78,7 @@ myStartupHook = do
     -- General programs to launch
     spawn "dunst"
     spawn "~/ledger/scripts/notebook.sh"
+    spawn "~/talon/result/bin/talon"
 
     -- Set the wallpaper
     spawn "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/talon-alphabet.png"
