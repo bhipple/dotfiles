@@ -42,10 +42,6 @@
     ~/.vimrc: vimrc
     ~/.vimrc_minimal: vimrc_minimal
     ~/.xinitrc: xinitrc
-    ~/.xmobarrc: xmobarrc
-    ~/.xmonad:
-        force: true
-        path: xmonad/
     ~/.zsh: zsh/
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
