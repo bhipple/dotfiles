@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 app: UXTerm
+=======
+tag: terminal
+and tag: user.git
+>>>>>>> ae0ba7fab6549706e9520a6bd888e0e1c6b274d8
 -
 # Standard commands
 git add patch: "git add . -p\n"
