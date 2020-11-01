@@ -1,5 +1,4 @@
-tag: terminal
-and tag: user.git
+app: UXTerm
 -
 # Standard commands
 git add patch: "git add . -p\n"
