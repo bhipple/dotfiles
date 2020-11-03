@@ -135,27 +135,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+Shift+z
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+Shift+z mode "default"
+    # back to normal: Enter or Escape or $mod+Shift+z
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+z mode "default"
 }
 
 bindsym $mod+z mode "resize"
@@ -163,7 +163,7 @@ bindsym $mod+z mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    status_command i3status
 }
 
 ################################################################################
@@ -173,21 +173,43 @@ bindsym $mod+i exec chromium
 
 ################################################################################
 # Startup
-exec  "~/.xinitrc"
-exec  "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
+exec "~/.xinitrc"
+exec "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
 
 # Set the wallpaper
-exec  "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/talon-alphabet.png"
+exec "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/talon-alphabet.png"
 
-exec  "xset s off"
-exec  "xset dpms 1800 2000 3600"
+exec "xset s off"
+exec "xset dpms 1800 2000 3600"
 
-exec  "pactl load-module module-detect"
+exec "pactl load-module module-detect"
 
 exec "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
-exec "chromium"
+
+# Bind workspaces to monitors
+set $leftMonitor DP-1-2
+set $rightMonitor DP-2-2
+
+workspace 1 output $leftMonitor
+workspace 2 output $leftMonitor
+workspace 3 output $leftMonitor
+workspace 4 output $leftMonitor
+workspace 5 output $leftMonitor
+workspace 6 output $rightMonitor
+workspace 7 output $rightMonitor
+workspace 8 output $rightMonitor
+workspace 9 output $rightMonitor
 
 # General programs to launch
-exec  "dunst"
-exec  "~/ledger/scripts/notebook.sh"
-exec  "~/talon/result/bin/talon"
+exec chromium
+exec dunst
+exec anki
+exec ~/ledger/scripts/notebook.sh
+exec ~/talon/result/bin/talon
+#exec ~/bin/discord
+exec i3-sensible-terminal
+
+for_window [class="Anki"] move container to workspace 4
+for_window [class="Chromium"] move container to workspace 6
+for_window [class="Discord"] move container to workspace 8
+for_window [class="Emacs"] move container to workspace 1
