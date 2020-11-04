@@ -13,7 +13,8 @@ bookmarks:          " fb"
 buffer:             " bb"
 last:               key(ctrl-6)
 
-project:            " pp"
+project$:           " pp"
+project ledger:     " ppledger\n"
 projectile there:   " pp"
 files:              " ph"
 projectile here:    " ph"
@@ -30,6 +31,9 @@ vest split:         ":vsp\n"
 
 save:               key(escape : w a enter)
 close:              key(: b d enter)
+
+# Editing
+comment line:       "gcgc"
 
 ################################################################################
 # Org Mode
