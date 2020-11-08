@@ -177,7 +177,7 @@ exec "~/.xinitrc"
 exec "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
 
 # Set the wallpaper
-exec "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/talon-alphabet.png"
+exec "feh --bg-scale /home/bhipple/dotfiles_local/wallpapers/jay-peak.jpg"
 
 exec "xset s off"
 exec "xset dpms 1800 2000 3600"
