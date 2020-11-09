@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Simple script to reconnect to tmux with fzf
+set -euxo pipefail
+sel=$(tmux ls | fzf -m | sed 's|:.*||')
+
+if [ "x$sel" != "x" ]; then
+    tmux a -t "$sel"
+fi
