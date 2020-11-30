@@ -183,14 +183,6 @@ fshow() {
 FZF-EOF"
 }
 
-# Exactly copied from https://github.com/junegunn/fzf/wiki/Examples#z
-# Note that # this keeps the fuzzy search sorted in terms of the z priority score!
-unalias z 2> /dev/null
-z() {
-    [ $# -gt 0 ] && _z "$*" && return
-    cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
-}
-
 # fstash - easier way to deal with stashes
 # type fstash to get a list of your stashes
 # enter shows you the contents of the stash

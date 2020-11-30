@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+NIXPKGS_ALLOW_UNFREE=1 nix run -I nixpkgs=channel:nixos-20.09 nixpkgs.discord -c Discord

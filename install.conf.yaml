@@ -14,14 +14,16 @@
     ~/.bash_profile:
         force: true
         path: bash_profile
+    ~/.config/i3:
+        path: i3/
     ~/.config/nixpkgs:
-          path: config/nixpkgs/
+        path: config/nixpkgs/
     ~/.config/pycodestyle:
-          path: config/pycodestyle
+        path: config/pycodestyle
     ~/.dir_colors: dir_colors
     ~/.emacs.d:
-          force: true
-          path: spacemacs/emacs.d
+        force: true
+        path: spacemacs/emacs.d
     ~/.spacemacs: spacemacs/init.el
     ~/.ghc/ghci.conf:
         path: ghc/ghci.conf
@@ -40,10 +42,6 @@
     ~/.vimrc: vimrc
     ~/.vimrc_minimal: vimrc_minimal
     ~/.xinitrc: xinitrc
-    ~/.xmobarrc: xmobarrc
-    ~/.xmonad:
-        force: true
-        path: xmonad/
     ~/.zsh: zsh/
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc

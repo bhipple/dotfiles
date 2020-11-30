@@ -14,10 +14,5 @@ vim/haskellmode.config
 vim/init.vim
 vim/spell/*.spl
 vim/spell/*.sug
-xmonad-x86*
-xmonad.errors
-xmonad.state
-xmonad/lib
-xmonad/xmonad
 
 !tmux/plugins/tpm
