@@ -15,3 +15,8 @@ run emacsclient: user.system_command("emacsclient -c")
 run poweroff: user.system_command("poweroff")
 run reboot: user.system_command("reboot")
 run terminal: key(super-enter)
+
+################################################################################
+# Dumpers
+dump emacs: user.system_command("notify-send \"$(cat ~/.talon/user/knausj_talon/bhipple/emacs.talon)\"")
+dump terminal: user.system_command("notify-send \"$(cat ~/.talon/user/knausj_talon/bhipple/terminal.talon)\"")
