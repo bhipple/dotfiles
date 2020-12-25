@@ -4,6 +4,7 @@ app: UXTerm
 ################################################################################
 # General Terminal
 clear: "c\n"
+ls: "ls\n"
 
 # Jumping with zoxide
 goto nix packages: "cd ~/src/nixpkgs\n"

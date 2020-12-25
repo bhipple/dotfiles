@@ -19,6 +19,7 @@ project ledger:     " ppledger\n"
 projectile there:   " pp"
 files:              " ph"
 projectile here:    " ph"
+other file:         " mga"
 
 # Window management
 right:              " wl"
@@ -35,6 +36,9 @@ close:              key(: b d enter)
 
 # Editing
 comment line:       "gcgc"
+line above:         " ik"
+line below:         " ij"
+undo:               key(escape u)
 
 ################################################################################
 # Org Mode
