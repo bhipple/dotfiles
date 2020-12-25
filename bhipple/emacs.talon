@@ -3,7 +3,7 @@ app: Emacs
 
 ################################################################################
 # General Emacs
-emacs talon:        key(space o v e)
+emacs talon:        ":e ~/.talon/user/knausj_talon/bhipple\n"
 
 run:                key(space r t)
 rerun:              key(space r r)
@@ -42,7 +42,7 @@ org archive:        key(ctrl-c shift-4)
 
 org review:         key(space o a r)
 
-org file:           key(space o o)
+org (file|home):    key(space o o)
 org weekly review:  key(space o b w)
 org agenda:         " oaha"
 
