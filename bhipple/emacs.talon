@@ -6,7 +6,7 @@ app: Emacs
 emacs talon:        ":e ~/.talon/user/knausj_talon/bhipple\n"
 
 run:                key(space r t)
-rerun:              key(space r r)
+(rerun|repeat):     key(space r r)
 
 # Jumping from here to there
 bookmarks:          " fb"
@@ -14,6 +14,7 @@ buffer:             " bb"
 last:               key(ctrl-6)
 
 project$:           " pp"
+projectile$:        " pp"
 project ledger:     " ppledger\n"
 projectile there:   " pp"
 files:              " ph"
@@ -48,5 +49,5 @@ org agenda:         " oaha"
 
 ################################################################################
 # Magit
-status:             key(space g s)
+git status:             key(space g s)
 commit:             key(ctrl-c ctrl-c)

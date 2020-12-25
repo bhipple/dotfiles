@@ -23,5 +23,11 @@ ledger (bal|balance)$: "l b\n"
 ################################################################################
 # Nix
 borg merge:
-     key(b o r g
+     key(b o r g)
+     key(space)
      key(shift+insert)
+
+nix shell: "nix-shell\n"
+nix build: "nix-build\n"
+
+make build: "make build -j\n"
