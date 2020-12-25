@@ -69,7 +69,6 @@
   "ot"   (lambda () "Add org TODO" (interactive)
            (org-insert-todo-heading-respect-content))
   "ovd"  'alsamixer-down-volume
-  "ove"  (lambda () (interactive) (find-file "~/.talon/user/knausj_talon/bhipple/general.talon"))  ; "voice edit"
   "ovm"  'alsamixer-toggle-mute
   "ovu"  'alsamixer-up-volume
   "ow"   'brh/smart-todo

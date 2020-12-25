@@ -27,6 +27,7 @@ keys
 
 update /etc/nixos
 update ~/.password-store
+update ~/.talon/user/knausj_talon
 update ~/dotfiles
 update ~/dotfiles_local
 update ~/ledger
