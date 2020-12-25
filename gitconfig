@@ -134,6 +134,8 @@
     cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [protocol]
     version = 2
+[pull]
+    rebase = false
 [push]
     default = simple
 [rerere]
