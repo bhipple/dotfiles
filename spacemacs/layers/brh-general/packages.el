@@ -1,6 +1,16 @@
 ;;; packages.el --- brh-general layer packages file for Spacemacs.
 ;;
-(defconst brh-general-packages '(direnv dumb-jump gcmh nix-update s solarized-theme))
+(defconst brh-general-packages '(
+  direnv
+  (dumb-jump
+   :location (recipe :fetcher github
+                     :repo "bhipple/dumb-jump"
+                     :branch "helm-bytecode-fix"))
+  gcmh
+  nix-update
+  s
+  solarized-theme
+))
 
 (defun brh-general/init-direnv ()
   (use-package direnv
@@ -8,9 +18,7 @@
 
 (defun brh-general/init-dumb-jump ()
   (use-package dumb-jump
-    :load-path "~/dotfiles/spacemacs/dumb-jump"
-    :init
-    (setq dumb-jump-selector 'helm)))
+    :init (setq dumb-jump-selector 'helm)))
 
 (defun brh-general/init-nix-update ()
   (use-package nix-update))

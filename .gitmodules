@@ -21,6 +21,3 @@
 [submodule "nur-packages"]
 	path = nur-packages
 	url = https://github.com/bhipple/nur-packages
-[submodule "spacemacs/dumb-jump"]
-	path = spacemacs/dumb-jump
-	url = https://github.com/bhipple/dumb-jump
