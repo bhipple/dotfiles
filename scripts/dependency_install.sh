@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Whether to just do minEnv or all
 if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1
 fi
@@ -44,17 +45,16 @@ nix_install() {
         fi
     fi
 
-    CHANNEL="nixos"
-    ATTRS="$CHANNEL.minEnv"
+    ATTRS="minEnv"
 
     if [ -n "$INSTALL_ALL" ]; then
         # Also install plaid2qif from my nix user repo
-        ATTRS="$ATTRS $CHANNEL.bigEnv $CHANNEL.nur.repos.bhipple.plaid2qif"
+        ATTRS="$ATTRS bigEnv nur.repos.bhipple.plaid2qif"
     fi
 
-    (set -x; NIXPKGS_ALLOW_UNFREE=1 nix-env -j$(nproc) -k -riA $ATTRS)
+    cd ~/src/nixpkgs
+    (set -x; nix-env -f . -j$(nproc) -k -riA $ATTRS)
 
-    # TODO: Crazy hack until I figure out WTF to do here
     if [ -n "$INSTALL_ALL" ]; then
         cd ~/src/nixpkgs
         nix-env -f . -iA spacemacs

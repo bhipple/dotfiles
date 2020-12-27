@@ -106,6 +106,7 @@ This function should only modify configuration layer settings."
           org-enable-org-journal-support t
           org-enable-reveal-js-support t
           org-startup-indented t)
+     (spacemacs-org :variables org-enable-valign nil)
      pandoc
      pdf
      perforce
@@ -115,7 +116,7 @@ This function should only modify configuration layer settings."
              python-auto-set-local-pyenv-virtualenv nil
              python-backend 'lsp
              python-enable-yapf-format-on-save nil
-             python-lsp-server 'pyls
+             python-lsp-server 'pyright
              python-sort-imports-on-save nil
              python-test-runner 'pytest
              python-fill-column 120)
@@ -177,7 +178,9 @@ This function should only modify configuration layer settings."
        anaconda-mode
        company-anaconda
        company-rtags
+       company-ycmd
        flycheck-rtags
+       flycheck-ycmd
        helm-rtags
        lsp-treemacs
        magit-svn
@@ -187,6 +190,7 @@ This function should only modify configuration layer settings."
        treemacs-magit
        treemacs-persp
        treemacs-projectile
+       ycmd
        ; Workaround until https://github.com/bmag/emacs-purpose/issues/158 is fixed
        window-purpose
    )
