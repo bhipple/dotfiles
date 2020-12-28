@@ -75,5 +75,7 @@ org agenda:         " oaha"
 
 ################################################################################
 # Magit
-git status:             key(space g s)
-git commit:             key(ctrl-c ctrl-c)
+git commit:         key(ctrl-c ctrl-c)
+git fetch:          " gmfa"
+git push:           " gmPu"
+git status:         " gs"
