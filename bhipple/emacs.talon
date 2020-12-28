@@ -78,4 +78,5 @@ org agenda:         " oaha"
 git commit:         key(ctrl-c ctrl-c)
 git fetch:          " gmfa"
 git push:           " gmPu"
+git refresh:        " !git rf\n"
 git status:         " gs"
