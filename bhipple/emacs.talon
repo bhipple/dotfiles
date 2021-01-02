@@ -3,12 +3,13 @@ app: Emacs
 
 ################################################################################
 # General Emacs
-emacs talon:        ":e ~/.talon/user/knausj_talon/bhipple\n"
+emacs talon:                 ":e ~/.talon/user/knausj_talon/bhipple/emacs.talon\n"
 emacs crafting interpreters: ":e ~/org/notes/crafting-interpreters/crafting-interpreters.org\n"
-emacs org: ":e ~/org/me.org\n"
+emacs org:                   ":e ~/org/me.org\n"
 
-run:                key(space r t)
-(rerun|repeat):     key(space r r)
+run$:               " rt"
+run <user.text>:    " rt{text}"
+(rerun|repeat):     " rr"
 
 # Jumping from here to there
 bookmarks:          " fb"
@@ -45,6 +46,12 @@ comment line:       "gcgc"
 line above:         " ik"
 line below:         " ij"
 undo:               key(escape u)
+paste pad:          key(escape o enter enter up escape p)
+paste below:        key(escape o escape p)
+paste above:        key(escaep O escape p)
+
+up block:           "[["
+down block:         "]]"
 
 # Jump to definition with LSP, optionally in another emacs window
 find definition$: " mgg"
@@ -61,6 +68,11 @@ grep point: " g*"
 
 search <user.text>: "/{text}"
 search up <user.text>: "?{text}"
+
+################################################################################
+# Python
+import pandas: "import pandas as pd"
+import numpy: "import numpy as np"
 
 ################################################################################
 # Org Mode
