@@ -57,6 +57,8 @@ down block:         "]]"
 find definition$: " mgg"
 find definition other$: " mgG"
 
+dumb jump:          " jj"
+
 # Find references to symbol with LSP
 find references: " mgr"
 
