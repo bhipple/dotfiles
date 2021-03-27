@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+INSTALL_ALL=""
+
 # Whether to just do minEnv or all
 if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1

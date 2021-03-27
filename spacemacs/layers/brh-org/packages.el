@@ -48,15 +48,20 @@
     ;; Enable org-babel
     (org-babel-do-load-languages 'org-babel-load-languages '(
       (ditaa . t)
-      (ein . t)
       (emacs-lisp . t)
       (gnuplot . t)
-      (haskell . nil)
       (org . t)
-      (perl . t)
       (python . t)
       (shell . t)
+      ; N.B. Jupyter must be last in this list! It depends on others.
+      (jupyter . t)
     ))
+
+    ;; Don't ask for confirmation every time I hit C-c c
+    (setq org-confirm-babel-evaluate nil)
+
+    ;; Don't indent src code blocks
+    (setq org-edit-src-content-indentation 0)
 
     ;; Setup persistence hooks for the clock
     (org-clock-persistence-insinuate)

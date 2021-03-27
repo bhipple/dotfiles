@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+notify-send "Disconnecting from bluetooth ..."
+echo -e 'disconnect 38:18:4C:7D:CA:CB' | sudo bluetoothctl

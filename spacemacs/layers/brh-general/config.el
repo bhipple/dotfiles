@@ -11,14 +11,8 @@
 ;; Don't ask about following symlinks
 (setq vc-follow-symlinks t)
 
-;; Don't show gravitar images next to committers
-(setq magit-revision-show-gravatars nil)
-
 ;; Don't depend on $TERM
 (setq system-uses-terminfo nil)
-
-;; Big performance boost
-(setq auto-window-vscroll nil)
 
 ;; Perform dired actions asynchronously
 ; (with-eval-after-load 'dired
@@ -41,6 +35,9 @@
 
 ;; Strongly prefer splitting to the right in split-window-sensibly
 (setq split-height-threshold nil)
+
+;; ledger-mode for beancount files
+(add-to-list 'auto-mode-alist '("\\.beancount" . ledger-mode))
 
 ;; salt-mode for jinja files
 (add-to-list 'auto-mode-alist '("\\.jinja\\'" . salt-mode))
@@ -82,22 +79,6 @@
       evil-escape-unordered-key-sequence t
       evil-escape-delay 0.25)
 
-; Fix for emacs 26.1 and ansi-term evil movement
-; See https://github.com/syl20bnr/spacemacs/issues/10779
-(setq term-char-mode-point-at-process-mark nil)
-
-;; Disables smartparens while still keeping it around for Spacemacs to use
-;; https://github.com/syl20bnr/spacemacs/issues/12533
-(with-eval-after-load 'smartparens (progn
- (defadvice spacemacs-editing/init-smartparens (around disable-smartparens activate))
- (show-smartparens-global-mode -1)
- (show-smartparens-mode -1)
- (turn-off-smartparens-mode)
- (turn-off-smartparens-strict-mode)
- (remove-hook 'comint-mode-hook 'smartparens-mode)
- (remove-hook 'prog-mode-hook 'smartparens-mode)
- (remove-hook 'minibuffer-setup-hook 'spacemacs//conditionally-enable-smartparens-mode)))
-
 ; Work-around for issue with evil search and minibuffer causing d, y, etc. to be
 ; entered twice until an emacs restart. See here for details:
 ; https://github.com/syl20bnr/spacemacs/issues/10410#issuecomment-391641439
@@ -107,8 +88,13 @@
     (evil-ex-search-exit)))
 (add-hook 'mouse-leave-buffer-hook #'kill-minibuffer)
 
-; Use smartparens in Java
-(add-hook 'java-mode-hook (lambda () #'smartparens-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LSP Settings
+
+(with-eval-after-load 'lsp-mode
+  ; Get rid of file watchers entirely
+  (setq lsp-enable-file-watchers nil)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Performance / Garbage Collector Optimizations
@@ -117,12 +103,26 @@
 ;; Show when the garbage collector runs
 (setq gcmh-verbose t)
 
-;; Set the max GC run at 2GB of RAM
-(setq gcmh-high-cons-threshold #x80000000)
+;; Set the max GC run at 500 MB of RAM
+(setq gcmh-high-cons-threshold #x20000000)
 
 ;; Disable savehist-mode to improve performance and potentially avoid crashes:
 ;; https://github.com/syl20bnr/spacemacs/issues/8462
 (savehist-mode nil)
+
+;; Big performance boost
+(setq auto-window-vscroll nil)
+
+;; Another big performance boost
+(spacemacs/disable-smooth-scrolling)
+
+;; Disable extremely slow functions
+(with-eval-after-load 'magit
+  ; Don't annotate status pages with git tag info
+  (defun magit-insert-tags-header ())
+  ; Don't attempt to lookup gravitar images next to committers
+  (setq magit-revision-show-gravatars nil)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Elfeed Configuration
