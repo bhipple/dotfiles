@@ -19,12 +19,8 @@ if [ $? -eq 0 ]; then
     visualModes=("visual")
 fi
 
-bindkey -M "vicmd" 'k' history-substring-search-up
-bindkey -M "vicmd" 'j' history-substring-search-down
-
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of
 # commands active in mode foo
-# Move to vim escape mode
 
 # Unmap ctrl-s as "stop flow"
 stty stop undef

@@ -11,14 +11,10 @@ if ! zgen saved; then
 
     zgen oh-my-zsh
 
-    # oh-my-zsh plugins
-    zgen oh-my-zsh plugins/history
-
     # Github plugins
     zgen load djui/alias-tips
     zgen load zsh-users/zsh-autosuggestions
     zgen load zsh-users/zsh-completions
-    zgen load zsh-users/zsh-history-substring-search
     zgen load zsh-users/zsh-syntax-highlighting
 
     # save all to init script
