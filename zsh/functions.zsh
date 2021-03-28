@@ -84,11 +84,6 @@ resize() {
 #  ============================================================================
 #  Useful functions from https://github.com/junegunn/fzf/wiki/examples
 #
-# fh - repeat history. This function only works in zsh
-fh() {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
-}
-
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
