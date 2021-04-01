@@ -35,10 +35,13 @@ fpath+=(~/.zsh/completions $fpath)
 
 source ~/.zsh/plugins.zsh
 
-# N.B. functions should go after plugins, since we define fzf helpers
 source ~/.zsh/functions.zsh
 
 source ~/.zsh/settings.zsh
+
+# N.B. fzf should go after settings, for unknown reasons
+source ~/.zsh/fzf.zsh
+
 source ~/.zsh/aliases.zsh
 
 if [[ -f ~/.zsh_local/zshrc_local_after.zsh ]]; then
