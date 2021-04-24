@@ -55,10 +55,7 @@
 ;; auto-indent. Auto messes up yaml, python, salt files, etc.
 (setq yas-indent-line 'fixed)
 
-(with-eval-after-load 'company
-  ;; Use tab-n-go company
-  (company-tng-configure-default)
-)
+(add-hook 'after-init-hook 'company-tng-mode)
 
 ;; Tell Spacemacs to put org clocks on my modeline by default
 (setq spaceline-org-clock-p t)
