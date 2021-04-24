@@ -3,6 +3,7 @@
   allowUnfreePredicate = pkg: builtins.elem pkg.pname [
     "discord"
     "steam"
+    "veracrypt"
   ];
 
   # Add the Nix User Repository

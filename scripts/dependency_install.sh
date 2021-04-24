@@ -63,29 +63,6 @@ nix_install() {
     fi
 }
 
-# See here for list of docsets:
-# https://kapeli.com/dash#docsets
-dasht_setup() {
-    if [ -z "$INSTALL_ALL" ]; then return; fi
-
-    dasht-docsets-install \
-        "^Bash$" \
-        "^Boost$" \
-        "^C++$" \
-        "^CMake$" \
-        "^Docker$" \
-        "^Emacs_Lisp$" \
-        "^Groovy$" \
-        "^Jinja$" \
-        "^NumPy$" \
-        "^Pandas$" \
-        "^Python_3$" \
-        "^Rust$" \
-        "^SaltStack$" \
-
-}
-
 change_to_zsh
 create_ssh
 nix_install
-dasht_setup

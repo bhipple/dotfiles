@@ -49,13 +49,6 @@
     (dotimes (i times) (insert (format format-str (1+ i) (1+ i) (1+ i))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Dash Docs
-(defun brh/install-docsets ()
-  "Install all of my chosen dash docsets"
-  (interactive)
-  (mapcar 'dash-docs-install-docset brh/dash-docsets))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Git Diff
 (defun brh/_diff-buffer (ref)
   "Diff the current buffer against ref"

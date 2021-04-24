@@ -69,8 +69,6 @@ This function should only modify configuration layer settings."
             c-c++-default-mode-for-headers 'c++-mode)
      copy-as-format
      csv
-     (dash :variables
-           dash-autoload-common-docsets nil)
      docker
      (elfeed :variables
              elfeed-enable-goodies nil)
