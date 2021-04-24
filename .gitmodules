@@ -2,14 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	branch = master
-[submodule "org-html-themes"]
-	path = org-html-themes
-	url = https://github.com/fniessen/org-html-themes
-	branch = master
-[submodule "reveal.js"]
-	path = reveal.js
-	url = https://github.com/hakimel/reveal.js
-	branch = master
 [submodule "spacemacs"]
 	path = spacemacs/emacs.d
 	url = https://github.com/syl20bnr/spacemacs

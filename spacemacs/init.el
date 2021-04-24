@@ -106,7 +106,6 @@ This function should only modify configuration layer settings."
           org-enable-github-support t
           org-enable-jira-support t
           org-enable-org-journal-support t
-          org-enable-reveal-js-support t
           org-startup-indented t)
      (spacemacs-org :variables org-enable-valign nil)
      pandoc
