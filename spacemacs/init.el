@@ -190,8 +190,6 @@ This function should only modify configuration layer settings."
        treemacs-persp
        treemacs-projectile
        ycmd
-       ; Workaround until https://github.com/bmag/emacs-purpose/issues/158 is fixed
-       window-purpose
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
