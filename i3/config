@@ -211,5 +211,6 @@ exec dunst
 exec ~/ledger/scripts/notebook.sh
 exec talon-systemd
 
-for_window [class="Discord"] move container to workspace 8
 for_window [class="Emacs"] move container to workspace 1
+for_window [class="Discord"] move container to workspace 8
+for_window [class="VLC Media Player"] move container to workspace 9
