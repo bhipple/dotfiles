@@ -106,9 +106,7 @@ This function should only modify configuration layer settings."
           org-enable-org-journal-support t
           org-startup-indented t)
      (spacemacs-org :variables org-enable-valign nil)
-     pandoc
      pdf
-     perforce
      perl5
      (python :variables
              python-auto-set-local-pyenv-version nil
