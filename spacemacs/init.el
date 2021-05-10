@@ -146,7 +146,8 @@ This function should only modify configuration layer settings."
      ;; Contains general emacs packages, config, funcs, keybindings
      ;; ~/dotfiles/spacemacs/layers/brh-general/
      brh-general
-    )
+   )
+
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -155,39 +156,40 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
-       alsamixer
-       evil-ediff
-       language-detection
-       package-lint
-       rpm-spec-mode)
+     alsamixer
+     evil-ediff
+     language-detection
+     package-lint
+     rpm-spec-mode
+   )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
-       ;; Very pretty, but let's avoid rendering lag
-       org-bullets
-       ;; Seems to have the behavior described here:
-       ;; https://github.com/syl20bnr/spacemacs/issues/11582
-       haskell-snippets
-       ;; Never use these at all
-       anaconda-mode
-       company-anaconda
-       company-rtags
-       company-ycmd
-       flycheck-rtags
-       flycheck-ycmd
-       helm-rtags
-       lsp-treemacs
-       magit-svn
-       treemacs
-       treemacs-evil
-       treemacs-icons-dired
-       treemacs-magit
-       treemacs-persp
-       treemacs-projectile
-       ycmd
+     ;; Very pretty, but let's avoid rendering lag
+     org-bullets
+     ;; Seems to have the behavior described here:
+     ;; https://github.com/syl20bnr/spacemacs/issues/11582
+     haskell-snippets
+     ;; Never use these at all
+     anaconda-mode
+     company-anaconda
+     company-rtags
+     company-ycmd
+     flycheck-rtags
+     flycheck-ycmd
+     helm-rtags
+     lsp-treemacs
+     magit-svn
+     treemacs
+     treemacs-evil
+     treemacs-icons-dired
+     treemacs-magit
+     treemacs-persp
+     treemacs-projectile
+     ycmd
    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
