@@ -100,14 +100,6 @@
 (defun _brh/org-capture-journal ()
   (progn "* %U\n"))
 
-(defun _brh/org-capture-lifts ()
-  (progn
-    (org-id-goto "eb8aed6d-2b42-4dd3-852a-a9bc343be131")
-    (org-todo 'done)
-    (org-id-goto "f9fb0821-2753-4f3d-9144-ad182059524b")
-    (recenter)
-    "|     |     |     |     |     |     |                                                     | %u |"))
-
 (defun _brh/org-capture-weekly-review ()
   "Helper function to go to the weekly review, clock in, and expand my snippet"
   (progn

@@ -187,12 +187,6 @@
            (function _brh/org-capture-journal)
            :immediate-finish t
            :jump-to-captured t)
-          ("l" "Lifting Log" table-line (file+olp "~/org/logs.org" "Lifting" "Lifting Log")
-           (function _brh/org-capture-lifts)
-           :empty-lines 0
-           :immediate-finish t
-           :table-line-pos "II+1"
-           :jump-to-captured t)
           ("m" "Someday/Maybe Item" entry (file+headline brh/default-org-file "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
           ("r" "Weekly Review" entry (file "~/org/logs.org")
