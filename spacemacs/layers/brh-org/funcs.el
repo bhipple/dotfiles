@@ -98,9 +98,7 @@
 ; to `funcall`, so we have to actually have a defined function, not just a
 ; lambda.
 (defun _brh/org-capture-journal ()
-  (progn
-    (bh/clock-in-task-by-id "bb32a90c-2948-4661-aa09-6a343c2d9764")
-    "* %U\n"))
+  (progn "* %U\n"))
 
 (defun _brh/org-capture-lifts ()
   (progn
