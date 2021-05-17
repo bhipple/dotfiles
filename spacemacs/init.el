@@ -663,7 +663,7 @@ before packages are loaded."
   (fset 'evil-visual-update-x-selection 'ignore)
 
   ;; Path for user lisp code
-  (add-to-list 'load-path  "~/.emacs_local/")
+  (add-to-list 'load-path "~/.emacs_local/")
 
   ;; Load local settings
   (require 'brh-local)
