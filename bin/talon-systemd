@@ -20,6 +20,7 @@ systemd-run \
     -E DISPLAY="$DISPLAY" \
     -E HOME="$HOME" \
     -p BindPaths=$HOME/.config/Talon \
+    -p BindPaths=$HOME/.nix-profile \
     -p BindPaths=$HOME/.talon \
     -p BindPaths=/nix/store \
     -p BindPaths=/run/user/1000 \
@@ -30,4 +31,5 @@ systemd-run \
     $(realpath $(which talon))
 
 systemctl --user status talon
-#journalctl --user -u talon -ef
+sleep 5
+journalctl --user -u talon -ef

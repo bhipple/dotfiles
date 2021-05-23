@@ -12,6 +12,7 @@ version=$(basename $1 | sed 's|\.tar.xz$||' | sed 's|talon-linux-||')
 hash=$(nix-prefetch-url $url)
 sed -i "s|^  version = .*|  version = \"$version\";  # updated $(date -I)|"  ~/dotfiles/nur-packages/pkgs/talon/beta-src.nix
 sed -i "s|^    url = .*|    url = \"$url\";|"                                ~/dotfiles/nur-packages/pkgs/talon/beta-src.nix
-sed -i "s|^    sha256 = .*|    sha256 = \"$hash\";|"                         ~/dotfiles/nur-packages/overlays/emacs-overlay.nix
+sed -i "s|^    sha256 = .*|    sha256 = \"$hash\";|"                         ~/dotfiles/nur-packages/pkgs/talon/beta-src.nix
 
 nix build --no-link -L nixos.talon
+nix-env -iA nixos.talon
