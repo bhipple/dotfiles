@@ -65,13 +65,4 @@
 
     ;; Setup persistence hooks for the clock
     (org-clock-persistence-insinuate)
-
-    ;; Show the org clock in the mode line
-    (spaceline-toggle-org-clock-on)
-
-    ;; TODO: Figure out why this isn't working.
-    (spaceline-define-segment brh/inactive-org "Segment to show on mode line when not clocking"
-                              (if (and (fboundp 'org-clocking-p (org-clocking-p))) nil "NOT CLOCKING"))
-    (spaceline-toggle-brh/inactive-org-on)
-
   ))
