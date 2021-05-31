@@ -113,6 +113,10 @@
 ;; Another big performance boost
 (spacemacs/disable-smooth-scrolling)
 
+;; Undo-tree is extremely slow compared to the built-in emacs28 undo-redo
+(global-undo-tree-mode -1)
+(evil-set-undo-system 'undo-redo)
+
 ;; Disable extremely slow functions
 (with-eval-after-load 'magit
   ; Don't annotate status pages with git tag info
