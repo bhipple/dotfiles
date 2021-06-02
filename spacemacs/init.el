@@ -663,6 +663,11 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; Undo-tree is extremely slow compared to the built-in emacs28 undo-redo
+  ;; This has to be run after all the layers, which is why it's here.
+  (global-undo-tree-mode -1)
+  (evil-set-undo-system 'undo-redo)
+
   ;; Ensure that visual selection does not overwrite X clipboard
   ;; http://spacemacs.org/doc/FAQ#prevent-the-visual-selection-overriding-my-system-clipboard
   ;; N.B. This has to go in user-config, so it loads after the spacemacs layers
