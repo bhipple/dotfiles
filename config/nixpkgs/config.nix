@@ -1,11 +1,5 @@
 {
   allowUnfree = false;
-  allowUnfreePredicate = pkg: builtins.elem pkg.pname [
-    "discord"
-    "steam"
-    "talon"
-    "veracrypt"
-  ];
 
   # Add the Nix User Repository
   packageOverrides = pkgs: {

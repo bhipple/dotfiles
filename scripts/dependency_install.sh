@@ -54,11 +54,11 @@ nix_install() {
         ATTRS="$ATTRS bigEnv nur.repos.bhipple.plaid2qif"
     fi
 
+    export NIXPKGS_ALLOW_UNFREE=1
     cd ~/src/nixpkgs
     (set -x; nix-env -f . -j$(nproc) -k -riA $ATTRS)
 
     if [ -n "$INSTALL_ALL" ]; then
-        cd ~/src/nixpkgs
         nix-env -f . -iA spacemacs
     fi
 }
