@@ -108,10 +108,22 @@
     (show-subtree)
     (re-search-forward "^** CLOSING NOTE")
     (forward-line -1)
-    (insert "\n")
-    (yas-expand-snippet (yas-lookup-snippet "weeklyreviewtemplate"))
-    (recenter)
-    ""))
+    (insert "
+** CLOSING NOTE [" (format-time-string "%Y-%m-%d %a %H:%M") "] \\\\
+*** Recap of last week
+DW Hours:
+Meditation Sessions:
+Workouts:
+*** Goals for next week
+- [ ]
+- [ ]
+- [ ]
+*** Lessons learned
+**** What went well
+**** What didn't go well
+**** What to change
+")
+    (recenter)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
