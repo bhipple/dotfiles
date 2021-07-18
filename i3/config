@@ -209,7 +209,7 @@ workspace 9 output $rightMonitor
 exec chromium
 exec dunst
 exec ~/ledger/scripts/notebook.sh
-exec talon-systemd
+exec talon
 
 for_window [class="Emacs"] move container to workspace 1
 for_window [class="Discord"] move container to workspace 8
