@@ -102,7 +102,10 @@
 
 (defun _brh/org-capture-weekly-review ()
   "Helper function to go to the weekly review, clock in, and expand my snippet"
-  (progn
+  (let* ((last-review-date (string-trim (shell-command-to-string "grep CLOSING /home/bhipple/org/logs.org | head -1 | awk '{print $4}' | sed 's|\\[||'")))
+        (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
+        )
+    (progn
     (bh/clock-in-task-by-id "9acee905-3db5-4cff-9526-928e9693a323")
     (org-id-goto "9acee905-3db5-4cff-9526-928e9693a323")
     (show-subtree)
@@ -111,9 +114,10 @@
     (insert "
 ** CLOSING NOTE [" (format-time-string "%Y-%m-%d %a %H:%M") "] \\\\
 *** Recap of last week
-DW Hours:
-Meditation Sessions:
-Workouts:
+DW Hours: " (funcall ledger "b Deep | awk '{print $1}'") "
+NF: " (funcall ledger "r NF | wc -l") "
+Meditation Sessions: " (funcall ledger "r Meditation | wc -l") "
+Workouts: " (funcall ledger "r Exercise | wc -l") "
 *** Goals for next week
 - [ ]
 - [ ]
@@ -123,7 +127,7 @@ Workouts:
 **** What didn't go well
 **** What to change
 ")
-    (recenter)))
+    (recenter))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
