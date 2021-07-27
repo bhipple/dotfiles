@@ -9,6 +9,7 @@ eval "$(zoxide init zsh)"
 if ! zgen saved; then
     echo "Creating a zgen save"
 
+    export DISABLE_AUTO_UPDATE="true"  # Don't ask for oh-my-zsh prompts
     zgen oh-my-zsh
 
     # Github plugins
