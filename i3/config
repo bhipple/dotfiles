@@ -192,8 +192,8 @@ exec "pactl load-module module-detect"
 exec "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
 
 # Bind workspaces to monitors
-set $leftMonitor DP-2-2
-set $rightMonitor DP-1-2
+set $leftMonitor DP-1-2
+set $rightMonitor DP-2-2
 
 workspace 1 output $leftMonitor
 workspace 2 output $leftMonitor
