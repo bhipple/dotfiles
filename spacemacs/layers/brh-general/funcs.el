@@ -101,9 +101,6 @@
 ; Save the previous shell cmd that I ran for convenience
 (setq brh/last-shell-cmd "")
 
-; Sticky choice of shell implementation to call
-(setq brh/current-shell-func 'brh/_tmux-cmd)
-
 (defun brh/set-preferred-shell-func ()
   "Run a cmd in my preferred shell. Changes based on context."
   (interactive)
@@ -111,13 +108,20 @@
   ; async-shell-command is really lightweight and always works, but it can't take interactive input or re-run a cmd, etc.
   ; vterm is heavier, but stays in emacs
   ; tmux works nicely with the full, normal shell and multiple monitors
-  (let* ((choices '("vterm" "tmux" "async-shell-command"))
+  (let* ((choices '("vterm" "tmux" "async-shell-command-in-root"))
          (sel (helm-comp-read
                "terminal runner choice: " choices)))
     (cond ((string-equal sel "vterm") (setq brh/current-shell-func 'run-in-vterm))
           ((string-equal sel "tmux") (setq brh/current-shell-func 'brh/_tmux-cmd))
-          ((string-equal sel "async-shell-command") (setq brh/current-shell-func 'async-shell-command))
+          ((string-equal sel "async-shell-command-in-root") (setq brh/current-shell-func 'brh/_async-shell-command-in-root))
           (t (message "Choice not recognized")))))
+
+; Sticky choice of shell implementation to call
+(setq brh/current-shell-func 'brh/_async-shell-command-in-root)
+
+(defun brh/_async-shell-command-in-root (cmd)
+  (projectile-with-default-dir (projectile-acquire-root)
+    (async-shell-command cmd)))
 
 (defun brh/_get-tmux-pane ()
   "Get the number of the a tmux pane NOT running emacs on current window"
@@ -136,7 +140,8 @@
 (defun brh/run-shell-helm ()
   "Interactively select a cmd to run in the emacs async shell"
   (interactive)
-  (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
+  (save-ex
+    (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
          (cmds (brh/read-file-to-list cmd-file))
          (sel (helm-comp-read
                "shell command: " cmds))
@@ -146,7 +151,7 @@
       (insert (string-join updated-cmds "\n"))
       (write-region (point-min) (point-max) cmd-file))
     (setq brh/last-shell-cmd sel)
-    (funcall brh/current-shell-func sel)))
+    (funcall brh/current-shell-func sel))))
 
 (defun brh/run-shell-clear ()
   "Send the clear command to the terminal"
