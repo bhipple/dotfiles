@@ -140,7 +140,7 @@
 (defun brh/run-shell-helm ()
   "Interactively select a cmd to run in the emacs async shell"
   (interactive)
-  (save-ex
+  (save-window-excursion
     (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
          (cmds (brh/read-file-to-list cmd-file))
          (sel (helm-comp-read
