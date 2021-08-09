@@ -74,9 +74,8 @@
   "ow"   'brh/smart-todo
   "rc"   'brh/run-shell-clear
   "rC"   (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
-  "rl"   'brh/run-shell-line
   "rL"   'brh/run-shell-line-clear
   "rr"   'brh/run-shell-repeat
-  "rt"   'brh/run-shell-helm
+  "rt"   'brh/run-shell
   "rT"   'brh/set-preferred-shell-func
   )

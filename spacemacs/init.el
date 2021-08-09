@@ -80,7 +80,7 @@ This function should only modify configuration layer settings."
      graphviz
      groovy
      haskell
-     helm
+     compleseus
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)

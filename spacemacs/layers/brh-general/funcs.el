@@ -45,7 +45,7 @@
   "Insert the numbers 1 through N on lines, optionally with a custom format string. Supports up to 3 repeats of %d on each line"
   (interactive)
   (let ((times (string-to-number (read-string "Insert numbers 1 through N for N = ")))
-        (format-str (helm-comp-read "Format string for each line: " '("%d\n" "%d. \n" "* TODO %d\n"))))
+        (format-str (completing-read "Format string for each line: " '("%d\n" "%d. \n" "* TODO %d\n"))))
     (dotimes (i times) (insert (format format-str (1+ i) (1+ i) (1+ i))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -69,7 +69,7 @@
   "Diff the current buffer against an entered ref"
   (interactive)
   (brh/_diff-buffer
-   (helm-comp-read "Ref to diff against: " (cons "HEAD" (magit-list-refs)))))
+   (completing-read "Ref to diff against: " (cons "HEAD" (magit-list-refs)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ansi-term
@@ -109,7 +109,7 @@
   ; vterm is heavier, but stays in emacs
   ; tmux works nicely with the full, normal shell and multiple monitors
   (let* ((choices '("vterm" "tmux" "async-shell-command-in-root"))
-         (sel (helm-comp-read
+         (sel (completing-read
                "terminal runner choice: " choices)))
     (cond ((string-equal sel "vterm") (setq brh/current-shell-func 'run-in-vterm))
           ((string-equal sel "tmux") (setq brh/current-shell-func 'brh/_tmux-cmd))
@@ -137,13 +137,14 @@
          (full-cmd (concat "tmux send-keys -t " target-pane " '" cmd "' Enter")))
     (shell-command full-cmd t t)))
 
-(defun brh/run-shell-helm ()
-  "Interactively select a cmd to run in the emacs async shell"
+(defun brh/run-shell ()
+  "Save the buffer and then interactively select a cmd to run in the emacs async shell"
   (interactive)
   (save-window-excursion
+    (save-buffer 0)
     (let* ((cmd-file (expand-file-name "~/dotfiles_local/emacs_local/shell-cmds"))
          (cmds (brh/read-file-to-list cmd-file))
-         (sel (helm-comp-read
+         (sel (completing-read
                "shell command: " cmds))
          (updated-cmds (delete-dups (cons sel cmds))))
     ; Always put the run command first in the file, so it's at the top of the helm menu.
@@ -173,7 +174,9 @@
 (defun brh/run-shell-repeat ()
   "Repeat the previous command in the active terminal session"
   (interactive)
-  (funcall brh/current-shell-func brh/last-shell-cmd))
+  (save-window-excursion
+    (save-buffer 0)
+    (funcall brh/current-shell-func brh/last-shell-cmd)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Yanked from https://www.reddit.com/r/emacs/comments/ft84xy/run_shell_command_in_new_vterm/
