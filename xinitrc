@@ -7,16 +7,12 @@
 
 x1cg6_docked() {
     xmodmap ~/dotfiles_local/xmodmap/qwerty
-
-    xrandr --dpi 96 \
-           --output eDP-1 --off \
-           --output DP-2-2 --auto --pos 0x900 -r 60 --primary \
-           --output DP-1-2 --auto --pos 2560x0 -r 60 --rotate left
+     xrandr --output eDP-1 --off \
+            --output DP-1 --primary --auto
 }
 
 x1cg6_undocked() {
     xmodmap ~/dotfiles_local/xmodmap/colemak
-
     xrandr --dpi 192 \
            --screen 0 --size 2560x1440 \
            --output eDP-1 --auto --primary --pos 0x0
@@ -25,7 +21,7 @@ x1cg6_undocked() {
 handle_docking() {
     if grep -q x1cg6 /etc/hostname; then
         # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
-        if xrandr | grep -q "DP-1-2 connected"; then
+        if xrandr | grep -q "^DP-1 connected"; then
             x1cg6_docked
         else
             x1cg6_undocked

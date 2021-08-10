@@ -1,2 +1,0 @@
-#!/usr/bin/env sh
-NIXPKGS_ALLOW_UNFREE=1 nix run -I nixpkgs=channel:nixos-21.05 nixpkgs.steam -c steam
