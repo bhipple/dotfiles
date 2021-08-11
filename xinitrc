@@ -7,7 +7,8 @@
 
 x1cg6_docked() {
     xmodmap ~/dotfiles_local/xmodmap/qwerty
-     xrandr --output eDP-1 --off \
+     xrandr --dpi 144 \
+            --output eDP-1 --off \
             --output DP-1 --primary --auto
 }
 
@@ -21,7 +22,7 @@ x1cg6_undocked() {
 handle_docking() {
     if grep -q x1cg6 /etc/hostname; then
         # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
-        if xrandr | grep -q "^DP-1 connected"; then
+        if xrandr | grep -q "^DP-[12] connected"; then
             x1cg6_docked
         else
             x1cg6_undocked
