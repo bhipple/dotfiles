@@ -261,6 +261,12 @@
   (setq org-habit-graph-column 80)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; org-roam configuration
+  (setq org-roam-v2-ack t)
+  (setq org-roam-directory (file-truename "~/org/roam"))
+  ;(org-roam-db-autosync-mode)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Elfeed config
   (setq-default elfeed-search-filter "@1-month-ago +unread ")
 
