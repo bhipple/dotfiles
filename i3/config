@@ -37,9 +37,6 @@ bindsym XF86Mail exec "/home/bhipple/bin/bt-disconnect"
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
 # kill focused window
 bindsym $mod+c kill
 
@@ -173,7 +170,9 @@ bar {
 
 ################################################################################
 # Keys for launching programs
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+a exec anki
+bindsym $mod+e exec "emacsclient -c"
 bindsym $mod+i exec chromium
 
 ################################################################################
