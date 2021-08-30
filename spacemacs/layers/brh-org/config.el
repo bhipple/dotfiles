@@ -266,6 +266,13 @@
   (setq org-roam-directory (file-truename "~/org/roam"))
   ;(org-roam-db-autosync-mode)
 
+  (add-to-list 'load-path "~/src/org-roam-ui")
+  (load-library "org-roam-ui")
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Elfeed config
   (setq-default elfeed-search-filter "@1-month-ago +unread ")
