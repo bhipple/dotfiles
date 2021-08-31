@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-if [ -f /tmp/emacs$UID/server ]; then
-    emacsclient "$@"
-    return
+if ! ps aux | grep -q "emacs --daemon"; then
+    emacs --daemon
+    sleep 5
 fi
 
-mkdir -p /tmp/emacs$UID && pushd /tmp/emacs$UID
-nohup emacs "$@" &
-popd
+emacsclient -c &
