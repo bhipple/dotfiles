@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Startup a new emacsclient frame and don't wait for the buffer to exit
-emacsclient -qnc "$@"

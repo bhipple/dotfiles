@@ -29,17 +29,6 @@ docker-rmi-anon() {
     docker images | grep "<none>" | awk '{print $3}' | xargs -I{} docker rmi -f {}
 }
 
-em() {
-    if [ -f /tmp/emacs$UID/server ]; then
-        emacsclient "$@"
-        return
-    fi
-
-    mkdir -p /tmp/emacs$UID && pushd /tmp/emacs$UID
-    nohup emacs "$@" &
-    popd
-}
-
 check_last_exit_code() {
   local LAST_EXIT_CODE=$?
   if [[ $LAST_EXIT_CODE -ne 0 ]]; then

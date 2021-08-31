@@ -168,7 +168,7 @@ bar {
 # Keys for launching programs
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+a exec anki
-bindsym $mod+e exec "emacsclient -c"
+bindsym $mod+e exec "em"
 bindsym $mod+i exec chromium
 
 ################################################################################
@@ -184,7 +184,7 @@ exec "xset dpms 1800 2000 3600"
 
 exec "pactl load-module module-detect"
 
-exec "if ! pgrep emacs; then emacs --daemon; emacsclient -c; fi"
+exec "em"
 
 # Bind workspaces to monitors
 set $leftMonitor DP-2-2
