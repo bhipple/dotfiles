@@ -1,7 +1,2 @@
 #!/usr/bin/env bash
-if ! ps aux | grep -q "emacs --daemon"; then
-    emacs --daemon
-    sleep 5
-fi
-
 emacsclient -c &
