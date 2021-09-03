@@ -40,7 +40,7 @@
 (global-set-key (kbd "<f8>") 'org-agenda)
 (global-set-key (kbd "<f9>") 'org-clock-goto)
 (global-set-key (kbd "<f10>") 'brh/org-clock-in-with-prefix)
-(global-set-key (kbd "<f11>") 'helm-org-rifle)
+(global-set-key (kbd "<f11>") 'org-roam-node-find)
 (global-set-key (kbd "S-<f11>") 'brh/search-and-clock-in)
 (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 
