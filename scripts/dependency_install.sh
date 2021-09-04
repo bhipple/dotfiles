@@ -55,9 +55,13 @@ nix_install() {
     fi
 
     export NIXPKGS_ALLOW_UNFREE=1
-    (set -x; nix-env -f '<nixos>' -j$(nproc) -k -riA $ATTRS)
+    # Build first before installing, so we can see the progress bar
+    set -x
+    nix build -f '<nixos>' --no-link -j$(nproc) $ATTRS
+    nix-env -f '<nixos>' -j$(nproc) -k -riA $ATTRS
 
     if [ -n "$INSTALL_ALL" ]; then
+        nix build -f '<nixos>' --no-link spacemacs
         nix-env -f '<nixos>' -iA spacemacs
     fi
 }
