@@ -55,11 +55,10 @@ nix_install() {
     fi
 
     export NIXPKGS_ALLOW_UNFREE=1
-    cd ~/src/nixpkgs
-    (set -x; nix-env -f . -j$(nproc) -k -riA $ATTRS)
+    (set -x; nix-env -f '<nixos>' -j$(nproc) -k -riA $ATTRS)
 
     if [ -n "$INSTALL_ALL" ]; then
-        nix-env -f . -iA spacemacs
+        nix-env -f '<nixos>' -iA spacemacs
     fi
 }
 
