@@ -5,14 +5,14 @@
 # Configure monitors as-needed depending on whether we're plugged into the
 # docking station or not.
 
-x1cg6_docked() {
+docked() {
     xmodmap ~/dotfiles_local/xmodmap/qwerty
      xrandr --dpi 144 \
             --output eDP-1 --off \
             --output DP-1 --primary --auto
 }
 
-x1cg6_undocked() {
+undocked() {
     xmodmap ~/dotfiles_local/xmodmap/colemak
     xrandr --dpi 192 \
            --screen 0 --size 2560x1440 \
@@ -23,10 +23,12 @@ handle_docking() {
     if grep -q x1cg6 /etc/hostname; then
         # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
         if xrandr | grep -q "^DP-[12] connected"; then
-            x1cg6_docked
+            docked
         else
-            x1cg6_undocked
+            undocked
         fi
+    elif grep -q x1cg4 /etc/hostname; then
+        undocked
     fi
 }
 
