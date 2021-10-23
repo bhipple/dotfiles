@@ -5,6 +5,7 @@
   gcmh
   jupyter
   nix-update
+  popper
   s
   solarized-theme
 ))
@@ -15,6 +16,17 @@
 
 (defun brh-general/init-nix-update ()
   (use-package nix-update))
+
+(defun brh-general/init-popper ()
+  (use-package popper
+    (setq popper-reference-buffers
+          '("\\*Messages\\*"
+            "Output\\*$"
+            "\\*Async Shell Command\\*"
+            help-mode
+            compilation-mode))
+    (popper-mode +1)
+    (popper-echo-mode +1)))
 
 (defun brh-general/init-jupyter ()
   (use-package jupyter))
