@@ -44,6 +44,10 @@
 (global-set-key (kbd "S-<f11>") 'brh/search-and-clock-in)
 (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 
+; Popper keys
+(global-set-key "\M-p" 'popper-toggle-latest)
+(global-set-key "\M-n" 'popper-cycle)
+
 (spacemacs/set-leader-keys
   "dom"  'brh/diff-origin-master
   "jj"   'dumb-jump-go
