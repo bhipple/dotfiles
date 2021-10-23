@@ -20,11 +20,13 @@
 (defun brh-general/init-popper ()
   (use-package popper
     (setq popper-reference-buffers
-          '("\\*Messages\\*"
+          '(
+            ;help-mode
+            ;compilation-mode
+            "\\*Messages\\*"
             "Output\\*$"
             "\\*Async Shell Command\\*"
-            help-mode
-            compilation-mode))
+            ))
     (popper-mode +1)
     (popper-echo-mode +1)))
 
