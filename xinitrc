@@ -10,6 +10,10 @@ docked() {
      xrandr --dpi 144 \
             --output eDP-1 --off \
             --output DP-1 --primary --auto
+
+    if grep -q 'HDMI-1 connected'; then
+        xrandr --output HDMI-1 --auto --left-of DP-2
+    fi
 }
 
 undocked() {

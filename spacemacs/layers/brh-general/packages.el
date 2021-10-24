@@ -19,6 +19,7 @@
 
 (defun brh-general/init-popper ()
   (use-package popper
+    :init
     (setq popper-reference-buffers
           '(
             ;help-mode
