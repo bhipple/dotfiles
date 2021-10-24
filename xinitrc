@@ -7,12 +7,13 @@
 
 docked() {
     xmodmap ~/dotfiles_local/xmodmap/qwerty
-     xrandr --dpi 144 \
-            --output eDP-1 --off \
-            --output DP-1 --primary --auto
+    dp=$(xrandr | grep '^DP-[1-2] connected' | awk '{print $1}')
+    xrandr --dpi 144 \
+           --output eDP-1 --off \
+           --output $dp --primary --auto
 
     if grep -q 'HDMI-1 connected'; then
-        xrandr --output HDMI-1 --auto --left-of DP-2
+        xrandr --output HDMI-1 --auto --left-of $dp
     fi
 }
 
