@@ -22,14 +22,14 @@
     :init
     (setq popper-reference-buffers
           '(
-            ;help-mode
-            ;compilation-mode
+            help-mode
+            compilation-mode
             "\\*Messages\\*"
             "Output\\*$"
             "\\*Async Shell Command\\*"
             ))
-    (popper-mode +1)
-    (popper-echo-mode +1)))
+    (popper-mode t)
+    (popper-echo-mode t)))
 
 (defun brh-general/init-jupyter ()
   (use-package jupyter))

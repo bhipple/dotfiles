@@ -44,7 +44,7 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       ; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
-                      auto-completion-enable-snippets-in-popup nil
+                      auto-completion-enable-snippets-in-popup t
                       auto-completion-idle-delay 0.0
                       auto-completion-minimum-prefix-length 1
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
@@ -57,7 +57,7 @@ This function should only modify configuration layer settings."
                           company-dabbrev
                           company-dabbrev-code
                           ; This one tanks on slow filesystems
-                          ; company-files
+                          company-files
                           ; These don't appear to do much and have upstream performance woes
                           ; company-etags
                           ; company-gtags
@@ -88,11 +88,11 @@ This function should only modify configuration layer settings."
      ipython-notebook
      java
      javascript
-     (lsp :variables
-          lsp-navigation 'simple
-          lsp-use-lsp-ui nil
-          lsp-ui-sideline-enable nil
-          lsp-ui-doc-enable nil)
+     ;; (lsp :variables
+     ;;      lsp-navigation 'simple
+     ;;      lsp-use-lsp-ui nil
+     ;;      lsp-ui-sideline-enable nil
+     ;;      lsp-ui-doc-enable nil)
      lua
      markdown
      nginx
@@ -113,9 +113,9 @@ This function should only modify configuration layer settings."
      (python :variables
              python-auto-set-local-pyenv-version nil
              python-auto-set-local-pyenv-virtualenv nil
-             python-backend 'lsp
+             ;python-backend 'lsp
              python-enable-yapf-format-on-save nil
-             python-lsp-server 'pyright
+             ;python-lsp-server 'pylsp
              python-sort-imports-on-save nil
              python-test-runner 'pytest
              python-fill-column 80)
