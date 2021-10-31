@@ -93,9 +93,12 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; These two are also necessary to avoid constant spam!
+(set-file-name-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LSP Settings
-
 (with-eval-after-load 'lsp-mode
   ; Get rid of file watchers entirely
   (setq lsp-enable-file-watchers nil)

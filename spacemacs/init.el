@@ -135,7 +135,7 @@ This function should only modify configuration layer settings."
      systemd
      terraform
      tmux
-     version-control
+     (version-control :variables version-control-diff-tool nil)
      vimscript
      vinegar
      xclipboard
@@ -175,6 +175,9 @@ This function should only modify configuration layer settings."
      ;; Seems to have the behavior described here:
      ;; https://github.com/syl20bnr/spacemacs/issues/11582
      haskell-snippets
+     ;; Does not like git-crypt files and spews encoding errors!
+     git-gutter
+     git-gutter-fringe
      ;; Never use these at all
      anaconda-mode
      company-anaconda
