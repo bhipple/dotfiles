@@ -2,9 +2,6 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-;; Unfortunately, this requires write access to the nix store to work.
-(setq comp-deferred-compilation nil)
-
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -88,11 +85,11 @@ This function should only modify configuration layer settings."
      ipython-notebook
      java
      javascript
-     ;; (lsp :variables
-     ;;      lsp-navigation 'simple
-     ;;      lsp-use-lsp-ui nil
-     ;;      lsp-ui-sideline-enable nil
-     ;;      lsp-ui-doc-enable nil)
+     (lsp :variables
+          lsp-navigation 'simple
+          lsp-use-lsp-ui nil
+          lsp-ui-sideline-enable nil
+          lsp-ui-doc-enable nil)
      lua
      markdown
      nginx
