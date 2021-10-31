@@ -51,19 +51,15 @@ nix_install() {
 
     if [ -n "$INSTALL_ALL" ]; then
         # Also install plaid2qif from my nix user repo
-        ATTRS="$ATTRS bigEnv nur.repos.bhipple.plaid2qif"
+        ATTRS="$ATTRS bigEnv spacemacs nur.repos.bhipple.plaid2qif"
     fi
 
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
-    nix build -f '<nixos>' --no-link -j$(nproc) $ATTRS
+    nix build -Lvf '<nixos>' --no-link -j$(nproc) $ATTRS
     nix-env -f '<nixos>' -j$(nproc) -k -riA $ATTRS
 
-    if [ -n "$INSTALL_ALL" ]; then
-        nix build -f '<nixos>' --no-link spacemacs
-        nix-env -f '<nixos>' -iA spacemacs
-    fi
 }
 
 change_to_zsh
