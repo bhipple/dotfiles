@@ -264,7 +264,10 @@
   ;; org-roam configuration
   (setq org-roam-v2-ack t)
   (setq org-roam-directory (file-truename "~/org/roam"))
-  ;(org-roam-db-autosync-mode)
+  ; This kicks on every org mode file save, and can cause some lag
+  (setq org-roam-db-update-on-save nil)
+
+  (org-roam-db-autosync-mode nil)
 
   (add-to-list 'load-path "~/src/org-roam-ui")
   (load-library "org-roam-ui")

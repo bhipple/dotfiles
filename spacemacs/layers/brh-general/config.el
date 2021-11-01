@@ -149,6 +149,11 @@
       browse-url-generic-program "chromium-browser")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Timers
+; 5 minutes after startup, run org-roam-db-sync; then re-run it every 30m
+(run-with-timer (* 5 60) (* 30 60) 'org-roam-db-sync)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bugs / Workarounds that can hopefully be deleted someday
 
 ; Workaround for:
