@@ -32,7 +32,6 @@ update ~/dotfiles
 update ~/dotfiles_local
 update ~/ledger
 update ~/org
-update ~/personal
 
 wait
 echo "Finished updating"
