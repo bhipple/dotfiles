@@ -73,6 +73,18 @@
   ;; By default, start up with log-mode turned on
   (setq org-agenda-start-with-log-mode t)
 
+  ;; Don't give a warning color to tasks with impending deadlines if they are
+  ;; scheduled to be done
+  (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+
+  ;; Sort tasks in order of when they are due and then by priority
+  (setq org-agenda-sorting-strategy
+        (quote
+         ((agenda deadline-up priority-down)
+          (todo priority-down category-keep)
+          (tags priority-down category-keep)
+          (search category-keep))))
+
   ;; Set all of the check parameters for clock consistency checks. These are
   ;; currently all the default, except for max-duration, which I've bumped up to
   ;; 12 hours for those days when I sleep a lot.
