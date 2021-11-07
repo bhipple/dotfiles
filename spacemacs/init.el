@@ -37,7 +37,6 @@ This function should only modify configuration layer settings."
      ;; Install layers with <SPC f e R>
      ;; ----------------------------------------------------------------
      ansible ; needed for yaml-mode
-     asciidoc
      (auto-completion :variables
                       ; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
