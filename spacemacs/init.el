@@ -95,7 +95,6 @@ This function should only modify configuration layer settings."
      nginx
      (nixos :variables
             nixos-enable-company nil)
-     notmuch
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
@@ -182,9 +181,12 @@ This function should only modify configuration layer settings."
      company-ycmd
      flycheck-rtags
      flycheck-ycmd
+     gendoxy
      helm-rtags
+     hindent
      lsp-treemacs
      magit-svn
+     nose
      treemacs
      treemacs-evil
      treemacs-icons-dired
