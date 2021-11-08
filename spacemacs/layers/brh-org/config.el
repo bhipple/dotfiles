@@ -288,6 +288,21 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t)
 
+  (add-to-list 'display-buffer-alist
+               '("\\*org-roam\\*"
+                 (display-buffer-in-side-window)
+                 (dedicated . t)
+                 (side . right)
+                 (slot . 0)
+                 (window-width . 0.33)
+                 (window-parameters . ((no-other-window . t)
+                                       (no-delete-other-windows . t)))))
+
+  (defun my-org-roam-node-visit ()
+    (interactive)
+    (org-roam-node-visit (org-roam-node-at-point t) t t))
+  (define-key org-roam-node-map [remap org-roam-buffer-visit-thing] 'my-org-roam-node-visit)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Elfeed config
   (setq-default elfeed-search-filter "@1-month-ago +unread ")

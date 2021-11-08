@@ -102,7 +102,7 @@
 
 (defun _brh/org-capture-weekly-review ()
   "Helper function to go to the weekly review, clock in, and expand my snippet"
-  (let* ((last-review-date (string-trim (shell-command-to-string "grep CLOSING /home/bhipple/org/logs.org | head -1 | awk '{print $4}' | sed 's|\\[||'")))
+  (let* ((last-review-date (string-trim (shell-command-to-string "grep CLOSING /home/bhipple/org/roam/logs.org | head -1 | awk '{print $4}' | sed 's|\\[||'")))
         (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
         )
     (progn
@@ -115,7 +115,7 @@
 ** CLOSING NOTE [" (format-time-string "%Y-%m-%d %a %H:%M") "] \\\\
 *** Recap of last week
 DW Hours: " (funcall ledger "b Deep | awk '{print $1}'") "
-NF: " (funcall ledger "r NF | wc -l") "
+NF: " (funcall ledger "b NF | awk '{print $1}'") "
 Meditation Sessions: " (funcall ledger "r Meditation | wc -l") "
 Workouts: " (funcall ledger "r Exercise | wc -l") "
 *** Goals for next week

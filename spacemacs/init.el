@@ -688,6 +688,11 @@ before packages are loaded."
   ;; Path for user lisp code
   (add-to-list 'load-path "~/.emacs_local/")
 
+  ; Workaround for:
+  ; https://github.com/syl20bnr/spacemacs/issues/14969
+  ; https://org-roam.discourse.group/t/sidebar-roam-buffer-gets-replaced-with-org-roam-node-instead-of-updating
+  (global-page-break-lines-mode nil)
+
   ;; Load local settings
   (require 'brh-local)
 )

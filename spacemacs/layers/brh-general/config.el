@@ -172,7 +172,3 @@
   (defun git-gutter+-remote-file-path (dir file)
     (let ((file (tramp-file-name-localname (tramp-dissect-file-name file))))
       (replace-regexp-in-string (concat "\\`" dir) "" file))))
-
-; Workaround for:
-; https://github.com/syl20bnr/spacemacs/issues/14969
-(global-page-break-lines-mode nil)
