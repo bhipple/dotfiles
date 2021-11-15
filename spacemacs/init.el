@@ -40,7 +40,7 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       ; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
-                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-snippets-in-popup nil
                       auto-completion-idle-delay 0.0
                       auto-completion-minimum-prefix-length 1
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
