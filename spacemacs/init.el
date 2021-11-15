@@ -43,17 +43,16 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-snippets-in-popup nil
                       auto-completion-idle-delay 0.0
                       auto-completion-minimum-prefix-length 1
-                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
                       ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
                         '(
                           ; Might be slow, possibly redundant with lsp?
-                          company-semantic
+                          ; company-semantic
                           ; These search for strings in the buffer and are quite useful!
                           company-dabbrev
                           company-dabbrev-code
                           ; This one tanks on slow filesystems
-                          company-files
+                          ; company-files
                           ; These don't appear to do much and have upstream performance woes
                           ; company-etags
                           ; company-gtags

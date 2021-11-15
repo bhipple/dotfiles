@@ -34,7 +34,7 @@
 (global-set-key "\C-cl" 'org-store-link)
 
 (global-set-key (kbd "<f4>") 'brh/diff-head)
-(global-set-key (kbd "<f5>") 'brh/goto-weekly-review)
+(global-set-key (kbd "<f5>") 'brh/edit-shell-cmds)
 (global-set-key (kbd "<f7>") 'brh/timestamp-for-clock)
 (global-set-key (kbd "S-<f7>") 'brh/search-and-timestamp-for-clock)
 (global-set-key (kbd "<f8>") 'org-agenda)
@@ -77,7 +77,7 @@
   "ovu"  'alsamixer-up-volume
   "ow"   'brh/smart-todo
   "rc"   'brh/run-shell-clear
-  "rC"   (lambda () (interactive) (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
+  "rC"   'brh/edit-shell-cmds
   "rL"   'brh/run-shell-line-clear
   "rr"   'brh/run-shell-repeat
   "rt"   'brh/run-shell

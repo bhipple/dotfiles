@@ -137,6 +137,11 @@
          (full-cmd (concat "tmux send-keys -t " target-pane " '" cmd "' Enter")))
     (shell-command full-cmd t t)))
 
+(defun brh/edit-shell-cmds ()
+  "Open up the shell-cmds file for editing"
+  (interactive)
+  (find-file "~/dotfiles_local/emacs_local/shell-cmds"))
+
 (defun brh/run-shell ()
   "Save the buffer and then interactively select a cmd to run in the emacs async shell"
   (interactive)
