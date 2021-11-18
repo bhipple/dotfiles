@@ -61,7 +61,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Agenda settings
   ;; Dynamically find all agenda files by walking the directory
-  (setq org-agenda-files (append (brh/find-org-file-recursively "~/org/" "org")))
+  (setq org-agenda-files (delete-dups (brh/find-org-file-recursively "~/org/" "org")))
 
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)

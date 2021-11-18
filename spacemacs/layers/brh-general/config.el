@@ -3,6 +3,9 @@
 ;; Very useful when debugging; incredibly annoying when not
 (setq debug-on-error nil)
 
+;; Don't popup the *Warnings* buffer unless there's an error (still logs)
+(setq warning-minimum-level :error)
+
 ;; Fix tabs
 (setq-default indent-tabs-mode nil)
 (setq c-basic-indent 4)

@@ -40,9 +40,11 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       ; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
-                      auto-completion-enable-snippets-in-popup nil
                       auto-completion-idle-delay 0.0
                       auto-completion-minimum-prefix-length 1
+                      ; Even though we don't put them in popups, need to have the dir to get M-/ to expand!
+                      auto-completion-enable-snippets-in-popup nil
+                      auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
                       ; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
                         '(

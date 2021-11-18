@@ -1,6 +1,0 @@
-# name: org shell block
-# key: src
-# --
-#+BEGIN_SRC sh
-$0
-#+END_SRC
