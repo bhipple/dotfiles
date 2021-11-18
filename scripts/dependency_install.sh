@@ -29,22 +29,9 @@ create_ssh() {
 }
 
 nix_install() {
-    if ! [ -d ~/src/nixpkgs ]; then
-        mkdir -p ~/src
-        cd ~/src
-        git clone https://github.com/NixOS/nixpkgs
-        git remote add bhipple https://github.com/bhipple/nixpkgs
-        git fetch --all
-    fi
-
     if ! [ -d /nix ]; then
         echo "NixPkg not installed on this machine."
-        if groups | grep -q sudo; then
-            curl https://nixos.org/nix/install | sh
-        else
-            echo "Can't install NixPkg without sudo."
-            return
-        fi
+        return
     fi
 
     ATTRS="minEnv"
