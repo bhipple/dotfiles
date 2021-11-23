@@ -30,7 +30,7 @@
     dfc = diff --cached
     dfh = diff -- .
     dfs = diff --stat
-    dod = diff HEAD...origin/dev...HEAD -w
+    dod = diff origin/dev...HEAD -w
     dods = diff origin/dev...HEAD -w --stat
     dom = diff origin/master...HEAD -w
     doms = diff origin/master...HEAD -w --stat
