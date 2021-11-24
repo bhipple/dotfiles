@@ -59,7 +59,6 @@
   "obgw" 'brh/goto-weekly-review
   "obh"  'brh/ledger-habit
   "obw"  'brh/goto-weekly-review
-  "oc"   'org-capture
   "od"   'brh/diff-ref
   "of"   'magit-pull-from-upstream
   "og"   (lambda () "Git grep repository from root" (interactive)
