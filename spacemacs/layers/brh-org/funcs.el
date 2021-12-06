@@ -1,4 +1,12 @@
 (with-eval-after-load 'org
+  (defun brh/org-agenda-file-filter (fname)
+    "Return true if fname should be included in org-agenda-files. Also runs on
+     dirs and short circuits filesystem walk."
+    (not (or
+          (string-match "/presentations/" fname)
+          (string-match "/journal.org" fname)
+          )))
+
   (defun brh/find-org-file-recursively (&optional directory filext)
     "Return .org and .org_archive files recursively from DIRECTORY.
      If FILEXT is provided, return files with extension FILEXT instead."
@@ -13,12 +21,12 @@
       (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
         (cond
          ((file-regular-p file-or-dir) ; regular files
-    (if (string-match fileregex file-or-dir) ; org files
+    (if (and (string-match fileregex file-or-dir) (brh/org-agenda-file-filter file-or-dir)) ; org files
         (add-to-list 'org-file-list file-or-dir)))
          ((file-directory-p file-or-dir)
     (dolist (org-file (brh/find-org-file-recursively file-or-dir filext)
           org-file-list) ; add files found to result
-      (add-to-list 'org-file-list org-file)))))))
+      (add-to-list 'org-file-list (file-truename org-file))))))))
 
 (defun brh/smart-agenda ()
   "Show my work agenda if at work, and my home agenda otherwise."
