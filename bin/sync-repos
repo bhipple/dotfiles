@@ -14,7 +14,11 @@ update() {
         cd "$1" || exit 1
         check_uncommitted "$1"
         git pull >/dev/null
-        git push >/dev/null
+        git submodule update
+        # Only try to git push if we have a non-interactive API/ssh key remote
+        if git remote -v | grep -q '@'; then
+            git push >/dev/null
+        fi
     }
     if [ -d "$1/.git" ]; then
         f "$1" &
