@@ -46,9 +46,12 @@ export GPG=gpg2
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_COMPLETION_TRIGGER='~~'
 
-if uname -a | grep -q "NixOS" ; then
+if uname -a | grep -q "NixOS"; then
     export IS_NIXOS=1
 fi
+
+# Never ask to auto-update oh-my-zsh; instead require `omz update`
+export DISABLE_AUTO_UPDATE=true
 
 pathDeduplicate() {
     export PATH="$(echo "$PATH" |
