@@ -45,8 +45,7 @@
 (global-set-key (kbd "<f12>") 'brh/smart-agenda)
 
 ; Popper keys
-(global-set-key "\C-p" 'popper-toggle-latest)
-(global-set-key "\C-n" 'popper-cycle)
+(global-set-key "\M-n" 'popper-cycle)
 
 (spacemacs/set-leader-keys
   "dom"  'brh/diff-origin-master
@@ -81,4 +80,5 @@
   "rr"   'brh/run-shell-repeat
   "rt"   'brh/run-shell
   "rT"   'brh/set-preferred-shell-func
+  "to"   'popper-toggle-latest
   )
