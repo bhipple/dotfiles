@@ -184,7 +184,6 @@ exec "xset dpms 1800 2000 3600"
 
 exec "pactl load-module module-detect"
 
-exec "emacs"
 
 # Bind workspaces to monitors
 set $leftMonitor DP-2-2
@@ -201,7 +200,7 @@ workspace 8 output $rightMonitor
 workspace 9 output $rightMonitor
 
 # General programs to launch
-exec chromium
+exec emacs
 exec dunst
 exec ~/ledger/scripts/notebook.sh
 exec talon
