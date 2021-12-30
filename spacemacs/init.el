@@ -83,11 +83,11 @@ This function should only modify configuration layer settings."
      ipython-notebook
      java
      javascript
-     (lsp :variables
-          lsp-navigation 'simple
-          lsp-use-lsp-ui nil
-          lsp-ui-sideline-enable nil
-          lsp-ui-doc-enable nil)
+     ;; (lsp :variables
+     ;;      lsp-navigation 'simple
+     ;;      lsp-use-lsp-ui nil
+     ;;      lsp-ui-sideline-enable nil
+     ;;      lsp-ui-doc-enable nil)
      lua
      markdown
      nginx
