@@ -6,6 +6,9 @@
 ;; Don't popup the *Warnings* buffer unless there's an error (still logs)
 (setq warning-minimum-level :error)
 
+;; Don't show native-comp warnings
+(setq native-comp-async-report-warnings-errors nil)
+
 ;; Fix tabs
 (setq-default indent-tabs-mode nil)
 (setq c-basic-indent 4)
