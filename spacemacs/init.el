@@ -67,8 +67,6 @@ This function should only modify configuration layer settings."
      copy-as-format
      csv
      docker
-     (elfeed :variables
-             elfeed-enable-goodies nil)
      emacs-lisp
      finance
      git
