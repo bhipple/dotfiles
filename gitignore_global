@@ -53,6 +53,7 @@ TAGS
 
 # Editor Files #
 ################
+.#*
 .tramp_history
 .yas-compiled-snippets.el
-.#*
+flycheck_*.py
