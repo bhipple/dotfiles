@@ -2,8 +2,7 @@
 # Add my ssh keys to the agent, then update all of my git repos
 
 check_uncommitted() {
-    diff=$(git diff-index HEAD)
-    if [ -n "$diff" ]; then
+    if ! git status | grep -q "working tree clean"; then
         echo "WARNING: $1 has uncommitted files."
     fi
 }
