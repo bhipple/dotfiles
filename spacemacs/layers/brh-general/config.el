@@ -124,8 +124,10 @@
 ;; https://github.com/syl20bnr/spacemacs/issues/8462
 (savehist-mode nil)
 
-;; Disable auto saves. These can cause lag *and* kick the GC
+;; Disable auto saves and backups. These can cause lag *and* kick the GC
 (setq dotspacemacs-auto-save-file-location nil)
+(setq backup-inhibited t)
+(setq auto-save-default nil)
 
 ;; Big performance boost
 (setq auto-window-vscroll nil)
