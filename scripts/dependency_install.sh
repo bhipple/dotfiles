@@ -8,18 +8,6 @@ if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1
 fi
 
-##########################################
-# Change shell to zsh, if not already done
-#
-change_to_zsh() {
-    if [ "$(echo "$SHELL" | grep -c "zsh")" -eq "0" ]; then
-        echo "Setting shell to zsh"
-        chsh -s "$(which zsh)"
-    else
-        echo "zsh is already the default shell"
-    fi
-}
-
 #############################################
 # Create ssh dir with appropriate permissions
 #
@@ -50,6 +38,5 @@ nix_install() {
 
 }
 
-change_to_zsh
 create_ssh
 nix_install
