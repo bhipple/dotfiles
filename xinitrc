@@ -25,14 +25,10 @@ undocked() {
 }
 
 handle_docking() {
-    if grep -q x1cg6 /etc/hostname; then
-        # Profile for the X1 Carbon G6 laptop, which may or may not be plugged into the docking station.
-        if xrandr | grep -q "^DP-[12] connected"; then
-            docked
-        else
-            undocked
-        fi
-    elif grep -q x1cg4 /etc/hostname; then
+    # Profile for my X1 * laptops, which may or may not be plugged into the docking station.
+    if xrandr | grep -q "^DP-[12] connected"; then
+        docked
+    else
         undocked
     fi
 }
