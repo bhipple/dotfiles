@@ -14,8 +14,6 @@ if ! zgen saved; then
 
     # Github plugins
     zgen load djui/alias-tips
-    zgen load zsh-users/zsh-autosuggestions
-    zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-syntax-highlighting
 
     # save all to init script
