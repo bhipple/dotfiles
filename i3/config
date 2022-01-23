@@ -169,7 +169,6 @@ bar {
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+a exec anki
 bindsym $mod+e exec "emacsclient -c"
-bindsym $mod+i exec chromium
 
 ################################################################################
 # Startup
