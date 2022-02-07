@@ -80,5 +80,7 @@
   "rr"   'brh/run-shell-repeat
   "rt"   'brh/run-shell
   "rT"   'brh/set-preferred-shell-func
+  "tn"   'popper-cycle
   "to"   'popper-toggle-latest
+  "tt"   'popper-toggle-type
   )
