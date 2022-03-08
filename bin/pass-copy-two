@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+pass -c2 $1
+notify-send "Copied account for $1"
+sleep 5
+pass -c $1
+notify-send "Copied password for $1"
