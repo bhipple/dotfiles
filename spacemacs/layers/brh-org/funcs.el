@@ -125,7 +125,7 @@
 DW Hours: " (funcall ledger "b Deep | awk '{print $1}'") "
 NF: " (funcall ledger "b NF | awk '{print $1}'") "
 Meditation Sessions: " (funcall ledger "r Meditation | wc -l") "
-Workouts: " (funcall ledger "r Exercise | wc -l") "
+Workouts:
 *** Goals for next week
 - [ ]
 - [ ]
