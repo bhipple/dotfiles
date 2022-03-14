@@ -20,6 +20,7 @@
     bra = branch --all
     ca = commit --amend --no-edit
     ci = commit
+    cin = commit --no-verify
     co = checkout
     cob = checkout -b
     cop = "!f() { git fetch ${2:-origin} pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
