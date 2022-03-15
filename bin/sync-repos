@@ -35,6 +35,7 @@ update ~/dotfiles
 update ~/dotfiles_local
 update ~/ledger
 update ~/org
+update ~/src/qmk_firmware
 
 wait
 echo "Finished updating"
