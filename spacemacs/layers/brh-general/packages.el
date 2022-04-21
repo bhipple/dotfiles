@@ -1,7 +1,6 @@
 ;;; packages.el --- brh-general layer packages file for Spacemacs.
 ;;
 (defconst brh-general-packages '(
-  direnv
   gcmh
   jupyter
   nix-update
@@ -9,10 +8,6 @@
   s
   solarized-theme
 ))
-
-(defun brh-general/init-direnv ()
-  (use-package direnv
-    :config (direnv-mode)))
 
 (defun brh-general/init-nix-update ()
   (use-package nix-update))
