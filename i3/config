@@ -40,8 +40,9 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+c kill
 
-# start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+# start program shortcuts
+bindsym $mod+i exec chromium
+bindsym $mod+p exec dmenu_run  # program launcher
 
 # change focus
 bindsym $mod+j focus left
