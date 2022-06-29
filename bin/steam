@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 export NIXPKGS_ALLOW_UNFREE=1
 channel='https://github.com/NixOS/nixpkgs/archive/5afb1b7dcf46c4ded5719525a42879b35363862c.tar.gz'  # 2022-06-19 from NixOS release-22.05
-nix run -f $channel discord
+nix run -f $channel steam
