@@ -23,6 +23,8 @@
 (global-set-key (kbd "C-k") 'evil-window-up)
 (global-set-key (kbd "C-l") 'evil-window-right)
 
+(global-set-key (kbd "C-p") 'projectile-find-file)
+
 (global-set-key (kbd "<C-up>") 'shrink-window)
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
