@@ -32,6 +32,11 @@ bindkey '^ ' autosuggest-execute
 # Shift-tab to cycle backwards in autocompletions
 bindkey '^[[Z' reverse-menu-complete
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+bindkey -M "vicmd" '^e' edit-command-line
+
 ## ============================================================================
 ##                                  Prompt
 ## ============================================================================
@@ -49,9 +54,9 @@ autoload -U zmv
 #                          Text Object Surround
 #  ============================================================================
 autoload -Uz surround
-zle -N delete-surround surround
 zle -N add-surround surround
 zle -N change-surround surround
+zle -N delete-surround surround
 
 bindkey -M "vicmd" cs change-surround
 bindkey -M "vicmd" ds delete-surround
