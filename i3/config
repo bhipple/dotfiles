@@ -174,13 +174,13 @@ bindsym $mod+e exec "emacsclient -c"
 ################################################################################
 # Startup
 exec "~/.xinitrc"
-exec "xautolock -time 30 -locker 'sudo /run/current-system/sw/bin/slock'"
+exec "xautolock -time 60 -locker 'sudo /run/current-system/sw/bin/slock'"
 
 # Set the wallpaper
 exec "feh --bg-max /home/bhipple/dotfiles_local/wallpapers/telluride.jpg"
 
 exec "xset s off"
-exec "xset dpms 1800 2000 3600"
+exec "xset dpms 3600 4000 7200"
 
 exec "pactl load-module module-detect"
 
@@ -200,6 +200,7 @@ workspace 8 output $rightMonitor
 workspace 9 output $rightMonitor
 
 # General programs to launch
+exec code
 exec emacs
 exec dunst
 exec ~/ledger/scripts/notebook.sh

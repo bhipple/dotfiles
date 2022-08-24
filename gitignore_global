@@ -55,5 +55,6 @@ TAGS
 ################
 .#*
 .tramp_history
+.vscode
 .yas-compiled-snippets.el
 flycheck_*.py

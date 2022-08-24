@@ -125,8 +125,8 @@
 DW Hours: " (funcall ledger "b Deep | awk '{print $1}'") "
 NF: " (funcall ledger "b NF | awk '{print $1}'") "
 Meditation Sessions: " (funcall ledger "r Meditation | wc -l") "
-Lifts: " (shell-command-to-string (concat "workouts.py" " --begin " last-review-date " --count")) "
-Cardio: " (funcall ledger "r Cardio | wc -l") "
+Lifts: " (string-trim (shell-command-to-string (concat "workouts.py" " --begin " last-review-date " --count"))) "
+Running: " (funcall ledger "r Running | wc -l") "
 *** Goals for next week
 - [ ]
 - [ ]
