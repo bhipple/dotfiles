@@ -14,7 +14,7 @@ if git branch | grep -Eq '* (master|dev)'; then
     git pull
 fi
 
-git branch -vv | grep ': gone]'|  grep -v '*' | awk '{ print $1 }' | xargs -r git branch -D
+git branch -vv | grep ': gone]'|  grep -v '*' | grep -v '+' | awk '{ print $1 }' | xargs -r git branch -D
 if [ -n $1 ]; then
     git checkout -f $1 >/dev/null 2>&1
 fi
