@@ -8,7 +8,7 @@
 docked() {
     xmodmap ~/dotfiles_local/xmodmap/qwerty
     output="$(xrandr)"
-    dp=$(echo "$output" | grep '^DP.*connected.* 4096' | awk '{print $1}')
+    dp=$(echo "$output" | grep -A1 '^DP.* connected' | grep -B1 4096 | head -1 | awk '{print $1}')
 
     second=""
     if echo "$output" | grep -q 'HDMI-1 connected'; then
@@ -21,7 +21,6 @@ docked() {
     fi
 
     eval "xrandr --dpi 144 --output eDP-1 --off --output $dp --primary --auto $second"
-
 }
 
 undocked() {
