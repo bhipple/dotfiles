@@ -32,8 +32,10 @@ nix_install() {
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
-    nix build -Lvf '<nixos>' --no-link -j$(nproc) $ATTRS
-    nix-env -f '<nixos>' -j$(nproc) -k -riA $ATTRS
+    channel='<nixos>'
+    channel=$HOME/git/nix-channel
+    nix build -Lvf $channel --no-link -j$(nproc) $ATTRS
+    nix-env -f $channel -j$(nproc) -k -riA $ATTRS
 
 }
 

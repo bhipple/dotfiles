@@ -41,7 +41,7 @@ floating_modifier $mod
 bindsym $mod+c kill
 
 # start program shortcuts
-bindsym $mod+i exec chromium
+bindsym $mod+i exec brave
 bindsym $mod+p exec dmenu_run  # program launcher
 
 # change focus
@@ -205,6 +205,7 @@ exec emacs
 exec dunst
 exec ~/ledger/scripts/notebook.sh
 exec talon
+exec brave
 
 for_window [class="Emacs"] move container to workspace 1
 for_window [class="Discord"] move container to workspace 8

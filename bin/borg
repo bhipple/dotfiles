@@ -10,8 +10,9 @@ echo "**************************************************************************
 hub pr show --format '%t' $PR
 
 echo "********************************************************************************"
-# TODO: add nixpkgs-review to shell once there's a release upstream with new features.
-# In the meantime, this is a nix-build off of upstream master branch.
+# nixpkgs-review has all this functionality, but the upstream merged version
+# ended up with an interactive shell workflow that isn't as amenable to
+# scripting.
 ~/src/nixpkgs-review/result/bin/nixpkgs-review \
     pr \
     --token $(awk '/oauth/ {print $NF}' ~/.config/hub) \
