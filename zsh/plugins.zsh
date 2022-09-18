@@ -13,6 +13,7 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # Github plugins
+    zgen load romkatv/powerlevel10k powerlevel10k
     zgen load djui/alias-tips
     zgen load zsh-users/zsh-syntax-highlighting
 
