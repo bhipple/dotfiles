@@ -22,9 +22,6 @@ fi
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of
 # commands active in mode foo
 
-# Unmap ctrl-s as "stop flow"
-stty stop undef
-
 # zsh-autosuggestions cfg
 # Bind <CTRL><SPC> to accept and execute
 bindkey '^ ' autosuggest-execute
