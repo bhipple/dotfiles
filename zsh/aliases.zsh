@@ -45,6 +45,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g K='--keep-going'
     alias -g L='| less -n'
     alias -g NV='--no-verify'
+    alias -g P='ps aux'
     alias -g R='!! | less -n'
     alias -g S='| sort'
     alias -g SUM='| sed "s|[,$]||g" | paste -sd+ - | bc'
