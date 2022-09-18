@@ -200,8 +200,6 @@ workspace 9 output $rightMonitor
 
 # General programs to launch
 exec dunst
+exec ~/ledger/scripts/notebook.sh
 
 exec '/home/bhipple/bin_local/i3-startup.sh'
-
-exec ~/ledger/scripts/notebook.sh
-exec talon
