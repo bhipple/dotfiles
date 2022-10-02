@@ -83,11 +83,6 @@ This function should only modify configuration layer settings."
      ipython-notebook
      java
      javascript
-     ;; (lsp :variables
-     ;;      lsp-navigation 'simple
-     ;;      lsp-use-lsp-ui nil
-     ;;      lsp-ui-sideline-enable nil
-     ;;      lsp-ui-doc-enable nil)
      lua
      markdown
      nginx
@@ -98,8 +93,9 @@ This function should only modify configuration layer settings."
           org-enable-github-support t
           org-enable-jira-support t
           org-enable-org-journal-support t
-          org-enable-roam-support t
           org-enable-roam-protocol t
+          org-enable-roam-support t
+          org-enable-roam-ui t
           org-startup-indented t)
      (spacemacs-org :variables org-enable-valign nil)
      pdf
@@ -107,9 +103,7 @@ This function should only modify configuration layer settings."
      (python :variables
              python-auto-set-local-pyenv-version nil
              python-auto-set-local-pyenv-virtualenv nil
-             ;python-backend 'lsp
              python-enable-yapf-format-on-save nil
-             ;python-lsp-server 'pylsp
              python-sort-imports-on-save nil
              python-test-runner 'pytest
              python-fill-column 80)

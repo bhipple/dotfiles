@@ -275,7 +275,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; org-roam configuration
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory (file-truename "~/org/roam"))
+  (setq org-roam-directory (file-truename "~/org"))
 
   ; This kicks on every org mode file save, and used to cause some lag, but it
   ; is really convenient. Upstream performance regressions have been fixed.
@@ -283,8 +283,6 @@
 
   (org-roam-db-autosync-mode nil)
 
-  (add-to-list 'load-path "~/git/org-roam-ui")
-  (load-library "org-roam-ui")
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
         org-roam-ui-update-on-save t

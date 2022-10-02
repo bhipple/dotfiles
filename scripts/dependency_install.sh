@@ -32,11 +32,12 @@ nix_install() {
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
-    channel='<nixos>'
     channel=$HOME/git/nix-channel
     nix build -Lvf $channel --no-link -j$(nproc) $ATTRS
-    nix-env -f $channel -j$(nproc) -k -riA $ATTRS
 
+    if [ -z ${BUILD_ONLY:=} ]; then
+        nix-env -f $channel -k -riA $ATTRS
+    fi
 }
 
 create_ssh
