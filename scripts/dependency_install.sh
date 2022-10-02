@@ -33,7 +33,7 @@ nix_install() {
     # Build first before installing, so we can see the progress bar
     set -x
     channel=$HOME/git/nix-channel
-    nix build -Lvf $channel --no-link -j$(nproc) $ATTRS
+    nix build -Lvf $channel --no-link --keep-going -j$(nproc) $ATTRS
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $channel -k -riA $ATTRS

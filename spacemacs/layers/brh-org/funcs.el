@@ -110,17 +110,20 @@
 
 (defun _brh/org-capture-weekly-review ()
   "Helper function to go to the weekly review, clock in, and expand my snippet"
-  (let* ((last-review-date (string-trim (shell-command-to-string "grep 'Weekly Review for ' /home/bhipple/org/roam/logs.org | head -1 | awk '{print $4}' | sed 's|\\[||'")))
-        (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
+  (let* ((last-review-date (string-trim (shell-command-to-string "grep 'Weekly Review for ' /home/bhipple/org/roam/logs.org | head -1 | awk '{print $5}' | sed 's|\\[||'")))
+         (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
+         (weekly-review-id "9acee905-3db5-4cff-9526-928e9693a323")
+         (weekly-reviews-list-id "dda08c99-ad1b-42f1-8307-681da4b1cc74")
+         (today (format-time-string "%Y-%m-%d %a"))
         )
     (progn
-    (bh/clock-in-task-by-id "9acee905-3db5-4cff-9526-928e9693a323")
-    (org-id-goto "9acee905-3db5-4cff-9526-928e9693a323")
+    (bh/clock-in-task-by-id weekly-review-id)
+    (org-id-goto weekly-review-id)
     (show-subtree)
     (re-search-forward "^** Weekly Review for ")
     (forward-line -1)
     (insert "
-** Weekly Review for [" (format-time-string "%Y-%m-%d %a") "]
+** Weekly Review for [" today "]
 *** Recap of last week
 DW Hours: " (funcall ledger "b Deep | awk '{print $1}'") "
 NF: " (funcall ledger "b NF | awk '{print $1}'") "
@@ -136,6 +139,12 @@ Running: " (funcall ledger "r Running | wc -l") "
 **** What didn't go well
 **** What to change
 ")
+    (re-search-backward "^** Weekly Review for ")
+    (setq-local this-id (org-id-get-create))
+    (org-id-goto weekly-reviews-list-id)
+    (forward-line 4)
+    (insert "- [[id:" this-id "][Weekly Review for [" today "]]]\n")
+    (org-id-goto this-id)
     (recenter))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
