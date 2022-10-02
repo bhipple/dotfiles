@@ -283,7 +283,7 @@
 
   (org-roam-db-autosync-mode nil)
 
-  (add-to-list 'load-path "~/src/org-roam-ui")
+  (add-to-list 'load-path "~/git/org-roam-ui")
   (load-library "org-roam-ui")
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t

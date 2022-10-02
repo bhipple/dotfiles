@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+branch=$(git branch --show-current)
+git fetch
+
+(set -x; git log ${branch}..origin/${branch} --stat $@)
