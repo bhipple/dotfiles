@@ -2,7 +2,7 @@
   ;; Org variable configuration
 
   ;; Hook to tell if I'm at home or at work, to be re-used by other functions
-  (setq brh/at-work (file-exists-p "~/org/work/work.org"))
+  (setq brh/at-work (file-exists-p "~/dotfiles_local/notes/work.org"))
 
   ;; Enable keybindings defined below for TODO selection
   (setq org-use-fast-todo-selection t)
