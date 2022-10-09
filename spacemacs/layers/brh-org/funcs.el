@@ -113,7 +113,6 @@
   (let* ((last-review-date (string-trim (shell-command-to-string "grep 'Weekly Review for ' /home/bhipple/org/roam/logs.org | head -1 | awk '{print $5}' | sed 's|\\[||'")))
          (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
          (weekly-review-id "9acee905-3db5-4cff-9526-928e9693a323")
-         (weekly-reviews-list-id "dda08c99-ad1b-42f1-8307-681da4b1cc74")
          (today (format-time-string "%Y-%m-%d %a"))
         )
     (progn
@@ -141,10 +140,6 @@ Running: " (funcall ledger "r Running | wc -l") "
 ")
     (re-search-backward "^** Weekly Review for ")
     (setq-local this-id (org-id-get-create))
-    (org-id-goto weekly-reviews-list-id)
-    (forward-line 4)
-    (insert "- [[id:" this-id "][Weekly Review for [" today "]]]\n")
-    (org-id-goto this-id)
     (recenter))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -214,3 +209,17 @@ Callers of this function already widen the buffer view."
   (org-with-point-at (org-id-find id 'marker) (org-clock-in nil))
   (org-clock-goto))
 )
+
+(defun _brh/adhoc ()
+  "one-off ad-hoc hacking"
+  (interactive)
+  (let* (
+         (journal-id "bb32a90c-2948-4661-aa09-6a343c2d9764")
+        )
+  )
+    (progn
+      (show-subtree)
+      (while (re-search-forward "\*\* ")
+        (org-id-get-create)
+        (message (thing-at-point 'line))
+    )))
