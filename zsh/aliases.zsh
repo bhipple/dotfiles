@@ -50,7 +50,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g S='| sort'
     alias -g SUM='| sed "s|[,$]||g" | paste -sd+ - | bc'
     alias -g W='| wc -l'
-    alias -g X='| xargs'
+    alias -g X='| xargs -I{}'
     alias -g Y='--yes'
 
     alias -g P1="2>&1 | awk '{print \$1}'"
