@@ -49,6 +49,8 @@
     ~/bin: bin/
 
 - shell:
+    - [git config author.email bhipple@protonmail.com]
+    - [git config author.name "Benjamin Hipple"]
     - [git submodule update --init --recursive, Updating submodules]
     - command: tic -x -o ~/.terminfo terminfo/xterm-24bit.terminfo
       stdin: true
