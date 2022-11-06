@@ -62,29 +62,16 @@ This function should only modify configuration layer settings."
                           company-keywords)
                       :disabled-for nixos)
      better-defaults
-     (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode)
      copy-as-format
      csv
-     docker
      emacs-lisp
      finance
      git
-     go
-     graphviz
-     groovy
-     haskell
      compleseus
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
-     imenu-list
-     ipython-notebook
-     java
-     javascript
-     lua
      markdown
-     nginx
      (nixos :variables
             nixos-enable-company nil)
      (org :variables
@@ -97,8 +84,6 @@ This function should only modify configuration layer settings."
           org-enable-roam-ui t
           org-startup-indented t)
      (spacemacs-org :variables org-enable-valign nil)
-     pdf
-     perl5
      (python :variables
              python-auto-set-local-pyenv-version nil
              python-auto-set-local-pyenv-virtualenv nil
@@ -106,21 +91,10 @@ This function should only modify configuration layer settings."
              python-sort-imports-on-save nil
              python-test-runner 'pytest
              python-fill-column 80)
-     restclient
-     ruby
-     rust
-     salt
-     search-engine
-     (shell :variables
-            shell-default-shell 'vterm
-            shell-default-position 'right)
      shell-scripts
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
-     sql
      syntax-checking
-     systemd
-     terraform
      tmux
      (version-control :variables version-control-diff-tool nil)
      vimscript
@@ -148,8 +122,6 @@ This function should only modify configuration layer settings."
      alsamixer
      evil-ediff
      language-detection
-     package-lint
-     rpm-spec-mode
    )
 
    ;; A list of packages that cannot be updated.
