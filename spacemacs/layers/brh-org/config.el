@@ -275,7 +275,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; org-roam configuration
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory (file-truename "~/org"))
+  (setq org-roam-directory (if brh/at-work (file-truename "~/dotfiles_local/notes") (file-truename "~/org")))
 
   ; This kicks on every org mode file save, and used to cause some lag, but it
   ; is really convenient. Upstream performance regressions have been fixed.
