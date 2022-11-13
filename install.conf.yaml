@@ -54,6 +54,10 @@
     - [git config committer.email bhipple@protonmail.com]
     - [git config committer.name "Benjamin Hipple"]
     - [git submodule update --init --recursive, Updating submodules]
+    - command: scripts/wsl.sh
+      stdin: true
+      stdout: true
+      stderr: true
     - command: tic -x -o ~/.terminfo terminfo/xterm-24bit.terminfo
       stdin: true
       stdout: true

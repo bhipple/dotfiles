@@ -8,6 +8,10 @@ if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1
 fi
 
+if [[ -d /mnt/wsl ]]; then
+    INSTALL_ALL=1
+fi
+
 #############################################
 # Create ssh dir with appropriate permissions
 #
@@ -26,14 +30,14 @@ nix_install() {
 
     if [ -n "$INSTALL_ALL" ]; then
         # Also install plaid2qif from my nix user repo
-        ATTRS="$ATTRS bigEnv spacemacs bhipple.plaid2qif"
+        ATTRS="$ATTRS nix bigEnv spacemacs"
     fi
 
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
     channel=$HOME/git/nix-channel
-    nix build -Lvf $channel --no-link --keep-going -j$(nproc) $ATTRS
+    nix --extra-experimental-features nix-command build -Lvf $channel --no-link --keep-going -j$(nproc) $ATTRS
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $channel -k -riA $ATTRS
