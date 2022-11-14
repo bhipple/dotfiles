@@ -30,7 +30,7 @@ nix_install() {
 
     if [ -n "$INSTALL_ALL" ]; then
         # Also install plaid2qif from my nix user repo
-        ATTRS="$ATTRS nix bigEnv spacemacs"
+        ATTRS="$ATTRS nixStable bigEnv spacemacs"
     fi
 
     export NIXPKGS_ALLOW_UNFREE=1
