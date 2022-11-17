@@ -62,29 +62,16 @@ This function should only modify configuration layer settings."
                           company-keywords)
                       :disabled-for nixos)
      better-defaults
-     (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode)
      copy-as-format
      csv
-     docker
      emacs-lisp
      finance
      git
-     go
-     graphviz
-     groovy
-     haskell
      compleseus
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
-     imenu-list
-     ipython-notebook
-     java
-     javascript
-     lua
      markdown
-     nginx
      (nixos :variables
             nixos-enable-company nil)
      (org :variables
@@ -97,8 +84,6 @@ This function should only modify configuration layer settings."
           org-enable-roam-ui t
           org-startup-indented t)
      (spacemacs-org :variables org-enable-valign nil)
-     pdf
-     perl5
      (python :variables
              python-auto-set-local-pyenv-version nil
              python-auto-set-local-pyenv-virtualenv nil
@@ -106,21 +91,10 @@ This function should only modify configuration layer settings."
              python-sort-imports-on-save nil
              python-test-runner 'pytest
              python-fill-column 80)
-     restclient
-     ruby
-     rust
-     salt
-     search-engine
-     (shell :variables
-            shell-default-shell 'vterm
-            shell-default-position 'right)
      shell-scripts
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
-     sql
      syntax-checking
-     systemd
-     terraform
      tmux
      (version-control :variables version-control-diff-tool nil)
      vimscript
@@ -144,13 +118,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(
-     alsamixer
-     evil-ediff
-     language-detection
-     package-lint
-     rpm-spec-mode
-   )
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -498,6 +466,11 @@ It should only modify the values of Spacemacs settings."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
 
+   ;; A value from the range (0..100), in increasing opacity, which describes the
+   ;; transparency level of a frame background when it's active or selected. Transparency
+   ;; can be toggled through `toggle-background-transparency'. (default 90)
+   dotspacemacs-background-transparency 90
+
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
 
@@ -607,7 +580,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
 
-   ;; Show trailing whitespace (default t)
+   ;; Color highlight trailing whitespace in all prog-mode and text-mode derived
+   ;; modes such as c++-mode, python-mode, emacs-lisp, html-mode, rst-mode etc.
+   ;; (default t)
    dotspacemacs-show-trailing-whitespace t
 
    ;; Delete whitespace while saving buffer. Possible values are `all'
