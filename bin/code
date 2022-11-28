@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-export NIXPKGS_ALLOW_UNFREE=1
-channel=$HOME/git/nix-channel
-nix run -f $channel vscode
