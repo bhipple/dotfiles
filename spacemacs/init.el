@@ -140,12 +140,14 @@ This function should only modify configuration layer settings."
      company-ycmd
      flycheck-rtags
      flycheck-ycmd
+     forge
      gendoxy
      helm-rtags
      hindent
      lsp-treemacs
      magit-svn
      nose
+     orgit-forge
      treemacs
      treemacs-evil
      treemacs-icons-dired
