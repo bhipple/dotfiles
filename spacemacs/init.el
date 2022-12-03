@@ -138,6 +138,9 @@ This function should only modify configuration layer settings."
      company-anaconda
      company-rtags
      company-ycmd
+     elfeed
+     elfeed-goodies
+     elfeed-org
      flycheck-rtags
      flycheck-ycmd
      forge
