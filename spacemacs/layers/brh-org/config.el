@@ -132,15 +132,13 @@
                                                              (org-agenda-archives-mode t)
                                                              (org-agenda-log-mode-items '(closed clock state))))
                                                  (tags-todo (concat "-INBOX" brh-org-non-actionable))
-                                                 (tags-todo "+INBOX"))
-                                                 ((org-agenda-tag-filter-preset '("+WORK"))))
+                                                 (tags-todo "+INBOX")))
           ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
           ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
           ("we" "Work agenda for exporting to html" ((agenda "" ((org-agenda-span 'day)
                                                                  (org-agenda-archives-mode t)
                                                                  (org-agenda-log-mode-items '(closed clock state))))
-                                                     (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\""))
-                                                     ((org-agenda-tag-filter-preset '("+WORK"))))
+                                                     (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
           ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
           ("ww" "All WORK items" tags-todo "+WORK")))
 
@@ -275,7 +273,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; org-roam configuration
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory (if brh/at-work (file-truename "~/dotfiles_local/notes") (file-truename "~/org")))
+  (setq org-roam-directory (if brh/at-work (file-truename "~/dotfiles_local/notes/roam") (file-truename "~/org")))
 
   ; This kicks on every org mode file save, and used to cause some lag, but it
   ; is really convenient. Upstream performance regressions have been fixed.

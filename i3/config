@@ -1,7 +1,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -47,7 +47,7 @@ bindsym $mod+p exec dmenu_run  # program launcher
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+#bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -168,6 +168,7 @@ bar {
 ################################################################################
 # Keys for launching programs
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+l exec i3-sensible-terminal
 bindsym $mod+a exec anki
 bindsym $mod+e exec "emacsclient -c"
 

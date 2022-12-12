@@ -58,10 +58,6 @@
       stdin: true
       stdout: true
       stderr: true
-    - command: tic -x -o ~/.terminfo terminfo/xterm-24bit.terminfo
-      stdin: true
-      stdout: true
-      stderr: true
     - command: scripts/dependency_install.sh
       stdin: true
       stdout: true
