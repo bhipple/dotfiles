@@ -7,8 +7,8 @@ fi
 
 echo "Linking WSL scripts"
 
-for f in /mnt/c/Users/*/.glaze-wm/config.yaml; do
-    cp ~/dotfiles/wsl/glaze-wm/config.yaml $f
+for d in /mnt/c/Users/*/.glaze-wm; do
+    cp ~/dotfiles/wsl/glaze-wm/config.yaml $d/
 done
 
 for f in /mnt/c/Users/*/AppData/Local/Packages/Microsoft.WindowsTerminal_*/LocalState/settings.json; do
