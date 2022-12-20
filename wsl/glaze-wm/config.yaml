@@ -3,7 +3,7 @@ gaps:
   outer_gap: 0
 
 bar:
-  height: 25
+  height: 30
   position: "top"
   opacity: 1.0
   background: "#101010"
@@ -13,23 +13,32 @@ bar:
   padding: "1 6 1 6"
   components_left:
     - type: "workspaces"
-      focused_workspace_background: "#8192B3"
-      displayed_workspace_background: "#42403e"
-      default_workspace_background: "#101010"
+      focused_workspace_background: "#ffffff33"
+      displayed_workspace_background: "#00000033"
+      default_workspace_background: "transparent"
   components_right:
+    - type: "tiling direction"
+      background: "#ffffff33"
+      margin: "0 4px"
+      padding: "0 8px"
+    - type: "binding mode"
+      background: "#ffffff33"
+      margin: "0 4px 0 0"
+      padding: "0 8px"
     - type: "clock"
       time_formatting: "hh:mm tt  ddd MMM d"
+      margin: "0 0 0 10px"
 
 workspaces:
-  - name: 1
-  - name: 2
-  - name: 3
-  - name: 4
-  - name: 5
-  - name: 6
-  - name: 7
-  - name: 8
-  - name: 9
+  - name: "1"
+  - name: "2"
+  - name: "3"
+  - name: "4"
+  - name: "5"
+  - name: "6"
+  - name: "7"
+  - name: "8"
+  - name: "9"
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -42,12 +51,27 @@ window_rules:
     match_class_name: "#32770"
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
-  - command: "ignore"
+  - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "steam"
 
-  # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "ignore"
-    match_process_name: "TerraformingMars"
+    match_process_name: "SnippingTool"
+
+binding_modes:
+  - name: "resize"
+    keybindings:
+      # Resize focused window by a percentage or pixel amount.
+      - command: "resize width -2%"
+        bindings: ["H", "Left"]
+      - command: "resize width +2%"
+        bindings: ["L", "Right"]
+      - command: "resize height +2%"
+        bindings: ["K", "Up"]
+      - command: "resize height -2%"
+        bindings: ["J", "Down"]
+      # Press enter/escape to return to default keybindings.
+      - command: "binding mode none"
+        bindings: ["Escape", "Enter"]
 
 keybindings:
   # Shift focus in a given direction.
@@ -80,10 +104,15 @@ keybindings:
   - command: "resize height -2%"
     binding: "Alt+I"
 
-  # Change layout direction to be either horizontal or vertical.
-  - command: "layout horizontal"
+  # As an alternative to the resize keybindings above, resize mode enables resizing via
+  # HJKL or arrow keys. The binding mode is defined above with the name "resize".
+  - command: "binding mode resize"
+    binding: "Alt+R"
+
+  # Change tiling direction. This determines where new tiling windows will be inserted.
+  - command: "tiling direction horizontal"
     binding: "Alt+Shift+V"
-  - command: "layout vertical"
+  - command: "tiling direction vertical"
     binding: "Alt+V"
 
   # Change focus between floating / tiling windows.
@@ -119,9 +148,17 @@ keybindings:
   - command: "exec cmd"
     binding: "Alt+Enter"
 
+  # Focus the workspace that last had focus.
+  - command: "focus workspace recent"
+    binding: "Alt+Y"
+
+  # Focus the next/previous workspace defined in `workspaces` config.
+  - command: "focus workspace next"
+    binding: "Alt+T"
+  - command: "focus workspace prev"
+    binding: "Alt+Shift+T"
+
   # Change focus to a workspace defined in `workspaces` config.
-  - command: "focus workspace 1"
-    binding: "Alt+1"
   - command: "focus workspace 1"
     binding: "Alt+1"
   - command: "focus workspace 2"
@@ -140,6 +177,16 @@ keybindings:
     binding: "Alt+8"
   - command: "focus workspace 9"
     binding: "Alt+9"
+
+  # Move focused workspace to a monitor in a given direction.
+  - command: "move workspace left"
+    binding: "Alt+A"
+  - command: "move workspace right"
+    binding: "Alt+F"
+  - command: "move workspace up"
+    binding: "Alt+D"
+  - command: "move workspace down"
+    binding: "Alt+S"
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move to workspace 1", "focus workspace 1"]
