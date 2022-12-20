@@ -26,6 +26,10 @@ else
     export VISUAL=vim
 fi
 
+if [[ -e ~/.terminfo/x/xterm-24bit ]]; then
+    export COLORTERM=truecolor
+fi
+
 # Reduce delay to 0.2 seconds for switching to normal mode with ESC
 export KEYTIMEOUT=20
 
