@@ -92,12 +92,9 @@ This function should only modify configuration layer settings."
              python-test-runner 'pytest
              python-fill-column 80)
      shell-scripts
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
      syntax-checking
      tmux
      (version-control :variables version-control-diff-tool nil)
-     vimscript
      vinegar
      xclipboard
      yaml
