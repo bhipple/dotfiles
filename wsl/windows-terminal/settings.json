@@ -43,7 +43,8 @@
     {
         "defaults":
         {
-            "colorScheme": "Solarized Dark"
+            "colorScheme": "Solarized Dark",
+            "bellStyle": "none",
         },
         "list":
         [
