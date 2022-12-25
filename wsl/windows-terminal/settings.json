@@ -43,8 +43,9 @@
     {
         "defaults":
         {
-            "colorScheme": "Solarized Dark",
             "bellStyle": "none",
+            "colorScheme": "Solarized Dark",
+            "cursorShape": "filledBox",
         },
         "list":
         [
@@ -78,7 +79,6 @@
             },
             {
                 "colorScheme": "Solarized Dark",
-                "cursorShape": "filledBox",
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "name": "Ubuntu",
