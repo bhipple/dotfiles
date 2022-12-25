@@ -4,7 +4,7 @@
 # and merge it if the package and all reverse dependencies pass.
 set -euo pipefail
 PR=$1
-cd ~/src/nixpkgs
+cd ~/git/nixpkgs
 
 echo "********************************************************************************"
 hub pr show --format '%t' $PR
@@ -13,7 +13,7 @@ echo "**************************************************************************
 # nixpkgs-review has all this functionality, but the upstream merged version
 # ended up with an interactive shell workflow that isn't as amenable to
 # scripting.
-~/src/nixpkgs-review/result/bin/nixpkgs-review \
+~/git/nixpkgs-review/result/bin/nixpkgs-review \
     pr \
     --token $(awk '/oauth/ {print $NF}' ~/.config/hub) \
     --no-shell \
