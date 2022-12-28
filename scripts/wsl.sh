@@ -8,7 +8,7 @@ fi
 echo "Linking WSL scripts"
 
 for d in /mnt/c/Users/*/.glaze-wm; do
-    echo "Copiyng Glaze config to $d"
+    echo "Copying Glaze config to $d"
     cp ~/dotfiles/wsl/glaze-wm/config.yaml $d/
 done
 
