@@ -57,6 +57,9 @@ window_rules:
   - command: "ignore"
     match_process_name: "SnippingTool"
 
+  - command: "ignore"
+    match_process_name: "TerraformingMars"
+
 binding_modes:
   - name: "resize"
     keybindings:
