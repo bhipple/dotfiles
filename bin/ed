@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+set -eux
+emacsclient -nw -a "" -c -e "(ediff-files \"$1\" \"$2\")"
