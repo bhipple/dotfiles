@@ -13,6 +13,6 @@ for d in /mnt/c/Users/*/.glaze-wm; do
 done
 
 for f in /mnt/c/Users/*/AppData/Local/Packages/Microsoft.WindowsTerminal_*/LocalState/settings.json; do
-    echo "Copiyng Windows Terminal settings to $f"
+    echo "Copying Windows Terminal settings to $f"
     cp ~/dotfiles/wsl/windows-terminal/settings.json $f
 done
