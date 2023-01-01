@@ -100,6 +100,13 @@
   (dotimes (i 4) (org-forward-element))
   (recenter))
 
+(defun brh/org-roam-db-reset ()
+  "Drop the roam db and resync it"
+  (interactive)
+  (progn
+    (org-roam-db-clear-all)
+    (org-roam-db-sync)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org functions for org-capture-templates.
 ; Note that org-capture takes the function by the string name and then passes it
