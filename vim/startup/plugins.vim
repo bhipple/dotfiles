@@ -7,7 +7,6 @@ Plug 'christoomey/vim-tmux-navigator'                    " Window/Pane switching
 Plug 'godlygeek/tabular'                                 " Align blocks of text
 Plug 'luochen1990/rainbow'                               " Rainbow parenthesis coloring
 Plug 'mhinz/vim-grepper'                                 " Asynchronous Grep -> QuickFix List
-Plug 'scrooloose/syntastic'                              " Syntax checking
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
 Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
 Plug 'tpope/vim-commentary'                              " Comment/uncomment operator
@@ -58,11 +57,6 @@ let g:rainbow_conf = {
 \       'css': 0,
 \   }
 \}
-
-" Syntastic
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_always_populate_loc_list = 1
 
 " Vimux
 let g:VimuxOrientation = "h"
