@@ -68,6 +68,10 @@ fi
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
+if whence -w l | grep -q alias; then
+    unalias l
+fi
+
 # Setup autocomplete equivalents
 if [ -z "$IN_NIX_SHELL" ]; then
     compdef g='git'
