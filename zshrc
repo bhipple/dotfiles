@@ -30,6 +30,11 @@ if [[ $? -ne 0 ]]; then
 fi
 
 ################################################################################
+fpath+=(\
+    ~/.nix-profile/share/zsh/site-functions \
+    ~/.zsh/completions \
+    $fpath)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
 
@@ -40,8 +45,6 @@ fi
 if [[ -f ~/.zsh_local/zshrc_local_before.zsh ]]; then
     source ~/.zsh_local/zshrc_local_before.zsh
 fi
-
-fpath+=(~/.zsh/completions $fpath)
 
 source ~/.zsh/plugins.zsh
 
