@@ -46,8 +46,6 @@
       (org . t)
       (python . t)
       (shell . t)
-      ; N.B. Jupyter must be last in this list! It depends on others.
-      (jupyter . t)
     ))
 
     ;; Don't ask for confirmation every time I hit C-c c
