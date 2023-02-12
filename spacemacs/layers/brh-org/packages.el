@@ -17,7 +17,7 @@
 
 ;;; Code:
 
-(defconst brh-org-packages '(org org-bookmark-heading org-mru-clock org-super-agenda)
+(defconst brh-org-packages '(org org-bookmark-heading org-mru-clock)
   "The list of Lisp packages required by the brh-org layer.")
 
 (defun brh-org/init-org-bookmark-heading ()
@@ -31,19 +31,12 @@
           org-mru-clock-how-many 100
           org-mru-clock-predicate #'org-mru-clock-exclude-done-and-archived)))
 
-(defun brh-org/init-org-super-agenda ()
-  (use-package org-super-agenda))
-
 (defun brh-org/post-init-org ()
   (with-eval-after-load 'org
     (require 'org-bookmark-heading)
-    (require 'org-super-agenda)
 
     ; N.B. This ships with org, but still needs to be required to initialize
     (require 'org-habit)
-
-    ; Don't enable this by default, because it looks terrible on weekly views; consider adding a keybinding to toggle
-    ; (org-super-agenda-mode t)
 
     ;; Enable org-babel
     (org-babel-do-load-languages 'org-babel-load-languages '(
