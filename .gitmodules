@@ -13,3 +13,6 @@
 [submodule "nur-packages"]
 	path = nur-packages
 	url = https://github.com/bhipple/nur-packages
+[submodule "nixpkgs"]
+	path = nixpkgs
+	url = https://github.com/NixOS/nixpkgs

@@ -47,6 +47,7 @@
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
     ~/bin: bin/
+    ~/git/nix-channel: nixpkgs
 
 - shell:
     - [git config author.email bhipple@protonmail.com]
