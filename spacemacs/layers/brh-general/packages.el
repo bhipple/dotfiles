@@ -2,7 +2,6 @@
 ;;
 (defconst brh-general-packages '(
   gcmh
-  jupyter
   nix-update
   popper
   s
@@ -25,9 +24,6 @@
             ))
     (popper-mode t)
     (popper-echo-mode t)))
-
-(defun brh-general/init-jupyter ()
-  (use-package jupyter))
 
 (defun brh-general/init-gcmh ()
   (use-package gcmh
