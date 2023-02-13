@@ -16,3 +16,5 @@ for f in /mnt/c/Users/*/AppData/Local/Packages/Microsoft.WindowsTerminal_*/Local
     echo "Copying Windows Terminal settings to $f"
     cp ~/dotfiles/wsl/windows-terminal/settings.json $f
 done
+
+sudo cp wsl/wsl.conf /etc/wsl.conf
