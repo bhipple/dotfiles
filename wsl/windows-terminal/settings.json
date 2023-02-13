@@ -1,14 +1,18 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
+        {
+            "command": "openTabRenamer",
+            "keys": "ctrl+shift+r"
+        },
         {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -20,7 +24,7 @@
             "keys": "shift+insert"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -39,19 +43,19 @@
     "defaultProfile": "{3681cf28-32f4-4f70-9ff4-2b6405fb6212}",
     "launchMode": "maximized",
     "multiLinePasteWarning": false,
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "bellStyle": "none",
             "colorScheme": "Solarized Dark",
             "cursorShape": "filledBox",
-            "font":
+            "font": 
             {
-                "size": 14
+                "size": 14.0
             }
         },
-        "list":
+        "list": 
         [
             {
                 "colorScheme": "Solarized Dark",
@@ -92,7 +96,7 @@
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
@@ -328,5 +332,6 @@
     "showTabsInTitlebar": false,
     "startOnUserLogin": true,
     "theme": "system",
+    "themes": [],
     "wordDelimiters": "\\()\"',:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
