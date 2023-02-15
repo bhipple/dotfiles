@@ -17,4 +17,6 @@ for f in /mnt/c/Users/*/AppData/Local/Packages/Microsoft.WindowsTerminal_*/Local
     cp ~/dotfiles/wsl/windows-terminal/settings.json $f
 done
 
-sudo cp wsl/wsl.conf /etc/wsl.conf
+if ! diff wsl/wsl.conf /etc/wsl.conf; then
+    sudo cp wsl/wsl.conf /etc/wsl.conf
+fi
