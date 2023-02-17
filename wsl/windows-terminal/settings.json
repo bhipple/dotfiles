@@ -87,7 +87,7 @@
             },
             {
                 "colorScheme": "Solarized Dark",
-                "commandline": "C:\\WINDOWS\\system32\\wsl.exe bash -c zsh",
+                "commandline": "C:\\WINDOWS\\system32\\wsl.exe",
                 "guid": "{3681cf28-32f4-4f70-9ff4-2b6405fb6212}",
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
