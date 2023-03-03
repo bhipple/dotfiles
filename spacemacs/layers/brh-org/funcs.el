@@ -107,6 +107,20 @@
     (org-roam-db-clear-all)
     (org-roam-db-sync)))
 
+(defun brh/link-journal-entries ()
+  "Link all of my journal entries with org IDs"
+  (interactive)
+  (let* (
+         (journal-id "bb32a90c-2948-4661-aa09-6a343c2d9764")
+         )
+    )
+  (progn
+    (show-subtree)
+    (while (re-search-forward "\* 20")
+      (org-id-get-create)
+      (message (thing-at-point 'line))
+      )))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org functions for org-capture-templates.
 ; Note that org-capture takes the function by the string name and then passes it
@@ -216,17 +230,3 @@ Callers of this function already widen the buffer view."
   (org-with-point-at (org-id-find id 'marker) (org-clock-in nil))
   (org-clock-goto))
 )
-
-(defun _brh/adhoc ()
-  "one-off ad-hoc hacking"
-  (interactive)
-  (let* (
-         (journal-id "bb32a90c-2948-4661-aa09-6a343c2d9764")
-        )
-  )
-    (progn
-      (show-subtree)
-      (while (re-search-forward "\*\* ")
-        (org-id-get-create)
-        (message (thing-at-point 'line))
-    )))
