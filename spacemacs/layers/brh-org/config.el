@@ -99,7 +99,7 @@
          :overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
 
   ;; Tags for inactive tasks
-  (setq brh-org-non-actionable "-SOMEDAY-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-TODO=\"ABANDONED\"-TODO=\"DONE\"")
+  (setq brh-org-non-actionable "-SOMEDAY-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-TODO=\"DELEGATED\"-TODO=\"ABANDONED\"-TODO=\"DONE\"")
 
   ;; Org Agenda custom searches
   (setq org-agenda-custom-commands
