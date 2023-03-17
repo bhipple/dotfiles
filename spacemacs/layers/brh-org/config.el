@@ -284,6 +284,10 @@
 
   (org-roam-db-autosync-mode nil)
 
+  ; Workaround for org roam backlink buffer needing manual refresh
+  ; https://github.com/org-roam/org-roam/issues/1732#issuecomment-1465326574
+  (advice-add #'org-roam-fontify-like-in-org-mode :around (lambda (fn &rest args) (save-excursion (apply fn args))))
+
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
