@@ -278,9 +278,9 @@
   ;; Use the system chrome when running in WSL
   (setq browse-url-generic-program (if (file-exists-p "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe") "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "chromium"))
 
-  ; This kicks on every org mode file save, and used to cause some lag, but it
-  ; is really convenient. Upstream performance regressions have been fixed.
-  (setq org-roam-db-update-on-save t)
+  ; This kicks on every org mode file save, and used to cause some lag, but it is really convenient.
+  ; Turn it off at work since things are bigger/slower there.
+  (setq org-roam-db-update-on-save brh/at-work)
 
   (org-roam-db-autosync-mode nil)
 
