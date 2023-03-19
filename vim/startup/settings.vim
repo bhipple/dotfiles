@@ -6,9 +6,6 @@ set nocompatible
 "" ============================================================================
 ""                                  Globals
 "" ============================================================================
-" Determine Environment
-let g:platform = GetPlatform()
-
 " To enable the saving and restoring of screen positions.
 let g:screen_size_restore_pos = 1
 

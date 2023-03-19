@@ -1,3 +1,28 @@
+"" ============================================================================
+""                                Environment
+"" ============================================================================
+
+"" ============================================================================
+""                                Directories
+"" ============================================================================
+function! Cdfile()
+    if expand('%') != ''
+        cd %:h
+    else
+        echom "Not currently in a file."
+    endif
+endfunction
+
+" cd to the root of the current file's git directory
+function! Cdroot()
+    call Cdfile()
+    exec "cd " . Trim(system("git rev-parse --show-toplevel"))
+    echom expand('.')
+endfunction
+
+"" ============================================================================
+""                                Formatting
+"" ============================================================================
 " Sort all lines until a blank is encountered
 " or a line with a different prefix from the left position
 " of the cursor
@@ -127,4 +152,11 @@ function! s:CenteredStringStartColumn(str)
     let midCol = 40
     let strMidptDist = strlen(a:str) / 2
     return midCol - strMidptDist
+endfunction
+
+"" ============================================================================
+""                                Vimscript Helpers
+"" ============================================================================
+function! Trim(str)
+    return substitute(a:str, '^\s*\(.\{-}\)\s*\n*$', '\1', '')
 endfunction
