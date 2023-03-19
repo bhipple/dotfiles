@@ -16,6 +16,3 @@
 [submodule "nixpkgs"]
 	path = nixpkgs
 	url = https://github.com/NixOS/nixpkgs
-[submodule "nvim/kickstart.nvim"]
-	path = nvim
-	url = https://github.com/bhipple/kickstart.nvim
