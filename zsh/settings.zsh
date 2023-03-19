@@ -34,6 +34,8 @@ zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M "vicmd" '^e' edit-command-line
 
+export NIXPKGS_ALLOW_UNFREE=1
+
 ## ============================================================================
 ##                                  Prompt
 ## ============================================================================
