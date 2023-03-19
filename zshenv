@@ -17,14 +17,8 @@ unsetopt BG_NICE
 ## ============================================================================
 export GTEST_COLOR=yes
 
-# Use emacsclient on my desktop/laptop; vim on cloud nodes, etc.
-if [[ "$(hostname)" = brh* ]]; then
-    export EDITOR=emacsclient
-    export VISUAL=emacsclient
-else
-    export EDITOR=vim
-    export VISUAL=vim
-fi
+export EDITOR=nvim
+export VISUAL=nvim
 
 if [[ -e ~/.terminfo/x/xterm-24bit ]]; then
     export COLORTERM=truecolor
