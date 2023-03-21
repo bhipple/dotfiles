@@ -103,9 +103,6 @@
 [diff]
     algorithm = patience
     renameLimit = 2500
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
 [grep]
     lineNumber = true
 [init]
