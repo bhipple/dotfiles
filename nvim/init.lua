@@ -38,6 +38,9 @@ require('lazy').setup({
     diffview = true
   },
 
+  -- Workspace management
+  'ThePrimeagen/harpoon',
+
   -- Netrw replacement
   'tpope/vim-vinegar',
 
