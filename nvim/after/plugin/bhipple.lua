@@ -1,6 +1,5 @@
 --------------------------------------------------------------------------------
 -- [[ Basic Keymaps ]]
-
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -9,7 +8,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>fr',      require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -30,11 +29,11 @@ vim.keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]i
 -- Git
 vim.keymap.set('n', '<leader>gs', require('neogit').open, { desc = 'Neogit Status' })
 vim.keymap.set('n', '<leader>oc', ":DiffviewClose<CR>", { desc = 'Diffview Close' })
-vim.keymap.set('n', '<leader>od', ":DiffviewClose<CR>", { desc = 'Diffview Close' })
-vim.keymap.set('n', '<leader>oo', ":DiffviewOpen", { desc = 'Diffview Open ' })
+vim.keymap.set('n', '<leader>od', ":DiffviewOpen<CR>", { desc = 'Diffview Open' })
 vim.keymap.set('n', '<leader>oh', ":DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
+vim.keymap.set('n', '<leader>oo', ":DiffviewOpen", { desc = 'Diffview Open against revision (enter prompt)' })
 vim.keymap.set('n', '<leader>om', ":DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
---
+
 -- Harpoon
 local mark = require('harpoon.mark')
 local ui = require('harpoon.ui')
