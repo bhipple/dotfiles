@@ -3,7 +3,9 @@
 "" ============================================================================
 set nocompatible
 
-colorscheme desert256
+if !has('nvim')
+    colorscheme desert256
+endif
 
 "" ============================================================================
 ""                                  Globals
@@ -106,15 +108,5 @@ set foldminlines=10
 " Automatically open the QuickFix Window after a make
 autocmd QuickFixCmdPost *make* cwindow
 
-" Haskell
-au FileType haskell setlocal tags=.hs-tags
-au BufEnter *.hs compiler ghc
-
 " Make
 autocmd FileType make setlocal noexpandtab shiftwidth=8
-
-" Markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" XML
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ -

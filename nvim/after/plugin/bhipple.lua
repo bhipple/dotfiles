@@ -1,4 +1,10 @@
 --------------------------------------------------------------------------------
+-- Load my standard vimscript files
+vim.cmd('source ~/.vim/startup/functions.vim')
+vim.cmd('source ~/.vim/startup/settings.vim')
+vim.cmd('source ~/.vim/startup/mappings.vim')
+
+--------------------------------------------------------------------------------
 -- [[ Basic Keymaps ]]
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
