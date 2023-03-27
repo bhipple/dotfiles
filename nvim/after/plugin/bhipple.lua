@@ -5,6 +5,20 @@ vim.cmd('source ~/.vim/startup/settings.vim')
 vim.cmd('source ~/.vim/startup/mappings.vim')
 
 --------------------------------------------------------------------------------
+-- Functions
+local telescope = require('telescope.builtin')
+
+local function cdroot_git_files()
+    vim.cmd(':call Cdroot()')
+    telescope.git_files()
+end
+
+local function cd_all_files()
+    vim.cmd(':call Cdgit()')
+    telescope.find_files()
+end
+
+--------------------------------------------------------------------------------
 -- [[ Basic Keymaps ]]
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -17,20 +31,17 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '<leader>fr',      require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
+    telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = false })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-local telescope = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>',      telescope.git_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>pf', telescope.git_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<C-p>',      cdroot_git_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>pf', cdroot_git_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>pp', cd_all_files, { desc = '[P]roject search all files' })
+vim.keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sf', cdroot_git_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- Git
 vim.keymap.set('n', '<leader>gs', require('neogit').open, { desc = 'Neogit Status' })
