@@ -5,19 +5,8 @@
 cmap w!! w !sudo tee % > /dev/null
 
 "" ============================================================================
-""                           Insert Mode Mappings
-"" ============================================================================
-" Leaving insert mode with jj or jk
-inoremap jj <Esc><Right>
-inoremap jk <Esc><Right>
-
-
-"" ============================================================================
 ""                        Normal/Visual Mode Mappings
 "" ============================================================================
-" YouCompleteMe
-nnoremap <F9> :YcmForceCompileAndDiagnostics<CR>
-
 " If hl search is off, starting a new search or moving enables it
 nnoremap * :set hlsearch<CR>*
 nnoremap # :set hlsearch<CR>#
