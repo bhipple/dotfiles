@@ -39,23 +39,14 @@ nnoremap <Leader>fh :FSSplitLeft<CR>
 nnoremap <Leader>fj :FSSplitBelow<CR>
 nnoremap <Leader>fk :FSSplitAbove<CR>
 nnoremap <Leader>fl :FSSplitRight<CR>
-nnoremap <Leader>fx :call GTestFixture("")<Left><Left>
-nnoremap <Leader>gg :call Cdroot()<CR>:Grepper<CR>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>rd :redraw!<CR>
-nnoremap <Leader>rr :w<CR>:call VimuxRunCommand('./' . bufname("%"))<CR>
 nnoremap <Leader>se :sp<CR>:e %:h<CR>
-nnoremap <Leader>sp :setlocal spell! spelllang=en_us<CR>
 nnoremap <Leader>ss :call SortSection()<CR>
 nnoremap <Leader>te :tabe %:h<CR>
 nnoremap <Leader>tf :call Cdroot()<CR>:call MkGtest()<CR>
 nnoremap <Leader>tm :Tabmerge right<CR>
-nnoremap <Leader>vc :w<CR>:call VimuxRunCommand('chmod +x *.hs; ./*.hs < input')<CR>
 nnoremap <Leader>ve :vsp<CR>:e %:h<CR>
-nnoremap <Leader>vl :w<CR>:call VimuxRunCommand('(load "' . bufname("%") . '")')<CR>
-nnoremap <Leader>vr :w<CR>:VimuxRunLastCommand<CR>
-nnoremap <Leader>vv :w<CR>:VimuxPromptCommand<CR>
-nnoremap <Leader>vx :VimuxInterruptRunner<CR>
 nnoremap <Leader>w :call StripTabsAndTrailingWhitespaces()<CR>:w<CR>
 
 " Note - l and q are used for the location list and quickfix toggle by ListToggle
