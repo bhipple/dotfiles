@@ -110,3 +110,8 @@ autocmd QuickFixCmdPost *make* cwindow
 
 " Make
 autocmd FileType make setlocal noexpandtab shiftwidth=8
+
+augroup filetypedetect
+    au! BufRead,BufNewFile wscript python
+augroup END
+autocmd BufNewFile,BufRead wscript set ft=python

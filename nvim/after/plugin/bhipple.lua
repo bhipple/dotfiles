@@ -46,6 +46,7 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<C-p>',      cdroot_git_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>gg', cdroot_live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>pf', cdroot_git_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>pp', cdgit_find_files, { desc = '[P]roject search all files' })
 vim.keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
