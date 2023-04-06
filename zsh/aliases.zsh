@@ -45,6 +45,8 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g G='| rg'
     alias -g GI='| rg -i'
     alias -g Gi='| rg -i'
+    alias -g GV='| rg -v'
+    alias -g Gv='| rg -v'
     alias -g H='| head'
     alias -g K='--keep-going'
     alias -g L='| less -n'

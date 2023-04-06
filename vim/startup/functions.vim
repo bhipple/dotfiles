@@ -1,12 +1,17 @@
 "" ============================================================================
 ""                                Directories
 "" ============================================================================
+" TODO: Make this compatible with netrw if the buffer is a dir
 function! Cdfile()
     if expand('%') != ''
         cd %:h
     else
         echom "Not currently in a file."
     endif
+endfunction
+
+function! Cdgit()
+    exec "cd ~/git"
 endfunction
 
 " cd to the root of the current file's git directory
