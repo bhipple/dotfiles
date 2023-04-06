@@ -182,7 +182,7 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
-  (setq brh/default-org-file (if brh/at-work "~/org/work.org" "~/org/me.org"))
+  (setq brh/default-org-file (if brh/at-work "~/org/work/work.org" "~/org/me.org"))
   (setq brh/journal-file "~/org/journal.org")
 
   (setq org-capture-templates
@@ -282,7 +282,7 @@
   ; Turn it off at work since things are bigger/slower there.
   (setq org-roam-db-update-on-save (not brh/at-work))
 
-  (org-roam-db-autosync-mode nil)
+  (org-roam-db-autosync-mode t)
 
   ; Workaround for org roam backlink buffer needing manual refresh
   ; https://github.com/org-roam/org-roam/issues/1732#issuecomment-1465326574
