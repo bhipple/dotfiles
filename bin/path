@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo "$(echo "$PATH" | tr ":" "\n")"

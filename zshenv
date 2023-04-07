@@ -15,6 +15,10 @@ unsetopt BG_NICE
 ## ============================================================================
 ##                           Environment Variables
 ## ============================================================================
+if [[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
 export GTEST_COLOR=yes
 
 export EDITOR=nvim
@@ -27,15 +31,19 @@ fi
 # Delay to wait in hundredths of seconds for switching to normal mode with ESC
 export KEYTIMEOUT=0
 
-PATH=~/.nix-profile/bin:~/bin_local:$PATH
-PATH=~/bin:$PATH
-PATH=$PATH:~/.local/bin
-PATH=$PATH:/bin
-PATH=$PATH:/sbin
-PATH=$PATH:/usr/local/bin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/local/sbin
-PATH=$PATH:/usr/sbin
+export PATH=\
+~/git/nixpkgs/result/bin\
+:~/.nix-profile/bin\
+:~/bin_local\
+:~/bin\
+:~/.local/bin\
+:/run/wrappers/bin\
+:/etc/profiles/per-user/$USER/bin\
+:/nix/var/nix/profiles/$USER/bin\
+:/n/nix/tech/var/nix/profiles/$USER/bin\
+:/run/current-system/sw/bin\
+:/usr/local/bin\
+:/usr/bin\
 
 # Enable full support for Unicode explicitly
 export LANG=en_US.UTF-8
@@ -57,12 +65,3 @@ fi
 
 # Never ask to auto-update oh-my-zsh; instead require `zgen update`
 export DISABLE_AUTO_UPDATE=true
-
-pathDeduplicate() {
-    export PATH="$(echo "$PATH" |
-        awk 'BEGIN{RS=":";} \
-            {sub(sprintf("%c$",10),"");if(A[$0]){}else{A[$0]=1;printf(((NR==1)?"":":")$0)}}' \
-        )";
-}
-
-pathDeduplicate

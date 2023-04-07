@@ -38,10 +38,6 @@ fpath+=(\
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
 
-if [[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
-    source $HOME/.nix-profile/etc/profile.d/nix.sh
-fi
-
 if [[ -f ~/.zsh_local/zshrc_local_before.zsh ]]; then
     source ~/.zsh_local/zshrc_local_before.zsh
 fi
