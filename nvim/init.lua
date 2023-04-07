@@ -21,34 +21,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
+--------------------------------------------------------------------------------
+-- Plugins
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-
-  -- Caching lua cfg as bytecode for faster startup
-  'lewis6991/impatient.nvim',
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  'ThePrimeagen/harpoon',      -- Workspace management
+  'hrsh7th/cmp-buffer',
+  'ledger/vim-ledger',         -- ledger-cli mode
+  'lewis6991/impatient.nvim',  -- Caching lua cfg as bytecode for faster startup
   'sindrets/diffview.nvim',
+  'tpope/vim-fugitive',        -- Git wrapper
+  'tpope/vim-rhubarb',
+  'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-vinegar',         -- Netrw replacement
+
   {'TimUntersberger/neogit',
     dependencies = {'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim'},
     diffview = true
   },
-
-  -- Workspace management
-  'ThePrimeagen/harpoon',
-
-  -- Netrw replacement
-  'tpope/vim-vinegar',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -72,7 +62,6 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
-  'hrsh7th/cmp-buffer',
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
