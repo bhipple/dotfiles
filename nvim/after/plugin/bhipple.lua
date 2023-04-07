@@ -7,6 +7,7 @@ vim.cmd('source ~/.vim/startup/mappings.vim')
 --------------------------------------------------------------------------------
 -- Functions
 local telescope = require('telescope.builtin')
+local neogit = require('neogit')
 
 local function cdroot_git_files()
     vim.cmd(':call Cdroot()')
@@ -23,6 +24,11 @@ local function cdroot_live_grep()
     telescope.live_grep()
 end
 
+local function cdroot_git_status()
+    vim.cmd(':call Cdroot()')
+    neogit.open()
+end
+
 local function cdroot_grep_string()
     vim.cmd(':call Cdroot()')
     telescope.grep_string()
@@ -37,15 +43,14 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>bb', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>fr',      require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>/', function()
     telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = false })
 end, { desc = '[/] Fuzzily search in current buffer' })
-
+vim.keymap.set('n', '<leader><space>', telescope.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<C-p>',      cdroot_git_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>bb', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>gg', cdroot_live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>pf', cdroot_git_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>pp', cdgit_find_files, { desc = '[P]roject search all files' })
@@ -56,12 +61,12 @@ vim.keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp
 vim.keymap.set('n', '<leader>sw', cdroot_grep_string, { desc = '[S]earch current [W]ord' })
 
 -- Git
-vim.keymap.set('n', '<leader>gs', require('neogit').open, { desc = 'Neogit Status' })
+vim.keymap.set('n', '<leader>gs', cdroot_git_status, { desc = 'Neogit Status' })
 vim.keymap.set('n', '<leader>oc', ":DiffviewClose<CR>", { desc = 'Diffview Close' })
 vim.keymap.set('n', '<leader>od', ":DiffviewOpen<CR>", { desc = 'Diffview Open' })
 vim.keymap.set('n', '<leader>oh', ":DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
-vim.keymap.set('n', '<leader>oo', ":DiffviewOpen", { desc = 'Diffview Open against revision (enter prompt)' })
 vim.keymap.set('n', '<leader>om', ":DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
+vim.keymap.set('n', '<leader>oo', ":DiffviewOpen", { desc = 'Diffview Open against revision (enter prompt)' })
 
 -- Harpoon
 local mark = require('harpoon.mark')
