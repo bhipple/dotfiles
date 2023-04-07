@@ -25,23 +25,22 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-  'ThePrimeagen/harpoon',      -- Workspace management
+  'ThePrimeagen/harpoon',                                                       -- Workspace management
   'hrsh7th/cmp-buffer',
-  'ledger/vim-ledger',         -- ledger-cli mode
-  'lewis6991/impatient.nvim',  -- Caching lua cfg as bytecode for faster startup
+  'ledger/vim-ledger',                                                          -- ledger-cli mode
+  'lewis6991/impatient.nvim',                                                   -- Caching lua cfg as bytecode for faster startup
   'sindrets/diffview.nvim',
-  'tpope/vim-fugitive',        -- Git wrapper
+  'tpope/vim-fugitive',                                                         -- Git wrapper
   'tpope/vim-rhubarb',
-  'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-vinegar',         -- Netrw replacement
+  'tpope/vim-sleuth',                                                           -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-vinegar',                                                          -- Netrw replacement
+  {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
   {'TimUntersberger/neogit',
     dependencies = {'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim'},
     diffview = true
   },
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -60,7 +59,7 @@ require('lazy').setup({
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -215,7 +214,7 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -277,6 +276,7 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+--------------------------------------------------------------------------------
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -359,6 +359,7 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+--------------------------------------------------------------------------------
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -399,10 +400,28 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'buffer' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp' },
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
+-- `/` cmdline setup.
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
 -- vim: ts=2 sts=2 sw=2 et
