@@ -31,7 +31,6 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',                                                         -- autocompletions from buffer
   'ledger/vim-ledger',                                                          -- ledger-cli mode
   'lewis6991/impatient.nvim',                                                   -- Caching lua cfg as bytecode for faster startup
-  'nvim-tree/nvim-web-devicons',                                                -- File icons for trouble
   'sindrets/diffview.nvim',
   'tpope/vim-fugitive',                                                         -- Git wrapper
   'tpope/vim-rhubarb',
@@ -200,17 +199,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --------------------------------------------------------------------------------
 -- Trivial Plugins
-require("trouble").setup { }
+require("trouble").setup { icons = false, }
 
 --------------------------------------------------------------------------------
 -- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
+local trouble = require("trouble.providers.telescope")
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ["<c-t>"] = trouble.open_with_trouble,
+      },
+      n = {
+        ["<c-t>"] = trouble.open_with_trouble
       },
     },
   },
