@@ -72,12 +72,13 @@ vim.keymap.set('n', '<leader>oo', ":DiffviewOpen", { desc = 'Diffview Open again
 local mark = require('harpoon.mark')
 local ui = require('harpoon.ui')
 require("telescope").load_extension('harpoon')
+
 vim.keymap.set('n', '<leader>m', mark.add_file)
-vim.keymap.set('n', '<C-e>', ui.toggle_quick_menu)
-vim.keymap.set("n", "<F1>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<F2>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<F3>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<F4>", function() ui.nav_file(4) end)
+vim.keymap.set('n', '<C-e>', ':Telescope harpoon marks<CR>')
+vim.keymap.set("n", "<F1>", function() ui.nav_file(1) end)  -- editor prefix + l via QMK
+vim.keymap.set("n", "<F2>", function() ui.nav_file(2) end)  -- editor prefix + u via QMK
+vim.keymap.set("n", "<F3>", function() ui.nav_file(3) end)  -- editor prefix + y via QMK
+vim.keymap.set("n", "<F4>", function() ui.nav_file(4) end)  -- editor prefix + ' via QMK
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
