@@ -6,27 +6,25 @@
         relink: true
 
 - link:
-    ~/.dotfiles: ''
-    ~/.Xresources: Xresources
-    ~/.bashrc:
-        force: true
-        path: bashrc
     ~/.bash_profile:
         force: true
         path: bash_profile
-    ~/.config/nvim:
-        path: nvim/
+    ~/.bashrc:
+        force: true
+        path: bashrc
     ~/.config/i3:
         path: i3/
     ~/.config/nixpkgs:
         path: config/nixpkgs/
+    ~/.config/nvim:
+        path: nvim/
     ~/.config/pycodestyle:
         path: config/pycodestyle
     ~/.dir_colors: dir_colors
+    ~/.dotfiles: ''
     ~/.emacs.d:
         force: true
         path: spacemacs/emacs.d
-    ~/.spacemacs: spacemacs/init.el
     ~/.gdbinit: gdbinit
     ~/.ghc/ghci.conf:
         path: ghc/ghci.conf
@@ -38,6 +36,7 @@
     ~/.inputrc: inputrc
     ~/.ledgerrc: ledgerrc
     ~/.pylintrc: pylintrc
+    ~/.spacemacs: spacemacs/init.el
     ~/.tmux.conf: tmux.conf
     ~/.vim:
         force: true
@@ -45,6 +44,7 @@
     ~/.vimrc: vimrc
     ~/.vimrc_minimal: vimrc_minimal
     ~/.xinitrc: xinitrc
+    ~/.Xresources: Xresources
     ~/.zsh: zsh/
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
@@ -57,18 +57,18 @@
     - [git config committer.name "Benjamin Hipple"]
     - [git submodule update --init --recursive, Updating submodules]
     - command: scripts/wsl.sh
+      stderr: true
       stdin: true
       stdout: true
-      stderr: true
     - command: tic -x -o ~/.terminfo terminfo/xterm-24bit.terminfo
+      stderr: true
       stdin: true
       stdout: true
-      stderr: true
     - command: scripts/dependency_install.sh
+      stderr: true
       stdin: true
       stdout: true
-      stderr: true
     - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qall
+      stderr: true
       stdin: true
       stdout: true
-      stderr: true
