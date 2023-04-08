@@ -15,36 +15,24 @@ nnoremap N :set hlsearch<CR>N
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
 
-" Swap to last buffer
-nnoremap <silent> <F8> :b#<CR>
-
 "" ============================================================================
 ""                         Leader Mappings (Sorted)
 "" ============================================================================
 " Also use spacebar as a leader
 nmap <Space> \
 
-nnoremap <Leader>cdf :call Cdfile()<CR>
-nnoremap <Leader>cdr :call Cdroot()<CR>
-nnoremap <Leader>cmt :call CmtSection("")<Left><Left>
+nnoremap <Leader>ev :e $MYVIMRC<CR>G$F/
 nnoremap <Leader>cx :!chmod a+x %<CR>
 nnoremap <Leader>db :windo diffthis<CR>
 nnoremap <Leader>df :Gdiff<CR>
 nnoremap <Leader>do :windo diffoff<CR>
 nnoremap <Leader>dom :Gdiff origin/master<CR>
 nnoremap <Leader>du :diffupdate<CR>
-nnoremap <Leader>ev :e $MYVIMRC<CR>G$F/
-nnoremap <Leader>ff :FSHere<CR>
-nnoremap <Leader>fh :FSSplitLeft<CR>
-nnoremap <Leader>fj :FSSplitBelow<CR>
-nnoremap <Leader>fk :FSSplitAbove<CR>
-nnoremap <Leader>fl :FSSplitRight<CR>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>rd :redraw!<CR>
 nnoremap <Leader>se :sp<CR>:e %:h<CR>
 nnoremap <Leader>ss :call SortSection()<CR>
 nnoremap <Leader>te :tabe %:h<CR>
-nnoremap <Leader>tf :call Cdroot()<CR>:call MkGtest()<CR>
 nnoremap <Leader>tm :Tabmerge right<CR>
 nnoremap <Leader>ve :vsp<CR>:e %:h<CR>
 nnoremap <Leader>w :call StripTabsAndTrailingWhitespaces()<CR>:w<CR>

@@ -26,13 +26,17 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   'ThePrimeagen/harpoon',                                                       -- Workspace management
-  'hrsh7th/cmp-buffer',
+  'ahmedkhalf/project.nvim',                                                    -- SPC p p project management and auto-cd
+  'folke/trouble.nvim',                                                         -- Quickfix/Loclist/LSP Info
+  'hrsh7th/cmp-buffer',                                                         -- autocompletions from buffer
   'ledger/vim-ledger',                                                          -- ledger-cli mode
   'lewis6991/impatient.nvim',                                                   -- Caching lua cfg as bytecode for faster startup
+  'nvim-tree/nvim-web-devicons',                                                -- File icons for trouble
   'sindrets/diffview.nvim',
   'tpope/vim-fugitive',                                                         -- Git wrapper
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',                                                           -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
@@ -113,7 +117,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'ahmedkhalf/project.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -194,7 +198,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configure Telescope ]]
+--------------------------------------------------------------------------------
+-- Trivial Plugins
+require("trouble").setup { }
+
+--------------------------------------------------------------------------------
+-- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
@@ -209,6 +218,13 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+
+require("project_nvim").setup {
+  patterns = { ".git" },
+  silent_chdir = false,
+}
+
+require('telescope').load_extension('projects')
 
 --------------------------------------------------------------------------------
 -- Treesitter
@@ -233,7 +249,6 @@ require('nvim-treesitter.configs').setup {
     'vimdoc',
     'yaml',
   },
-
 
   -- Autoinstall languages that are not installed.
   auto_install = true,
@@ -346,7 +361,6 @@ end
 local servers = {
   bashls = {},
   clangd = {},
-  groovyls = {},
   pyright = {},
   terraformls = {},
   yamlls = {},
