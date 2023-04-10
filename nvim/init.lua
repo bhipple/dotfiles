@@ -250,7 +250,7 @@ require('nvim-treesitter.configs').setup {
     'rust',
     'terraform',
     'vim',
-    'vimdoc',
+    --'vimdoc',
     'yaml',
   },
 
