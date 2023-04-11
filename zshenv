@@ -5,8 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[[ -f ~/.zshenv_local.zsh ]] && . ~/.zshenv_local.zsh
-
 skip_global_compinit=1
 
 # Don't nice background processes
@@ -65,3 +63,6 @@ fi
 
 # Never ask to auto-update oh-my-zsh; instead require `zgen update`
 export DISABLE_AUTO_UPDATE=true
+
+# Source local config, if any
+[[ -f ~/.zshenv_local.zsh ]] && . ~/.zshenv_local.zsh
