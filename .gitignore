@@ -7,6 +7,7 @@
 bin/hub
 emacs~
 nodes
+nvim/lazy-lock.json
 tags
 tmux/plugins
 vim/autoload/plug.vim.old
