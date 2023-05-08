@@ -53,6 +53,7 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g R='!! | less -n'
     alias -g S='| sort'
     alias -g SUM='| sed "s|[,$]||g" | paste -sd+ - | bc'
+    alias -g T='| tail'
     alias -g W='| wc -l'
     alias -g X='| xargs -I{}'
     alias -g Y='--yes'
