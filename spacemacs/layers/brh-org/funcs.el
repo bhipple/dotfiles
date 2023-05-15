@@ -40,7 +40,7 @@
   (interactive)
   (if brh/at-work
       (find-file "~/dotfiles_local/notes/work.org")
-      (find-file "~/org/me.org")))
+      (find-file "~/personal/me.org")))
 
 (defun brh/org-agenda-write ()
   "Write the current agenda to the Chromium homepage file"
