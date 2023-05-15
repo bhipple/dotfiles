@@ -61,7 +61,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Agenda settings
   ;; Dynamically find all agenda files by walking the directory
-  (setq org-agenda-files (delete-dups (brh/find-org-file-recursively "~/org/" "org")))
+  (setq org-agenda-files (delete-dups (brh/find-org-file-recursively (if brh/at-work "~/dotfiles_local/notes" "~/personal/") "org")))
 
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)
@@ -273,7 +273,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; org-roam configuration
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory (if brh/at-work (file-truename "~/dotfiles_local/notes/roam") (file-truename "~/org")))
+  (setq org-roam-directory (if brh/at-work (file-truename "~/dotfiles_local/notes/roam") (file-truename "~/personal/roam")))
 
   ;; Use the system chrome when running in WSL
   (setq browse-url-generic-program (if (file-exists-p "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe") "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "chromium"))
