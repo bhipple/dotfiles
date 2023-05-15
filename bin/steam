@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 export NIXPKGS_ALLOW_UNFREE=1
-channel='https://github.com/NixOS/nixpkgs/archive/5afb1b7dcf46c4ded5719525a42879b35363862c.tar.gz'  # 2022-06-19 from NixOS release-22.05
+channel='https://github.com/NixOS/nixpkgs/archive/3007746b3f5bfcb49e102b517bca891822a41b31.tar.gz'  # 2023-05-14 from nixpkgs-unstable
 nix run -f $channel steam

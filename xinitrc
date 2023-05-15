@@ -46,11 +46,20 @@ handle_touchpad() {
     fi
 }
 
+handle_dale() {
+    xrandr --auto --dpi 144 --output DP-0 --mode 5120x2160
+}
+
 xresources() {
     # Apparently this needs to be called at every login!
     xrdb -merge ~/.Xresources 2>&1 >/dev/null
 }
 
 xresources
-handle_docking
-handle_touchpad
+
+if uname -a | grep -q "Linux brh-x1"; then
+    handle_docking
+    handle_touchpad
+elif uname -a | grep -q "Linux brh-dale"; then
+    handle_dale
+fi
