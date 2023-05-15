@@ -61,7 +61,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org Agenda settings
   ;; Dynamically find all agenda files by walking the directory
-  (setq org-agenda-files (delete-dups (brh/find-org-file-recursively (if brh/at-work "~/dotfiles_local/notes" "~/personal/") "org")))
+  (setq org-agenda-files (delete-dups (brh/find-org-file-recursively (if brh/at-work "~/dotfiles_local/notes/roam" "~/personal/") "org")))
 
   ;; How far in advance to show deadlines on agenda views
   (setq org-deadline-warning-days 10)
