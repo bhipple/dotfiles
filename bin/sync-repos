@@ -34,8 +34,8 @@ update ~/.talon/user/knausj_talon
 update ~/dotfiles
 update ~/dotfiles_local
 update ~/ledger
-update ~/org
-update ~/src/qmk_firmware
+update ~/personal
+update ~/git/qmk_firmware
 
 wait
 echo "Finished updating"
