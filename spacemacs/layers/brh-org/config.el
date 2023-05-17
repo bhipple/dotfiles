@@ -102,6 +102,7 @@
   (setq brh-org-non-actionable "-SOMEDAY-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-TODO=\"DELEGATED\"-TODO=\"ABANDONED\"-TODO=\"DONE\"")
 
   ;; Org Agenda custom searches
+  ; TODO: The work and home tags aren't really needed anymore.
   (setq org-agenda-custom-commands
         '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
           ("c" "Currently active non-repeating items" tags-todo (concat "-REPEATING" brh-org-non-actionable))
@@ -133,8 +134,8 @@
                                                              (org-agenda-log-mode-items '(closed clock state))))
                                                  (tags-todo (concat "-INBOX" brh-org-non-actionable))
                                                  (tags-todo "+INBOX")))
-          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+WORK+TODO=\"BLOCKED\"|+WORK+TODO=\"WAITING\"|+WORK+TODO=\"PR\"")))
-          ("wc" "Currently active non-repeating WORK items" tags-todo "+WORK-SOMEDAY-REPEATING")
+          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+TODO=\"BLOCKED\"|+TODO=\"WAITING\"|+TODO=\"PR\"")))
+          ("wc" "Currently active non-repeating WORK items" tags-todo "-SOMEDAY-REPEATING")
           ("we" "Work agenda for exporting to html" ((agenda "" ((org-agenda-span 'day)
                                                                  (org-agenda-archives-mode t)
                                                                  (org-agenda-log-mode-items '(closed clock state))))
