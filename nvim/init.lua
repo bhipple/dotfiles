@@ -225,7 +225,6 @@ pcall(require('telescope').load_extension, 'fzf')
 
 require("project_nvim").setup {
   patterns = { ".git" },
-  silent_chdir = false,
 }
 
 require('telescope').load_extension('projects')
