@@ -7,4 +7,8 @@
 
     bhipple = import /home/bhipple/dotfiles/nur-packages {};
   };
+
+  permittedInsecurePackages = [
+    "python3.10-cryptography-3.4.8"
+  ];
 }
