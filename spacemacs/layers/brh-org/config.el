@@ -214,7 +214,7 @@
   (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))
 
   ;; Archive to subdirectory
-  (setq org-archive-location "~/personal/archive/%s_archive::")
+  (setq org-archive-location (if brh/at-work "~/dotfiles_local/notes/archive/%s_archive::" "~/personal/archive/%s_archive::"))
 
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively nil)
