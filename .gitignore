@@ -4,6 +4,7 @@
 *.pyc
 *.stack-work*
 *~
+.luarc.json
 bin/hub
 emacs~
 nodes

@@ -37,6 +37,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',                                                           -- Detect tabstop and shiftwidth automatically
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
+  {'aserowy/tmux.nvim', opts = {} },
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
   {'TimUntersberger/neogit',
@@ -249,7 +250,7 @@ require('nvim-treesitter.configs').setup {
     'rust',
     'terraform',
     'vim',
-    --'vimdoc',
+    'vimdoc',
     'yaml',
   },
 

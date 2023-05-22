@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'Raimondi/delimitMate'                              " Matching quotes, parens, and brackets
 Plug 'Valloric/ListToggle'                               " Toggling quickfix and location list
 Plug 'bhipple/vimux'                                     " Vim and Tmux Integration
-Plug 'christoomey/vim-tmux-navigator'                    " Window/Pane switching with Vim and Tmux
 Plug 'godlygeek/tabular'                                 " Align blocks of text
 Plug 'tommcdo/vim-exchange'                              " cx operator for exchanging text regions
 Plug 'tpope/vim-abolish'                                 " Coercion and Subvert
