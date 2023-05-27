@@ -183,12 +183,12 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
-  (setq brh/default-org-file (if brh/at-work "~/org/work/work.org" "~/personal/me.org"))
-  (setq brh/journal-file "~/org/journal.org")
+  (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/me.org"))
+  (setq brh/journal-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/roam/journal.org"))
 
   (setq org-capture-templates
         ;; Personal templates
-        '(("b" "Buy Item" entry (file+headline "~/org/lists.org" "Shopping List")
+        '(("b" "Buy Item" entry (file+headline "~/personal/roam/20211223232407-general_lists.org" "Shopping List")
            "* %?\nEntered %u\n")
           ("d" "Deadline Item" entry (file+headline "~/personal/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
@@ -200,7 +200,7 @@
            :jump-to-captured t)
           ("m" "Someday/Maybe Item" entry (file+headline brh/default-org-file "Someday / Maybe")
            "* TODO [#C] %?\nEntered %u\n")
-          ("r" "Weekly Review" entry (file "~/org/logs.org")
+          ("r" "Weekly Review" entry (file "~/personal/roam/logs.org")
            (function _brh/org-capture-weekly-review))
           ("s" "Scheduled Item" entry (file+headline "~/personal/me.org" "Tasks")
            "* TODO [#C] %?\nSCHEDULED: %^t")

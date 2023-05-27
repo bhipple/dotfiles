@@ -131,7 +131,7 @@
 
 (defun _brh/org-capture-weekly-review ()
   "Helper function to go to the weekly review, clock in, and expand my snippet"
-  (let* ((last-review-date (string-trim (shell-command-to-string "grep 'Weekly Review for ' /home/bhipple/org/roam/logs.org | head -1 | awk '{print $5}' | sed 's|\\[||'")))
+  (let* ((last-review-date (string-trim (shell-command-to-string "grep 'Weekly Review for ' /home/bhipple/personal/roam/logs.org | head -1 | awk '{print $5}' | sed 's|\\[||'")))
          (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
          (weekly-review-id "9acee905-3db5-4cff-9526-928e9693a323")
          (today (format-time-string "%Y-%m-%d %a"))
