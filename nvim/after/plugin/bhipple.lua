@@ -10,13 +10,6 @@ local telescope = require('telescope.builtin')
 local ui = require('harpoon.ui')
 
 --------------------------------------------------------------------------------
--- Functions
-local function cdgit_find_files()
-    vim.cmd(':call Cdgit()')
-    telescope.find_files()
-end
-
---------------------------------------------------------------------------------
 -- [[ Basic Keymaps ]]
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
