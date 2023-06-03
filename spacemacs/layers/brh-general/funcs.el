@@ -45,8 +45,8 @@
   "Insert the incremented numbers 1 through N on lines, optionally with a custom format string. Supports up to 3 repeats of %d on each line"
   (interactive)
   (let ((times (string-to-number (read-string "Insert numbers 1 through N for N = ")))
-        (concat (format-str (completing-read "Format string for each line (\n will be appended automatically): " '("%d" "%d. " "* TODO %d"))) "\n")
-    (dotimes (i times) (insert (format format-str (1+ i) (1+ i) (1+ i)))))))
+        (format-str (concat (completing-read "Format string for each line (newline will be appended automatically): " '("%d" "%d. " "* TODO %d")) "\n")))
+    (dotimes (i times) (insert (format format-str (1+ i) (1+ i) (1+ i))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Git Diff
