@@ -46,7 +46,7 @@
   (interactive)
   (let ((times (string-to-number (read-string "Insert numbers 1 through N for N = ")))
         (concat (format-str (completing-read "Format string for each line (\n will be appended automatically): " '("%d" "%d. " "* TODO %d"))) "\n")
-    (dotimes (i times) (insert (format format-str (1+ i) (1+ i) (1+ i))))))
+    (dotimes (i times) (insert (format format-str (1+ i) (1+ i) (1+ i)))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Git Diff
