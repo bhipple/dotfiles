@@ -42,7 +42,7 @@ vim.keymap.set('n', '<leader>oc', ":DiffviewClose<CR>", { desc = 'Diffview Close
 vim.keymap.set('n', '<leader>od', ":DiffviewOpen<CR>", { desc = 'Diffview Open' })
 vim.keymap.set('n', '<leader>oh', ":DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
 vim.keymap.set('n', '<leader>om', ":DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
-vim.keymap.set('n', '<leader>oo', ":DiffviewOpen", { desc = 'Diffview Open against revision (enter prompt)' })
+vim.keymap.set('n', '<leader>oo', ":DiffviewOpen ", { desc = 'Diffview Open against revision (enter prompt)' })
 
 -- Harpoon
 require("telescope").load_extension('harpoon')

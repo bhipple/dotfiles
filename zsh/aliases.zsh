@@ -5,8 +5,13 @@ alias cdr='cd $(git rev-parse --show-toplevel)'
 alias e='nvim'
 alias f='zi'
 alias fn='find . -name'
+# TODO: can probably codegen these with `git la` and some grepping?
+alias gbr='git br'
+alias gdf='git df'
 alias gg='git grep'
 alias ggi='git grep -i'
+alias gl='git l'
+alias gst='git st'
 alias hd='~/bin/hex_decimal.sh'
 alias jc="sudo journalctl"
 alias less='less -N'
