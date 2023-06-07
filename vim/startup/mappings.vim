@@ -23,11 +23,6 @@ nmap <Space> \
 
 nnoremap <Leader>ev :e $MYVIMRC<CR>G$F/
 nnoremap <Leader>cx :!chmod a+x %<CR>
-nnoremap <Leader>db :windo diffthis<CR>
-nnoremap <Leader>df :Gdiff<CR>
-nnoremap <Leader>do :windo diffoff<CR>
-nnoremap <Leader>dom :Gdiff origin/master<CR>
-nnoremap <Leader>du :diffupdate<CR>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>rd :redraw!<CR>
 nnoremap <Leader>se :sp<CR>:e %:h<CR>
