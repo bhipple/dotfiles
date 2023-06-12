@@ -184,7 +184,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
   (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/me.org"))
-  (setq brh/journal-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/roam/journal.org"))
+  (setq brh/journal-file (if brh/at-work "~/dotfiles_local/notes/roam/journal.org" "~/personal/roam/journal.org"))
 
   (setq org-capture-templates
         ;; Personal templates
