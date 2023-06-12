@@ -143,44 +143,6 @@
           ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
           ("ww" "All WORK items" tags-todo "+WORK")))
 
-  ;; Org super-agenda groupings
-  ;; Some things to note about this:
-  ;; 1. "Other items" collects everything not matched, and has default order 99.
-  ;; 2. Tasks match group selectors top-to-bottom, and are consumed by the first match.
-  ;; For full documentation: https://github.com/alphapapa/org-super-agenda
-  (setq org-super-agenda-groups '(
-     (:name "Today"
-      :time-grid t
-      :log t)
-
-     (:name "Habits"
-      :habit t
-      :order 1000)
-
-     (:name "Scheduled and Deadlines"
-      :scheduled t
-      :deadline t)
-
-     (:name "Important"
-      :priority "A")
-
-     (:name "Quick wins"
-      :effort< "0:31")
-
-     (:name "Long tasks"
-            :effort> "1:01")
-
-     ; These categories should all appear after "Other Items"
-     (:order-multi (100
-       (:tag ("DEEP"))
-
-       (:name "Emacs and Org"
-        :tag ("EMACS" "ORG"))
-
-       (:name "Finance"
-        :tag ("FINANCE"))
-     ))))
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
   (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/me.org"))
