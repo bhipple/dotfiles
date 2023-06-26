@@ -24,20 +24,27 @@ proceed() {
     fi
 }
 
+tmux_attach() {
+    tmux ls || tmux
+    session=$(tmux ls | fzf | cut -d':' -f1)
+    echo "Connecting to $session"
+    tmux a -t $session
+}
+
 # Removes "<none>" containers
 docker-rmi-anon() {
     docker images | grep "<none>" | awk '{print $3}' | xargs -I{} docker rmi -f {}
 }
 
 check_last_exit_code() {
-  local LAST_EXIT_CODE=$?
-  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
-    local EXIT_CODE_PROMPT=' '
-    EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
-    EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
-    EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%} "
-    echo "$EXIT_CODE_PROMPT"
-  fi
+    local LAST_EXIT_CODE=$?
+    if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+        local EXIT_CODE_PROMPT=' '
+        EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+        EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
+        EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%} "
+        echo "$EXIT_CODE_PROMPT"
+    fi
 }
 
 set-proxy() {
