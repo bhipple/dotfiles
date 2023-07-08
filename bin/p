@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+sel=$(ls --color=never ~/.password-store/**/*.gpg | sed "s|$HOME/.password-store/||" | sed 's|\.gpg$||' | fzf)
+
+echo "$sel"
+pass -c "$sel"
+pass "$sel"
