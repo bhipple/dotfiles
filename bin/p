@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
-sel=$(ls --color=never ~/.password-store/**/*.gpg | sed "s|$HOME/.password-store/||" | sed 's|\.gpg$||' | fzf)
+if [[ -z $1 ]]; then
+    sel=$(ls --color=never ~/.password-store/**/*.gpg | sed "s|$HOME/.password-store/||" | sed 's|\.gpg$||' | fzf)
+else
+    sel=$1
+fi
 
 echo "$sel"
 pass -c "$sel"
