@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+if [[ -z $1 ]]; then
+    sel=$(ls --color=never ~/.password-store/**/*.gpg | sed "s|$HOME/.password-store/||" | sed 's|\.gpg$||' | fzf)
+else
+    sel=$1
+fi
+
+echo "$sel"
+pass -c "$sel"
+pass "$sel"
