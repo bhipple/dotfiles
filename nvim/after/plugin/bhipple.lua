@@ -44,7 +44,7 @@ vim.keymap.set('n', '<leader>oh', ":DiffviewOpen HEAD<CR>", { desc = 'Diffview O
 vim.keymap.set('n', '<leader>om', ":DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
 vim.keymap.set('n', '<leader>oo', ":DiffviewOpen ", { desc = 'Diffview Open against revision (enter prompt)' })
 
-vim.keymap.set('n', '<leader>do', ":bufdo diffoff<CR>")
+vim.keymap.set('n', '<leader>do', ":windo diffoff<CR>")
 vim.keymap.set('n', '<leader>db', ":windo diffthis<CR>")
 vim.keymap.set('n', '<leader>du', ":diffupdate<CR>")
 vim.keymap.set('n', '<leader>dp', ":diffput<CR>")
