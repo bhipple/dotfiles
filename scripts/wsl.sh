@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if ! [[ -d /mnt/wsl ]]; then
-    exit
+    exit 0
 fi
 
 echo "Linking WSL scripts"
