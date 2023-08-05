@@ -18,6 +18,9 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- In visual mode, <leader>p puts without overwriting the kill ring with the deleted content
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>/', function()
     telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = false })
