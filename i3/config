@@ -185,8 +185,15 @@ exec "xautolock -time 60 -locker 'sudo /run/current-system/sw/bin/slock'"
 # Set the wallpaper
 exec "feh --bg-max /home/bhipple/dotfiles_local/wallpapers/telluride.jpg"
 
+# Disable screensaver
 exec "xset s off"
-exec "xset dpms 3600 4000 7200"
+
+# Set power management features
+exec "xset dpms 0     0    0"
+#               ^ standby
+#                     ^ suspend
+#                          ^ off
+# values of 0 disable that mode entirely
 
 exec "pactl load-module module-detect"
 
