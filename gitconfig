@@ -120,6 +120,7 @@
 [pull]
     rebase = false
 [push]
+    autoSetupRemote = true
     default = simple
 [rerere]
   enabled = true
