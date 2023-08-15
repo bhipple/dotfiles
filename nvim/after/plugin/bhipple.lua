@@ -39,8 +39,12 @@ vim.keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]
 vim.keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
 
--- Git and diffing
+-- Git operations
 vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Neogit Status' })
+vim.keymap.set('n', '<leader>grf', ":!git rf master", { desc = 'git rf master' })
+vim.keymap.set('n', '<leader>gfa', ":!git fetch --all", { desc = 'git fetch --all' })
+
+-- Diffing
 vim.keymap.set('n', '<leader>oc', ":DiffviewClose<CR>", { desc = 'Diffview Close' })
 vim.keymap.set('n', '<leader>od', ":DiffviewOpen<CR>", { desc = 'Diffview Open' })
 vim.keymap.set('n', '<leader>oh', ":DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
