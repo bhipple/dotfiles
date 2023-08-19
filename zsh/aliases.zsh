@@ -2,11 +2,11 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias cat='bat --theme=zenburn'
 alias cdr.='cd $(git rev-parse --show-toplevel)/..'
 alias cdr='cd $(git rev-parse --show-toplevel)'
-alias e='nvim'
 alias f='zi'
 alias fn='find . -name'
 # TODO: can probably codegen these with `git la` and some grepping?
 alias gbr='git br'
+alias gco='git co'
 alias gdf='git df'
 alias gg='git grep'
 alias ggi='git grep -i'
@@ -31,15 +31,15 @@ alias ta='tmux_attach'
 alias tn='tmux rename-window $(git rev-parse --show-toplevel | xargs basename)'
 alias trashdir='echo "Nuking pwd and all subdirs"; chmod -R a+rwx . && rm -rf *'
 alias upper="tr '[:lower:]' '[:upper:]'"
-alias v='nvim'
-alias vim='nvim'
 alias wfc='curl wttr.in/new_york'
 alias wifi='nmcli d wifi'
 
-hash hub > /dev/null 2>&1
-if [[ $? -eq 0 ]]; then
-    alias git='hub'
-    alias g='hub'
+if hash v > /dev/null 2>&1; then
+    alias e='v'
+    alias vim='v'
+else
+    alias v='nvim'
+    alias vim='nvim'
 fi
 
 # Global Aliases
