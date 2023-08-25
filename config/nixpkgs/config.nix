@@ -10,6 +10,6 @@
 
   permittedInsecurePackages = [
     "python3.10-cryptography-3.4.8"
-    "openssl-1.1.1u"
+    "openssl-1.1.1v"
   ];
 }
