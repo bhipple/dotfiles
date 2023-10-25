@@ -1,42 +1,13 @@
 #!/usr/bin/env bash
-# Initiailize X. This currently does two things:
-# 1. Dynamically detect whether we're plugged into the docking station or not, and configure monitors as-needed.
-# 2. Disable the
-# Configure monitors as-needed depending on whether we're plugged into the
-# docking station or not.
-
-docked() {
-    xmodmap ~/dotfiles_local/xmodmap/qwerty
-    output="$(xrandr)"
-    dp=$(echo "$output" | grep -A1 '^DP.* connected' | grep -B1 4096 | head -1 | awk '{print $1}')
-
-    second=""
-    if echo "$output" | grep -q 'HDMI-1 connected'; then
-        second="--output HDMI-1 --auto --left-of $dp"
-    fi
-
-    if echo "$output" | grep -q '^DP.*connected.* 1024'; then
-        dp2=$(xrandr | grep '^DP.*connected.* 1024' | awk '{print $1}')
-        second="--output $dp2 --auto --left-of $dp"
-    fi
-
-    eval "xrandr --dpi 144 --output eDP-1 --off --output $dp --primary --auto $second"
-}
-
+# Initiailize X. This currently does:
+# - Auto initialize monitors and DPI
+# - Disable the trackpad
+# - Update XResources
 undocked() {
     xmodmap ~/dotfiles_local/xmodmap/colemak
     xrandr --dpi 192 \
            --screen 0 --size 2560x1440 \
            --output eDP-1 --auto --primary --pos 0x0
-}
-
-handle_docking() {
-    # Profile for my X1 * laptops, which may or may not be plugged into the docking station.
-    if xrandr | grep -q "^DP-[12] connected"; then
-        docked
-    else
-        undocked
-    fi
 }
 
 handle_touchpad() {
@@ -58,7 +29,7 @@ xresources() {
 xresources
 
 if uname -a | grep -q "Linux brh-x1"; then
-    handle_docking
+    undocked
     handle_touchpad
 elif uname -a | grep -q "Linux brh-dale"; then
     handle_dale
