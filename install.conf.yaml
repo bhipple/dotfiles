@@ -68,7 +68,11 @@
       stderr: true
       stdin: true
       stdout: true
-    - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qall
+    - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qa
+      stderr: true
+      stdin: true
+      stdout: true
+    - command: nvim --headless "+Lazy! update" +qa
       stderr: true
       stdin: true
       stdout: true
