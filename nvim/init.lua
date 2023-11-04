@@ -40,9 +40,15 @@ require('lazy').setup({
   {'aserowy/tmux.nvim', opts = {} },
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
-  {'TimUntersberger/neogit',
-    dependencies = {'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim'},
-    diffview = true
+  {'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',         -- required
+      'nvim-telescope/telescope.nvim', -- optional
+      'sindrets/diffview.nvim',        -- optional
+      'ibhagwan/fzf-lua',              -- optional
+    },
+    config = true,
+    diffview = true,
   },
 
   { -- LSP Configuration & Plugins
