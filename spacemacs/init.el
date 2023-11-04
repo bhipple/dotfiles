@@ -27,7 +27,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-ask-for-lazy-installation t
 
    ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   ;; Paths must have a trailing slash (i.e. "~/.mycontribs/")
    dotspacemacs-configuration-layer-path '("~/dotfiles/spacemacs/layers/")
 
    ;; List of configuration layers to load.
@@ -251,12 +251,6 @@ It should only modify the values of Spacemacs settings."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
-
-   ;; If non-nil, show vim-like empty line indicators at the end of files.
-   ;; Takes effect only if `spacemacs-evil' layer is enabled.
-   ;; NOTICE: `spacemacs-evil' is included in `spacemacs' distribution.
-   ;; See `dotspacemacs-distribution'.
-   dotspacemacs-evil-show-empty-line-indicators t
 
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
