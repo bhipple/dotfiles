@@ -43,6 +43,8 @@ vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch curr
 vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Neogit Status' })
 vim.keymap.set('n', '<leader>grf', ":!git rf master", { desc = 'git rf master' })
 vim.keymap.set('n', '<leader>gfa', ":!git fetch --all", { desc = 'git fetch --all' })
+vim.keymap.set('n', '<leader>gb',  ":GitBlameToggle<CR>", { })
+vim.keymap.set('n', '<leader>gc',  ":GitBlameCopySHA<CR>", { desc = "Copies the SHA hash of current line's commit into the system's clipboard" })
 
 -- Diffing
 vim.keymap.set('n', '<leader>oc', ":DiffviewClose<CR>", { desc = 'Diffview Close' })

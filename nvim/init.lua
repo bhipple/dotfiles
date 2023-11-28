@@ -27,12 +27,12 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   'ThePrimeagen/harpoon',                                                       -- Workspace management
   'ahmedkhalf/project.nvim',                                                    -- SPC p p project management and auto-cd
+  'f-person/git-blame.nvim',                                                    -- :GitBlameToggle
   'folke/trouble.nvim',                                                         -- Quickfix/Loclist/LSP Info
   'hrsh7th/cmp-buffer',                                                         -- autocompletions from buffer
   'ledger/vim-ledger',                                                          -- ledger-cli mode
   'lewis6991/impatient.nvim',                                                   -- Caching lua cfg as bytecode for faster startup
   'sindrets/diffview.nvim',
-  'tpope/vim-fugitive',                                                         -- Git wrapper
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',                                                           -- Detect tabstop and shiftwidth automatically
   'tpope/vim-surround',
@@ -219,8 +219,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --------------------------------------------------------------------------------
 -- Trivial Plugins
-require("trouble").setup { icons = false, }
-
+require("trouble").setup { icons = false }
+require('gitblame').setup { enabled = false }
 --------------------------------------------------------------------------------
 -- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
