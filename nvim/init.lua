@@ -33,7 +33,6 @@ require('lazy').setup({
   'ledger/vim-ledger',                                                          -- ledger-cli mode
   'lewis6991/impatient.nvim',                                                   -- Caching lua cfg as bytecode for faster startup
   'sindrets/diffview.nvim',
-  'tpope/vim-rhubarb',
   'tpope/vim-sleuth',                                                           -- Detect tabstop and shiftwidth automatically
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
