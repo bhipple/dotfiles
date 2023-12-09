@@ -8,12 +8,6 @@ if !has('nvim')
 endif
 
 "" ============================================================================
-""                                  Globals
-"" ============================================================================
-" To enable the saving and restoring of screen positions.
-let g:screen_size_restore_pos = 1
-
-"" ============================================================================
 ""                            Editing and Moving
 "" ============================================================================
 syntax on
@@ -24,9 +18,6 @@ set backspace=indent,eol,start
 " Backup directory for swp files
 set noswapfile
 set directory=""
-
-" Faster terminal scrolling?  TBD
-"set ttyfast
 
 " runtime path search for Ex
 set ru
@@ -83,19 +74,12 @@ set spellfile=~/.vim/spell/extra-words.add
 "" ============================================================================
 ""                                Appearances
 "" ============================================================================
-" Show line numbers
-set number
-
 " Show tab and trailing whitespace characters
 set listchars=tab:>-,trail:-
 set list!
 
 " Make vsplit split the new window to the right, not left
 set splitright
-
-" Incremental Search and Highlighting Results
-set incsearch
-set hlsearch
 
 " Set the folding method
 set foldmethod=manual
@@ -105,12 +89,6 @@ set foldminlines=10
 "" ============================================================================
 ""                               Auto Commands
 "" ============================================================================
-" Automatically open the QuickFix Window after a make
-autocmd QuickFixCmdPost *make* cwindow
-
-" Make
-autocmd FileType make setlocal noexpandtab shiftwidth=8
-
 augroup filetypedetect
     au! BufRead,BufNewFile wscript python
 augroup END
