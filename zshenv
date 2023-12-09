@@ -31,14 +31,13 @@ export KEYTIMEOUT=0
 
 export PATH=\
 ~/git/nixpkgs/result/bin\
-:~/.nix-profile/bin\
 :~/bin_local\
 :~/bin\
+:~/.nix-profile/bin\
 :~/.local/bin\
 :/run/wrappers/bin\
 :/etc/profiles/per-user/$USER/bin\
 :/nix/var/nix/profiles/$USER/bin\
-:/n/nix/tech/var/nix/profiles/$USER/bin\
 :/run/current-system/sw/bin\
 :/usr/local/bin\
 :/usr/bin\
