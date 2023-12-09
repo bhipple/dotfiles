@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+exec nvim -u ~/.config/nvim/init.lua
