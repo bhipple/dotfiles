@@ -151,7 +151,7 @@ require('lazy').setup({
   },
 
   { -- :Trim command for whitespace cleanup
-    'cappyzawa/trim.nvim', 
+    'cappyzawa/trim.nvim',
     opts = {
       ft_blocklist = {},
       patterns = {},
@@ -170,8 +170,12 @@ require('lazy').setup({
 -- Set highlight on search
 vim.o.hlsearch = true
 
+vim.o.scrollopt = ''
+vim.o.scrollbind = false
+vim.o.cursorbind = false
+
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -186,8 +190,8 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- No swap files or backups
-vim.o.noswapfile = true
-vim.o.nobackup = true
+vim.o.swapfile = false
+vim.o.backup = false
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
