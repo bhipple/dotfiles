@@ -1,6 +1,5 @@
 --------------------------------------------------------------------------------
 -- Load my standard vimscript files
-vim.cmd('source ~/.vim/startup/functions.vim')
 vim.cmd('source ~/.vim/startup/settings.vim')
 
 local mark = require('harpoon.mark')
@@ -38,7 +37,7 @@ vim.keymap.set('n', '<Leader>ss', ':call SortSection()<CR>')
 vim.keymap.set('n', '<Leader>te', ':tabe %:h<CR>')
 vim.keymap.set('n', '<Leader>tm', ':Tabmerge right<CR>')
 vim.keymap.set('n', '<Leader>ve', ':vsp<CR>:e %:h<CR>')
-vim.keymap.set('n', '<Leader>w',  ':call StripTabsAndTrailingWhitespaces()<CR>:w<CR>')
+vim.keymap.set('n', '<Leader>w',  ':Trim<CR>:w<CR>')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>/', function()

@@ -149,7 +149,19 @@ require('lazy').setup({
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
-}, {})
+
+  { -- :Trim command for whitespace cleanup
+    'cappyzawa/trim.nvim', 
+    opts = {
+      ft_blocklist = {},
+      patterns = {},
+      trim_on_write = false,
+      trim_trailing = true,
+      trim_last_line = true,
+      trim_first_line = true,
+    },
+  },
+}, {}) -- end lazy plugin setup
 
 --------------------------------------------------------------------------------
 -- [[ Setting options ]]
