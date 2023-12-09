@@ -29,6 +29,7 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
   {'aserowy/tmux.nvim', opts = {} },
+  {'numToStr/Comment.nvim', opts = {} },                                        -- "gc" to comment visual regions/lines
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
   {'NeogitOrg/neogit',
@@ -122,9 +123,6 @@ require('lazy').setup({
       },
     },
   },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'ahmedkhalf/project.nvim' } },
