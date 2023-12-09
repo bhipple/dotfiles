@@ -29,7 +29,7 @@ nix_install() {
     ATTRS="minEnv"
 
     if [ -n "$INSTALL_ALL" ]; then
-        ATTRS="$ATTRS nixStable bigEnv spacemacs "
+        ATTRS="$ATTRS nixStable bigEnv "
     fi
 
     if [ -d $HOME/git/plaid2qif ]; then
