@@ -3,7 +3,6 @@ alias cat='bat --theme=zenburn'
 alias cdr.='cd $(git rev-parse --show-toplevel)/..'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias f='zi'
-alias fn='find . -name'
 # TODO: can probably codegen these with `git la` and some grepping?
 alias gbr='git br'
 alias gco='git co'
@@ -19,7 +18,6 @@ alias ll='ls -al'
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias ls='ls --color'
 alias mu='mupdf-x11'
-alias nB='nix-build $HOME/git/nix-channel/default.nix -A'
 alias nb='nix build -Lf .'
 alias nbc='nix build -Lf $HOME/git/nix-channel'
 alias npi='nix path-info -rhsS'
@@ -34,22 +32,24 @@ alias upper="tr '[:lower:]' '[:upper:]'"
 alias wfc='curl wttr.in/new_york'
 alias wifi='nmcli d wifi'
 
-if hash v > /dev/null 2>&1; then
-    alias e='v'
-    alias vim='v'
+if hash nvim > /dev/null 2>&1; then
+    vim_cmd='nvim -u ~/.config/nvim/init.lua'
 else
-    alias v='nvim'
-    alias vim='nvim'
+    vim_cmd='vim'
 fi
+alias e="$vim_cmd"
+alias v="$vim_cmd"
+alias nvim="$vim_cmd"
 
 # Global Aliases
 # Lazily, I'm sourcing my aliases in my bashrc too.
 if [[ -n "$ZSH_NAME" ]]; then
     alias -g C='| xsel -b'
+    alias -g F='| fzf'
     alias -g G='| rg'
     alias -g GI='| rg -i'
-    alias -g Gi='| rg -i'
     alias -g GV='| rg -v'
+    alias -g Gi='| rg -i'
     alias -g Gv='| rg -v'
     alias -g H='| head'
     alias -g K='--keep-going'

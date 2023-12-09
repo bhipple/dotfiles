@@ -2,7 +2,6 @@
 -- Load my standard vimscript files
 vim.cmd('source ~/.vim/startup/functions.vim')
 vim.cmd('source ~/.vim/startup/settings.vim')
-vim.cmd('source ~/.vim/startup/mappings.vim')
 
 local mark = require('harpoon.mark')
 local neogit = require('neogit')
@@ -20,6 +19,26 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- In visual mode, <leader>p puts without overwriting the kill ring with the deleted content
 vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- If hl search is off, starting a new search or moving enables it
+vim.keymap.set('n', '*', ':set hlsearch<CR>*')
+vim.keymap.set('n', '#', ':set hlsearch<CR>#')
+vim.keymap.set('n', 'n', ':set hlsearch<CR>n')
+vim.keymap.set('n', 'N', ':set hlsearch<CR>N')
+vim.keymap.set('n', '/', ':set hlsearch<CR>/')
+vim.keymap.set('n', '?', ':set hlsearch<CR>?')
+
+-- Misc keybindings
+vim.keymap.set('n', '<Leader>ev', ':e $HOME/dotfiles/nvim/init.lua<CR>')
+vim.keymap.set('n', '<Leader>cx', ':!chmod a+x %<CR>')
+vim.keymap.set('n', '<Leader>h',  ':set hlsearch! hlsearch?<CR>')
+vim.keymap.set('n', '<Leader>rd', ':redraw!<CR>')
+vim.keymap.set('n', '<Leader>se', ':sp<CR>:e %:h<CR>')
+vim.keymap.set('n', '<Leader>ss', ':call SortSection()<CR>')
+vim.keymap.set('n', '<Leader>te', ':tabe %:h<CR>')
+vim.keymap.set('n', '<Leader>tm', ':Tabmerge right<CR>')
+vim.keymap.set('n', '<Leader>ve', ':vsp<CR>:e %:h<CR>')
+vim.keymap.set('n', '<Leader>w',  ':call StripTabsAndTrailingWhitespaces()<CR>:w<CR>')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>/', function()
