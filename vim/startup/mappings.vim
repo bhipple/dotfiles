@@ -21,7 +21,7 @@ nnoremap ? :set hlsearch<CR>?
 " Also use spacebar as a leader
 nmap <Space> \
 
-nnoremap <Leader>ev :e $MYVIMRC<CR>G$F/
+nnoremap <Leader>ev :e $HOME/dotfiles/nvim/init.lua<CR>
 nnoremap <Leader>cx :!chmod a+x %<CR>
 nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 nnoremap <Leader>rd :redraw!<CR>
