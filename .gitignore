@@ -1,8 +1,6 @@
-*.hi
 *.log
 *.o
 *.pyc
-*.stack-work*
 *~
 .luarc.json
 bin/hub
@@ -10,7 +8,6 @@ emacs~
 nodes
 nvim/lazy-lock.json
 tags
-tmux/plugins
 vim/autoload/plug.vim.old
 vim/haskellmode.config
 vim/init.vim
