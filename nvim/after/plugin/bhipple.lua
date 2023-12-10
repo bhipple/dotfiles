@@ -1,7 +1,3 @@
---------------------------------------------------------------------------------
--- Load my standard vimscript files
--- vim.cmd('source ~/.vim/startup/settings.vim')
-
 local mark = require('harpoon.mark')
 local neogit = require('neogit')
 local telescope = require('telescope.builtin')
