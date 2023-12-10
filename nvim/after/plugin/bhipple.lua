@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 -- Load my standard vimscript files
-vim.cmd('source ~/.vim/startup/settings.vim')
+-- vim.cmd('source ~/.vim/startup/settings.vim')
 
 local mark = require('harpoon.mark')
 local neogit = require('neogit')
@@ -103,3 +103,51 @@ vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
 vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", {silent = true, noremap = true})
 vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", {silent = true, noremap = true})
 vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", {silent = true, noremap = true})
+
+--------------------------------------------------------------------------------
+-- [[ Settings options ]]
+-- See `:help vim.o`
+
+-- Set highlight on search
+vim.o.hlsearch = true
+
+--vim.o.scrollopt = ''
+--vim.o.scrollbind = false
+--vim.o.cursorbind = false
+
+-- Make line numbers default
+vim.o.number = true
+
+-- Enable mouse mode
+vim.o.mouse = 'a'
+
+-- Sync clipboard between OS and Neovim.
+vim.o.clipboard = 'unnamedplus'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- No swap files or backups
+vim.o.swapfile = false
+vim.o.backup = false
+
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
