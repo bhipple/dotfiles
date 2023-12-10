@@ -108,12 +108,16 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", {silent = tru
 -- [[ Settings options ]]
 -- See `:help vim.o`
 
+-- Fixing tabs
+vim.o.tabstop = 4
+vim.o.expandtab = true
+vim.o.shiftwidth = 4
+
+-- Autoreload when file modified on disk
+vim.o.autoread = true
+
 -- Set highlight on search
 vim.o.hlsearch = true
-
---vim.o.scrollopt = ''
---vim.o.scrollbind = false
---vim.o.cursorbind = false
 
 -- Make line numbers default
 vim.o.number = true
@@ -149,5 +153,26 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Show tab and trailing whitespace characters
+vim.o.list = true
+vim.o.listchars = 'tab:>-,trail:-'
+
+-- What to use for gq
+vim.o.formatprg = 'par -w80'
+
+-- When multiple completions are possible, show all
+vim.o.wildmenu = true
+
+-- Complete only up to point of ambiguity, like the shell does
+vim.o.wildmode = 'list:longest'
+
+-- Ignoring files (see :help wildignore)
+vim.o.wildignore = '*.o,*.d,00*,nohup.out,tags,.hs-tags,*.hi,*.gcno,*.gcda,*.fasl,*.pyc,*__pycache__*'
+
+-- Ignore whitespace on diffs
+vim.o.diffopt = 'internal,filler,closeoff,iwhite'
+
+-- Number of lines to scroll past when the cursor scrolls off the screen
+vim.o.scrolloff = 0
