@@ -55,12 +55,6 @@ set wildignore+=*.o,*.d,00*,nohup.out,tags,.hs-tags,*.hi,*.gcno,*.gcda,*.fasl,*.
 " Number of lines to scroll past when the cursor scrolls off the screen
 set scrolloff=2
 
-" Extend functionality of the % key's matching
-runtime macros/matchit.vim
-
-" Tool to use for Grepper
-set grepprg="git"
-
 " What to use for gq
 set formatprg=par\ -w80
 
@@ -73,9 +67,6 @@ set spellfile=~/.vim/spell/extra-words.add
 " Show tab and trailing whitespace characters
 set listchars=tab:>-,trail:-
 set list!
-
-" Make vsplit split the new window to the right, not left
-set splitright
 
 " Set the folding method
 set foldmethod=manual
