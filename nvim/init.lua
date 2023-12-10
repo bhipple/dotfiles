@@ -27,7 +27,7 @@ require('lazy').setup({
   'sindrets/diffview.nvim',
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
-  --{'aserowy/tmux.nvim', opts = {} },
+  {'aserowy/tmux.nvim', opts = {} },
   {'numToStr/Comment.nvim', opts = {} },                                        -- "gc" to comment visual regions/lines
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
