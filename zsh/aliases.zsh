@@ -33,7 +33,7 @@ alias wfc='curl wttr.in/new_york'
 alias wifi='nmcli d wifi'
 
 if hash nvim > /dev/null 2>&1; then
-    vim_cmd='nvim -u ~/.config/nvim/init.lua'
+    vim_cmd='XTERM_VERSION= nvim -u ~/.config/nvim/init.lua'
 else
     vim_cmd='vim'
 fi
