@@ -12,7 +12,6 @@ endif
 "" ============================================================================
 syntax on
 set autoindent
-set cindent
 set backspace=indent,eol,start
 
 " Backup directory for swp files
@@ -33,9 +32,6 @@ set hidden
 " Autosave before :make and other commands; autoreload when file mod
 set autowrite
 set autoread
-
-" Configure the :make command
-set makeprg=make
 
 " Ignore whitespace on diffs
 set diffopt+=iwhite
