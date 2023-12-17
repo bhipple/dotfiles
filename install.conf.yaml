@@ -72,7 +72,7 @@
       stderr: true
       stdin: true
       stdout: true
-    - command: nvim --headless "+Lazy! update" +qa
+    - command: zsh -lc 'nvim --headless "+Lazy! update" +qa'
       stderr: true
       stdin: true
       stdout: true
