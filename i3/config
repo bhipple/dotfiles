@@ -197,20 +197,6 @@ exec "xset dpms 0     0    0"
 
 exec "pactl load-module module-detect"
 
-# Bind workspaces to monitors
-set $leftMonitor DP-2
-set $rightMonitor DP-1
-
-workspace 1 output $leftMonitor
-workspace 2 output $leftMonitor
-workspace 3 output $leftMonitor
-workspace 4 output $leftMonitor
-workspace 5 output $leftMonitor
-workspace 6 output $rightMonitor
-workspace 7 output $rightMonitor
-workspace 8 output $rightMonitor
-workspace 9 output $rightMonitor
-
 # General programs to launch
 exec dunst
 exec ~/ledger/scripts/notebook.sh
