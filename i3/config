@@ -189,11 +189,11 @@ exec "feh --bg-max /home/bhipple/dotfiles_local/wallpapers/telluride.jpg"
 exec "xset s off"
 
 # Set power management features
-exec "xset dpms 0     0    0"
+exec "xset dpms 0     3600 7200"
 #               ^ standby
 #                     ^ suspend
 #                          ^ off
-# values of 0 disable that mode entirely
+# values of 0 seconds disable that mode entirely
 
 exec "pactl load-module module-detect"
 
