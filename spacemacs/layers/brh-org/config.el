@@ -266,6 +266,16 @@
                  (window-parameters . ((no-other-window . t)
                                        (no-delete-other-windows . t)))))
 
+  ; Add hierarchy tags to nodes within a file
+  (cl-defmethod org-roam-node-hierarchy ((node org-roam-node))
+    (let ((level (org-roam-node-level node)))
+      (concat
+       (when (> level 0) (concat (org-roam-node-file-title node) " > "))
+       (when (> level 1) (concat (string-join (org-roam-node-olp node) " > ") " > "))
+       (org-roam-node-title node))))
+
+  (setq org-roam-node-display-template "${hierarchy:*} ${tags:20}")
+
   (defun my-org-roam-node-visit ()
     (interactive)
     (org-roam-node-visit (org-roam-node-at-point t) t t))
