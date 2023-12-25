@@ -3,7 +3,7 @@ notify-send "Connecting to bluetooth ..."
 
 for _ in {1..10}; do
     if pacmd list-sinks | grep -q bluez; then
-        echo "Connected to headset!"
+        notify-send "Successfully connected to headset!"
         break
     fi
     echo "Trying to connect to headset ..."

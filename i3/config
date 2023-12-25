@@ -29,10 +29,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# These match up with my QMK keycodes
 # See here for all these keycodes:
 # https://cgit.freedesktop.org/xorg/proto/x11proto/tree/XF86keysym.h
 bindsym XF86Search exec "/home/bhipple/bin/bt-connect"
-bindsym XF86Mail exec "/home/bhipple/bin/bt-disconnect"
+bindsym XF86Mail   exec "/home/bhipple/bin/bt-disconnect"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
