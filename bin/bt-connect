@@ -2,7 +2,7 @@
 notify-send "Connecting to bluetooth ..."
 
 for _ in {1..10}; do
-    if audio | grep -q bluez; then
+    if pacmd list-sinks | grep -q bluez; then
         echo "Connected to headset!"
         break
     fi
@@ -12,4 +12,5 @@ for _ in {1..10}; do
 done
 
 # Set audio to headset
-audio $(audio | grep -B1 bluez | head -1 | awk '{print $NF}')
+sink=$(pacmd list-sinks | grep -B1 bluez | head -1 | awk '{print $NF}')
+audio $sink
