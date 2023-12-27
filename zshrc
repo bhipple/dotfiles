@@ -22,13 +22,6 @@ if [[ "$TERM" == "dumb" ]]; then
     return
 fi
 
-autoload -U is-at-least
-is-at-least 5
-if [[ $? -ne 0 ]]; then
-    simple_terminal "Zsh < 5.0; using simple cfg"
-    return
-fi
-
 ################################################################################
 fpath+=(\
     ~/.nix-profile/share/zsh/site-functions \
