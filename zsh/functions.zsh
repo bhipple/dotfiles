@@ -31,11 +31,6 @@ tmux_attach() {
     tmux a -t $session
 }
 
-# Removes "<none>" containers
-docker-rmi-anon() {
-    docker images | grep "<none>" | awk '{print $3}' | xargs -I{} docker rmi -f {}
-}
-
 check_last_exit_code() {
     local LAST_EXIT_CODE=$?
     if [[ $LAST_EXIT_CODE -ne 0 ]]; then

@@ -1,3 +1,6 @@
+# Uncomment this and bottom line to enable profiling
+zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -49,3 +52,6 @@ source ~/.zsh/aliases.zsh
 if [[ -f ~/.zsh_local/zshrc_local_after.zsh ]]; then
     source ~/.zsh_local/zshrc_local_after.zsh
 fi
+
+# Uncomment this and top line to enable profiling
+zprof

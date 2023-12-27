@@ -7,17 +7,11 @@ bindkey -v
 # Command auto-correction.
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Disable marking untracked files under VCS as dirty. This makes repository
+# status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Visual modes added in zsh 5.0.8
-visualModes=()
-is-at-least 5.0.8
-if [ $? -eq 0 ]; then
-    visualModes=("visual")
-fi
+visualModes=("visual")
 
 # Run `bindkey -l` to see a list of modes, and `bindkey -M foo` to see a list of
 # commands active in mode foo
@@ -35,15 +29,6 @@ bindkey '^e' edit-command-line
 bindkey -M "vicmd" '^e' edit-command-line
 
 export NIXPKGS_ALLOW_UNFREE=1
-
-## ============================================================================
-##                                  Prompt
-## ============================================================================
-PROMPT='%{$fg[yellow]%}λ %m %{$fg[green]%}%c%{$fg[yellow]%}$(check_last_exit_code) →  %{$reset_color%}'
-RPROMPT=''
-
-ZSH_THEME_GIT_PROMPT_PREFIX=""
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
 # Similar to the rename command
 # http://www.gsp.com/cgi-bin/man.cgi?section=1&topic=zshcontrib
@@ -64,13 +49,6 @@ bindkey -M "vicmd" ys add-surround
 for m in $visualModes; do
     bindkey -M "$m" S add-surround
 done
-
-#  ============================================================================
-#                              Direnv Config
-#  ============================================================================
-if command -v 2>&1 >/dev/null; then
-    eval "$(direnv hook zsh)"
-fi
 
 #  ============================================================================
 #                           Autosuggest Config
