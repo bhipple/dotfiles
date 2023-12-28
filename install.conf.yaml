@@ -45,6 +45,7 @@
     ~/.vimrc_minimal: vimrc_minimal
     ~/.xinitrc: xinitrc
     ~/.Xresources: Xresources
+    ~/.zgenom: zgenom/
     ~/.zsh: zsh/
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc

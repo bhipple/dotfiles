@@ -1,24 +1,28 @@
-# load zgen
+# load zgenom
 bindkey -v
-source "${HOME}/dotfiles/zgen/zgen.zsh"
+source "${HOME}/.zgenom/zgenom.zsh"
 
 # Check only when there's no init script
-# To regenerate zgen config from scratch, rm ~/.zgen/init.zsh
-if ! zgen saved; then
-    echo "Creating a zgen save"
+# To regenerate zgenom config from scratch, rm ~/.zgenom/init.zsh
+if ! zgenom saved; then
+    echo "Creating a zgenom save"
 
     export DISABLE_AUTO_UPDATE="true"  # Don't ask for oh-my-zsh prompts
-    zgen oh-my-zsh
+    zgenom oh-my-zsh
 
-    zgen load romkatv/powerlevel10k powerlevel10k
+    zgenom load romkatv/powerlevel10k powerlevel10k
 
     # Github plugins
-    zgen load djui/alias-tips
-    zgen load romkatv/zsh-prompt-benchmark
-    zgen load zsh-users/zsh-syntax-highlighting
+    zgenom load djui/alias-tips
+    zgenom load romkatv/zsh-prompt-benchmark
+    zgenom load zsh-users/zsh-syntax-highlighting
 
     # save all to init script
-    zgen save
+    zgenom save
+
+    zgenom compile "$HOME/.zshrc"
+
+    zgenom clean
 fi
 
 eval "$(zoxide init zsh)"

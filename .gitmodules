@@ -6,13 +6,12 @@
 	path = spacemacs/emacs.d
 	url = https://github.com/syl20bnr/spacemacs
 	branch = develop
-[submodule "zgen"]
-	path = zgen
-	url = https://github.com/tarjoilija/zgen
-	branch = master
 [submodule "nur-packages"]
 	path = nur-packages
 	url = https://github.com/bhipple/nur-packages
 [submodule "nixpkgs"]
 	path = nixpkgs
 	url = https://github.com/NixOS/nixpkgs
+[submodule "zgenom"]
+	path = zgenom
+	url = https://github.com/jandamm/zgenom.git
