@@ -25,4 +25,4 @@ if ! zgenom saved; then
     zgenom clean
 fi
 
-eval "$(zoxide init zsh)"
+command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"
