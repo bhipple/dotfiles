@@ -32,26 +32,15 @@ fpath+=(\
     $fpath)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
+[ ! -f ~/.zsh/p10k.zsh ] || source ~/.zsh/p10k.zsh
 
-if [[ -f ~/.zsh_local/zshrc_local_before.zsh ]]; then
-    source ~/.zsh_local/zshrc_local_before.zsh
-fi
-
+[ -f ~/.zsh_local/zshrc_local_before.zsh ] && source ~/.zsh_local/zshrc_local_before.zsh
 source ~/.zsh/plugins.zsh
-
 source ~/.zsh/functions.zsh
-
 source ~/.zsh/settings.zsh
-
-# N.B. fzf should go after settings, for unknown reasons
-source ~/.zsh/fzf.zsh
-
+source ~/.zsh/fzf.zsh  # fzf should go after settings, for unknown reasons
 source ~/.zsh/aliases.zsh
-
-if [[ -f ~/.zsh_local/zshrc_local_after.zsh ]]; then
-    source ~/.zsh_local/zshrc_local_after.zsh
-fi
+[ -f ~/.zsh_local/zshrc_local_after.zsh ] && source ~/.zsh_local/zshrc_local_after.zsh
 
 # Uncomment this and top line to enable profiling
 # zprof

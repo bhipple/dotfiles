@@ -23,7 +23,6 @@ require('lazy').setup({
   'folke/trouble.nvim',                                                         -- Quickfix/Loclist/LSP Info
   'hrsh7th/cmp-buffer',                                                         -- autocompletions from buffer
   'ledger/vim-ledger',                                                          -- ledger-cli mode
-  'lewis6991/impatient.nvim',                                                   -- Caching lua cfg as bytecode for faster startup
   'sindrets/diffview.nvim',
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
@@ -175,12 +174,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --------------------------------------------------------------------------------
 -- Trivial Plugins
-require("trouble").setup { icons = false }
+require('trouble').setup { icons = false }
 require('gitblame').setup { enabled = false }
 --------------------------------------------------------------------------------
 -- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
-local trouble = require("trouble.providers.telescope")
+local trouble = require('trouble.providers.telescope')
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -199,7 +198,7 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
-require("project_nvim").setup {
+require('project_nvim').setup {
   patterns = { ".git" },
 }
 
