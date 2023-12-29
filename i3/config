@@ -189,17 +189,6 @@ exec "feh --bg-max /home/bhipple/dotfiles_local/wallpapers/telluride.jpg"
 # Disable screensaver
 exec "xset s off"
 
-# Set power management features
-if hostname | grep -q brh-dale; then
-    exec "xset dpms 0     0    0   "
-else
-    exec "xset dpms 0     3600 7200"
-    #               ^ standby
-    #                     ^ suspend
-    #                          ^ off
-    # values of 0 seconds disable that mode entirely
-fi
-
 exec "pactl load-module module-detect"
 
 # General programs to launch
