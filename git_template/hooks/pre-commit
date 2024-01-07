@@ -7,8 +7,8 @@ lint() {
 
     filtered=""
     for f in $files; do
-        # Always skip zsh scripts, since these cannot be linted with shellcheck
-        if ! head -1  "$f" | grep -q zsh 2>/dev/null; then
+        # Always skip zsh or nix-shell scripts, since these cannot be linted with shellcheck
+        if ! head -1  "$f" | grep -Eq '(zsh|nix-shell)' 2>/dev/null; then
             filtered="$filtered $f"
         fi
     done
