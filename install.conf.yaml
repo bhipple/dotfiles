@@ -73,7 +73,7 @@
       stderr: true
       stdin: true
       stdout: true
-    - command: zsh -lc 'nvim --headless "+Lazy! update" +qa'
+    - command: XTERM_VERSION= nvim -u ~/.config/nvim/init.lua --headless "+Lazy! update" +qa
       stderr: true
       stdin: true
       stdout: true
