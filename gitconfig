@@ -19,6 +19,7 @@
     br = branch
     bra = branch --all
     ca = commit --amend --no-edit
+    cae = commit --amend
     ci = commit
     cin = commit --no-verify
     co = checkout
