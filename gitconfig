@@ -22,6 +22,7 @@
     cae = commit --amend
     ci = commit
     cin = commit --no-verify
+    cl = clone
     co = checkout
     cob = checkout -b
     cop = "!f() { git fetch ${2:-origin} pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
