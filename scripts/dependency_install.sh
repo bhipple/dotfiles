@@ -2,6 +2,7 @@
 set -euo pipefail
 
 INSTALL_ALL=""
+CHANNEL=$HOME/git/nix-channel
 
 # Whether to just do minEnv or all
 if hostname | grep -qE "^brh"; then
@@ -40,13 +41,23 @@ nix_install() {
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
-    channel=$HOME/git/nix-channel
-    nix --extra-experimental-features nix-command build -Lvf $channel --no-link --keep-going -j$(nproc) $ATTRS
+    nix --extra-experimental-features nix-command build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
 
     if [ -z ${BUILD_ONLY:=} ]; then
-        nix-env -f $channel -k -riA $ATTRS
+        nix-env -f $CHANNEL -k -riA $ATTRS
     fi
+}
+
+browserpass_install() {
+    # This file needs to be symlinked manually; the NixOS package can't do it.
+    passfile="$(nix build -Lvf $CHANNEL browserpass --print-out-paths)/lib/browserpass/hosts/chromium/com.github.browserpass.native.json"
+    (
+      cd ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
+      rm *
+      ln -s $passfile
+    )
 }
 
 create_ssh
 nix_install
+browserpass_install
