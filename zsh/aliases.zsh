@@ -5,6 +5,7 @@ alias cdr='cd $(git rev-parse --show-toplevel)'
 alias f='zi'
 # TODO: can probably codegen these with `git la` and some grepping?
 alias gbr='git br'
+alias gci='git ci'
 alias gco='git co'
 alias gdf='git df'
 alias gf='git f'
