@@ -3,6 +3,7 @@ alias cat='bat --theme=zenburn'
 alias cdr.='cd $(git rev-parse --show-toplevel)/..'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias f='zi'
+alias feh='feh -Z'
 # TODO: can probably codegen these with `git la` and some grepping?
 alias gbr='git br'
 alias gci='git ci'
