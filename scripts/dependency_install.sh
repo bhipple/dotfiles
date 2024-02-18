@@ -53,7 +53,7 @@ browserpass_install() {
     passfile="$(nix build -Lvf $CHANNEL browserpass --print-out-paths)/lib/browserpass/hosts/chromium/com.github.browserpass.native.json"
     (
       cd ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
-      rm *
+      rm -rf *
       ln -s $passfile
     )
 }
