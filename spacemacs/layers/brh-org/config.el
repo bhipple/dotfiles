@@ -35,6 +35,9 @@
   ;; Leave previously unopened buffers open after a search, to speed up subsequent searches
   (setq helm-org-rifle-close-unopened-file-buffers nil)
 
+  ;; When hitting enter on an org link, open it in the current buffer
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Tags
   (setq org-tag-alist '(("AWS" . ?a)
