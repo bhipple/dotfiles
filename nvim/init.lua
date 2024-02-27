@@ -207,29 +207,9 @@ require('telescope').load_extension('projects')
 --------------------------------------------------------------------------------
 -- Treesitter
 require('nvim-treesitter.configs').setup {
-  -- Languages to be installed for treesitter; see here for full list of supported languages:
-  -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-  ensure_installed = {
-    -- 'bash',
-    -- 'c',
-    -- 'cpp',
-    -- 'diff',
-    -- 'go',
-    -- 'ini',
-    -- 'ledger',
-    -- 'lua',
-    -- 'nix',
-    -- 'org',
-    -- 'python',
-    -- 'rust',
-    -- 'terraform',
-    -- 'vim',
-    -- 'vimdoc',
-    -- 'yaml',
-  },
-
   -- Defer to Nix instead of trying to install ourselves
   auto_install = false,
+  ensure_installed = {},
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
