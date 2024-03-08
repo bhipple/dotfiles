@@ -4,7 +4,12 @@ if [[ -z $1 ]]; then
 else
     sel=$1
 fi
+shift
 
-echo "$sel"
-pass -c "$sel"
-pass "$sel"
+if [[ $sel == "find" ]]; then
+    pass find $@
+else
+    echo "$sel"
+    pass -c "$sel"
+    pass "$sel"
+fi
