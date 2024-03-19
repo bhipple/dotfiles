@@ -30,7 +30,7 @@ keys >/dev/null 2>&1
 
 update /etc/nixos
 update ~/.password-store
-update ~/.talon/user/knausj_talon
+update ~/.talon/user/community
 update ~/dotfiles
 update ~/dotfiles_local
 update ~/ledger
