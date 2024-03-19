@@ -2,7 +2,7 @@
 git fetch --all --prune >/dev/null 2>&1
 
 if [ -n "$(git status --porcelain)" ]; then
-    echo "Git status in $(pwd) is not clean. Exiting to avoid destroying work."
+    echo "Git status in $(pwd) is not clean. Exiting after fetch --all, to avoid destroying work."
     exit 0
 fi
 
