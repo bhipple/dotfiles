@@ -1,32 +1,38 @@
 (with-eval-after-load 'org
-  (defun brh/org-agenda-file-filter (fname)
-    "Return true if fname should be included in org-agenda-files. Also runs on
-     dirs and short circuits filesystem walk."
-    (not (or
-          (string-match "/presentations/" fname)
-          (string-match "/journal.org" fname)
-          )))
 
-  (defun brh/find-org-file-recursively (&optional directory filext)
-    "Return .org and .org_archive files recursively from DIRECTORY.
-     If FILEXT is provided, return files with extension FILEXT instead."
-    (interactive "Org Directory: ")
-    (let* (org-file-list
-     (case-fold-search t)       ; filesystems are case sensitive
-     (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
-     (filext (or filext "org$\\\|org_archive"))
-     (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
-     (cur-dir-list (directory-files directory t file-name-regex)))
-      ;; loop over directory listing
-      (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
-        (cond
-         ((file-regular-p file-or-dir) ; regular files
-    (if (and (string-match fileregex file-or-dir) (brh/org-agenda-file-filter file-or-dir)) ; org files
-        (add-to-list 'org-file-list file-or-dir)))
-         ((file-directory-p file-or-dir)
-    (dolist (org-file (brh/find-org-file-recursively file-or-dir filext)
-          org-file-list) ; add files found to result
-      (add-to-list 'org-file-list (file-truename org-file))))))))
+(defun brh/org-agenda-file-filter (fname)
+  "Return true if fname should be included in org-agenda-files. Also runs on
+    dirs and short circuits filesystem walk."
+  (not (or
+        (string-match "/presentations/" fname)
+        (string-match "/journal.org" fname)
+        )))
+
+(defun brh/find-org-file-recursively (&optional directory filext)
+  "Return .org and .org_archive files recursively from DIRECTORY.
+    If FILEXT is provided, return files with extension FILEXT instead."
+  (interactive "Org Directory: ")
+  (let* (org-file-list
+    (case-fold-search t)       ; filesystems are case sensitive
+    (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
+    (filext (or filext "org$\\\|org_archive"))
+    (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
+    (cur-dir-list (directory-files directory t file-name-regex)))
+    ;; loop over directory listing
+    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+      (cond
+        ((file-regular-p file-or-dir) ; regular files
+  (if (and (string-match fileregex file-or-dir) (brh/org-agenda-file-filter file-or-dir)) ; org files
+      (add-to-list 'org-file-list file-or-dir)))
+        ((file-directory-p file-or-dir)
+  (dolist (org-file (brh/find-org-file-recursively file-or-dir filext)
+        org-file-list) ; add files found to result
+    (add-to-list 'org-file-list (file-truename org-file))))))))
+
+(defun brh/set-org-agenda-files ()
+  "Set all of the org agenda files, scanning roam"
+  (interactive)
+  (setq org-agenda-files (delete-dups (brh/find-org-file-recursively (if brh/at-work "~/dotfiles_local/notes/roam" "~/personal/") "org"))))
 
 (defun brh/smart-agenda ()
   "Show my work agenda if at work, and my home agenda otherwise."
@@ -101,11 +107,12 @@
   (recenter))
 
 (defun brh/org-roam-db-reset ()
-  "Drop the roam db and resync it"
+  "Drop the roam db and resync it, then update org-agenda-files"
   (interactive)
   (progn
     (org-roam-db-clear-all)
-    (org-roam-db-sync)))
+    (org-roam-db-sync)
+    (brh/set-org-agenda-files)))
 
 (defun brh/link-journal-entries ()
   "Link all of my journal entries with org IDs"
