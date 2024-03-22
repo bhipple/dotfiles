@@ -77,6 +77,24 @@ binding_modes:
         bindings: ["Escape", "Enter"]
 
 keybindings:
+  ################################################################################
+  # My keybindings
+  # Launch Windows Terminal
+  - command: "exec wt"
+    binding: "Alt+Enter"
+
+  - command: "focus workspace next"
+    binding: "MediaNextTrack"
+  - command: "focus workspace prev"
+    binding: "MediaPrevTrack"
+
+  # - command: "focus workspace prev"
+  #   binding: "MediaPlayPause"
+  # - command: "focus workspace prev"
+  #   binding: "MediaStop"
+
+  ################################################################################
+  # Standard keybindings
   # Shift focus in a given direction.
   - command: "focus left"
     bindings: ["Alt+H", "Alt+Left"]
@@ -145,10 +163,6 @@ keybindings:
   # Re-evaluate configuration file.
   - command: "reload config"
     binding: "Alt+Shift+R"
-
-  # Launch Windows Terminal
-  - command: "exec wt wsl bash"
-    binding: "Alt+Enter"
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
