@@ -69,6 +69,10 @@
       stderr: true
       stdin: true
       stdout: true
+    - command: generate-nvim-projects.sh
+      stderr: true
+      stdin: true
+      stdout: true
     - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qa
       stderr: true
       stdin: true
