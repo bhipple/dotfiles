@@ -1,7 +1,7 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
             "command": "openTabRenamer",
@@ -12,19 +12,7 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "paste",
-            "keys": "shift+insert"
-        },
-        {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -33,29 +21,47 @@
             "keys": "alt+shift+d"
         },
         {
+            "command":
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
             "command": "unbound",
             "keys": "f11"
+        },
+        {
+            "command": "paste",
+            "keys": "shift+insert"
         }
     ],
     "alwaysShowTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": true,
-    "defaultProfile": "{3681cf28-32f4-4f70-9ff4-2b6405fb6212}",
+    "defaultProfile": "{b70f2e86-f487-4329-9c96-d7853c6cb76d}",
     "launchMode": "maximized",
     "multiLinePasteWarning": false,
-    "profiles": 
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "bellStyle": "none",
             "colorScheme": "Solarized Dark",
             "cursorShape": "filledBox",
-            "font": 
+            "font":
             {
                 "size": 14.0
             }
         },
-        "list": 
+        "list":
         [
             {
                 "colorScheme": "Solarized Dark",
@@ -80,23 +86,36 @@
             },
             {
                 "colorScheme": "Solarized Dark",
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "colorScheme": "Solarized Dark",
                 "commandline": "C:\\WINDOWS\\system32\\wsl.exe",
                 "guid": "{3681cf28-32f4-4f70-9ff4-2b6405fb6212}",
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "name": "Ben WSL",
                 "startingDirectory": "~"
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "closeOnExit": "automatic",
+                "colorScheme": "Solarized Dark",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe /k ssh -tt -Y -K hipple@awhpcsubmitsai3prd1.aws.x.pdtpartners.com",
+                "font":
+                {
+                    "face": "Cascadia Mono"
+                },
+                "guid": "{b70f2e86-f487-4329-9c96-d7853c6cb76d}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
+                "name": "Ben SAI3",
+                "padding": "8, 8, 8, 8",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
@@ -330,7 +349,7 @@
         }
     ],
     "showTabsInTitlebar": false,
-    "startOnUserLogin": true,
+    "startOnUserLogin": false,
     "theme": "system",
     "themes": [],
     "wordDelimiters": "\\()\"',:;<>~!@#$%^&*|+=[]{}~?\u2502"
