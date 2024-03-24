@@ -86,7 +86,7 @@ keybindings:
   - command: "focus workspace next"
     binding: "MediaNextTrack"
   - command: "focus workspace prev"
-    binding: "MediaPrevTrack"
+    binding: "MediaPreviousTrack"
 
   # - command: "focus workspace prev"
   #   binding: "MediaPlayPause"
