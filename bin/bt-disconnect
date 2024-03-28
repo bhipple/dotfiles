@@ -1,3 +1,6 @@
-#!/usr/bin/env bash
-notify-send "Disconnecting from bluetooth ..."
-echo -e 'disconnect 38:18:4C:7D:CA:CB' | sudo bluetoothctl
+#!/usr/bin/env zsh
+while read -r ln; do
+    notify-send "Disconnecting from $ln"
+    id=$(echo $ln | awk '{print $2}')
+    echo -e "disconnect $id" | sudo bluetoothctl
+done < <(bluetoothctl devices)
