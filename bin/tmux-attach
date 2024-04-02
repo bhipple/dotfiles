@@ -3,14 +3,14 @@
 if [ -n $1 ]; then
     # User asked for a session name; attach to it or create it
     if tmux ls | grep -q "^$1: "; then
-        tmux a -t $1
+        exec tmux a -t $1
     else
-        tmux new -s $1
+        exec tmux new -s $1
     fi
 else
     # fzf attach to a session, chosen interactively
     tmux ls || tmux
     session=$(tmux ls | fzf | cut -d':' -f1)
     echo "Connecting to $session"
-    tmux a -t $session
+    exec tmux a -t $session
 fi
