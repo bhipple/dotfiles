@@ -188,6 +188,16 @@ bindsym $mod+a exec anki
 bindsym $mod+e exec "emacsclient -c"
 
 ################################################################################
+# Zoom Settings
+# Set Zoom notification window to floating with no focus
+for_window [title="^zoom\s?$"] floating enable
+no_focus [title="^zoom\s?$"]
+
+# For meetings that you have joined via a link
+for_window [title="^join\?action=join.*$"] floating enable
+no_focus [title="^join\?action=join.*$"]
+
+################################################################################
 # Startup
 exec "~/.xinitrc"
 exec "xautolock -time 60 -locker 'sudo /run/current-system/sw/bin/slock'"
