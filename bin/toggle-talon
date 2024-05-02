@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+if pgrep talon; then
+    pkill talon
+else
+    ~/bin/talon
+fi
