@@ -40,8 +40,8 @@ bindsym XF86Mail   exec --no-startup-id "/home/bhipple/bin/bt-disconnect"
 # center
 # right
 bindsym XF86AudioPrev                       workspace prev
-bindsym XF86AudioStop  exec --no-startup-id pkill talon
-bindsym XF86AudioPlay  exec --no-startup-id /home/bhipple/bin/talon
+bindsym XF86AudioStop  exec --no-startup-id /home/bhipple/bin/toggle-talon
+bindsym XF86AudioPlay  exec --no-startup-id xdotool click 1
 bindsym XF86AudioNext                       workspace next
 
 # Use Mouse+$mod to drag floating windows to their wanted position
