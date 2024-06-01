@@ -11,7 +11,7 @@ set -euo pipefail
 submodules() {
     for sub in $(git submodule | grep -v spacemacs | grep -v nur-packages | awk '{print $2}'); do
         echo "Updating $sub"
-        (cd "$sub" && git pull origin master || git pull)
+        (cd "$sub" && git pull origin master || git pull) || true
     done
 }
 
