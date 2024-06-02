@@ -31,6 +31,7 @@ require('lazy').setup({
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
   {'NeogitOrg/neogit',
+    tag = 'v0.0.1',  -- TODO: Delete once upgring to nvim >= 0.10.0
     dependencies = {
       'nvim-lua/plenary.nvim',         -- required
       'nvim-telescope/telescope.nvim', -- optional
@@ -179,17 +180,17 @@ require('gitblame').setup { enabled = false }
 --------------------------------------------------------------------------------
 -- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
-local trouble = require('trouble.providers.telescope')
+local trouble = require("trouble.sources.telescope")
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
-        ["<c-t>"] = trouble.open_with_trouble,
+        ["<c-t>"] = trouble.open,
       },
       n = {
-        ["<c-t>"] = trouble.open_with_trouble
+        ["<c-t>"] = trouble.open,
       },
     },
   },
