@@ -73,6 +73,10 @@ vim.keymap.set('n', '<leader>du', ":diffupdate<CR>")
 vim.keymap.set('n', '<leader>dp', ":diffput<CR>")
 vim.keymap.set('n', '<leader>dg', ":diffget<CR>")
 
+-- File level diffing
+vim.keymap.set('n', '<leader>df', ":DiffviewFileHistory %<CR>", { desc = 'Diff current file history' })
+vim.keymap.set('n', '<leader>dl', ":DiffviewFileHistory<CR>", { desc = 'Diff full git log --stat repo file history' })
+
 -- Harpoon
 require("telescope").load_extension('harpoon')
 vim.keymap.set('n', '<leader>m', mark.add_file)
