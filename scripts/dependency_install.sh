@@ -4,6 +4,11 @@ set -euo pipefail
 INSTALL_ALL=""
 CHANNEL=$HOME/git/nix-channel
 
+if ! [ -d $CHANNEL ]; then
+    echo "No nix channel, assuming not setup for local work and exiting"
+    exit 0
+fi
+
 # Whether to just do minEnv or all
 if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1

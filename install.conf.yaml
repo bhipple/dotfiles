@@ -48,7 +48,9 @@
     ~/.zgenom: zgenom/
     ~/.zsh: zsh/
     ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
+    ~/.zshrc:
+        force: true
+        path: zshrc
     ~/bin: bin/
 
 - shell:
