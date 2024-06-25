@@ -26,6 +26,7 @@ require('lazy').setup({
   'sindrets/diffview.nvim',
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
+  'wsdjeg/vim-fetch',                                                           -- Understand formats line file:line when opening
   {'aserowy/tmux.nvim', opts = {} },
   {'numToStr/Comment.nvim', opts = {} },                                        -- "gc" to comment visual regions/lines
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
