@@ -20,10 +20,6 @@
 ;; Don't depend on $TERM
 (setq system-uses-terminfo nil)
 
-;; Perform dired actions asynchronously
-; (with-eval-after-load 'dired
-;   (dired-async-mode 1))
-
 ;; Enable caching. Invalidate the current project cache with C-c p i
 (setq projectile-enable-caching t)
 
@@ -36,7 +32,6 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 
 ; Shut up about line length, unless it's really bad
-; TODO: Consider upstreaming into spacemacs' python-fill-column variable so this happens consistently and automatically.
 (setq flycheck-flake8-maximum-line-length 120)
 
 ;; Strongly prefer splitting to the right in split-window-sensibly
@@ -103,12 +98,15 @@
 (set-file-name-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 
+(with-eval-after-load 'undo-tree
+  (global-undo-tree-mode t)
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LSP Settings
 (with-eval-after-load 'lsp-mode
-  ; Get rid of file watchers entirely
-  (setq lsp-enable-file-watchers nil)
-)
+  (setq lsp-enable-file-watchers nil) ; Get rid of file watchers entirely
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Performance / Garbage Collector Optimizations
@@ -141,20 +139,7 @@
   (defun magit-insert-tags-header ())
   ; Don't attempt to lookup gravitar images next to committers
   (setq magit-revision-show-gravatars nil)
-)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Elfeed Configuration
-(setq rmh-elfeed-org-files '("~/org/personal/elfeed.org"))
-
-; Set elfeed dates to be bold, purple, and underlined
-(custom-set-faces
- '(elfeed-search-date-face
-   ((t :foreground "#f0f"
-       :underline t))))
-
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chromium-browser")
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Timers
@@ -163,7 +148,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bugs / Workarounds that can hopefully be deleted someday
-
 ; Workaround for:
 ; https://github.com/nonsequitur/git-gutter-plus/issues/42
 ; https://github.com/syl20bnr/spacemacs/issues/12860
