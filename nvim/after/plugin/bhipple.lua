@@ -176,3 +176,8 @@ vim.o.diffopt = 'internal,filler,closeoff,iwhite'
 
 -- Number of lines to scroll past when the cursor scrolls off the screen
 vim.o.scrolloff = 0
+
+vim.filetype.add({
+    filename = {['wscript'] = 'python'},
+    pattern  = {['Jenkinsfile.*'] = 'groovy'},
+})
