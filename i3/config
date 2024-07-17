@@ -50,6 +50,9 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+c kill
 
+# Capture a screenshot to clipboard
+bindsym $mod+shift+c exec --no-startup-id "/home/bhipple/bin/screenclip"
+
 # start program shortcuts
 bindsym $mod+i exec brave
 bindsym $mod+p exec dmenu_run  # program launcher
@@ -139,8 +142,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)

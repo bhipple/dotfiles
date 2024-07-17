@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+notify-send "Copying screenshot to clipboard"
+import png:- | xclip -selection clipboart -t image/png
