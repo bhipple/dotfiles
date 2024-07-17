@@ -297,9 +297,4 @@
         (evil-append 0)
         ad-do-it
         (evil-normal-state))))
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Elfeed config
-  (setq-default elfeed-search-filter "@1-month-ago +unread ")
-
 )
