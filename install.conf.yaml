@@ -67,11 +67,11 @@
       stderr: true
       stdin: true
       stdout: true
-    - command: generate-nvim-projects.sh
+    - command: mk-nvim-projects
       stderr: true
       stdin: true
       stdout: true
-    - command: mk-git-aliases.sh
+    - command: mk-git-aliases
       stderr: true
       stdin: true
       stdout: true
