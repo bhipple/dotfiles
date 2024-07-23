@@ -71,6 +71,10 @@
       stderr: true
       stdin: true
       stdout: true
+    - command: mk-git-aliases.sh
+      stderr: true
+      stdin: true
+      stdout: true
     - command: vim +PlugUpdate +PlugUpgrade +UpdateRemotePlugins +qa
       stderr: true
       stdin: true

@@ -4,22 +4,6 @@ alias cdr.='cd $(git rev-parse --show-toplevel)/..'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias f='zi'
 alias feh='feh -Z'
-# TODO: can probably codegen these with `git la` and some grepping?
-alias gbr='git br'
-alias gca='git ca'
-alias gcae='git cae'
-alias gci='git ci'
-alias gco='git co'
-alias gdf='git df'
-alias gf='git f'
-alias gfa='git fa'
-alias gg='git grep'
-alias ggi='git grep -i'
-alias gl='git l'
-alias gla='git la'
-alias gp='git p'
-alias gpu='git pu'
-alias gst='git st'
 alias jc="sudo journalctl"
 alias ll='ls -al'
 alias lower="tr '[:upper:]' '[:lower:]'"
@@ -84,6 +68,8 @@ if [[ -n "$ZSH_NAME" ]]; then
     alias -g PN="2>&1 | awk '{print \$NF}'"
     alias -g PNF="2>&1 | awk '{print \$NF}'"
 fi
+
+source ~/.zsh/git_aliases.zsh
 
 [[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
 
