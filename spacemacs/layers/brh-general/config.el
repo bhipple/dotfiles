@@ -31,7 +31,7 @@
 ;; Make ediff do a split for side-by-side diffing
 (setq ediff-split-window-function 'split-window-horizontally)
 
-; Shut up about line length, unless it's really bad
+;; Shut up about line length, unless it's really bad
 (setq flycheck-flake8-maximum-line-length 120)
 
 ;; Strongly prefer splitting to the right in split-window-sensibly
@@ -74,9 +74,9 @@
       evil-escape-unordered-key-sequence t
       evil-escape-delay 0.25)
 
-; Work-around for issue with evil search and minibuffer causing d, y, etc. to be
-; entered twice until an emacs restart. See here for details:
-; https://github.com/syl20bnr/spacemacs/issues/10410#issuecomment-391641439
+;; Work-around for issue with evil search and minibuffer causing d, y, etc. to be
+;; entered twice until an emacs restart. See here for details:
+;; https://github.com/syl20bnr/spacemacs/issues/10410#issuecomment-391641439
 (defun kill-minibuffer ()
   (interactive)
   (when (windowp (active-minibuffer-window))
@@ -98,15 +98,11 @@
 (set-file-name-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 
-(with-eval-after-load 'undo-tree
-  (global-undo-tree-mode t)
-)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LSP Settings
 (with-eval-after-load 'lsp-mode
-  (setq lsp-enable-file-watchers nil) ; Get rid of file watchers entirely
-  )
+  ;; Get rid of file watchers entirely
+  (setq lsp-enable-file-watchers nil))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Performance / Garbage Collector Optimizations
@@ -135,22 +131,22 @@
 
 ;; Disable extremely slow functions
 (with-eval-after-load 'magit
-  ; Don't annotate status pages with git tag info
+  ;; Don't annotate status pages with git tag info
   (defun magit-insert-tags-header ())
-  ; Don't attempt to lookup gravitar images next to committers
+  ;; Don't attempt to lookup gravitar images next to committers
   (setq magit-revision-show-gravatars nil)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Timers
-; 5 minutes after startup, run org-roam-db-sync; then re-run it every 60m
+                                        ; 5 minutes after startup, run org-roam-db-sync; then re-run it every 60m
 (run-with-timer (* 5 60) (* 60 60) 'org-roam-db-sync)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bugs / Workarounds that can hopefully be deleted someday
-; Workaround for:
-; https://github.com/nonsequitur/git-gutter-plus/issues/42
-; https://github.com/syl20bnr/spacemacs/issues/12860
+                                        ; Workaround for:
+                                        ; https://github.com/nonsequitur/git-gutter-plus/issues/42
+                                        ; https://github.com/syl20bnr/spacemacs/issues/12860
 (with-eval-after-load 'git-gutter+
   (defun git-gutter+-remote-default-directory (dir file)
     (let* ((vec (tramp-dissect-file-name file))

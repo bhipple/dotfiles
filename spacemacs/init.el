@@ -38,29 +38,28 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ansible ; needed for yaml-mode
      (auto-completion :variables
-                      ; Try to keep the auto-completion snappy!
+                      ;; Try to keep the auto-completion snappy!
                       auto-completion-enable-help-tooltip nil
                       auto-completion-idle-delay 0.0
                       auto-completion-minimum-prefix-length 1
-                      ; Even though we don't put them in popups, need to have the dir to get M-/ to expand!
+                      ;; Even though we don't put them in popups, need to have the dir to get M-/ to expand!
                       auto-completion-enable-snippets-in-popup nil
                       auto-completion-private-snippets-directory "~/dotfiles/spacemacs/bhipple-snippets"
-                      ; Set out completion backends to a well-scoped set of completers, to optimize performance
+                      ;; Set out completion backends to a well-scoped set of completers, to optimize performance
                       spacemacs-default-company-backends
-                        '(
-                          ; Might be slow, possibly redundant with lsp?
-                          ; company-semantic
-                          ; These search for strings in the buffer and are quite useful!
-                          company-dabbrev
-                          company-dabbrev-code
-                          ; This one tanks on slow filesystems
-                          ; company-files
-                          ; These don't appear to do much and have upstream performance woes
-                          ; company-etags
-                          ; company-gtags
-                          ; This one is very lightweight, and just adds language keywords
-                          company-keywords)
-                      :disabled-for nixos)
+                      '(
+                        ;; Might be slow, possibly redundant with lsp?
+                        ;; company-semantic
+                        ;; These search for strings in the buffer and are quite useful!
+                        company-dabbrev
+                        company-dabbrev-code
+                        ;; This one tanks on slow filesystems
+                        ;; company-files
+                        ;; These don't appear to do much and have upstream performance woes
+                        ;; company-etags
+                        ;; company-gtags
+                        ;; This one is very lightweight, and just adds language keywords
+                        company-keywords))
      better-defaults
      copy-as-format
      csv
@@ -69,11 +68,8 @@ This function should only modify configuration layer settings."
      git
      compleseus
      html
-     (ibuffer :variables
-              ibuffer-group-buffers-by 'projects)
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      markdown
-     (nixos :variables
-            nixos-enable-company nil)
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
@@ -106,7 +102,7 @@ This function should only modify configuration layer settings."
      ;; Contains general emacs packages, config, funcs, keybindings
      ;; ~/dotfiles/spacemacs/layers/brh-general/
      brh-general
-   )
+     )
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -122,40 +118,40 @@ This function should only modify configuration layer settings."
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
-     ;; Very pretty, but let's avoid rendering lag
-     org-bullets
-     ;; Seems to have the behavior described here:
-     ;; https://github.com/syl20bnr/spacemacs/issues/11582
-     haskell-snippets
-     ;; Does not like git-crypt files and spews encoding errors!
-     git-gutter
-     git-gutter-fringe
-     ;; Never use these at all
-     anaconda-mode
-     company-anaconda
-     company-rtags
-     company-ycmd
-     elfeed
-     elfeed-goodies
-     elfeed-org
-     flycheck-rtags
-     flycheck-ycmd
-     forge
-     gendoxy
-     helm-rtags
-     hindent
-     lsp-treemacs
-     magit-svn
-     nose
-     orgit-forge
-     treemacs
-     treemacs-evil
-     treemacs-icons-dired
-     treemacs-magit
-     treemacs-persp
-     treemacs-projectile
-     ycmd
-   )
+                                    ;; Very pretty, but let's avoid rendering lag
+                                    org-bullets
+                                    ;; Seems to have the behavior described here:
+                                    ;; https://github.com/syl20bnr/spacemacs/issues/11582
+                                    haskell-snippets
+                                    ;; Does not like git-crypt files and spews encoding errors!
+                                    git-gutter
+                                    git-gutter-fringe
+                                    ;; Never use these at all
+                                    anaconda-mode
+                                    company-anaconda
+                                    company-rtags
+                                    company-ycmd
+                                    elfeed
+                                    elfeed-goodies
+                                    elfeed-org
+                                    flycheck-rtags
+                                    flycheck-ycmd
+                                    forge
+                                    gendoxy
+                                    helm-rtags
+                                    hindent
+                                    lsp-treemacs
+                                    magit-svn
+                                    nose
+                                    orgit-forge
+                                    treemacs
+                                    treemacs-evil
+                                    treemacs-icons-dired
+                                    treemacs-magit
+                                    treemacs-persp
+                                    treemacs-projectile
+                                    ycmd
+                                    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -556,6 +552,14 @@ It should only modify the values of Spacemacs settings."
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
 
+   ;; The backend used for undo/redo functionality. Possible values are
+   ;; `undo-tree', `undo-fu' and `undo-redo', see also `evil-undo-system'.
+   ;; Note that saved undo history does not get transferred when changing
+   ;; from undo-tree to undo-fu or undo-redo.
+   ;; The default is currently 'undo-tree, but it will likely be changed
+   ;; and at some point removed because undo-tree is not maintained anymore.
+   dotspacemacs-undo-system 'undo-redo
+
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
    ;; %t - `projectile-project-name'
@@ -634,7 +638,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -642,7 +646,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-)
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -650,7 +654,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -660,11 +664,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  ;; Undo-tree is extremely slow compared to the built-in emacs28 undo-redo
-  ;; This has to be run after all the layers, which is why it's here.
-  (global-undo-tree-mode -1)
-  (evil-set-undo-system 'undo-redo)
-
   ;; Ensure that visual selection does not overwrite X clipboard
   ;; http://spacemacs.org/doc/FAQ#prevent-the-visual-selection-overriding-my-system-clipboard
   ;; N.B. This has to go in user-config, so it loads after the spacemacs layers
@@ -673,14 +672,14 @@ before packages are loaded."
   ;; Path for user lisp code
   (add-to-list 'load-path "~/.emacs_local/")
 
-  ; Workaround for:
-  ; https://github.com/syl20bnr/spacemacs/issues/14969
-  ; https://org-roam.discourse.group/t/sidebar-roam-buffer-gets-replaced-with-org-roam-node-instead-of-updating
+  ;; Workaround for:
+  ;; https://github.com/syl20bnr/spacemacs/issues/14969
+  ;; https://org-roam.discourse.group/t/sidebar-roam-buffer-gets-replaced-with-org-roam-node-instead-of-updating
   (global-page-break-lines-mode nil)
 
   ;; Load local settings
   (require 'brh-local)
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
