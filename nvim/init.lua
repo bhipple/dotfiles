@@ -82,6 +82,33 @@ require('lazy').setup({
     end,
   },
 
+  { -- Ollama integration
+    "David-Kunz/gen.nvim",
+    dir = "~/git/gen.nvim",
+    opts = {
+        model = "llama3.1", -- The default model to use.
+        quit_map = "q", -- set keymap for close the response window
+        retry_map = "<c-r>", -- set keymap to re-send the current prompt
+        accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
+        host = "localhost", -- The host running the Ollama service.
+        port = "11434", -- The port on which the Ollama service is listening.
+        display_mode = "split", -- The display mode. Can be "float" or "split" or "horizontal-split".
+        show_prompt = true, -- Shows the prompt submitted to Ollama.
+        no_auto_close = true, -- Never closes the window automatically.
+        hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`)
+        command = function(options)
+            local body = {model = options.model, stream = true}
+            return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
+        end,
+        -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+        -- This can also be a command string.
+        -- The executed command must return a JSON object with { response, context }
+        -- (context property is optional).
+        -- list_models = '<omitted lua function>', -- Retrieves a list of model names
+        debug = false -- Prints errors and the command which is run.
+    }
+  },
+
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -194,10 +221,7 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
-require('project_nvim').setup {
-  patterns = { ".git" },
-}
-
+require('project_nvim').setup { patterns = { ".git" } }
 require('telescope').load_extension('projects')
 
 --------------------------------------------------------------------------------

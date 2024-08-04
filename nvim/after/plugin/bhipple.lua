@@ -86,6 +86,13 @@ vim.keymap.set("n", "<F2>", function() ui.nav_file(2) end)  -- editor prefix + u
 vim.keymap.set("n", "<F3>", function() ui.nav_file(3) end)  -- editor prefix + y via QMK
 vim.keymap.set("n", "<F4>", function() ui.nav_file(4) end)  -- editor prefix + ' via QMK
 
+-- AI
+vim.keymap.set({'n', 'v'}, '<leader>aa', ":Gen<CR>")
+vim.keymap.set({'n', 'v'}, '<leader>ac', ":Gen Make_Concise<CR>")
+vim.keymap.set({'n', 'v'}, '<leader>ap', ':Gen Enhance_Grammar_Spelling<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>ar', ':Gen Review_Code<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>at', ':Gen Make_Table<CR>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
