@@ -312,13 +312,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Python LSP
-require('lspconfig').ruff.setup({
-  init_options = {
-    settings = {
-    }
-  }
-})
--- require'lspconfig'.ruff_lsp.setup { }  -- after getting ruff >= 0.4.5, delete this
+require('lspconfig').ruff.setup{}
 
 -- YAML LSP
 require('lspconfig')['yamlls'].setup {
