@@ -293,21 +293,13 @@ local on_attach = function(_, bufnr)
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
+  nmap('<leader>ls', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('<leader>lx', vim.lsp.stop_client(vim.lsp.get_active_clients(), '[L]SP e[x]it'))
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-  -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -319,7 +311,16 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- configure yamlls ls:
+-- Python LSP
+require('lspconfig').ruff.setup({
+  init_options = {
+    settings = {
+    }
+  }
+})
+-- require'lspconfig'.ruff_lsp.setup { }  -- after getting ruff >= 0.4.5, delete this
+
+-- YAML LSP
 require('lspconfig')['yamlls'].setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -330,6 +331,7 @@ require('lspconfig')['yamlls'].setup {
   }
 }
 
+-- Lua LSP
 require('lspconfig').lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
