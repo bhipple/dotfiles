@@ -24,6 +24,7 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',                                                         -- autocompletions from buffer
   'ledger/vim-ledger',                                                          -- ledger-cli mode
   'sindrets/diffview.nvim',
+  'stevearc/dressing.nvim',                                                     -- Nicer popups
   'tpope/vim-surround',
   'tpope/vim-vinegar',                                                          -- Netrw replacement
   'wsdjeg/vim-fetch',                                                           -- Understand formats line file:line when opening
