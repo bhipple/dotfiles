@@ -50,9 +50,6 @@ require('lazy').setup({
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = "legacy", opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
     },
   },
 
@@ -208,10 +205,13 @@ require('telescope').load_extension('projects')
 require('nvim-treesitter.configs').setup {
   -- Defer to Nix instead of trying to install ourselves
   auto_install = false,
+  sync_install = false,
   ensure_installed = {},
+  ingore_install = { "all" },
+  modules = {},
 
-  highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
+  highlight = { enable = true, additional_vim_regex_highlighting = false },
+  indent = { enable = true, disable = { } },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -314,9 +314,6 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 end
-
--- Setup neovim lua configuration
-require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
