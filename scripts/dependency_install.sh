@@ -38,11 +38,6 @@ nix_install() {
         ATTRS="$ATTRS nixStable bigEnv "
     fi
 
-    if [ -d $HOME/git/plaid2qif ]; then
-        # Also install plaid2qif from my nix user repo
-        ATTRS="$ATTRS plaid2qif"
-    fi
-
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x

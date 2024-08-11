@@ -89,6 +89,7 @@ vim.keymap.set("n", "<F4>", function() ui.nav_file(4) end)  -- editor prefix + '
 -- AI
 vim.keymap.set({'n', 'v'}, '<leader>aa', ":Gen<CR>")
 vim.keymap.set({'n', 'v'}, '<leader>ac', ":Gen Make_Concise<CR>")
+vim.keymap.set({'n', 'v'}, '<leader>ah', ":Gen Ask<CR>")
 vim.keymap.set({'n', 'v'}, '<leader>ap', ':Gen Enhance_Grammar_Spelling<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>ar', ':Gen Review_Code<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>at', ':Gen Make_Table<CR>')
