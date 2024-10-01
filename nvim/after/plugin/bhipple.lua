@@ -25,7 +25,7 @@ vim.keymap.set('n', '/', ':set hlsearch<CR>/')
 vim.keymap.set('n', '?', ':set hlsearch<CR>?')
 
 -- Misc keybindings
-vim.keymap.set('n', '<Leader>ev', ':e $HOME/dotfiles/nvim/after/plugin/bhipple.lua<CR>')
+vim.keymap.set('n', '<Leader>ev', ':e $HOME/dotfiles/nvim/init.lua<CR>')
 vim.keymap.set('n', '<Leader>cx', ':!chmod a+x %<CR>')
 vim.keymap.set('n', '<Leader>h',  ':set hlsearch! hlsearch?<CR>')
 vim.keymap.set('n', '<Leader>rd', ':windo redraw!<CR>')
