@@ -234,7 +234,11 @@ require('nvim-treesitter.configs').setup {
   ingore_install = { "all" },
   modules = {},
 
-  highlight = { enable = true, additional_vim_regex_highlighting = false },
+  highlight = {
+    enable = true,
+    disable = { "lua", "c" },
+    additional_vim_regex_highlighting = false,
+  },
   indent = { enable = true, disable = { } },
   incremental_selection = {
     enable = true,
