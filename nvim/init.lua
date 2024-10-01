@@ -299,10 +299,6 @@ require('nvim-treesitter.configs').setup {
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
@@ -340,18 +336,21 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Python LSP
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pyright
+require'lspconfig'.pyright.setup{}
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff_lsp
-require'lspconfig'.ruff_lsp.setup{
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
-    }
-  }
-}
+-- require'lspconfig'.ruff_lsp.setup{
+--   init_options = {
+--     settings = {
+--       -- Any extra CLI arguments for `ruff` go here.
+--       args = {},
+--     }
+--   }
+-- }
 
 -- YAML LSP
-require('lspconfig')['yamlls'].setup {
+require'lspconfig'.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -362,7 +361,7 @@ require('lspconfig')['yamlls'].setup {
 }
 
 -- Lua LSP
-require('lspconfig').lua_ls.setup {
+require'lspconfig'.lua_ls.setup {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
