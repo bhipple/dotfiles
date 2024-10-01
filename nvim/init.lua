@@ -197,7 +197,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --------------------------------------------------------------------------------
 -- Trivial Plugins
-require('trouble').setup { icons = false }
+require('trouble').setup { }
 require('gitblame').setup { enabled = false }
 --------------------------------------------------------------------------------
 -- Telescope and Project
