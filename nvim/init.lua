@@ -236,7 +236,7 @@ require('nvim-treesitter.configs').setup {
 
   highlight = {
     enable = true,
-    disable = { "lua", "c" },
+    disable = { "lua", "c", "query", },
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true, disable = { } },
