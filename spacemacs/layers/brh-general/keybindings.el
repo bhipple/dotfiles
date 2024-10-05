@@ -44,7 +44,8 @@
 (global-set-key (kbd "<f10>") 'brh/org-clock-in-with-prefix)
 (global-set-key (kbd "<f11>") 'org-roam-node-find)
 (global-set-key (kbd "S-<f11>") 'brh/search-and-clock-in)
-(global-set-key (kbd "<f12>") 'org-todo-list)
+(defun brh/agenda-todo () (interactive) (org-agenda nil "ta"))
+(global-set-key (kbd "<f12>") 'brh/agenda-todo)
 
 ;; Popper keys
 (global-set-key "\M-n" 'popper-cycle)
