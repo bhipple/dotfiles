@@ -15,8 +15,6 @@
 ;;   define the functions `brh-org/pre-init-PACKAGE' and/or
 ;;   `brh-org/post-init-PACKAGE' to customize the package as it is loaded.
 
-;;; Code:
-
 (defconst brh-org-packages '(org org-bookmark-heading org-mru-clock)
   "The list of Lisp packages required by the brh-org layer.")
 
@@ -35,18 +33,18 @@
   (with-eval-after-load 'org
     (require 'org-bookmark-heading)
 
-    ; N.B. This ships with org, but still needs to be required to initialize
+    ;; N.B. This ships with org, but still needs to be required to initialize
     (require 'org-habit)
 
     ;; Enable org-babel
     (org-babel-do-load-languages 'org-babel-load-languages '(
-      (ditaa . t)
-      (emacs-lisp . t)
-      (gnuplot . t)
-      (org . t)
-      (python . t)
-      (shell . t)
-    ))
+                                                             (ditaa . t)
+                                                             (emacs-lisp . t)
+                                                             (gnuplot . t)
+                                                             (org . t)
+                                                             (python . t)
+                                                             (shell . t)
+                                                             ))
 
     ;; Don't ask for confirmation every time I hit C-c c
     (setq org-confirm-babel-evaluate nil)
@@ -56,4 +54,4 @@
 
     ;; Setup persistence hooks for the clock
     (org-clock-persistence-insinuate)
-  ))
+    ))

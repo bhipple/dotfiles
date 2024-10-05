@@ -29,9 +29,6 @@
   (setq org-export-with-properties t)
   (setq org-export-with-priority t)
 
-  ;: Line breaks seem to get messed up regardless of whether this is T or F
-  ;(setq org-export-preserve-breaks t)
-
   ;; Leave previously unopened buffers open after a search, to speed up subsequent searches
   (setq helm-org-rifle-close-unopened-file-buffers nil)
 
@@ -67,7 +64,7 @@
   (brh/set-org-agenda-files)
 
   ;; How far in advance to show deadlines on agenda views
-  (setq org-deadline-warning-days 10)
+  (setq org-deadline-warning-days 15)
 
   ;; Agenda clock report parameters
   (setq org-agenda-clockreport-parameter-plist
@@ -93,35 +90,34 @@
   ;; 12 hours for those days when I sleep a lot.
   (setq org-agenda-clock-consistency-checks
         '(:max-duration "12:00"
-         :min-duration 0
-         :max-gap "0:05"
-         :gap-ok-around ("4:00")
-         :default-face
-         ((:background "DarkRed")
-         (:foreground "white"))
-         :overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
+                        :min-duration 0
+                        :max-gap "0:05"
+                        :gap-ok-around ("4:00")
+                        :default-face
+                        ((:background "DarkRed")
+                         (:foreground "white"))
+                        :overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
 
   ;; Tags for inactive tasks
   (setq brh-org-non-actionable "-SOMEDAY-TODO=\"BLOCKED\"-TODO=\"WAITING\"-TODO=\"PR\"-TODO=\"DELEGATED\"-TODO=\"ABANDONED\"-TODO=\"DONE\"")
 
   ;; Org Agenda custom searches
-  ; TODO: The work and home tags aren't really needed anymore.
   (setq org-agenda-custom-commands
         '(("b" "Blocked and Waiting items" ((tags-todo "TODO=\"BLOCKED\"|TODO=\"WAITING\"|TODO=\"PR\"")))
           ("c" "Currently active non-repeating items" tags-todo (concat "-REPEATING" brh-org-non-actionable))
-          ("h" . "HOME searches")
-          ("hh" "All HOME items" tags-todo "HOME")
-          ("ha" "Today's agenda and HOME items" ((agenda "" ((org-agenda-span 'day)
-                                                             (org-agenda-archives-mode t)
-                                                             (org-agenda-log-mode-items '(closed clock state))))
-                                                 (tags-todo (concat "+HOME-INBOX-REPEATING" brh-org-non-actionable))
-                                                 (tags-todo "+INBOX")
-                                                 (tags-todo "+REPEATING")
-                                                 nil
-                                                 ("/tmp/hipple/home_agenda.html")
-                                                 ))
-          ("hc" "Currently active non-repeating HOME items" tags-todo (concat "+HOME-REPEATING-INBOX" brh-org-non-actionable))
-          ("hs" "Search HOME items" ((tags "+HOME") (search "")))
+          ("t" . "Task Searches")
+          ("ta" "Today's agenda and items" ((agenda "" ((org-agenda-span 'day)
+                                                        (org-agenda-archives-mode t)
+                                                        (org-agenda-log-mode-items '(closed clock state))))
+                                            (tags-todo (concat "-INBOX-REPEATING" brh-org-non-actionable))
+                                            (tags-todo "+INBOX")
+                                            (tags-todo "+REPEATING")
+                                            nil
+                                            ("/tmp/hipple/home_agenda.html")
+                                            ))
+          ("tb" "Blocked and Waiting items" ((tags-todo "+TODO=\"BLOCKED\"|+TODO=\"WAITING\"|+TODO=\"PR\"")))
+          ("tc" "Currently active non-repeating items" tags-todo (concat "-INBOX-REPEATING-SOMEDAY" brh-org-non-actionable))
+          ("ts" "Search HOME items" ((search "")))
           ("n" "Today's agenda and all TODO items" ((agenda "" ((org-agenda-span 'day)
                                                                 (org-agenda-log-mode-items '(closed clock state))))
                                                     (tags-todo "-SOMEDAY+TODO=\"TODO\"")))
@@ -131,20 +127,7 @@
           ("r" "Weekly Review" agenda "" ((org-agenda-span 'week)
                                           (org-agenda-log-mode-items '(closed clock state))
                                           (org-agenda-archives-mode t)))
-          ("w" . "WORK searches")
-          ("wa" "Today's agenda and WORK items" ((agenda "" ((org-agenda-span 'day)
-                                                             (org-agenda-archives-mode t)
-                                                             (org-agenda-log-mode-items '(closed clock state))))
-                                                 (tags-todo (concat "-INBOX" brh-org-non-actionable))
-                                                 (tags-todo "+INBOX")))
-          ("wb" "WORK Blocked and Waiting items" ((tags-todo "+TODO=\"BLOCKED\"|+TODO=\"WAITING\"|+TODO=\"PR\"")))
-          ("wc" "Currently active non-repeating WORK items" tags-todo "-SOMEDAY-REPEATING")
-          ("we" "Work agenda for exporting to html" ((agenda "" ((org-agenda-span 'day)
-                                                                 (org-agenda-archives-mode t)
-                                                                 (org-agenda-log-mode-items '(closed clock state))))
-                                                     (tags-todo "-TODO=\"BLOCKED\"-TODO=\"WAITING\"")))
-          ("ws" "Search WORK items" ((tags-todo "+WORK") (search "")))
-          ("ww" "All WORK items" tags-todo "+WORK")))
+          ))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
@@ -244,14 +227,14 @@
   ;; Use the system chrome when running in WSL
   (setq browse-url-generic-program (if (file-exists-p "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe") "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "chromium"))
 
-  ; This kicks on every org mode file save, and used to cause some lag, but it is really convenient.
-  ; Turn it off at work since things are bigger/slower there.
+  ;; This kicks on every org mode file save, and used to cause some lag, but it is really convenient.
+  ;; Turn it off at work since things are bigger/slower there.
   (setq org-roam-db-update-on-save (not brh/at-work))
 
   (org-roam-db-autosync-mode t)
 
-  ; Workaround for org roam backlink buffer needing manual refresh
-  ; https://github.com/org-roam/org-roam/issues/1732#issuecomment-1465326574
+  ;; Workaround for org roam backlink buffer needing manual refresh
+  ;; https://github.com/org-roam/org-roam/issues/1732#issuecomment-1465326574
   (advice-add #'org-roam-fontify-like-in-org-mode :around (lambda (fn &rest args) (save-excursion (apply fn args))))
 
   (setq org-roam-ui-sync-theme t
@@ -269,7 +252,7 @@
                  (window-parameters . ((no-other-window . t)
                                        (no-delete-other-windows . t)))))
 
-  ; Add hierarchy tags to nodes within a file
+  ;; Add hierarchy tags to nodes within a file
   (cl-defmethod org-roam-node-hierarchy ((node org-roam-node))
     (let ((level (org-roam-node-level node)))
       (concat
@@ -284,7 +267,7 @@
     (org-roam-node-visit (org-roam-node-at-point t) t t))
   (define-key org-roam-node-map [remap org-roam-buffer-visit-thing] 'my-org-roam-node-visit)
 
-  ; Workaround an upstream issue with evil, as described in https://github.com/syl20bnr/spacemacs/pull/15008
+  ;; Workaround an upstream issue with evil, as described in https://github.com/syl20bnr/spacemacs/pull/15008
   (defadvice org-roam-node-insert (around append-if-in-evil-normal-mode activate compile)
     "If in evil normal mode and cursor is on a whitespace character, then go into
          append mode first before inserting the link. This is to put the link after the
@@ -297,4 +280,4 @@
         (evil-append 0)
         ad-do-it
         (evil-normal-state))))
-)
+  )

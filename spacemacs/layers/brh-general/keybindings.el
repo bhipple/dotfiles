@@ -8,11 +8,11 @@
 (fset 'brh/visual-paragraph
       [escape ?v ?i ?p])
 
-; Swaps MM/DD/YYYY -> YYYY/MM/DD. Useful for importing financial transactions into ledger.
+;; Swaps MM/DD/YYYY -> YYYY/MM/DD. Useful for importing financial transactions into ledger.
 (fset 'brh/dateswap-to-YYYY/MM/DD
       [?E ?b ?h ?x ?d ?e ?B ?P ?a ?/ escape ?B])
 
-; Swaps YYYY/MM/DD -> MM/DD/YYYY. Inverse of the above function.
+;; Swaps YYYY/MM/DD -> MM/DD/YYYY. Inverse of the above function.
 (fset 'brh/dateswap-to-MM/DD/YYYY
       [?l ?B ?d ?t ?/ ?E ?a ?/ escape ?p ?B ?x])
 
@@ -44,9 +44,9 @@
 (global-set-key (kbd "<f10>") 'brh/org-clock-in-with-prefix)
 (global-set-key (kbd "<f11>") 'org-roam-node-find)
 (global-set-key (kbd "S-<f11>") 'brh/search-and-clock-in)
-(global-set-key (kbd "<f12>") 'brh/smart-agenda)
+(global-set-key (kbd "<f12>") 'org-todo-list)
 
-; Popper keys
+;; Popper keys
 (global-set-key "\M-n" 'popper-cycle)
 
 (spacemacs/set-leader-keys
