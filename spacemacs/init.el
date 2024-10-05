@@ -61,15 +61,16 @@ This function should only modify configuration layer settings."
                         ;; This one is very lightweight, and just adds language keywords
                         company-keywords))
      better-defaults
+     compleseus
      copy-as-format
      csv
      emacs-lisp
      finance
      git
-     compleseus
      html
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      markdown
+     nixos
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
