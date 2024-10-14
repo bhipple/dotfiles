@@ -52,15 +52,15 @@ require'lspconfig'.pyright.setup{}
 -- }
 
 -- YAML LSP
-require'lspconfig'.yamlls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    yaml = {
-      keyOrdering = false
-    }
-  }
-}
+-- require'lspconfig'.yamlls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     yaml = {
+--       keyOrdering = false
+--     }
+--   }
+-- }
 
 -- Lua LSP
 require'lspconfig'.lua_ls.setup {
