@@ -8,3 +8,4 @@ git la | grep -Ev '^g' | cut -d'=' -f1 | grep -v '-' | xargs -I{} echo 'alias g{
 
 echo 'alias gg="git grep"' | tee -a $tgt
 echo 'alias ggi="git grep -i"' | tee -a $tgt
+echo 'alias grf="git rf"' | tee -a $tgt
