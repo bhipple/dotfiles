@@ -16,6 +16,7 @@ if ! zgenom saved; then
     zgenom load romkatv/zsh-prompt-benchmark
     zgenom load djui/alias-tips
     zgenom load zsh-users/zsh-syntax-highlighting
+    zgenom load Aloxaf/fzf-tab
 
     # save all to init script
     zgenom save
