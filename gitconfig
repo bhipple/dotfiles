@@ -37,8 +37,8 @@
     dods = diff origin/dev...HEAD -w --stat
     dom = diff origin/master...HEAD -w
     doms = diff origin/master...HEAD -w --stat
-    f = fetch --prune
-    fa = fetch --all --prune
+    f = fetch --all --tags --prune
+    fa = fetch --all --tags --prune
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
     g = !exec git
     git = !exec git
