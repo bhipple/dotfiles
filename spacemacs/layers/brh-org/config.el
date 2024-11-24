@@ -211,6 +211,9 @@
   ;; When in org-mode, automatically word wrap text on the line limit
   (add-hook 'org-mode-hook #'spacemacs/toggle-auto-fill-mode-on)
 
+  ;; When in org-mode, after I write the buffer, recalculate all org table formulas automatically
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'org-table-recalculate-buffer-tables nil t)))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org-habit configuration
   ;; On multi-day agenda pages, show habits done/scheduled for all days
