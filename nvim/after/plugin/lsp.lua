@@ -41,26 +41,8 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pyright
 require'lspconfig'.pyright.setup{}
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff_lsp
--- require'lspconfig'.ruff_lsp.setup{
---   init_options = {
---     settings = {
---       -- Any extra CLI arguments for `ruff` go here.
---       args = {},
---     }
---   }
--- }
-
--- YAML LSP
--- require'lspconfig'.yamlls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   settings = {
---     yaml = {
---       keyOrdering = false
---     }
---   }
--- }
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
+require'lspconfig'.ruff.setup{}
 
 -- Lua LSP
 require'lspconfig'.lua_ls.setup {

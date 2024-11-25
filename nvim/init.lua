@@ -33,7 +33,6 @@ require('lazy').setup({
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
   {'NeogitOrg/neogit',
-    tag = 'v0.0.1',  -- TODO: Delete once upgring to nvim >= 0.10.0
     dependencies = {
       'nvim-lua/plenary.nvim',         -- required
       'nvim-telescope/telescope.nvim', -- optional
