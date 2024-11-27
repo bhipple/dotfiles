@@ -27,3 +27,5 @@ if ! zgenom saved; then
 fi
 
 command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"
+
+eval "$(direnv hook zsh)"
