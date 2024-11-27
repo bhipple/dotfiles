@@ -35,16 +35,17 @@ nix_install() {
     ATTRS="minEnv"
 
     if [ -n "$INSTALL_ALL" ]; then
-        ATTRS="$ATTRS nixStable bigEnv "
+        ATTRS="$ATTRS bigEnv "
     fi
 
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
-    nix --extra-experimental-features nix-command build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
+    nix build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
+        nix-env -f ~/git/nixos-2405 -k -iA ledger
     fi
 }
 
