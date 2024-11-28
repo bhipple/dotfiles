@@ -45,7 +45,7 @@ nix_install() {
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
-        nix-env -f ~/git/nixos-2405 -k -iA ledger
+        nix-env -f ~/git/nixos-24.05 -k -iA ledger
     fi
 }
 
