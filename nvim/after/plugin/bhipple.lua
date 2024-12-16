@@ -57,42 +57,42 @@ vim.keymap.set('n', '<leader>pp', projects.projects,     { desc = '[P]rojects' }
 vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Neogit Status' })
 vim.keymap.set('n', '<leader>grf', ":!git rf master", { desc = 'git rf master' })
 vim.keymap.set('n', '<leader>gfa', ":!git fetch --all", { desc = 'git fetch --all' })
-vim.keymap.set('n', '<leader>gb',  ":GitBlameToggle<CR>", { })
-vim.keymap.set('n', '<leader>gc',  ":GitBlameCopySHA<CR>", { desc = "Copies the SHA hash of current line's commit into the system's clipboard" })
+vim.keymap.set('n', '<leader>gb',  "<cmd>GitBlameToggle<CR>", { })
+vim.keymap.set('n', '<leader>gc',  "<cmd>GitBlameCopySHA<CR>", { desc = "Copies the SHA hash of current line's commit into the system's clipboard" })
 
 -- Diffing
-vim.keymap.set('n', '<leader>oc', ":DiffviewClose<CR>", { desc = 'Diffview Close' })
-vim.keymap.set('n', '<leader>od', ":DiffviewOpen<CR>", { desc = 'Diffview Open' })
-vim.keymap.set('n', '<leader>oh', ":DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
-vim.keymap.set('n', '<leader>om', ":DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
-vim.keymap.set('n', '<leader>oo', ":DiffviewOpen ", { desc = 'Diffview Open against revision (enter prompt)' })
+vim.keymap.set('n', '<leader>oc', "<cmd>DiffviewClose<CR>", { desc = 'Diffview Close' })
+vim.keymap.set('n', '<leader>od', "<cmd>DiffviewOpen<CR>", { desc = 'Diffview Open' })
+vim.keymap.set('n', '<leader>oh', "<cmd>DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
+vim.keymap.set('n', '<leader>om', "<cmd>DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
+vim.keymap.set('n', '<leader>oo', "<cmd>DiffviewOpen ", { desc = 'Diffview Open against revision (enter prompt)' })
 
-vim.keymap.set('n', '<leader>do', ":windo diffoff<CR>")
-vim.keymap.set('n', '<leader>db', ":windo diffthis<CR>")
-vim.keymap.set('n', '<leader>du', ":diffupdate<CR>")
-vim.keymap.set('n', '<leader>dp', ":diffput<CR>")
-vim.keymap.set('n', '<leader>dg', ":diffget<CR>")
+vim.keymap.set('n', '<leader>do', "<cmd>windo diffoff<CR>")
+vim.keymap.set('n', '<leader>db', "<cmd>windo diffthis<CR>")
+vim.keymap.set('n', '<leader>du', "<cmd>diffupdate<CR>")
+vim.keymap.set('n', '<leader>dp', "<cmd>diffput<CR>")
+vim.keymap.set('n', '<leader>dg', "<cmd>diffget<CR>")
 
 -- File level diffing
-vim.keymap.set('n', '<leader>df', ":DiffviewFileHistory %<CR>", { desc = 'Diff current file history' })
-vim.keymap.set('n', '<leader>dl', ":DiffviewFileHistory<CR>", { desc = 'Diff full git log --stat repo file history' })
+vim.keymap.set('n', '<leader>df', "<cmd>DiffviewFileHistory %<CR>", { desc = 'Diff current file history' })
+vim.keymap.set('n', '<leader>dl', "<cmd>DiffviewFileHistory<CR>", { desc = 'Diff full git log --stat repo file history' })
 
 -- Harpoon
 require("telescope").load_extension('harpoon')
 vim.keymap.set('n', '<leader>m', mark.add_file)
-vim.keymap.set('n', '<C-e>', ':Telescope harpoon marks<CR>')
+vim.keymap.set('n', '<C-e>', '<cmd>Telescope harpoon marks<CR>')
 vim.keymap.set("n", "<F1>", function() ui.nav_file(1) end)  -- editor prefix + l via QMK
 vim.keymap.set("n", "<F2>", function() ui.nav_file(2) end)  -- editor prefix + u via QMK
 vim.keymap.set("n", "<F3>", function() ui.nav_file(3) end)  -- editor prefix + y via QMK
 vim.keymap.set("n", "<F4>", function() ui.nav_file(4) end)  -- editor prefix + ' via QMK
 
 -- AI
-vim.keymap.set({'n', 'v'}, '<leader>aa', ":Gen<CR>")
-vim.keymap.set({'n', 'v'}, '<leader>ac', ":Gen Make_Concise<CR>")
-vim.keymap.set({'n', 'v'}, '<leader>ah', ":Gen Ask<CR>")
-vim.keymap.set({'n', 'v'}, '<leader>ap', ':Gen Enhance_Grammar_Spelling<CR>')
-vim.keymap.set({'n', 'v'}, '<leader>ar', ':Gen Review_Code<CR>')
-vim.keymap.set({'n', 'v'}, '<leader>at', ':Gen Make_Table<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>aa', '<cmd>Gen<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>ac', '<cmd>Gen Make_Concise<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>ah', '<cmd>Gen Ask<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>ap', '<cmd>Gen Enhance_Grammar_Spelling<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>ar', '<cmd>Gen Review_Code<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>at', '<cmd>Gen Make_Table<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -102,7 +102,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagn
 
 -- Terminal keymaps
 vim.keymap.set("n", "<leader>tt", ":!", { desc = '[Terminal] command run synchronously' })
-vim.keymap.set("n", "<leader>to", ":terminal\n", { desc = '[T]erminal [O]pen' })
+vim.keymap.set("n", "<leader>to", "<cmd>terminal<CR>", { desc = '[T]erminal [O]pen' })
 
 -- Trouble keymaps
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
