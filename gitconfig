@@ -69,7 +69,7 @@
     s = show
     sb = "!f() { git branch | grep '*' | awk '{print $2}'; }; f"
     sed = "!f() { \
-        for fn in $(git ls-files .); do \
+        for fn in $(git ls-files ${GIT_PREFIX:-.}); do \
             if [ -L $fn ]; then continue; fi; \
             (set -x; sed -i \"$1\" $fn;) \
         done \

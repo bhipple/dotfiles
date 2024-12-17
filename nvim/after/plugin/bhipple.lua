@@ -55,8 +55,8 @@ vim.keymap.set('n', '<leader>pp', projects.projects,     { desc = '[P]rojects' }
 
 -- Git operations
 vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Neogit Status' })
-vim.keymap.set('n', '<leader>grf', ":!git rf master", { desc = 'git rf master' })
-vim.keymap.set('n', '<leader>gfa', ":!git fetch --all", { desc = 'git fetch --all' })
+vim.keymap.set('n', '<leader>grf', ":!git rf master<CR>", { desc = 'git rf master' })
+vim.keymap.set('n', '<leader>gfa', ":!git fetch --all<CR>", { desc = 'git fetch --all' })
 vim.keymap.set('n', '<leader>gb',  "<cmd>GitBlameToggle<CR>", { })
 vim.keymap.set('n', '<leader>gc',  "<cmd>GitBlameCopySHA<CR>", { desc = "Copies the SHA hash of current line's commit into the system's clipboard" })
 
@@ -65,7 +65,7 @@ vim.keymap.set('n', '<leader>oc', "<cmd>DiffviewClose<CR>", { desc = 'Diffview C
 vim.keymap.set('n', '<leader>od', "<cmd>DiffviewOpen<CR>", { desc = 'Diffview Open' })
 vim.keymap.set('n', '<leader>oh', "<cmd>DiffviewOpen HEAD<CR>", { desc = 'Diffview Open -- HEAD' })
 vim.keymap.set('n', '<leader>om', "<cmd>DiffviewOpen origin/master<CR>", { desc = 'Diffview Open -- origin/master' })
-vim.keymap.set('n', '<leader>oo', "<cmd>DiffviewOpen ", { desc = 'Diffview Open against revision (enter prompt)' })
+vim.keymap.set('n', '<leader>oo', ":DiffviewOpen ", { desc = 'Diffview Open against revision (enter prompt)' })
 
 vim.keymap.set('n', '<leader>do', "<cmd>windo diffoff<CR>")
 vim.keymap.set('n', '<leader>db', "<cmd>windo diffthis<CR>")

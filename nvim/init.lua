@@ -41,6 +41,7 @@ require('lazy').setup({
     },
     config = true,
     diffview = true,
+    icons = false,
   },
 
   { -- LSP Configuration & Plugins
