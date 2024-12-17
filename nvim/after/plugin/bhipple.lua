@@ -94,23 +94,16 @@ vim.keymap.set({'n', 'v'}, '<leader>ap', '<cmd>Gen Enhance_Grammar_Spelling<CR>'
 vim.keymap.set({'n', 'v'}, '<leader>ar', '<cmd>Gen Review_Code<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>at', '<cmd>Gen Make_Table<CR>')
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 -- Terminal keymaps
 vim.keymap.set("n", "<leader>tt", ":!", { desc = '[Terminal] command run synchronously' })
 vim.keymap.set("n", "<leader>to", "<cmd>terminal<CR>", { desc = '[T]erminal [O]pen' })
 
 -- Trouble keymaps
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", {silent = true, noremap = true})
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", {silent = true, noremap = true})
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", {silent = true, noremap = true})
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", {silent = true, noremap = true})
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", {silent = true, noremap = true})
+vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>", {silent = true, noremap = true})
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix toggle<cr>", {silent = true, noremap = true})
+vim.keymap.set("n", "<leader>xr", "<cmd>Trouble telescope toggle<cr>", {silent = true, noremap = true}) -- for generic search results, includes line #
+vim.keymap.set("n", "<leader>xt", "<cmd>Trouble telescope_files toggle<cr>", {silent = true, noremap = true})
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", {silent = true, noremap = true})
 
 --------------------------------------------------------------------------------
 -- [[ Settings options ]]
