@@ -198,6 +198,9 @@ no_focus [title="^zoom\s?$"]
 for_window [title="^join\?action=join.*$"] floating enable
 no_focus [title="^join\?action=join.*$"]
 
+# Other floating windows
+for_window [title="^Tabletop Simulator$"] floating enable
+
 ################################################################################
 # Startup
 exec "~/.xinitrc"
