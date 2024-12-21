@@ -13,3 +13,5 @@ vim/haskellmode.config
 vim/init.vim
 vim/spell/*.spl
 vim/spell/*.sug
+.aider*
+.env
