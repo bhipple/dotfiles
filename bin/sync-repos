@@ -11,8 +11,9 @@ update() {
     f() {
         echo "Synchronizing $1"
         cd "$1" || exit 1
+        git fetch --all
         check_uncommitted "$1"
-        git pull >/dev/null
+        git pull --ff-only >/dev/null
         git submodule update
         # Only try to git push if we have a non-interactive API/ssh key remote
         if git remote -v | grep -q '@'; then
