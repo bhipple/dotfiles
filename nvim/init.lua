@@ -29,6 +29,7 @@ require('lazy').setup({
   'tpope/vim-vinegar',                                                          -- Netrw replacement
   'wsdjeg/vim-fetch',                                                           -- Understand formats line file:line when opening
   {'aserowy/tmux.nvim', opts = {} },
+  {'echasnovski/mini.files', version = '*' },                                   -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
   {'numToStr/Comment.nvim', opts = {} },                                        -- "gc" to comment visual regions/lines
   {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
 
@@ -197,8 +198,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --------------------------------------------------------------------------------
 -- Trivial Plugins
-require('trouble').setup { }
 require('gitblame').setup { enabled = false }
+require('mini.files').setup()
+require('trouble').setup { }
 --------------------------------------------------------------------------------
 -- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
