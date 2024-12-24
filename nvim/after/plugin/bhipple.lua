@@ -52,6 +52,7 @@ vim.keymap.set('n', '<leader>pf', telescope.git_files,   { desc = '[S]earch [F]i
 vim.keymap.set('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sh', telescope.help_tags,   { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>pp', projects.projects,     { desc = '[P]rojects' })
+vim.keymap.set('n', "<leader>tl", telescope.resume,      { desc = 'Resume last telescope window' })
 
 -- Git operations
 vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Neogit Status' })

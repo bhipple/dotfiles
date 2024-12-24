@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 # git grep -> nvim open files directly at locations
 set -euxo pipefail
-XTERM_VERSION= nvim -u ~/.config/nvim/init.lua -p $(git grep "$@" | cut -d':' -f1-2)
+nvim -p $(git grep "$@" | cut -d':' -f1-2)
