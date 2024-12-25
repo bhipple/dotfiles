@@ -131,14 +131,14 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
-  (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/me.org"))
+  (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/roam/me.org"))
   (setq brh/journal-file (if brh/at-work "~/dotfiles_local/notes/roam/journal.org" "~/personal/roam/journal.org"))
 
   (setq org-capture-templates
         ;; Personal templates
         '(("b" "Buy Item" entry (file+headline "~/personal/roam/20211223232407-general_lists.org" "Shopping List")
            "* %?\nEntered %u\n")
-          ("d" "Deadline Item" entry (file+headline "~/personal/me.org" "Tasks")
+          ("d" "Deadline Item" entry (file+headline "~/personal/roam/me.org" "Tasks")
            "* TODO [#C] %?\nDEADLINE: %^t")
           ("i" "Inbox TODO" entry (file+headline brh/default-org-file "Inbox")
            "* TODO [#C] %?\nEntered %u\n")
@@ -150,13 +150,13 @@
            "* TODO [#C] %?\nEntered %u\n")
           ("r" "Weekly Review" entry (file "~/personal/roam/logs.org")
            (function _brh/org-capture-weekly-review))
-          ("s" "Scheduled Item" entry (file+headline "~/personal/me.org" "Tasks")
+          ("s" "Scheduled Item" entry (file+headline "~/personal/roam/me.org" "Tasks")
            "* TODO [#C] %?\nSCHEDULED: %^t")
           ("t" "Standard Todo" entry (file+headline brh/default-org-file "Tasks")
            "* TODO [#C] %?\nEntered %u\n")))
 
   ;; Default notes file for capture
-  (setq org-default-notes-file "~/personal/me.org")
+  (setq org-default-notes-file "~/personal/roam/me.org")
 
   ;; Set org-refile to autocomplete three levels deep and check all agenda files
   (setq org-refile-targets '((org-agenda-files . (:maxlevel . 3))))

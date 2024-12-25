@@ -38,8 +38,8 @@
     "Go to work.org if at work, otherwise me.org"
     (interactive)
     (if brh/at-work
-        (find-file "~/dotfiles_local/notes/work.org")
-      (find-file "~/personal/me.org")))
+        (find-file "~/dotfiles_local/notes/roam/work.org")
+      (find-file "~/personal/roam/me.org")))
 
   (defun brh/org-agenda-write ()
     "Write the current agenda to the Chromium homepage file"
