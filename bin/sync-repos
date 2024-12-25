@@ -16,9 +16,7 @@ update() {
         git pull --ff-only >/dev/null
         git submodule update
         # Only try to git push if we have a non-interactive API/ssh key remote
-        if git remote -v | grep -q '@'; then
-            git push >/dev/null
-        fi
+        git remote -v | grep '@' | awk '{print $1} ' | xargs -n1 git push >/dev/null
     }
     if [ -d "$1/.git" ]; then
         f "$1" &
@@ -28,6 +26,8 @@ update() {
 }
 
 keys >/dev/null 2>&1
+
+update ~/git/nixpkgs
 
 update /etc/nixos
 update ~/.password-store
