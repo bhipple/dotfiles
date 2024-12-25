@@ -123,20 +123,25 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org functions for org-capture-templates.
-                                        ; Note that org-capture takes the function by the string name and then passes it
-                                        ; to `funcall`, so we have to actually have a defined function, not just a
-                                        ; lambda.
+  ;; Note that org-capture takes the function by the string name and then passes it
+  ;; to `funcall`, so we have to actually have a defined function, not just a
+  ;; lambda.
   (defun _brh/org-capture-journal ()
     (progn "* %U\n"))
+
+  (defun brh/compute-date (from arg fmt)
+    (interactive)
+    (string-trim (shell-command-to-string (concat "date -d '" from " " arg "' " fmt))))
 
   (defun _brh/org-capture-weekly-review ()
     "Helper function to go to the weekly review, clock in, and expand my snippet"
     (let* (
-                                        ; TODO: This should be last-review-date +1 so that it doesn't double-count the boundary day itself
            (last-review-date (string-trim (shell-command-to-string "grep 'Weekly Review for ' /home/bhipple/personal/roam/logs.org | head -1 | awk '{print $5}' | sed 's|\\[||'")))
-           (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " last-review-date " " rest)))))
+           ;; Start from last-review-date +1 so that it doesn't double-count the boundary day itself
+           (today (format-time-string "%Y-%m-%d"))
+           (habit-date (brh/compute-date last-review-date "+1day" "-I"))
+           (ledger #'(lambda (rest) (string-trim (shell-command-to-string (concat "lp -b " habit-date " " rest)))))
            (weekly-review-id "9acee905-3db5-4cff-9526-928e9693a323")
-           (today (format-time-string "%Y-%m-%d %a"))
            )
       (progn
         (bh/clock-in-task-by-id weekly-review-id)
@@ -145,18 +150,26 @@
         (re-search-forward "^** Weekly Review for ")
         (forward-line -1)
         (insert "
-** Weekly Review for [" today "]
+** Weekly Review for [" (format-time-string "%Y-%m-%d %a") "]
 *** Recap of last week
 Meditation Sessions: " (funcall ledger "r Meditation | wc -l") "
-Lifts: " (string-trim (shell-command-to-string (concat "workouts.py" " --begin " last-review-date " --count"))) "
+Lifts: " (string-trim (shell-command-to-string (concat "workouts.py" " --begin " habit-date " --count"))) "
 Running: " (funcall ledger "r Running | wc -l") "
 Fasts: " (funcall ledger "r Fasting | wc -l") "
 RLT: " (funcall ledger "r RLT | wc -l") "
 NF: " (funcall ledger "b NF | awk '{print $1}'") "
-*** Goals for next week
+*** High Level Goals for next week
 - [ ]
 - [ ]
 - [ ]
+*** Daily Plan for next week
+**** <" (brh/compute-date today "+1day" "'+%Y-%m-%d %a'") ">
+**** <" (brh/compute-date today "+2day" "'+%Y-%m-%d %a'") ">
+**** <" (brh/compute-date today "+3day" "'+%Y-%m-%d %a'") ">
+**** <" (brh/compute-date today "+4day" "'+%Y-%m-%d %a'") ">
+**** <" (brh/compute-date today "+5day" "'+%Y-%m-%d %a'") ">
+**** <" (brh/compute-date today "+6day" "'+%Y-%m-%d %a'") ">
+**** <" (brh/compute-date today "+7day" "'+%Y-%m-%d %a'") ">
 *** Lessons learned
 **** What went well
 **** What didn't go well
@@ -165,10 +178,8 @@ NF: " (funcall ledger "b NF | awk '{print $1}'") "
         (re-search-backward "^** Weekly Review for ")
         (setq-local this-id (org-id-get-create))
         (recenter))))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
-  ;;
   (defun bh/is-project-p ()
     "Any task with a todo keyword subtask"
     (save-restriction
