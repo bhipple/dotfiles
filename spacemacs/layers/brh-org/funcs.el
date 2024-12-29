@@ -163,13 +163,13 @@ NF: " (funcall ledger "b NF | awk '{print $1}'") "
 - [ ]
 - [ ]
 *** Daily Plan for next week
-**** <" (brh/compute-date today "+1day" "'+%Y-%m-%d %a'") ">
-**** <" (brh/compute-date today "+2day" "'+%Y-%m-%d %a'") ">
-**** <" (brh/compute-date today "+3day" "'+%Y-%m-%d %a'") ">
-**** <" (brh/compute-date today "+4day" "'+%Y-%m-%d %a'") ">
-**** <" (brh/compute-date today "+5day" "'+%Y-%m-%d %a'") ">
-**** <" (brh/compute-date today "+6day" "'+%Y-%m-%d %a'") ">
-**** <" (brh/compute-date today "+7day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+1day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+2day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+3day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+4day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+5day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+6day" "'+%Y-%m-%d %a'") ">
+**** [ ] <" (brh/compute-date today "+7day" "'+%Y-%m-%d %a'") ">
 *** Lessons learned
 **** What went well
 **** What didn't go well
