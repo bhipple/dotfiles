@@ -1,6 +1,7 @@
 local mark = require('harpoon.mark')
 local neogit = require('neogit')
 local telescope = require('telescope.builtin')
+local trouble = require('trouble')
 local ui = require('harpoon.ui')
 local projects = require('telescope').extensions.projects
 
@@ -103,8 +104,14 @@ vim.keymap.set("n", "<leader>to", "<cmd>terminal<CR>", { desc = '[T]erminal [O]p
 vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>", {silent = true, noremap = true})
 vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix toggle<cr>", {silent = true, noremap = true})
 vim.keymap.set("n", "<leader>xr", "<cmd>Trouble telescope toggle<cr>", {silent = true, noremap = true}) -- for generic search results, includes line #
-vim.keymap.set("n", "<leader>xt", "<cmd>Trouble telescope_files toggle<cr>", {silent = true, noremap = true})
+vim.keymap.set("n", "<leader>xf", "<cmd>Trouble telescope_files toggle<cr>", {silent = true, noremap = true})
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", {silent = true, noremap = true})
+
+vim.keymap.set("n", "<leader>xj", trouble.next, { desc = 'Jump to next trouble item' })
+vim.keymap.set("n", "<leader>xk", trouble.prev, { desc = 'Jump to prev trouble item' })
+
+vim.keymap.set("n", "<C-j>", trouble.next, {})
+vim.keymap.set("n", "<C-k>", trouble.prev, {})
 
 --------------------------------------------------------------------------------
 -- [[ Settings options ]]
