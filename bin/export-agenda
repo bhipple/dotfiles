@@ -17,7 +17,7 @@ export_agenda() {
                 --eval "(delete-frame)"
 }
 
-if [ -f ~/dotfiles_local/notes/work.org ]; then
+if [ -f ~/dotfiles_local/notes/roam/work.org ]; then
     export_agenda "wa" "agenda-todo"
 else
     export_agenda "ha" "agenda-todo"

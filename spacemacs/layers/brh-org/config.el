@@ -2,7 +2,7 @@
   ;; Org variable configuration
 
   ;; Hook to tell if I'm at home or at work, to be re-used by other functions
-  (setq brh/at-work (file-exists-p "~/dotfiles_local/notes/work.org"))
+  (setq brh/at-work (file-exists-p "~/dotfiles_local/notes/roam/work.org"))
 
   ;; Enable keybindings defined below for TODO selection
   (setq org-use-fast-todo-selection t)
@@ -131,7 +131,7 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org capture templates
-  (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/work.org" "~/personal/roam/me.org"))
+  (setq brh/default-org-file (if brh/at-work "~/dotfiles_local/notes/roam/work.org" "~/personal/roam/me.org"))
   (setq brh/journal-file (if brh/at-work "~/dotfiles_local/notes/roam/journal.org" "~/personal/roam/journal.org"))
 
   (setq org-capture-templates
