@@ -10,3 +10,7 @@ echo 'alias gg="git grep"' | tee -a $tgt
 echo 'alias ggi="git grep -i"' | tee -a $tgt
 echo 'alias gprs="git prs"' | tee -a $tgt
 echo 'alias grf="git rf"' | tee -a $tgt
+
+for c in $(git --help | grep '^   [a-z]' | awk '{print $1}'); do
+    echo "alias g$c=\"git $c\"" | tee -a $tgt
+done

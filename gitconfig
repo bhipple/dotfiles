@@ -21,6 +21,8 @@
     ca = commit --amend --no-edit
     cae = commit --amend
     ci = commit
+    ciam = commit -a -m
+    cium = commit -a -m
     cin = commit --no-verify
     cl = clone
     co = checkout
