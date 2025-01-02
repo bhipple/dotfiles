@@ -35,7 +35,7 @@ alias nvim="$vim_cmd"
 
 # Global Aliases
 # Lazily, I'm sourcing my aliases in my bashrc too.
-if [[ -n "$ZSH_NAME" ]]; then
+if [ -n "$ZSH_NAME" ]; then
     alias -g C='| xsel -b'
     alias -g CF='| cut -d":" -f1'  # "cut file", from a grep output
     alias -g F='| fzf'
@@ -71,7 +71,7 @@ fi
 
 source ~/.zsh/git_aliases.zsh
 
-[[ -f ~/.zsh_local/aliases_local.zsh ]] && source ~/.zsh_local/aliases_local.zsh
+[ -f ~/.zsh_local/aliases_local.zsh ] && source ~/.zsh_local/aliases_local.zsh
 
 if whence -w l | grep -q alias; then
     unalias l
@@ -83,7 +83,7 @@ if [ -z "$IN_NIX_SHELL" ]; then
 fi
 
 # Only do this at home
-if [[ $USER == "bhipple" ]]; then
+if [ $USER == "bhipple" ]; then
     compdef p='pass'
 fi
 
