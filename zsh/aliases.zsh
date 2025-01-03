@@ -83,7 +83,7 @@ if [ -z "$IN_NIX_SHELL" ]; then
 fi
 
 # Only do this at home
-if [ $USER == "bhipple" ]; then
+if [[ $USER == "bhipple" ]]; then
     compdef p='pass'
 fi
 
