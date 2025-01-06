@@ -34,15 +34,21 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym XF86Search exec --no-startup-id "/home/bhipple/bin/bt-connect"
 bindsym XF86Mail   exec --no-startup-id "/home/bhipple/bin/bt-disconnect"
 
+# Find these codes with xev
+# KC_INTERNATIONAL_1 = 0x0
+# KC_INTERNATIONAL_2 = 0xff27
+# KC_INTERNATIONAL_3 = 
+#bindsym 0xff27 exec i3-sensible-terminal
+
 # Foot Switch bindings
 # left
 # top
 # center
 # right
-#bindsym XF86AudioPrev  exec --no-startup-id /home/bhipple/bin_local/mic 1
+bindsym XF86AudioPrev                       workspace prev
 bindsym XF86AudioStop  exec --no-startup-id /home/bhipple/bin/toggle-talon
 bindsym XF86AudioPlay  exec --no-startup-id xdotool click 1
-bindsym XF86AudioNext  exec --no-startup-id /home/bhipple/bin_local/mic 0
+bindsym XF86AudioNext                       workspace next
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
