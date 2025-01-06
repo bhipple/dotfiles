@@ -35,10 +35,10 @@ bindsym XF86Search exec --no-startup-id "/home/bhipple/bin/bt-connect"
 bindsym XF86Mail   exec --no-startup-id "/home/bhipple/bin/bt-disconnect"
 
 # Find these codes with xev
-# KC_INTERNATIONAL_1 = 0x0
-# KC_INTERNATIONAL_2 = 0xff27
-# KC_INTERNATIONAL_3 = 
-#bindsym 0xff27 exec i3-sensible-terminal
+# KC_INTERNATIONAL_1 = 97
+# KC_INTERNATIONAL_2 = 101
+# KC_INTERNATIONAL_3 = 132
+bindcode 132 exec --no-startup-id /home/bhipple/bin/toggle-talon
 
 # Foot Switch bindings
 # left
