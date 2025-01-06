@@ -38,7 +38,13 @@ bindsym XF86Mail   exec --no-startup-id "/home/bhipple/bin/bt-disconnect"
 # KC_INTERNATIONAL_1 = 97
 # KC_INTERNATIONAL_2 = 101
 # KC_INTERNATIONAL_3 = 132
+# KC_INTERNATIONAL_4 = 100
+# KC_INTERNATIONAL_5 = 102
+#bindcode 97 
+#bindcode 101
 bindcode 132 exec --no-startup-id /home/bhipple/bin/toggle-talon
+bindcode 100 workspace prev
+bindcode 102 workspace next
 
 # Foot Switch bindings
 # left
