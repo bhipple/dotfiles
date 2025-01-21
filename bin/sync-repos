@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # Add my ssh keys to the agent, then update all of my git repos
+set -uo pipefail
 
 check_uncommitted() {
     if ! git status | grep -q "working tree clean"; then
@@ -16,7 +17,9 @@ update() {
         git pull --ff-only >/dev/null
         git submodule update
         # Only try to git push if we have a non-interactive API/ssh key remote
-        git remote -v | grep '@' | awk '{print $1} ' | xargs -n1 git push >/dev/null
+        if git remote -v | grep -q '@'; then
+            git remote -v | grep '@' | awk '{print $1} ' | xargs -n1 git push >/dev/null
+        fi
     }
     if [ -d "$1/.git" ]; then
         f "$1" &
