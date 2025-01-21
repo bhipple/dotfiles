@@ -28,10 +28,10 @@ if hash nvim > /dev/null 2>&1; then
     vim_cmd='nvim'
 else
     vim_cmd='vim'
+    alias nvim="$vim_cmd"
 fi
 alias e="$vim_cmd"
 alias v="$vim_cmd"
-alias nvim="$vim_cmd"
 
 # Global Aliases
 # Lazily, I'm sourcing my aliases in my bashrc too.
