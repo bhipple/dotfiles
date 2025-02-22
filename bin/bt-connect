@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 notify-send "Connecting to bluetooth ..."
 
-sony="38:18:4C:7D:CA:CB"
-jabra="30:50:75:15:DF:4E"
-jabra2="30:50:75:15:DE:39"
+sonym3="38:18:4C:7D:CA:CB"
+sonym5="80:99:E7:5C:8E:85"
 
 for _ in {1..10}; do
     if pacmd list-sinks | grep -q bluez; then
@@ -11,9 +10,8 @@ for _ in {1..10}; do
         break
     fi
     echo "Trying to connect to headset ..."
-    echo -e "connect $sony" | sudo bluetoothctl
-    echo -e "connect $jabra" | sudo bluetoothctl
-    echo -e "connect $jabra2" | sudo bluetoothctl
+    echo -e "connect $sony5" | sudo bluetoothctl
+    echo -e "connect $sony3" | sudo bluetoothctl
     sleep 2
 done
 
