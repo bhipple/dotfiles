@@ -30,9 +30,9 @@ fi
 export KEYTIMEOUT=0
 
 export PATH=\
-:~/bin_local\
+~/bin_local\
 :~/bin\
-~/git/nixpkgs/result/bin\
+:~/git/nixpkgs/result/bin\
 :~/.nix-profile/bin\
 :~/.local/bin\
 :/run/wrappers/bin\
