@@ -60,7 +60,7 @@ if uname -a | grep -q "NixOS"; then
     export IS_NIXOS=1
 fi
 
-# Never ask to auto-update oh-my-zsh; instead require `zgen update`
+# Never ask to auto-update oh-my-zsh; instead require `zgenom update`
 export DISABLE_AUTO_UPDATE=true
 
 # Source local config, if any
