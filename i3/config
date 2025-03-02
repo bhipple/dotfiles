@@ -34,14 +34,14 @@ bindsym XF86AudioMicMute     exec --no-startup-id /home/bhipple/bin_local/mic-to
 bindsym XF86Search exec --no-startup-id "/home/bhipple/bin/bt-connect"
 bindsym XF86Mail   exec --no-startup-id "/home/bhipple/bin/bt-disconnect"
 
-# Look at the emacs roam header for more info:
-# Custom key bindings on my second keyboard
-#bindcode 97 
+# Look at the emacs roam header for more info: "Custom key bindings on my second keyboard"
+# ~/personal/roam/20210822154820-quantum_mechanical_keyboard_qmk.org
+#bindcode 97
 #bindcode 101
-bindcode 132 exec --no-startup-id /home/bhipple/bin/toggle-talon
+bindcode 132 exec --no-startup-id /home/bhipple/bin_local/mic-toggle
 bindcode 100 workspace prev
 bindcode 102 workspace next
-bindcode 103 exec --no-startup-id /home/bhipple/bin_local/mic-toggle
+bindcode 103 exec --no-startup-id /home/bhipple/bin/toggle-talon
 
 # Foot Switch bindings
 # left
