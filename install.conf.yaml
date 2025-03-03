@@ -26,8 +26,6 @@
         force: true
         path: spacemacs/emacs.d
     ~/.gdbinit: gdbinit
-    ~/.ghc/ghci.conf:
-        path: ghc/ghci.conf
     ~/.git_template: git_template/
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
