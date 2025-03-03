@@ -1,6 +1,6 @@
 # name: org quote block
 # key: quote
 # --
-#+BEGIN_QUOTE
+#+begin_quote
 $0
-#+END_QUOTE
+#+end_quote
