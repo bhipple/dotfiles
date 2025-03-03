@@ -1,6 +1,6 @@
-# name: org python block
-# key: py
+# name: org jira code block
+# key: nf
 # --
-#+BEGIN_SRC python
+{noformat}
 $0
-#+END_SRC
+{noformat}
