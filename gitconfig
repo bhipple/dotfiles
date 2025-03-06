@@ -50,6 +50,7 @@
     lp = log -p --stat
     ls = log --stat
     p = pull
+    psm = pull --recurse-submodules
     pp = "!git pull && git push"
     pr = pull-request
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
