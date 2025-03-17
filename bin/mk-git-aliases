@@ -14,6 +14,10 @@ git la | grep -Ev '^g' | cut -d'=' -f1 | grep -v '-' | xargs -I{} echo 'alias g{
 
 echo 'alias gg="git grep"' | tee -a $tmp
 echo 'alias ggi="git grep -i"' | tee -a $tmp
+echo 'alias ggw="git grep -w"' | tee -a $tmp
+echo 'alias ggwi="git grep -wi"' | tee -a $tmp
+echo 'alias ggiw="git grep -iw"' | tee -a $tmp
+
 echo 'alias gprs="git prs"' | tee -a $tmp
 echo 'alias grf="git rf"' | tee -a $tmp
 
