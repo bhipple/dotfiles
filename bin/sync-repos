@@ -28,9 +28,18 @@ update() {
     fi
 }
 
+nixpkgs() {
+    cd ~/git
+    [ -d ~/git/nixpkgs ] || git clone https://github.com/NixOS/nixpkgs
+    cd nixpkgs
+    git pull
+    [ -d ../nix-channel ] || git worktree add ../nix-channel nixos-24.11
+    [ -d ../nixos-24.05 ] || git worktree add ../nixos-24.05 nixos-24.05
+
+}
+
 keys >/dev/null 2>&1
 
-update ~/git/nixpkgs
 
 update /etc/nixos
 update ~/.password-store
@@ -40,6 +49,8 @@ update ~/dotfiles_local
 update ~/ledger
 update ~/personal
 update ~/git/qmk_firmware
+
+nixpkgs
 
 wait
 echo "Finished updating"
