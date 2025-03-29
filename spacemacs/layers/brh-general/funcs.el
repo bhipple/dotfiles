@@ -107,12 +107,10 @@
   ; Of these,
   ; async-shell-command is really lightweight and always works, but it can't take interactive input or re-run a cmd, etc.
   ; vterm is heavier, but stays in emacs
-  ; tmux works nicely with the full, normal shell and multiple monitors
-  (let* ((choices '("vterm" "tmux" "async-shell-command-in-root"))
+  (let* ((choices '("vterm" "async-shell-command-in-root"))
          (sel (completing-read
                "terminal runner choice: " choices)))
     (cond ((string-equal sel "vterm") (setq brh/current-shell-func 'run-in-vterm))
-          ((string-equal sel "tmux") (setq brh/current-shell-func 'brh/_tmux-cmd))
           ((string-equal sel "async-shell-command-in-root") (setq brh/current-shell-func 'brh/_async-shell-command-in-root))
           (t (message "Choice not recognized")))))
 
@@ -122,20 +120,6 @@
 (defun brh/_async-shell-command-in-root (cmd)
   (projectile-with-default-dir (projectile-acquire-root)
     (async-shell-command cmd)))
-
-(defun brh/_get-tmux-pane ()
-  "Get the number of the a tmux pane NOT running emacs on current window"
-  (replace-regexp-in-string "\n$" "" (shell-command-to-string "tmux-pane-for-emacs.py")))
-
-(defun brh/_tmux-cmd (cmd)
-  "Send a command to the active tmux terminal session. Also saves the buffer"
-  (save-buffer 0)
-  ; TODO: Detect if spacemacs is running inside a terminal, and if so send it to
-
-  ; a non-active tmux pane
-  (let* ((target-pane (brh/_get-tmux-pane))
-         (full-cmd (concat "tmux send-keys -t " target-pane " '" cmd "' Enter")))
-    (shell-command full-cmd t t)))
 
 (defun brh/edit-shell-cmds ()
   "Open up the shell-cmds file for editing"
