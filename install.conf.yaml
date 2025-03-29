@@ -22,6 +22,8 @@
         path: nvim/
     ~/.config/pycodestyle:
         path: config/pycodestyle
+    ~/.config/zellij:
+        path: zellij/
     ~/.dir_colors: dir_colors
     ~/.dotfiles: ''
     ~/.emacs.d:
