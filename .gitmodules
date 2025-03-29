@@ -15,3 +15,6 @@
 [submodule "zgenom"]
 	path = zgenom
 	url = https://github.com/jandamm/zgenom.git
+[submodule "alacritty/alacritty-theme"]
+	path = alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme

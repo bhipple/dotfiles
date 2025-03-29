@@ -12,6 +12,8 @@
     ~/.bashrc:
         force: true
         path: bashrc
+    ~/.config/alacritty:
+        path: alacritty/
     ~/.config/i3:
         path: i3/
     ~/.config/nixpkgs:
