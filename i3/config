@@ -63,7 +63,7 @@ bindsym $mod+c kill
 bindsym $mod+shift+c exec --no-startup-id "/home/bhipple/bin/screenclip"
 
 # start program shortcuts
-bindsym $mod+i exec brave
+bindsym $mod+shift+i exec brave
 bindsym $mod+p exec dmenu_run  # program launcher
 
 # change focus; same keybindings as tmux but with alt instead
