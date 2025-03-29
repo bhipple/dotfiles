@@ -11,11 +11,6 @@
 *Customization: -mono
 #endif
 
-Mwm.keyboardFocusPolicy: explicit
-Mwm*XClock*clientDecoration: Border
-Mwm*XBiff*clientDecoration: Border
-Mwm*iconDecoration: label activelabel
-Mwm*iconPlacement: bottom right
 
 ! UXTerm settings
 UXTerm*faceName: Source Code Pro Sans Mono:size=12
