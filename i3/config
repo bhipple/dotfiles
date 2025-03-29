@@ -193,7 +193,7 @@ bar {
 
 ################################################################################
 # Keys for launching programs
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 bindsym $mod+a exec anki
 bindsym $mod+e exec "emacsclient -c"
 
