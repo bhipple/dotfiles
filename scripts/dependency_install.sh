@@ -14,10 +14,6 @@ if hostname | grep -qE "^brh"; then
     INSTALL_ALL=1
 fi
 
-if [[ -d /mnt/wsl ]]; then
-    INSTALL_ALL=1
-fi
-
 #############################################
 # Create ssh dir with appropriate permissions
 #
