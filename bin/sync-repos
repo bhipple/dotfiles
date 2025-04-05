@@ -33,9 +33,12 @@ nixpkgs() {
     [ -d ~/git/nixpkgs ] || git clone https://github.com/NixOS/nixpkgs
     cd nixpkgs
     git pull
-    [ -d ../nix-channel ] || git worktree add ../nix-channel nixos-24.11
-    [ -d ../nixos-24.05 ] || git worktree add ../nixos-24.05 nixos-24.05
 
+    for d in nixos-unstable nixos-24.05 nixos-24.11; do
+        [ -d ~/git/$d ] || git worktree add ~/git/$d $d
+        cd ~/git/$d
+        git pull
+    done
 }
 
 keys >/dev/null 2>&1
