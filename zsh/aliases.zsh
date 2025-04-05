@@ -36,7 +36,7 @@ alias v="$vim_cmd"
 # Global Aliases
 # Lazily, I'm sourcing my aliases in my bashrc too.
 if [ -n "$ZSH_NAME" ]; then
-    alias -g C='| xsel -b'
+    alias -g C='| xsel'
     alias -g CF='| cut -d":" -f1'  # "cut file", from a grep output
     alias -g F='| fzf'
     alias -g G='| rg'
