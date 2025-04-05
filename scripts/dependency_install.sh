@@ -2,7 +2,7 @@
 set -euo pipefail
 
 INSTALL_ALL=""
-CHANNEL=$HOME/git/nix-channel
+CHANNEL=$HOME/git/nixos-unstable
 
 if ! [ -d $CHANNEL ]; then
     echo "No nix channel, assuming not setup for local work and exiting"
@@ -42,7 +42,6 @@ nix_install() {
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
         nix-env -f ~/git/nixos-24.05 -k -iA ledger
-        nix-env -f ~/git/nixpkgs -k -iA zellij
     fi
 }
 
