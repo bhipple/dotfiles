@@ -2,7 +2,8 @@
 set -euxo pipefail
 
 # This moves fast; get a recent one
-aider=$(nix build -Lvf ~/git/nixpkgs --no-link --print-out-paths aider-chat)
+aider=$(nix build -Lvf ~/git/nixos-unstable --no-link --print-out-paths aider-chat)
 
 export OLLAMA_API_BASE=http://127.0.0.1:11434
-$aider/bin/aider --no-gitignore --model ollama_chat/deepseek-r1:32b
+
+$aider/bin/aider --no-gitignore --model ollama_chat/deepseek-r1:32b $@
