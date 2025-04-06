@@ -154,7 +154,7 @@
 *** Recap of last week
 Meditation Sessions: " (funcall ledger "r Meditation | wc -l") "
 Lifts: " (string-trim (shell-command-to-string (concat "workouts.py" " --begin " habit-date " --count"))) "
-Running: " (funcall ledger "r Running | wc -l") "
+Saunas: " (funcall ledger "r Sauna | wc -l") "
 Fasts: " (funcall ledger "r Fasting | wc -l") "
 RLT: " (funcall ledger "r RLT | wc -l") "
 NF: " (funcall ledger "b NF | awk '{print $1}'") "
@@ -178,6 +178,7 @@ NF: " (funcall ledger "b NF | awk '{print $1}'") "
         (re-search-backward "^** Weekly Review for ")
         (setq-local this-id (org-id-get-create))
         (recenter))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; bh/ functions are taken from http://doc.norang.ca/org-mode.html#License
   (defun bh/is-project-p ()
