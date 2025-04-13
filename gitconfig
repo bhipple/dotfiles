@@ -22,6 +22,7 @@
     cae = commit --amend
     ci = commit
     ciam = commit -a -m
+    ciamup = commit -a -m up
     cin = commit --no-verify
     cl = clone
     co = checkout
