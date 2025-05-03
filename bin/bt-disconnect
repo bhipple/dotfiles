@@ -4,3 +4,5 @@ while read -r ln; do
     id=$(echo $ln | awk '{print $2}')
     echo -e "disconnect $id" | sudo bluetoothctl
 done < <(bluetoothctl devices)
+
+audio hdmi

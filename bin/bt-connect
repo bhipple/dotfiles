@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 notify-send "Connecting to bluetooth ..."
 
-sonym3="38:18:4C:7D:CA:CB"
 sonym5="80:99:E7:5C:8E:85"
 
 for _ in {1..10}; do
-    if pacmd list-sinks | grep -q bluez; then
+    if pactl list sinks short | grep -q bluez; then
         notify-send "Successfully connected to headset!"
         break
     fi
     echo "Trying to connect to headset ..."
-    echo -e "connect $sony5" | sudo bluetoothctl
-    echo -e "connect $sony3" | sudo bluetoothctl
+    echo -e "connect $sonym5" | sudo bluetoothctl
     sleep 2
 done
 
 # Set audio to headset
-sink=$(pacmd list-sinks | grep -B1 bluez | head -1 | awk '{print $NF}')
+sink=$(pactl list sinks short | grep bluez | head -1 | awk '{print $1}')
 audio $sink
