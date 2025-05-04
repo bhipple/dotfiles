@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-while read -r ln; do
-    notify-send "Disconnecting from $ln"
-    id=$(echo $ln | awk '{print $2}')
-    echo -e "disconnect $id" | sudo bluetoothctl
-done < <(bluetoothctl devices)
-
-audio hdmi
