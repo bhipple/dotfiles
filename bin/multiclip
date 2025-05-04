@@ -1,8 +1,9 @@
-/usr/bin/env zsh
-set -euxo pipefail
-while read input; do 
-    echo "I got $input"
-done </dev/stdin
+#!/usr/bin/env zsh
+set -euo pipefail
 
-xclip -selection primary </dev/stdin
-xclip -selection clipboard </dev/stdin
+input=$(cat)
+
+echo $input | xclip -selection primary
+echo $input | xclip -selection clipboard
+
+notify-send "Copied to clipboard: $input"
