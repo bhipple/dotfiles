@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euxo pipefail
+#tee >(xclip -selection clipboard) >(xclip -selection primary)
+xclip -selection primary </dev/stdin
