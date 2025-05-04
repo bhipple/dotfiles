@@ -38,6 +38,7 @@ nix_install() {
     # Build first before installing, so we can see the progress bar
     set -x
     nix build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
+    nix build -Lvf ~/git/nixos-24.05 ledger
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
@@ -47,7 +48,7 @@ nix_install() {
 
 browserpass_install() {
     # This file needs to be symlinked manually; the NixOS package can't do it.
-    passfile="$(nix build -Lvf $CHANNEL browserpass --print-out-paths)/lib/browserpass/hosts/chromium/com.github.browserpass.native.json"
+    passfile="$(nix build -Lvf $CHANNEL --no-link browserpass --print-out-paths)/lib/browserpass/hosts/chromium/com.github.browserpass.native.json"
     (
       cd ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
       rm -rf *

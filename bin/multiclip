@@ -1,4 +1,8 @@
-#!/usr/bin/env zsh
+/usr/bin/env zsh
 set -euxo pipefail
+while read input; do 
+    echo "I got $input"
+done </dev/stdin
+
 xclip -selection primary </dev/stdin
 xclip -selection clipboard </dev/stdin
