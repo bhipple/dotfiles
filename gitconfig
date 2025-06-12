@@ -85,6 +85,7 @@
     up = unpulled
     us = branch --set-upstream-to=origin/stage
     ut = branch --set-upstream-to=origin/testing
+    wt = worktree
 
     # List aliases
     la = "!git config -l | grep alias | cut -c 7-"
