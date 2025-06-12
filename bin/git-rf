@@ -6,12 +6,34 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 0
 fi
 
-for b in origin/master origin/dev $(git branch -r | grep origin/release/); do
+# Get the list of branch names we're going to update
+BRANCHES_TO_UPDATE=()
+for b in origin/master $(git branch -r | grep origin/release/); do
+    BRANCHES_TO_UPDATE+=(${b#origin/})
     git branch -f ${b#origin/} $b >/dev/null 2>&1
 done
+echo "Branches being updated: ${BRANCHES_TO_UPDATE[@]}"
 
-if git branch | grep -Eq '* (master|dev)'; then
-    git pull
+# Check for worktrees and update them if they're on one of our branches
+if git worktree list > /dev/null 2>&1; then
+    echo "DEBUG: Processing worktrees..."
+    git worktree list | tee /dev/stderr | while read line; do
+        echo "DEBUG: Processing worktree line: $line"
+        WORKTREE_PATH=$(echo $line | awk '{print $1}')
+        WORKTREE_BRANCH=$(echo $line | grep -o '\[.*\]' | tr -d '[]')
+        echo "DEBUG:   - Path: $WORKTREE_PATH"
+        echo "DEBUG:   - Branch: $WORKTREE_BRANCH"
+
+        # If this worktree is on one of our branches
+        echo "DEBUG:   - Checking against branches: ${BRANCHES_TO_UPDATE[@]}"
+        for branch in ${BRANCHES_TO_UPDATE[@]}; do
+            echo "DEBUG:     - Testing if '$WORKTREE_BRANCH' == '$branch'"
+            if [[ "$WORKTREE_BRANCH" == "$branch" ]]; then
+                echo "Updating worktree at $WORKTREE_PATH (branch: $branch)"
+                (cd "$WORKTREE_PATH" && git reset --hard origin/$branch)
+            fi
+        done
+    done
 fi
 
 git branch -vv | grep ': gone]'|  grep -v '*' | grep -v '+' | awk '{ print $1 }' | xargs -r git branch -D
@@ -19,6 +41,7 @@ if [ -n $1 ]; then
     git checkout -f $1 >/dev/null 2>&1
 fi
 
+# Cleanup merged feature branches
 for b in master; do
     git branch --merged origin/$b | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?|[*])' | xargs -rn 1 git branch -d >/dev/null 2>&1
     git branch --merged origin/$b -r | grep -Ev '^[ ]*(master|dev|stage|testing|prod|releases?)' \
@@ -28,3 +51,4 @@ done
 echo ""
 echo "Local branches remaining after cleanup:"
 git --no-pager branch
+git worktree list
