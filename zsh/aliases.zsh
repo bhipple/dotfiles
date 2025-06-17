@@ -18,7 +18,6 @@ alias sdiff='diff --side-by-side'
 alias sqlite3='rlwrap sqlite3'
 alias ta='. tmux-attach'
 alias tn='tmux rename-window $(git rev-parse --show-toplevel | xargs basename)'
-alias trashdir='echo "Nuking pwd and all subdirs"; chmod -R a+rwx . && rm -rf *'
 alias treee='tree'
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias wfc='curl wttr.in/new_york'

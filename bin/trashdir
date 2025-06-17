@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+set -euxo pipefail
+dir=$1
+echo "Nuking $dir and all subdirs in 3 seconds"
+sleep 3
+
+mv $dir $dir.bak
+chmod -R u+rwx $dir.bak && rm -rf $dir.bak
