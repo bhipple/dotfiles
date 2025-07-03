@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 set -euxo pipefail
-dir=$1
+dir=${1%/}
 echo "Nuking $dir and all subdirs in 3 seconds"
 sleep 3
 
