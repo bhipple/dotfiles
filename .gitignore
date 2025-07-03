@@ -14,4 +14,5 @@ vim/init.vim
 vim/spell/*.spl
 vim/spell/*.sug
 .aider*
+.claude/*
 .env
