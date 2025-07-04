@@ -17,22 +17,22 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-  'ThePrimeagen/harpoon',                                                       -- Workspace management
-  'ahmedkhalf/project.nvim',                                                    -- SPC p p project management and auto-cd
-  'f-person/git-blame.nvim',                                                    -- :GitBlameToggle
-  'folke/trouble.nvim',                                                         -- Quickfix/Loclist/LSP Info
-  'hrsh7th/cmp-buffer',                                                         -- autocompletions from buffer
-  'ledger/vim-ledger',                                                          -- ledger-cli mode
-  'sindrets/diffview.nvim',
-  'stevearc/dressing.nvim',                                                     -- Nicer popups
-  'tpope/vim-surround',
-  'tpope/vim-vinegar',                                                          -- Netrw replacement
-  'wsdjeg/vim-fetch',                                                           -- Understand formats line file:line when opening
-  {'aserowy/tmux.nvim', opts = {} },
-  {'numToStr/Comment.nvim', opts = {} },                                        -- "gc" to comment visual regions/lines
-  {'nvim-orgmode/orgmode', dependencies = {'nvim-treesitter/nvim-treesitter'}}, -- org-mode
+  { 'ThePrimeagen/harpoon', lazy = true },              -- Workspace management
+  { 'ahmedkhalf/project.nvim', lazy = true },           -- SPC p p project management and auto-cd
+  { 'f-person/git-blame.nvim', lazy = true },           -- :GitBlameToggle
+  { 'folke/trouble.nvim', lazy = true },                -- Quickfix/Loclist/LSP Info
+  { 'folke/which-key.nvim', opts = {} },                -- Useful plugin to show you pending keybinds.
+  { 'hrsh7th/cmp-buffer', lazy = true },                -- autocompletions from buffer
+  { 'ledger/vim-ledger', lazy = true },                 -- ledger-cli mode
+  { 'sindrets/diffview.nvim', lazy = true },
+  { 'stevearc/dressing.nvim', lazy = true },            -- Nicer popups
+  { 'tpope/vim-surround', lazy = true },
+  { 'tpope/vim-vinegar', lazy = true },                 -- Netrw replacement
+  { 'wsdjeg/vim-fetch', lazy = true },                  -- Understand formats line file:line when opening
+  { 'numToStr/Comment.nvim', lazy = true, opts = {} },   -- "gc" to comment visual regions/lines
 
   {'NeogitOrg/neogit',
+    lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',         -- required
       'nvim-telescope/telescope.nvim', -- optional
@@ -46,6 +46,7 @@ require('lazy').setup({
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    lazy = true,
     dependencies = {
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -55,13 +56,14 @@ require('lazy').setup({
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
+    lazy = true,
     dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    lazy = true,
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
@@ -80,33 +82,6 @@ require('lazy').setup({
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
-  },
-
-  { -- Ollama integration
-    "David-Kunz/gen.nvim",
-    dir = "~/git/gen.nvim",
-    opts = {
-        model = "llama3.1", -- The default model to use.
-        quit_map = "q", -- set keymap for close the response window
-        retry_map = "<c-r>", -- set keymap to re-send the current prompt
-        accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
-        host = "localhost", -- The host running the Ollama service.
-        port = "11434", -- The port on which the Ollama service is listening.
-        display_mode = "split", -- The display mode. Can be "float" or "split" or "horizontal-split".
-        show_prompt = true, -- Shows the prompt submitted to Ollama.
-        no_auto_close = true, -- Never closes the window automatically.
-        hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`)
-        command = function(options)
-            local body = {model = options.model, stream = true}
-            return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
-        end,
-        -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
-        -- This can also be a command string.
-        -- The executed command must return a JSON object with { response, context }
-        -- (context property is optional).
-        -- list_models = '<omitted lua function>', -- Retrieves a list of model names
-        debug = false -- Prints errors and the command which is run.
-    }
   },
 
   { -- Set lualine as statusline
@@ -146,7 +121,7 @@ require('lazy').setup({
   },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'ahmedkhalf/project.nvim' } },
+  { 'nvim-telescope/telescope.nvim', lazy = true, version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'ahmedkhalf/project.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -155,24 +130,26 @@ require('lazy').setup({
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
     --       refer to the README for telescope-fzf-native for more instructions.
+    laze = true,
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
     end,
   },
 
-  { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    config = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-  },
+  --{ -- Highlight, edit, and navigate code
+  --  'nvim-treesitter/nvim-treesitter',
+  --  dependencies = {
+  --    'nvim-treesitter/nvim-treesitter-textobjects',
+  --  },
+  --  config = function()
+  --    pcall(require('nvim-treesitter.install').update { with_sync = true })
+  --  end,
+  --},
 
   { -- :Trim command for whitespace cleanup
     'cappyzawa/trim.nvim',
+    lazy = true,
     opts = {
       ft_blocklist = {},
       patterns = {},
@@ -226,74 +203,74 @@ require('telescope').load_extension('projects')
 
 --------------------------------------------------------------------------------
 -- Treesitter
-require('nvim-treesitter.configs').setup {
-  -- Defer to Nix instead of trying to install ourselves
-  auto_install = false,
-  sync_install = false,
-  ensure_installed = {},
-  ingore_install = { "all" },
-  modules = {},
-
-  highlight = {
-    enable = true,
-    disable = { "lua", "c", "query", },
-    additional_vim_regex_highlighting = false,
-  },
-  indent = { enable = true, disable = { } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
-}
+-- require('nvim-treesitter.configs').setup {
+--   -- Defer to Nix instead of trying to install ourselves
+--   auto_install = false,
+--   sync_install = false,
+--   ensure_installed = {},
+--   ingore_install = { "all" },
+--   modules = {},
+-- 
+--   highlight = {
+--     enable = true,
+--     disable = { "lua", "c", "query", },
+--     additional_vim_regex_highlighting = false,
+--   },
+--   indent = { enable = true, disable = { } },
+--   incremental_selection = {
+--     enable = true,
+--     keymaps = {
+--       init_selection = '<c-space>',
+--       node_incremental = '<c-space>',
+--       scope_incremental = '<c-s>',
+--       node_decremental = '<M-space>',
+--     },
+--   },
+--   textobjects = {
+--     select = {
+--       enable = true,
+--       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+--       keymaps = {
+--         -- You can use the capture groups defined in textobjects.scm
+--         ['aa'] = '@parameter.outer',
+--         ['ia'] = '@parameter.inner',
+--         ['af'] = '@function.outer',
+--         ['if'] = '@function.inner',
+--         ['ac'] = '@class.outer',
+--         ['ic'] = '@class.inner',
+--       },
+--     },
+--     move = {
+--       enable = true,
+--       set_jumps = true, -- whether to set jumps in the jumplist
+--       goto_next_start = {
+--         [']m'] = '@function.outer',
+--         [']]'] = '@class.outer',
+--       },
+--       goto_next_end = {
+--         [']M'] = '@function.outer',
+--         [']['] = '@class.outer',
+--       },
+--       goto_previous_start = {
+--         ['[m'] = '@function.outer',
+--         ['[['] = '@class.outer',
+--       },
+--       goto_previous_end = {
+--         ['[M'] = '@function.outer',
+--         ['[]'] = '@class.outer',
+--       },
+--     },
+--     swap = {
+--       enable = true,
+--       swap_next = {
+--         ['<leader>a'] = '@parameter.inner',
+--       },
+--       swap_previous = {
+--         ['<leader>A'] = '@parameter.inner',
+--       },
+--     },
+--   },
+-- }
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
