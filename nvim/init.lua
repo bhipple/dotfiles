@@ -328,16 +328,6 @@ cmp.setup.cmdline('/', {
   }
 })
 
--- `:` cmdline setup.
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-
 -- After entering a python buffer, sleep to allow LSP to startup, then change its bundle
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
