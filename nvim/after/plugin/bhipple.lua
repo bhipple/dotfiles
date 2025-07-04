@@ -135,7 +135,10 @@ vim.o.number = true
 vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = 'unnamed,unnamedplus'
+-- Schedule the setting after `UiEnter` because it can increase startup-time.
+vim.schedule(function()
+    vim.o.clipboard = 'unnamed,unnamedplus'
+end)
 
 -- Enable break indent
 vim.o.breakindent = true
