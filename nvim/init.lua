@@ -27,7 +27,7 @@ require('lazy').setup({
   { 'sindrets/diffview.nvim', lazy = true },
   { 'stevearc/dressing.nvim', lazy = true },            -- Nicer popups
   { 'tpope/vim-surround', lazy = true },
-  { 'tpope/vim-vinegar', lazy = true },                 -- Netrw replacement
+  { 'tpope/vim-vinegar' },                              -- Netrw replacement
   { 'wsdjeg/vim-fetch', lazy = true },                  -- Understand formats line file:line when opening
   { 'numToStr/Comment.nvim', lazy = true, opts = {} },   -- "gc" to comment visual regions/lines
 
