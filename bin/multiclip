@@ -3,7 +3,8 @@ set -euo pipefail
 
 input=$(cat)
 
-echo $input | xclip -selection primary
-echo $input | xclip -selection clipboard
+echo $input | xclip -selection primary &
+echo $input | xclip -selection clipboard &
+echo $input | xsel -b &
 
-notify-send "Copied to clipboard: $input"
+# notify-send "Copied to clipboard: $input"
