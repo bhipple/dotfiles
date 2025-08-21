@@ -1,11 +1,6 @@
 #!/usr/bin/env zsh
 git fetch --all --prune >/dev/null 2>&1
 
-if [ -n "$(git status --porcelain)" ]; then
-    echo "Git status in $(pwd) is not clean. Exiting after fetch --all, to avoid destroying work."
-    exit 0
-fi
-
 # Get the list of branch names we're going to update
 BRANCHES_TO_UPDATE=()
 for b in origin/master $(git branch -r | grep origin/release/); do
@@ -36,8 +31,14 @@ if git worktree list > /dev/null 2>&1; then
     done
 fi
 
-git branch -vv | grep ': gone]'|  grep -v '*' | grep -v '+' | awk '{ print $1 }' | xargs -r git branch -D
+git branch -vv | grep ': gone]'|  grep -v '*' | grep -v '+' | awk '{print $1}' | xargs -r git branch -D
+
 if [ -n $1 ]; then
+    if [ -n "$(git status --porcelain)" ]; then
+        echo "Git status in $(pwd) is not clean. Exiting after fetch --all, to avoid destroying work."
+        exit 0
+    fi
+
     git checkout -f $1 >/dev/null 2>&1
 fi
 
