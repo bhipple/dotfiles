@@ -34,7 +34,6 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
-    ~/.haskeline: haskeline
     ~/.inputrc: inputrc
     ~/.ledgerrc: ledgerrc
     ~/.pylintrc: pylintrc
