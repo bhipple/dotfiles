@@ -209,6 +209,7 @@ no_focus [title="^join\?action=join.*$"]
 
 # Other floating windows
 for_window [title="^Tabletop Simulator$"] floating enable
+for_window [title="^Dune: Imperium"] floating enable
 
 ################################################################################
 # Startup
