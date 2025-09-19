@@ -34,6 +34,10 @@ nixpkgs() {
     cd nixpkgs
     git pull
 
+    cd ~/git/nix-channel
+    git checkout nixos-25.05
+    git pull
+
     for d in nixos-unstable nixos-24.05 nixos-24.11; do
         [ -d ~/git/$d ] || git worktree add ~/git/$d $d
         cd ~/git/$d
