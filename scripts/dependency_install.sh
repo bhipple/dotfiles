@@ -2,7 +2,7 @@
 set -euo pipefail
 
 INSTALL_ALL=""
-CHANNEL=$HOME/git/nix-channel
+CHANNEL=$HOME/git/nixos-25.05
 
 if ! [ -d $CHANNEL ]; then
     echo "No nix channel, assuming not setup for local work and exiting"
