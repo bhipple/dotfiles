@@ -4,7 +4,7 @@
 # - Disable the trackpad
 # - Update XResources
 undocked() {
-    xmodmap ~/dotfiles_local/xmodmap/colemak
+    xmodmap ~/dotfiles/xmodmap/colemak
     xrandr --dpi 192 \
            --screen 0 --size 2560x1440 \
            --output eDP-1 --auto --primary --pos 0x0
