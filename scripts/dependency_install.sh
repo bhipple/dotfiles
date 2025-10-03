@@ -10,7 +10,7 @@ if ! [ -d $CHANNEL ]; then
 fi
 
 # Whether to just do minEnv or all
-if hostname | grep -qE "^brh"; then
+if whoami | grep -qE "^bhipple"; then
     INSTALL_ALL=1
 fi
 
