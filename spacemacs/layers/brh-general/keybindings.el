@@ -71,8 +71,7 @@
   "op"   'magit-push-current-to-upstream
   "oso"  'org-sort-entries
   "oss"  'brh/sort-section
-  "ot"   (lambda () "Add org TODO" (interactive)
-           (org-insert-todo-heading-respect-content))
+  "ot"   'brh/org-insert-todo-heading-respect-content-with-properties
   "ovd"  'alsamixer-down-volume
   "ovm"  'alsamixer-toggle-mute
   "ovu"  'alsamixer-up-volume

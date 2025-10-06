@@ -121,6 +121,16 @@
         (message (thing-at-point 'line))
         )))
 
+  (defun brh/org-insert-todo-heading-respect-content-with-properties ()
+    "Insert an org TODO with a PROPERTIES block and ID"
+    (interactive)
+    (org-insert-todo-heading-respect-content)
+                                        ;(org-back-to-heading t)
+    (newline)
+    (insert ":PROPERTIES:\n:ID: " (org-id-uuid) "\n:END:")
+    (org-back-to-heading t)
+    (org-end-of-line))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org functions for org-capture-templates.
   ;; Note that org-capture takes the function by the string name and then passes it
@@ -244,4 +254,5 @@ Callers of this function already widen the buffer view."
     "Clock in a task by id and jump to it in the buffer"
     (org-with-point-at (org-id-find id 'marker) (org-clock-in nil))
     (org-clock-goto))
+
   )
