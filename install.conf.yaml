@@ -14,6 +14,9 @@
         path: bashrc
     ~/.config/alacritty:
         path: alacritty/
+    # Specified as files instead of dir so local can add to it
+    ~/.config/git/config: git/config
+    ~/.config/git/ignore: git/ignore
     ~/.config/i3:
         path: i3/
     ~/.config/nixpkgs:
@@ -31,8 +34,6 @@
         path: spacemacs/emacs.d
     ~/.gdbinit: gdbinit
     ~/.git_template: git_template/
-    ~/.gitconfig: gitconfig
-    ~/.gitignore_global: gitignore_global
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.inputrc: inputrc
     ~/.ledgerrc: ledgerrc
