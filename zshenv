@@ -29,19 +29,43 @@ fi
 # Delay to wait in hundredths of seconds for switching to normal mode with ESC
 export KEYTIMEOUT=0
 
-export PATH=\
-~/bin_local\
-:~/bin\
-:~/git/nixpkgs/result/bin\
-:~/.nix-profile/bin\
-:~/.local/bin\
-:/run/wrappers/bin\
-:/etc/profiles/per-user/$USER/bin\
-:/nix/var/nix/profiles/$USER/bin\
-:/run/current-system/sw/bin\
-:/usr/local/bin\
-:/usr/bin\
+## ============================================================================
+##                               PATH Setup
+## ============================================================================
+# Define directories to add (modify this list as needed)
+typeset -a desired_dirs=(
+    ~/bin_local
+    ~/bin
+    ~/git/nixpkgs/result/bin
+    ~/.nix-profile/bin
+    ~/.local/bin
+    /run/wrappers/bin
+    /etc/profiles/per-user/$USER/bin
+    /nix/var/nix/profiles/$USER/bin
+    /run/current-system/sw/bin
+    /usr/local/bin
+    /usr/bin
+)
 
+# Create an associative array for existing PATH components
+typeset -A existing_paths
+local dir
+for dir in ${(s/:/)PATH}; do
+    existing_paths[$dir]=1
+done
+
+# Add new directories if they exist and aren't in PATH
+local d
+for d in $desired_dirs; do
+    if [[ -d $d && -z ${existing_paths[$d]} ]]; then
+        path+=("$d")
+        existing_paths[$d]=1  # Prevent duplicates in desired_dirs
+    fi
+done
+
+## ============================================================================
+##                               Misc Settings
+## ============================================================================
 # Enable full support for Unicode explicitly
 export LANG=en_US.UTF-8
 
