@@ -321,7 +321,7 @@ default_mode "normal"
 //   - true (default)
 //   - false
 // 
-// mouse_mode false
+mouse_mode false
  
 // Toggle having pane frames around the panes
 // Options:
@@ -345,7 +345,7 @@ default_mode "normal"
 //   - detach (Default)
 //   - quit
 // 
-on_force_close "quit"
+// on_force_close "detach"
  
 // Configure the scroll back buffer size
 // This is the number of lines zellij stores for each pane in the scroll back
