@@ -2,7 +2,11 @@
 *.o
 *.pyc
 *~
+.aider*
+.claude/*
+.env
 .luarc.json
+/.*llm-untrusted-ok
 bin/hub
 emacs~
 nodes
@@ -13,6 +17,3 @@ vim/haskellmode.config
 vim/init.vim
 vim/spell/*.spl
 vim/spell/*.sug
-.aider*
-.claude/*
-.env

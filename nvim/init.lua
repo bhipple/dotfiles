@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   { 'ThePrimeagen/harpoon', lazy = true },              -- Workspace management
-  { 'ahmedkhalf/project.nvim', lazy = true },           -- SPC p p project management and auto-cd
   { 'f-person/git-blame.nvim', lazy = true },           -- :GitBlameToggle
   { 'folke/trouble.nvim', lazy = true },                -- Quickfix/Loclist/LSP Info
   { 'folke/which-key.nvim', opts = {} },                -- Useful plugin to show you pending keybinds.
@@ -45,6 +44,19 @@ require('lazy').setup({
     config = true,
     diffview = true,
     icons = false,
+  },
+
+  {'DrKJeff16/project.nvim',
+    lazy = false,
+    version = false, -- Get the latest release
+    dependencies = { -- OPTIONAL
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'ibhagwan/fzf-lua',
+    },
+    config = function()
+      require('project_nvim').setup()
+    end,
   },
 
   { -- LSP Configuration & Plugins
@@ -121,7 +133,7 @@ require('lazy').setup({
   },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', lazy = true, version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'ahmedkhalf/project.nvim' } },
+  { 'nvim-telescope/telescope.nvim', lazy = true, version = '*', dependencies = { 'nvim-lua/plenary.nvim', } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -195,8 +207,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --------------------------------------------------------------------------------
 -- Trivial Plugins
-require('trouble').setup { }
 require('gitblame').setup { enabled = false }
+--require('project').setup()
+require('trouble').setup { }
+
 --------------------------------------------------------------------------------
 -- Telescope and Project
 -- See `:help telescope` and `:help telescope.setup()`
@@ -219,7 +233,6 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
-require('project_nvim').setup { patterns = { ".git" } }
 require('telescope').load_extension('projects')
 
 --------------------------------------------------------------------------------
