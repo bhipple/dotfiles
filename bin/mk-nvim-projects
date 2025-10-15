@@ -9,7 +9,7 @@ add_dir() {
     fi
 }
 
-for d in $(realpath ~/git/* ~/git/*/* ~/g/* ~/g/*/* ~/dotfiles ~/dotfiles_local ~/ledger ~/personal /etc/nixos); do
+for d in $(realpath ~/git/*/* ~/g/*/* ~/dotfiles ~/dotfiles_local ~/ledger ~/personal /etc/nixos); do
     if [ -d $d/.git ]; then
         add_dir $d
     fi
