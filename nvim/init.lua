@@ -55,7 +55,7 @@ require('lazy').setup({
       'ibhagwan/fzf-lua',
     },
     config = function()
-      require('project_nvim').setup()
+      require('project').setup()
     end,
   },
 
