@@ -39,13 +39,13 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Python LSP
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pyright
-require'lspconfig'.pyright.setup{}
+vim.lsp.config("pyright", {})
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
-require'lspconfig'.ruff.setup{}
+vim.lsp.config("ruff", {})
 
 -- Lua LSP
-require'lspconfig'.lua_ls.setup {
+vim.lsp.config("lua_ls", {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -70,4 +70,4 @@ require'lspconfig'.lua_ls.setup {
       }
     }
   }
-}
+})
