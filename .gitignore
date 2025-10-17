@@ -1,6 +1,7 @@
 *.log
 *.o
 *.pyc
+*.yas-compiled-snippets.el
 *~
 .aider*
 .claude/*
@@ -11,6 +12,7 @@ bin/hub
 emacs~
 nodes
 nvim/lazy-lock.json
+result
 tags
 vim/autoload/plug.vim.old
 vim/haskellmode.config
