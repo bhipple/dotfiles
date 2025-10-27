@@ -271,16 +271,18 @@
   (define-key org-roam-node-map [remap org-roam-buffer-visit-thing] 'my-org-roam-node-visit)
 
   ;; Workaround an upstream issue with evil, as described in https://github.com/syl20bnr/spacemacs/pull/15008
-  (defadvice org-roam-node-insert (around append-if-in-evil-normal-mode activate compile)
+  (defun brh-org--roam-node-insert-advice (orig-fun &rest args)
     "If in evil normal mode and cursor is on a whitespace character, then go into
-         append mode first before inserting the link. This is to put the link after the
-         space rather than before."
+  append mode first before inserting the link. This is to put the link after the
+  space rather than before."
     (let ((is-in-evil-normal-mode (and (bound-and-true-p evil-mode)
                                        (not (bound-and-true-p evil-insert-state-minor-mode))
                                        (looking-at "[[:blank:]]"))))
       (if (not is-in-evil-normal-mode)
-          ad-do-it
+          (apply orig-fun args)
         (evil-append 0)
-        ad-do-it
+        (apply orig-fun args)
         (evil-normal-state))))
+
+  (advice-add 'org-roam-node-insert :around #'brh-org--roam-node-insert-advice)
   )
