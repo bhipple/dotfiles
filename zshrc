@@ -26,6 +26,9 @@ if [[ "$TERM" == "dumb" ]]; then
     return
 fi
 
+# This interferes with pass on windows terminal
+unset WAYLAND_DISPLAY
+
 ################################################################################
 fpath+=(~/.nix-profile/share/zsh/site-functions \
         ~/.zsh/completions \
