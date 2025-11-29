@@ -50,6 +50,7 @@ browserpass_install() {
     # This file needs to be symlinked manually; the NixOS package can't do it.
     passfile="$(nix build -Lvf $CHANNEL --no-link browserpass --print-out-paths)/lib/browserpass/hosts/chromium/com.github.browserpass.native.json"
     (
+      mkdir -p ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
       cd ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
       rm -rf *
       ln -s $passfile
