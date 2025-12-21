@@ -22,6 +22,15 @@ create_ssh() {
     chmod 0700 "$HOME"/.ssh
 }
 
+manage_channels() {
+    # Added for https://github.com/charmbracelet/crush
+    if ! nix-channel --list | grep -qw nur; then
+        echo "Adding NUR nix channel"
+        nix-channel --add https://github.com/nix-community/NUR/archive/main.tar.gz nur
+        nix-channel --update
+    fi
+}
+
 nix_install() {
     if ! [ -d /nix ]; then
         echo "NixPkg not installed on this machine."
@@ -58,5 +67,6 @@ browserpass_install() {
 }
 
 create_ssh
+manage_channels
 nix_install
 browserpass_install
