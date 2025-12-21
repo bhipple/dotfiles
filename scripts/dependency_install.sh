@@ -27,8 +27,8 @@ manage_channels() {
     if ! nix-channel --list | grep -qw nur; then
         echo "Adding NUR nix channel"
         nix-channel --add https://github.com/nix-community/NUR/archive/main.tar.gz nur
-        nix-channel --update
     fi
+    nix-channel --update
 }
 
 nix_install() {
