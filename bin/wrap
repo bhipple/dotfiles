@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 set -euxo pipefail
 
-echo "Setting up bwrap in `pwd`"
-
 dir=$(pwd)
 cmd=$@
+
+echo "Setting up bwrap in $dir for $cmd"
 
 bwrap \
   --unshare-all \
@@ -12,16 +12,19 @@ bwrap \
   --tmpfs /tmp \
   --proc /proc \
   --dev /dev \
-  --bind $dir $dir \
   --ro-bind /etc /etc \
   --ro-bind /nix /nix \
   --ro-bind /bin /bin \
   --ro-bind /run/current-system /run/current-system \
   --ro-bind ~/.nix-profile ~/.nix-profile \
+  --ro-bind ~/.zgenom ~/.zgenom \
+  --ro-bind ~/.zsh ~/.zsh \
+  --ro-bind ~/.zshrc ~/.zshrc \
   --ro-bind ~/dotfiles ~/dotfiles \
   --ro-bind ~/dotfiles_local ~/dotfiles_local \
-  --ro-bind ~/.zshrc ~/.zshrc \
-  --ro-bind ~/.zsh ~/.zsh \
-  --ro-bind ~/.zgenom ~/.zgenom \
+  --ro-bind ~/git/nixos-25.11 ~/git/nixos-25.11 \
+  --ro-bind ~/git/nixpkgs ~/git/nixpkgs \
+  --bind ~/.local/share/crush ~/.local/share/crush \
+  --bind $dir $dir \
   --new-session \
   -- $cmd
