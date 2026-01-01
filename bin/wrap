@@ -12,10 +12,12 @@ bwrap \
   --tmpfs /tmp \
   --proc /proc \
   --dev /dev \
+  --ro-bind /bin /bin \
   --ro-bind /etc /etc \
   --ro-bind /nix /nix \
-  --ro-bind /bin /bin \
   --ro-bind /run/current-system /run/current-system \
+  --ro-bind /usr/bin /usr/bin \
+  --ro-bind ~/.nix-defexpr/channels ~/.nix-defexpr/channels \
   --ro-bind ~/.nix-profile ~/.nix-profile \
   --ro-bind ~/.zgenom ~/.zgenom \
   --ro-bind ~/.zsh ~/.zsh \
