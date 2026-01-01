@@ -60,7 +60,7 @@ floating_modifier $mod
 bindsym $mod+c kill
 
 # Capture a screenshot to clipboard
-bindsym $mod+shift+c exec --no-startup-id "/home/bhipple/bin/screenclip"
+bindsym $mod+shift+c exec --no-startup-id "flameshot gui"
 
 # start program shortcuts
 bindsym $mod+shift+i exec brave
