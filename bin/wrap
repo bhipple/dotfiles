@@ -17,6 +17,7 @@ bwrap \
   --ro-bind /nix /nix \
   --ro-bind /run/current-system /run/current-system \
   --ro-bind /usr/bin /usr/bin \
+  --ro-bind ~/Downloads ~/Downloads \
   --ro-bind ~/.nix-defexpr/channels ~/.nix-defexpr/channels \
   --ro-bind ~/.nix-profile ~/.nix-profile \
   --ro-bind ~/.zgenom ~/.zgenom \
