@@ -59,16 +59,6 @@ require('lazy').setup({
     end,
   },
 
-  { -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    lazy = true,
-    dependencies = {
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = "legacy", opts = {} },
-    },
-  },
-
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     lazy = true,
