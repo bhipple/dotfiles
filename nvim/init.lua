@@ -22,9 +22,9 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   { 'ThePrimeagen/harpoon', lazy = true },              -- Workspace management
   { 'f-person/git-blame.nvim', lazy = true },           -- :GitBlameToggle
-  { 'folke/trouble.nvim', lazy = true },                -- Quickfix/Loclist/LSP Info
+  { 'folke/trouble.nvim' },                             -- Quickfix/Loclist/LSP Info
   { 'folke/which-key.nvim', opts = {} },                -- Useful plugin to show you pending keybinds.
-  { 'hrsh7th/cmp-buffer', lazy = true },                -- autocompletions from buffer
+  { 'hrsh7th/cmp-buffer' },                             -- autocompletions from buffer
   { 'ledger/vim-ledger', lazy = true },                 -- ledger-cli mode
   { 'sindrets/diffview.nvim', lazy = true },
   { 'stevearc/dressing.nvim', lazy = true },            -- Nicer popups
