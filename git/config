@@ -104,7 +104,7 @@
 [core]
     pager = less -F -X -R
     preloadindex = true
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/ignore_global
 [credential]
     helper = cache --timeout=432000
 [diff]
