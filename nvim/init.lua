@@ -20,21 +20,20 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-  { 'ThePrimeagen/harpoon', lazy = true },              -- Workspace management
-  { 'f-person/git-blame.nvim', lazy = true },           -- :GitBlameToggle
+  { 'ThePrimeagen/harpoon' },                           -- Workspace management
+  { 'f-person/git-blame.nvim' },                        -- :GitBlameToggle
   { 'folke/trouble.nvim' },                             -- Quickfix/Loclist/LSP Info
   { 'folke/which-key.nvim', opts = {} },                -- Useful plugin to show you pending keybinds.
   { 'hrsh7th/cmp-buffer' },                             -- autocompletions from buffer
   { 'ledger/vim-ledger', lazy = true },                 -- ledger-cli mode
   { 'sindrets/diffview.nvim', lazy = true },
   { 'stevearc/dressing.nvim', lazy = true },            -- Nicer popups
-  { 'tpope/vim-surround', lazy = true },
+  { 'tpope/vim-surround' },
   { 'tpope/vim-vinegar' },                              -- Netrw replacement
-  { 'wsdjeg/vim-fetch', lazy = true },                  -- Understand formats line file:line when opening
-  { 'numToStr/Comment.nvim', lazy = true, opts = {} },   -- "gc" to comment visual regions/lines
+  { 'wsdjeg/vim-fetch' },                               -- Understand formats line file:line when opening
+  { 'numToStr/Comment.nvim' },                          -- "gc" to comment visual regions/lines
 
   {'NeogitOrg/neogit',
-    lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',         -- required
       'nvim-telescope/telescope.nvim', -- optional
@@ -61,7 +60,6 @@ require('lazy').setup({
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    lazy = true,
     dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
@@ -123,7 +121,7 @@ require('lazy').setup({
   },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', lazy = true, version = '*', dependencies = { 'nvim-lua/plenary.nvim', } },
+  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim', } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -132,7 +130,6 @@ require('lazy').setup({
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
     --       refer to the README for telescope-fzf-native for more instructions.
-    laze = true,
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
