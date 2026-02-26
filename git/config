@@ -117,11 +117,9 @@
 [magit]
   hideCampaign = true
 [merge]
-    tool = fugitive
+    conflictStyle = zdiff3
 [mergetool]
     keepBackup = false
-[mergetool "fugitive"]
-    cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [protocol]
     version = 2
 [pull]
