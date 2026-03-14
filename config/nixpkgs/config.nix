@@ -8,7 +8,5 @@
     bhipple = import /home/bhipple/dotfiles/nur-packages {};
   };
 
-  permittedInsecurePackages = [
-    "openssl-1.1.1w"
-  ];
+  allowUnfree = true;
 }
