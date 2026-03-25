@@ -39,10 +39,12 @@ nix_install() {
     set -x
     nix build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
     nix build -Lvf ~/git/nixos-24.05 ledger
+    nix build -Lvf ~/git/nixos-unstable freerdp
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
         nix-env -f ~/git/nixos-24.05 -k -iA ledger
+        nix-env -f ~/git/nixos-unstable -k -iA freerdp
     fi
 }
 
