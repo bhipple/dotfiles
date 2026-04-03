@@ -81,11 +81,6 @@ if [ -z "$IN_NIX_SHELL" ]; then
     compdef g='git'
 fi
 
-# Only do this at home
-if [[ $USER == "bhipple" ]]; then
-    compdef p='pass'
-fi
-
 # When processing completions for aliases, expand them to find out what
 # function(s) should be completed. Note that this does not work for
 # binaries/scripts wrapping the program, such as my bin/g script.
