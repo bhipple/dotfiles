@@ -25,3 +25,6 @@ style = "Italic"
 [font.normal]
 family = "Inconsolata"
 style = "Regular"
+
+[selection]
+save_to_clipboard = true
