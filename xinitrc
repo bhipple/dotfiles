@@ -28,7 +28,7 @@ xresources() {
 
 xresources
 
-if uname -a | grep -q "Linux brh-x1"; then
+if uname -a | grep -q "Linux brh-x"; then
     undocked
     handle_touchpad
 elif uname -a | grep -q "Linux brh-dale"; then

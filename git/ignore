@@ -58,3 +58,5 @@ TAGS
 .vscode
 .yas-compiled-snippets.el
 flycheck_*.py
+
+**/.claude/settings.local.json
