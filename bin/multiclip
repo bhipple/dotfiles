@@ -1,10 +1,2 @@
 #!/usr/bin/env zsh
-set -euo pipefail
-
-input=$(cat)
-
-echo $input | xsel -b &
-echo $input | xclip -selection primary &
-echo $input | xclip -selection clipboard &
-
-# notify-send "Copied to clipboard: $input"
+tee >(xsel --primary --input) | xsel --clipboard --input
