@@ -38,12 +38,10 @@ nix_install() {
     # Build first before installing, so we can see the progress bar
     set -x
     nix build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
-    nix build -Lvf ~/git/nixos-24.05 --no-link legacyEnv
     nix build -Lvf ~/git/nixos-unstable --no-link unstableEnv
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
-        nix-env -f ~/git/nixos-24.05 -k -iA legacyEnv
         nix-env -f ~/git/nixos-unstable -k -iA unstableEnv
     fi
 }
