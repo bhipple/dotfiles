@@ -50,7 +50,7 @@
     logdog = log --decorate --oneline --graph
     lp = log -p --stat
     ls = log --stat
-    p = pull
+    p = "!git fetch --all && git pull"
     psm = pull --recurse-submodules
     pp = "!git pull && git push"
     pr = pull-request
@@ -61,7 +61,7 @@
     rba = rebase --abort
     rbc = rebase --continue
     rbi = rebase --interactive
-    rfm = rf master
+    rfm = "!git fetch --all && git rf master"
     rmt = remote -v
     rod = rebase origin/dev -i
     rom = rebase origin/master -i
