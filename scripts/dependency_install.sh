@@ -37,8 +37,9 @@ nix_install() {
     export NIXPKGS_ALLOW_UNFREE=1
     # Build first before installing, so we can see the progress bar
     set -x
+    nix build -Lvf ~/git/nixos-unstable --no-link unstableEnv &
     nix build -Lvf $CHANNEL --no-link --keep-going -j$(nproc) $ATTRS
-    nix build -Lvf ~/git/nixos-unstable --no-link unstableEnv
+    wait
 
     if [ -z ${BUILD_ONLY:=} ]; then
         nix-env -f $CHANNEL -k -riA $ATTRS
