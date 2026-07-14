@@ -10,6 +10,14 @@ undocked() {
            --output eDP-1 --auto --primary --pos 0x0
 }
 
+docked() {
+    xmodmap ~/dotfiles/xmodmap/qwerty
+    # DP-1 is a 5120x2160 (5k2k) panel, 929mm x 392mm => ~140 natural DPI
+    xrandr --dpi 140 \
+           --output DP-1 --auto --primary --pos 0x0 \
+           --output eDP-1 --off
+}
+
 handle_touchpad() {
     id=$(xinput list | rg -o 'Synaptics TouchPad.*id=([0-9]*)' -r '$1')
     if [ -n "$id" ]; then
@@ -29,7 +37,12 @@ xresources() {
 xresources
 
 if uname -a | grep -q "Linux brh-x"; then
-    undocked
+    # When the 5k2k monitor is plugged in (DP-1 connected), run docked.
+    if xrandr --query | grep -q "^DP-1 connected"; then
+        docked
+    else
+        undocked
+    fi
     handle_touchpad
 elif uname -a | grep -q "Linux brh-dale"; then
     handle_dale
