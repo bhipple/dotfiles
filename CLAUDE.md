@@ -57,6 +57,13 @@ frames near the end (last ~10 min) for the winning moment, and densify
 anywhere the scores jump between samples. Stream intro lasts ~20 min — m000
 is usually a title card.
 
+**Always capture the opening draft board, before anyone has picked.** The
+recap must include this screenshot (untouched slices/factions — the "what
+could have been" shot). The draft starts a few minutes in, right after player
+intros; picks begin fast. Pull dense early frames (`for m in 1 2 3 4 5 6 8
+10 12`) and pick the latest one where all draft options are still unclaimed —
+cross-check against the transcript intro for when the first pick lands.
+
 **The UI layout varies by commentator crew** — Game 1 (Hunter): score panel
 top-right, log bottom-left, round top-left. Game 2 (Elspeth/El Blasto): score
 bar top-center with faction icons + strategy cards, round number top-center,
@@ -125,8 +132,10 @@ as a series):
 
 1. Masthead: eyebrow / headline / one-sentence deck / hairline rule.
 2. Context paragraph (tournament, commentator, draft highlights).
-3. Roster table with faction color swatches.
-4. Opening-board screenshot.
+3. **Opening-draft screenshot** (required): the draft board before any picks,
+   captioned with what the players were about to fight over.
+4. Roster table with faction color swatches.
+5. Opening-board screenshot.
 5. Round-by-round chronicle interleaved with screenshots at pivots.
 6. Endgame screenshot pair (match point + winning moment) + pull quote.
 7. Final standings panel.
