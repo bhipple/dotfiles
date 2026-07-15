@@ -92,9 +92,9 @@ def main():
 
         vpn = vpn_block()
         if vpn is not None:
-            # Insert with the network info, just before the wireless block.
+            # Insert just before the battery block.
             idx = next(
-                (i for i, b in enumerate(blocks) if b.get("name") == "wireless"),
+                (i for i, b in enumerate(blocks) if b.get("name") == "battery"),
                 0,
             )
             blocks.insert(idx, vpn)
