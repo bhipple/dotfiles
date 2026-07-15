@@ -57,6 +57,14 @@ frames near the end (last ~10 min) for the winning moment, and densify
 anywhere the scores jump between samples. Stream intro lasts ~20 min — m000
 is usually a title card.
 
+**The UI layout varies by commentator crew** — Game 1 (Hunter): score panel
+top-right, log bottom-left, round top-left. Game 2 (Elspeth/El Blasto): score
+bar top-center with faction icons + strategy cards, round number top-center,
+**countdown game clock top-right** (timed game — the clock is story material),
+objectives + scored secrets + laws panel on the right, Discord voice roster on
+the left, combat logs overlaid mid-screen near the battle. Identify the layout
+from the first readable frame before batch-reading.
+
 **Reading a TTS/SCPT frame** (Read tool on the jpg):
 - **Top left**: round number + the active player's faction and researched techs.
 - **Top right**: score panel — player rows with faction icon, name, strategy
@@ -95,7 +103,9 @@ as a series):
 - Committed dark single theme (deep space — deliberate, no light mode).
 - Tokens: ground `#0A0D18`, panel `#131A2C`, text `#C9D2E4`, headings
   `#EEF2FA`, dim `#7D889F`, hairline `#26304A`, accent gold `#E3B34C`
-  (custodians/throne), crimson `#D8434A` reserved for the winner.
+  (custodians/throne); the winner accent is the **winner's faction color**
+  (Game 1 crimson `#D8434A` for Crimson Rebellion, Game 2 green `#5BBF6B`
+  for Arborec) — used in the headline keyword and standings row.
 - Type: display = Futura/Avenir Next/Century Gothic/Trebuchet, uppercase,
   tracked wide (game-box titling); body = Iowan Old Style/Palatino/Georgia
   serif (chronicle voice); scores/data = ui-monospace with tabular-nums.
@@ -128,4 +138,3 @@ as a series):
 - Work in the session scratchpad; only the final HTML goes to `~/Downloads`.
 - zsh gotchas: quote heredoc delimiters (`<<'EOF'`); `echo ===` fails
   (parsed as glob) — quote it.
-- Game 2 VOD is already downloaded: `SCPT 2026 Semis Game 2 [S0FzsIkG3Ac].webm`.
