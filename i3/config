@@ -221,6 +221,10 @@ for_window [title="^War of the Ring$"] floating enable
 exec "~/.xinitrc"
 exec "xautolock -time 60 -locker 'sudo /run/current-system/sw/bin/slock'"
 
+# Auto-switch docked/undocked when a monitor is plugged/unplugged (Thunderbolt
+# dock included). Watches DRM udev events and re-runs xinitrc.
+exec --no-startup-id ~/bin/display-hotplugd
+
 # Set the wallpaper
 exec "feh --bg-max /home/bhipple/dotfiles_local/wallpapers/telluride.jpg"
 

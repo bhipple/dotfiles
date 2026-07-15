@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Auto-apply the display config on monitor hotplug (dock / undock).
+#
+# The kernel emits a DRM "change" uevent whenever a display is connected or
+# disconnected -- including over a Thunderbolt dock. This watches for those
+# events and re-runs xinitrc, which re-detects docked vs. undocked and applies
+# the matching xrandr/xmodmap/DPMS setup.
+#
+# Mechanism notes:
+#   - inotify on /sys/class/drm/*/status does NOT work: sysfs attributes don't
+#     emit inotify events. udev uevents are the correct signal.
+#   - Launch this from the i3 session (see i3/config) so it inherits DISPLAY
+#     and XAUTHORITY and can drive xrandr directly. Do NOT launch it from
+#     xinitrc -- xinitrc is what this re-runs, which would spawn duplicates.
+set -u
+
+export DISPLAY="${DISPLAY:-:0}"
+
+# Single instance per session.
+exec 9>"/tmp/display-hotplugd.${UID}.lock"
+flock -n 9 || exit 0
+
+udevadm monitor --udev --subsystem-match=drm 2>/dev/null | while read -r line; do
+    case "$line" in
+        *change*) : ;;      # a display was (un)plugged
+        *) continue ;;
+    esac
+
+    # A single plug/unplug emits a burst of events. Drain the queue until it
+    # stays quiet for 2s, then apply the config exactly once.
+    while read -r -t 2 _; do :; done
+
+    "$HOME/.xinitrc"
+done
