@@ -25,6 +25,27 @@ def pactl(*args):
     ).stdout
 
 
+def vpn_block():
+    """Show which VPN is up, per systemd unit state (what bin_local/vpn toggles)."""
+    try:
+        out = subprocess.run(
+            ["systemctl", "is-active",
+             "wg-quick-protonvpn.service", "tailscaled.service"],
+            capture_output=True, text=True,
+        ).stdout.split()
+        proton = len(out) > 0 and out[0] == "active"
+        tailscale = len(out) > 1 and out[1] == "active"
+    except Exception:
+        return None
+    if proton and tailscale:  # shouldn't happen; vpn script stops one first
+        return {"name": "vpn", "full_text": "VPN: proton+tailscale", "color": "#FFB86C"}
+    if proton:
+        return {"name": "vpn", "full_text": "VPN: proton", "color": "#50FA7B"}
+    if tailscale:
+        return {"name": "vpn", "full_text": "VPN: tailscale", "color": "#50FA7B"}
+    return {"name": "vpn", "full_text": "VPN: off", "color": "#888888"}
+
+
 def mic_block():
     try:
         muted = "yes" in pactl("get-source-mute", "@DEFAULT_SOURCE@")
@@ -68,6 +89,15 @@ def main():
                 max(len(blocks) - 1, 0),
             )
             blocks.insert(idx, mic)
+
+        vpn = vpn_block()
+        if vpn is not None:
+            # Insert with the network info, just before the wireless block.
+            idx = next(
+                (i for i, b in enumerate(blocks) if b.get("name") == "wireless"),
+                0,
+            )
+            blocks.insert(idx, vpn)
         print(prefix + json.dumps(blocks), flush=True)
 
     sys.exit(i3status.wait())
