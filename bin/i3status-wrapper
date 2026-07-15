@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""Wrap i3status to inject a microphone volume/mute block into the bar.
+
+i3status's `volume` module is sink-only, so mic (source) state has to be
+added from outside. This runs i3status, passes its i3bar JSON protocol
+through, and inserts a mic block after the speaker volume block.
+
+`killall -SIGUSR1 i3status` (the $refresh_i3status binding in i3/config)
+still reaches the child i3status process, which emits a fresh line and
+re-triggers this wrapper -- so instant refresh on keypress keeps working.
+
+The mic reads @DEFAULT_SOURCE@, matching bin_local/mic-toggle.
+"""
+import json
+import re
+import subprocess
+import sys
+
+CONF = "~/.config/i3/i3status.conf"
+
+
+def pactl(*args):
+    return subprocess.run(
+        ["pactl", *args], capture_output=True, text=True
+    ).stdout
+
+
+def mic_block():
+    try:
+        muted = "yes" in pactl("get-source-mute", "@DEFAULT_SOURCE@")
+        m = re.search(r"(\d+)%", pactl("get-source-volume", "@DEFAULT_SOURCE@"))
+        vol = m.group(1) if m else "?"
+    except Exception:
+        return None
+    if muted:
+        return {"name": "mic", "full_text": f"🎤 muted ({vol}%)", "color": "#888888"}
+    # Red while hot, as a "you are live" warning.
+    return {"name": "mic", "full_text": f"🎤 {vol}%", "color": "#FF5555"}
+
+
+def main():
+    import os
+
+    i3status = subprocess.Popen(
+        ["i3status", "-c", os.path.expanduser(CONF)],
+        stdout=subprocess.PIPE,
+        text=True,
+    )
+    # Pass through the protocol header and the opening '[' of the infinite array.
+    print(i3status.stdout.readline(), end="", flush=True)
+    print(i3status.stdout.readline(), end="", flush=True)
+
+    for line in i3status.stdout:
+        prefix, payload = "", line.strip()
+        if payload.startswith(","):
+            prefix, payload = ",", payload[1:]
+        try:
+            blocks = json.loads(payload)
+        except json.JSONDecodeError:
+            print(line, end="", flush=True)
+            continue
+
+        mic = mic_block()
+        if mic is not None:
+            # Insert right after the speaker volume block; else before the clock.
+            idx = next(
+                (i + 1 for i, b in enumerate(blocks) if b.get("name") == "volume"),
+                max(len(blocks) - 1, 0),
+            )
+            blocks.insert(idx, mic)
+        print(prefix + json.dumps(blocks), flush=True)
+
+    sys.exit(i3status.wait())
+
+
+if __name__ == "__main__":
+    main()
