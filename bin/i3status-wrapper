@@ -12,9 +12,12 @@ re-triggers this wrapper -- so instant refresh on keypress keeps working.
 The mic reads @DEFAULT_SOURCE@, matching bin_local/mic-toggle.
 """
 import json
+import os
 import re
+import signal
 import subprocess
 import sys
+import threading
 
 CONF = "~/.config/i3/i3status.conf"
 
@@ -59,17 +62,52 @@ def mic_block():
     return {"name": "mic", "full_text": f"🎤 {vol}%", "color": "#FF5555"}
 
 
-def main():
-    import os
+def handle_clicks(i3status):
+    """React to i3bar click events (JSON lines on our stdin).
 
+    volume: left = mute toggle, wheel = +/-1%, right = alsamixer
+    mic:    left = mic-toggle
+    """
+    for line in sys.stdin:
+        line = line.strip().lstrip(",")
+        if not line or line == "[":
+            continue
+        try:
+            ev = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        name, btn = ev.get("name"), ev.get("button")
+        if name == "volume":
+            if btn == 1:
+                pactl("set-sink-mute", "@DEFAULT_SINK@", "toggle")
+            elif btn == 3:
+                subprocess.Popen(["alacritty", "-e", "alsamixer"])
+            elif btn == 4:
+                pactl("set-sink-volume", "@DEFAULT_SINK@", "+1%")
+            elif btn == 5:
+                pactl("set-sink-volume", "@DEFAULT_SINK@", "-1%")
+        elif name == "mic" and btn == 1:
+            subprocess.run([os.path.expanduser("~/bin_local/mic-toggle")])
+        else:
+            continue
+        # Redraw the bar with the new state immediately
+        i3status.send_signal(signal.SIGUSR1)
+
+
+def main():
     i3status = subprocess.Popen(
         ["i3status", "-c", os.path.expanduser(CONF)],
         stdout=subprocess.PIPE,
         text=True,
     )
-    # Pass through the protocol header and the opening '[' of the infinite array.
+    # Rewrite the protocol header to declare click-event support, then pass
+    # through the opening '[' of the infinite array.
+    header = json.loads(i3status.stdout.readline())
+    header["click_events"] = True
+    print(json.dumps(header), flush=True)
     print(i3status.stdout.readline(), end="", flush=True)
-    print(i3status.stdout.readline(), end="", flush=True)
+
+    threading.Thread(target=handle_clicks, args=(i3status,), daemon=True).start()
 
     for line in i3status.stdout:
         prefix, payload = "", line.strip()
