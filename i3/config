@@ -196,6 +196,10 @@ bar {
 bindsym $mod+Return exec alacritty
 bindsym $mod+a exec anki
 bindsym $mod+e exec "emacsclient -c"
+# Reset/recover the display config (e.g. after a dock replug). Note: this only
+# works while UNLOCKED -- slock grabs the keyboard, so if the screen is locked
+# use the `fix-display` script from a TTY (Ctrl+Alt+F2) instead.
+bindsym $mod+shift+d exec --no-startup-id ~/.xinitrc
 
 ################################################################################
 # Zoom Settings

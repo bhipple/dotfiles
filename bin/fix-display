@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Recover a wedged display -- typically a docked DisplayPort panel that failed
+# to come back after DPMS power-off, or a dock replug that left DP-1 dark.
+#
+# Safe to run from a TTY (Ctrl+Alt+F2) even when slock has grabbed the keyboard
+# inside X: it talks to the X server directly rather than going through i3, so
+# slock's keyboard grab doesn't block it. After running, switch back to X
+# (Ctrl+Alt+F1) -- the display will be live again and you can type your slock
+# password blind to unlock.
+set -u
+
+export DISPLAY="${DISPLAY:-:0}"
+# Under startx the auth cookie normally lives here; adjust if yours differs.
+export XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
+
+# Force the external DisplayPort link to fully renegotiate. A plain --auto
+# re-probe often isn't enough for a hard-wedged link, so cycle it off first.
+if xrandr --query | grep -q "^DP-1 connected"; then
+    xrandr --output DP-1 --off
+    sleep 1
+fi
+
+# Re-apply the normal display configuration (docked/undocked detection, DPMS,
+# touchpad, XResources) via the shared xinitrc logic.
+exec "$HOME/.xinitrc"
