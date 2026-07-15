@@ -8,6 +8,8 @@ undocked() {
     xrandr --dpi 192 \
            --screen 0 --size 2560x1440 \
            --output eDP-1 --auto --primary --pos 0x0
+    # On the internal panel DPMS wakes cleanly, and sleeping it saves battery.
+    xset +dpms
 }
 
 docked() {
@@ -16,6 +18,13 @@ docked() {
     xrandr --dpi 140 \
            --output DP-1 --auto --primary --pos 0x0 \
            --output eDP-1 --off
+    # Disable DPMS power-off while docked. When the DisplayPort panel enters
+    # DPMS off, the link drops and fails to renegotiate on wake; since eDP-1 is
+    # off there's no fallback, leaving a black screen that requires a reboot.
+    # slock (via xautolock) still blanks/locks the screen when idle, so we
+    # don't need DPMS to physically power the panel down.
+    xset -dpms
+    xset s off
 }
 
 handle_touchpad() {
